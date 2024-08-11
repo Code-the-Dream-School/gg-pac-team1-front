@@ -1,0 +1,8 @@
+// src/styles/layout/_header.scss
+.header {
+    @include flex-center;
+    background-color: $secondary-color;
+    height: 60px;
+    width: 100%;
+  }
+  

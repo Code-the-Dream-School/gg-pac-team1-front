@@ -1,0 +1,7 @@
+// src/styles/abstracts/_mixins.scss
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

@@ -1,0 +1,106 @@
+.hotel-form-container {
+    width: 600px;
+    margin: 0 auto; // Centra el formulario horizontalmente
+    height: auto;
+  
+    .hotel-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center; // Centra todos los elementos en el formulario
+      gap: 20px;
+  
+      .input-group {
+        position: relative;
+        width: 100%; // Asegura que los inputs ocupen todo el ancho disponible
+  
+        input {
+          width: 100%;
+          padding: 10px 10px 10px 40px; // Ajusta el padding para que no se superponga con el ícono
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 16px;
+  
+          &::placeholder {
+            color: #999;
+          }
+        }
+  
+        .input-icon {
+          position: absolute;
+          left: 10px; // Posiciona el ícono al lado izquierdo
+          top: 50%;
+          transform: translateY(-50%);
+          color: #999;
+        }
+      }
+  
+      .search-button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        width: 50%;
+        text-align: center;
+  
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+  
+      .development-message {
+        margin-top: 20px;
+        color: #007bff;
+        font-size: 16px;
+        text-align: center;
+      }
+    }
+
+    .hotel-results {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+    
+      .hotel-card {
+        display: flex;
+        gap: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #f9f9f9;
+    
+        .hotel-image {
+          width: 150px;
+          height: 100px;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+    
+        .hotel-info {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+    
+          h3 {
+            margin: 0;
+            font-size: 20px;
+          }
+    
+          p {
+            margin: 5px 0;
+          }
+        }
+      }
+      .hotel-price{
+        font-size: 24px;
+        color: red;
+      }
+    
+    
+  }
+
+  
