@@ -1,0 +1,42 @@
+// Variables
+$container-max-width: 1140px;
+$gutter-width: 15px;
+$col-width-6: 50%;
+$col-width-4: 33.333%;
+
+// Grid System
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $gutter-width;
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 - ($gutter-width);
+  }
+
+  .col {
+    flex: 1;
+    padding: $gutter-width;
+
+    &-6 {
+      flex: 0 0 $col-width-6;
+      max-width: $col-width-6;
+    }
+
+    &-4 {
+      flex: 0 0 $col-width-4;
+      max-width: $col-width-4;
+    }
+  }
+}
+
+// Responsive Columns
+@media (max-width: 768px) {
+  .col-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
