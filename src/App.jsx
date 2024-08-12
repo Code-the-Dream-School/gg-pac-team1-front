@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { getAllData } from './util/index';
 
-import './components/Styles.css';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Search from './pages/Search';
