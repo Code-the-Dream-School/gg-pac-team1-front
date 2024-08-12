@@ -1,0 +1,86 @@
+// Variables (reused)
+$background-color: #fff;
+$padding: 20px;
+$border-radius: 8px;
+$box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+$input-border-color: #ccc;
+$input-text-color: #333;
+$placeholder-color: #aaa;
+$icon-color: #393838;
+$button-bg-color: #007BFF;
+$button-text-color: #fff;
+
+// General form styles
+.form-container {
+    background-color: $background-color;
+    padding: $padding;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow;
+    width: 320px;
+}
+
+.travel-form, .login-form, .register-form {
+    .form-group {
+        margin-bottom: 15px;
+        display: grid;
+        grid-template-columns: 30px 1fr;
+        align-items: center;
+
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid $input-border-color;
+            border-radius: 4px;
+            box-sizing: border-box;
+            color: $input-text-color;
+            font-family: inherit;
+            margin-left: 10px;
+
+            &::placeholder {
+                color: $placeholder-color;
+            }
+        }
+
+        label {
+            display: grid;
+            grid-template-columns: 30px 1fr;
+            align-items: center;
+            color: $input-text-color;
+            font-size: 18px;
+        }
+    }
+}
+
+.icon {
+    font-size: 26px;
+    color: $icon-color;
+}
+
+// // Specific styles for login forms
+// .login-form {
+//     .form-group {
+//         // Additional specific styles for login if needed
+//     }
+// }
+
+// // Specific styles for register forms
+// .register-form {
+//     .form-group {
+//         // Additional specific styles for register if needed
+//     }
+// }
+
+// Submit button
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: $button-bg-color;
+    color: $button-text-color;
+    border: none;
+    border-radius: 4px;
+    cursor: not-allowed;
+
+    &:enabled {
+        cursor: pointer;
+    }
+}
