@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { getAllData } from './util/index';
+
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import Search from './pages/Search';
+// Here all future page imports
 
 const URL = 'http://localhost:8000/api/v1/';
 
@@ -8,9 +14,8 @@ function App() {
   const [message, setMessage] = useState(''); 
 
   useEffect(() => {
-
     (async () => {
-      const myData = await getAllData(URL)
+      const myData = await getAllData(URL);
       setMessage(myData.data);
     })();
       
@@ -20,12 +25,35 @@ function App() {
 
   }, []);
 
+  // Configuring the router using createBrowserRouter
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Layout />,
+      children:
+      [
+        {
+          index: true,
+          element: <Home />
+        },
+        {
+          //Here are the future routes, example: auth, discover
+        },
+        {
+          path: 'search',
+          element: <Search />
+        }
+      ]
+    }
+  ]);
+
   return (
     <>
-      <h1>{message}</h1>
+      {/* Using RouterProvider to handle routing */}
+      <RouterProvider router={router} />
     </>
   );
-
 }
 
-export default App
+export default App;
+

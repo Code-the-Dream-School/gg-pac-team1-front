@@ -1,0 +1,63 @@
+/* Header Styles */
+header {
+  background: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  transition: padding 0.3s ease; // Smooth transition for padding
+
+  .header-left,
+  .header-right {
+    display: flex;
+    align-items: center; // Centers content vertically within these sections
+  }
+
+  .header-left {
+    a {
+      color: #fff;
+      text-decoration: none; // No underline or additional styling
+      font-size: 24px;
+      margin-left: 20px;
+    }
+  }
+
+  .header-right {
+    nav {
+      ul {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          margin: 0 20px;
+
+          a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+
+            &:hover {
+              text-decoration: underline;
+            }
+
+            .fa-bell {
+              font-size: 1.5em;
+              color: inherit;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.small { // Styles when scrolled
+    padding: 1px; // Reduce padding when scrolled
+  }
+}

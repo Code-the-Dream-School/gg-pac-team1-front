@@ -1,0 +1,26 @@
+.auto-generated-section {
+    padding: 3em 0;
+    background-color: #f3f3f3;
+
+    &:nth-child(even) {
+        background-color: #bdbdbd; // Color alternativo para las secciones pares
+    }
+
+    .container {
+        max-width: 80%;
+        margin: 0 auto;
+        padding: 0 1em;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+        color: #333;
+        border-bottom: 2px solid #333;
+        padding-bottom: 5px;
+    }
+
+    p {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+}

@@ -1,0 +1,39 @@
+// Variables
+$primary-color: #007bff; // Define your primary color
+$secondary-color: #6c757d; // Define your secondary color
+$font-size-base: 1rem; // Base font size
+$border-radius: 0.25rem; // Border radius
+
+// Mixin for button styles
+@mixin button-attributes($background-color, $border-color) {
+  display: inline-block;
+  font-weight: 400;
+  color: #fff;
+  text-align: center;
+  user-select: none;
+  background-color: $background-color;
+  border: 1px solid $border-color;
+  padding: 0.5rem 1rem;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  border-radius: $border-radius;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn {
+  @include button-attributes($primary-color, $primary-color);
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    border-color: darken($primary-color, 10%);
+  }
+}
+
+.btn-secondary {
+  @include button-attributes($secondary-color, $secondary-color);
+
+  &:hover {
+    background-color: darken($secondary-color, 10%);
+    border-color: darken($secondary-color, 10%);
+  }
+}

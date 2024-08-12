@@ -1,0 +1,78 @@
+/* Define variables for spacing and colors */
+$spacing-unit: 8px; // Adjust the spacing unit as needed
+$primary-color: #007bff; // Primary background color
+$secondary-color: #6c757d; // Secondary background color
+
+/* Mixin for margins */
+@mixin margin($top: 0, $right: 0, $bottom: 0, $left: 0) {
+  margin: $top $right $bottom $left !important;
+}
+
+/* Utility classes for margin */
+.m-0 {
+  @include margin(0);
+}
+
+.mt-1 {
+  @include margin($spacing-unit, 0, 0, 0); // Margin-top only
+}
+
+.mb-1 {
+  @include margin(0, 0, $spacing-unit, 0); // Margin-bottom only
+}
+
+.p-0 {
+  padding: 0 !important; // Remove padding
+}
+
+.px-1 {
+  padding-left: $spacing-unit !important; // Padding-left
+  padding-right: $spacing-unit !important; // Padding-right
+}
+
+/* Mixin for text alignment */
+@mixin text-align($alignment) {
+  text-align: $alignment !important;
+}
+
+/* Utility classes for text alignment */
+.text-left {
+  @include text-align(left); // Align text to the left
+}
+
+.text-center {
+  @include text-align(center); // Center text
+}
+
+.text-right {
+  @include text-align(right); // Align text to the right
+}
+
+/* Mixin for background colors */
+@mixin background-color($bg-color, $text-color: #fff) {
+  background-color: $bg-color !important;
+  color: $text-color !important;
+}
+
+/* Utility classes for background colors */
+.bg-primary {
+  @include background-color($primary-color); // Primary background color with white text
+}
+
+.bg-secondary {
+  @include background-color($secondary-color); // Secondary background color with white text
+}
+
+/* Mixin for display types */
+@mixin display($display-type) {
+  display: $display-type !important;
+}
+
+/* Utility classes for display types */
+.d-flex {
+  @include display(flex); // Set display to flex
+}
+
+.d-block {
+  @include display(block); // Set display to block
+}
