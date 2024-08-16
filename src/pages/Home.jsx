@@ -1,3 +1,5 @@
+
+import Discover from "../components/Discover";
 import FormSearch from "../components/FormSearch";
 
 function Home() {
@@ -12,6 +14,7 @@ function Home() {
                 <div className="container">
                 <h2>Discover</h2>
                 <p>Explore new and exciting destinations curated just for you.</p>
+                <Discover></Discover>
                 </div>
             </section>
 

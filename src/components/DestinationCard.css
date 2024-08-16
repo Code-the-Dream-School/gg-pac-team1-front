@@ -1,0 +1,29 @@
+.destination-card {
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    background-size: cover;
+    background-position: center;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .destination-card .card-body {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+  }
+  
+  .destination-card .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .destination-card .card-text {
+    margin-bottom: 1rem;
+  }
+  
+  .destination-card .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  
