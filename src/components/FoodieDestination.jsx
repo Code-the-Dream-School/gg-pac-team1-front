@@ -2,7 +2,7 @@ import React from 'react';
 import BackgroundOverlay from './BackgroundOverlay';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
-import foodieBackground from './assets/images/foodie-background.jpg'; // Import the image
+import foodiedestinationsImg from '../../images/foodiedestinationsImg.jpg'
 
 const FoodieDestination = () => {
   const destinations = [
@@ -30,7 +30,7 @@ const FoodieDestination = () => {
 
   return (
     <div>
-      <BackgroundOverlay backgroundImage={foodieBackground} />
+      <BackgroundOverlay backgroundImage={foodiedestinationsImg} />
       <h1 style={{ textAlign: 'center', fontSize: '2.5rem', color: '#fff', marginBottom: '30px', fontFamily: "'Montserrat', sans-serif" }}>
         Foodie Destinations
       </h1>

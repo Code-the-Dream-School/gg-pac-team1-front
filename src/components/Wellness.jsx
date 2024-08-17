@@ -3,7 +3,7 @@ import BackgroundOverlay from './BackgroundOverlay';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
 import SearchButton from './SearchButton'; 
-import wellnessBackground from '../../images/WellnessImage.jpg'; // Ensure the correct image path
+import WellnessImage from '../../images/WellnessImage.jpg';
 
 const Wellness = () => {
   const retreats = [
@@ -31,7 +31,7 @@ const Wellness = () => {
 
   return (
     <div>
-      <BackgroundOverlay backgroundImage={wellnessBackground} />
+      <BackgroundOverlay backgroundImage={WellnessImage} />
       <h1 style={{ textAlign: 'center', fontSize: '2.5rem', color: '#fff', marginBottom: '30px', fontFamily: "'Montserrat', sans-serif" }}>
         Wellness Retreats
       </h1>

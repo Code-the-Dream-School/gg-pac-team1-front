@@ -3,7 +3,7 @@ import BackgroundOverlay from './BackgroundOverlay';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
 import SearchButton from './SearchButton'; 
-import FamilyFriendlyImage from '../../images/Family-Friendly.jpg'
+import FamilyFriendlyImage from '../../images/FamilyFriendlyImage.jpg'
 
 const FamilyFriendly = () => {
   const destinations = [

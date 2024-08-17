@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap';
 import BackgroundOverlay from './BackgroundOverlay'; 
 import DestinationList from './DestinationList'; 
 import BackButton from './BackButton'; 
-import trendingBackground from '../../images/TrendingDestinations.jpg';
+import TrendingDestinationsImg from '../../images/TrendingDestinationsImg.jpg';
 
 const TrendingDestination = () => {
   const trendingPlaces = [
@@ -32,7 +32,7 @@ const TrendingDestination = () => {
 
   return (
     <div>
-      <BackgroundOverlay backgroundImage={trendingBackground} />
+      <BackgroundOverlay backgroundImage={TrendingDestinationsImg} />
       <h1 className="page-title">Trending Destinations</h1>
       <p className="page-description">
         Trending destinations are locations that are currently gaining popularity due to new attractions, cultural significance, or social media buzz. These places often offer a mix of modern experiences and unique local culture, drawing in travelers looking for something fresh and exciting. Here's what characterizes a trending destination:

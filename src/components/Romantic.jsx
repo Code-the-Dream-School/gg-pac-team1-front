@@ -2,7 +2,7 @@ import React from 'react';
 import BackgroundOverlay from './BackgroundOverlay';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
-import Romantic from '../../images/DiscoverySection/Romantic.jpg';
+import RomanticImg from '../../images/RomanticImg.jpg';
 
 const RomanticDestinations = () => {
   const destinations = [
@@ -30,7 +30,7 @@ const RomanticDestinations = () => {
 
   return (
     <div>
-      <BackgroundOverlay backgroundImage={romanticBackground} />
+      <BackgroundOverlay backgroundImage={RomanticImg} />
       <h1 style={{ textAlign: 'center', fontSize: '2.5rem', color: '#fff', marginBottom: '30px', fontFamily: "'Montserrat', sans-serif" }}>
         Romantic Destinations in the USA
       </h1>
