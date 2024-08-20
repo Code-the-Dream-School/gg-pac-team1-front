@@ -1,8 +1,7 @@
 import React from 'react';
-import BackgroundOverlay from './BackgroundOverlay';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
-import foodiedestinationsImg from '../../images/foodiedestinationsImg.jpg'
+import foodiedestinationsImg from '../../images/foodiedestinationsImg.jpg';
 
 const FoodieDestination = () => {
   const destinations = [
@@ -29,12 +28,35 @@ const FoodieDestination = () => {
   ];
 
   return (
-    <div>
-      <BackgroundOverlay backgroundImage={foodiedestinationsImg} />
-      <h1 style={{ textAlign: 'center', fontSize: '2.5rem', color: '#fff', marginBottom: '30px', fontFamily: "'Montserrat', sans-serif" }}>
+    <div style={{ 
+      padding: '40px 20px', 
+      backgroundColor: '#333', 
+      minHeight: '100vh',
+      backgroundImage: `url(${foodiedestinationsImg})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+    }}>
+      <h1 style={{ 
+        textAlign: 'center', 
+        fontSize: '2.5rem', 
+        color: '#fff', 
+        marginBottom: '30px', 
+        fontFamily: "'Montserrat', sans-serif" 
+      }}>
         Foodie Destinations
       </h1>
-      <p style={{ fontSize: '1rem', color: '#fff', lineHeight: '1.6', maxWidth: '800px', margin: '0 auto 40px', textAlign: 'justify', fontFamily: "'Lato', sans-serif" }}>
+      <p style={{ 
+        fontSize: '1rem', 
+        color: '#fff', 
+        lineHeight: '1.6', 
+        maxWidth: '800px', 
+        margin: '0 auto 40px', 
+        textAlign: 'justify', 
+        fontFamily: "'Lato', sans-serif",
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Background color for better text readability
+        padding: '20px', // Padding for better spacing
+        borderRadius: '8px' // Rounded corners for a softer look
+      }}>
         Foodie destinations are regions celebrated for their diverse and rich culinary landscapes. These destinations cater to travelers with a passion for food, offering a blend of traditional and innovative culinary experiences. Whether you’re indulging in street food, dining at a high-end restaurant, or exploring local markets, these locations are a paradise for food enthusiasts.
         <br /><br />
         Characteristics of a Foodie Destination:
@@ -60,6 +82,7 @@ const FoodieDestination = () => {
         For those who want a deeper dive into the local food culture, foodie destinations frequently offer cooking classes, where participants can learn to prepare regional dishes, and culinary tours that provide insight into the area’s food history and best-kept culinary secrets.
       </p>
       <DestinationList destinations={destinations} />
+      <SearchButton /> {/* Add the search button here if needed */}
       <BackButton />
     </div>
   );

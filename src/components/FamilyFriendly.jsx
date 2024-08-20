@@ -1,9 +1,8 @@
 import React from 'react';
-import BackgroundOverlay from './BackgroundOverlay';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
-import SearchButton from './SearchButton'; 
-import FamilyFriendlyImage from '../../images/FamilyFriendlyImage.jpg'
+import SearchButton from './SearchButton';
+import familyFriendlyImage from '../../images/familyFriendlyImage.jpg'; // Import your background image
 
 const FamilyFriendly = () => {
   const destinations = [
@@ -30,12 +29,34 @@ const FamilyFriendly = () => {
   ];
 
   return (
-    <div>
-      <BackgroundOverlay backgroundImage={FamilyFriendlyImage} />
-      <h1 style={{ textAlign: 'center', fontSize: '2.5rem', color: '#fff', marginBottom: '30px', fontFamily: "'Montserrat', sans-serif" }}>
+    <div style={{ 
+      padding: '40px 20px', 
+      minHeight: '100vh',
+      backgroundImage: `url(${familyFriendlyImage})`, // Set background image
+      backgroundSize: 'cover', // Cover the whole container
+      backgroundPosition: 'center', // Center the background image
+    }}>
+      <h1 style={{ 
+        textAlign: 'center', 
+        fontSize: '2.5rem', 
+        color: '#fff', 
+        marginBottom: '10px', 
+        fontFamily: "'Montserrat', sans-serif" 
+      }}>
         Family-Friendly Destinations
       </h1>
-      <p style={{ fontSize: '1rem', color: '#fff', lineHeight: '1.6', maxWidth: '800px', margin: '0 auto 40px', textAlign: 'justify', fontFamily: "'Lato', sans-serif" }}>
+      <p style={{ 
+        fontSize: '1rem', 
+        color: '#fff', 
+        lineHeight: '1.6', 
+        maxWidth: '800px', 
+        margin: '0 auto 40px', 
+        textAlign: 'justify', 
+        fontFamily: "'Lato', sans-serif",
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Background color for better text readability
+        padding: '20px', // Padding for better spacing
+        borderRadius: '8px' // Rounded corners for a softer look
+      }}>
         Family-friendly destinations are locations that offer a wide range of activities and amenities designed to cater to families with children. These destinations typically prioritize safety, convenience, and entertainment for all ages, ensuring that both kids and adults can enjoy their vacation. Here are some characteristics that define family-friendly destinations:
         <br /><br />
         1. <strong>Attractions for All Ages</strong><br />
@@ -53,7 +74,7 @@ const FamilyFriendly = () => {
         Family Resorts: Resorts specifically tailored for families may include water parks, multiple pools, playgrounds, and babysitting services.
       </p>
       <DestinationList destinations={destinations} />
-      <SearchButton /> {/* Add the search button here */}
+      <SearchButton />
       <BackButton />
     </div>
   );

@@ -2,6 +2,21 @@ import React from 'react';
 import DestinationCard from './DestinationCard';
 import './Discover.css';
 import './DestinationCard.css';
+import Wellness from './Wellness';
+import WellnessImage from '../../images/WellnessImage.jpg';
+import Romantic from './Romantic'
+import RomanticImg from '../../images/RomanticImg.jpg'
+import FamilyFriendly from './FamilyFriendly';
+import FamilyFriendlyImage from '../../images/FamilyFriendlyImage.jpg'
+import BudgetTravel from './BudgetTravel';
+import BudgetTravelImage from '../../images/BudgetTravel.jpg'; 
+import TrendingDestination from './TrendingDestination';
+import TrendingDestinationsImg from '../../images/TrendingDestinationsImg.jpg';
+import FoodieDestination from './FoodieDestination';
+import foodiedestinationsImg from '../../images/foodiedestinationsImg.jpg'
+
+
+
 
 function Discover() {
   return (
@@ -11,42 +26,42 @@ function Discover() {
           title="Family-Friendly"
           text="Discover destinations perfect for families."
           link="/family-friendly"
-          backgroundImage="https://source.unsplash.com/1600x900/?family-vacation"
+          backgroundImage={FamilyFriendlyImage}
         />
 
         <DestinationCard
           title="Wellness"
           text="Find relaxing and rejuvenating spots."
           link="/wellness"
-          backgroundImage="https://source.unsplash.com/1600x900/?wellness"
+          backgroundImage={WellnessImage}
         />
 
         <DestinationCard
           title="Budget Travel"
           text="Explore budget-friendly destinations."
           link="/budget-travel"
-          backgroundImage="https://source.unsplash.com/1600x900/?budget-travel"
+          backgroundImage={BudgetTravelImage}
         />
 
         <DestinationCard
           title="Trending Destinations"
           text="Discover the latest trending destinations."
           link="/trending-destinations"
-          backgroundImage="https://source.unsplash.com/1600x900/?trending-destination"
+          backgroundImage={TrendingDestinationsImg}
         />
 
         <DestinationCard
           title="Romantic"
           text="Experience the most romantic getaways."
           link="/romantic"
-          backgroundImage="https://source.unsplash.com/1600x900/?romantic-getaway"
+          backgroundImage={RomanticImg}
         />
 
         <DestinationCard
           title="Foodie Destinations"
           text="Indulge in the best culinary experiences."
           link="/foodie-destination"
-          backgroundImage="https://source.unsplash.com/1600x900/?food"
+          backgroundImage={foodiedestinationsImg}
         />
         
       </div>

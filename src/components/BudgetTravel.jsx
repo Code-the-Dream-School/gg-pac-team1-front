@@ -1,9 +1,8 @@
 import React from 'react';
-import BackgroundOverlay from './BackgroundOverlay'; // If needed
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
-import SearchButton from './SearchButton'; // If needed
-import BudgetTravelImage from '../../images/BudgetTravel.jpg'; 
+import SearchButton from './SearchButton'; // Include if needed
+import budgetTravel from '../../images/budgetTravel.jpg'; // Make sure to import your background image
 
 const BudgetTravel = () => {
   const budgetSpots = [
@@ -30,13 +29,35 @@ const BudgetTravel = () => {
   ];
 
   return (
-    <div>
-      {/* Uncomment and use BackgroundOverlay if you have a background image */}
-      <BackgroundOverlay backgroundImage={BudgetTravelImage} />
-      <h1 style={{ textAlign: 'center', fontSize: '2.5rem', color: '#fff', marginBottom: '30px', fontFamily: "'Montserrat', sans-serif" }}>
+    <div style={{ 
+      padding: '40px 20px', 
+      backgroundColor: '#333', 
+      minHeight: '100vh',
+      backgroundImage: `url(${budgetTravel})`, // Set background image
+      backgroundSize: 'cover', // Cover the whole container
+      backgroundPosition: 'center', // Center the background image
+    }}>
+      <h1 style={{ 
+        textAlign: 'center', 
+        fontSize: '2.5rem', 
+        color: '#fff', 
+        marginBottom: '30px', 
+        fontFamily: "'Montserrat', sans-serif" 
+      }}>
         Budget Travel Destinations
       </h1>
-      <p style={{ fontSize: '1rem', color: '#fff', lineHeight: '1.6', maxWidth: '800px', margin: '0 auto 40px', textAlign: 'justify', fontFamily: "'Lato', sans-serif" }}>
+      <p style={{ 
+        fontSize: '1rem', 
+        color: '#fff', 
+        lineHeight: '1.6', 
+        maxWidth: '800px', 
+        margin: '0 auto 40px', 
+        textAlign: 'justify', 
+        fontFamily: "'Lato', sans-serif",
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Background color for better text readability
+        padding: '20px', // Padding for better spacing
+        borderRadius: '8px' // Rounded corners for a softer look
+      }}>
         Budget destinations are locations where families can enjoy a memorable vacation without breaking the bank. These destinations typically offer affordable accommodations, dining options, and activities that provide great value. Here’s what defines a budget-friendly destination:
         <br /><br />
         1. <strong>Affordable Accommodations</strong><br />

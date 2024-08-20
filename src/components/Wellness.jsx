@@ -1,9 +1,8 @@
 import React from 'react';
-import BackgroundOverlay from './BackgroundOverlay';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
-import SearchButton from './SearchButton'; 
-import WellnessImage from '../../images/WellnessImage.jpg';
+import SearchButton from './SearchButton';
+import WellnessImage from '../../images/WellnessImage.jpg'; // Import the background image
 
 const Wellness = () => {
   const retreats = [
@@ -30,12 +29,34 @@ const Wellness = () => {
   ];
 
   return (
-    <div>
-      <BackgroundOverlay backgroundImage={WellnessImage} />
-      <h1 style={{ textAlign: 'center', fontSize: '2.5rem', color: '#fff', marginBottom: '30px', fontFamily: "'Montserrat', sans-serif" }}>
+    <div style={{ 
+      padding: '40px 20px', 
+      minHeight: '100vh',
+      backgroundImage: `url(${WellnessImage})`, // Set the background image
+      backgroundSize: 'cover', // Cover the entire container
+      backgroundPosition: 'center', // Center the background image
+    }}>
+      <h1 style={{ 
+        textAlign: 'center', 
+        fontSize: '2.5rem', 
+        color: '#fff', 
+        marginBottom: '10px', 
+        fontFamily: "'Montserrat', sans-serif" 
+      }}>
         Wellness Retreats
       </h1>
-      <p style={{ fontSize: '1rem', color: '#fff', lineHeight: '1.6', maxWidth: '800px', margin: '0 auto 40px', textAlign: 'justify', fontFamily: "'Lato', sans-serif" }}>
+      <p style={{ 
+        fontSize: '1rem', 
+        color: '#fff', 
+        lineHeight: '1.6', 
+        maxWidth: '800px', 
+        margin: '0 auto 40px', 
+        textAlign: 'justify', 
+        fontFamily: "'Lato', sans-serif",
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Background color for better text readability
+        padding: '20px', // Padding for better spacing
+        borderRadius: '8px' // Rounded corners for a softer look
+      }}>
         Wellness destinations are locations specifically designed to promote health and well-being through a variety of activities, treatments, and environments. These destinations often focus on relaxation, rejuvenation, and holistic health, offering experiences that help travelers disconnect from the stresses of daily life and reconnect with themselves. Here’s what defines a wellness destination:
         <br /><br />
         1. <strong>Spa and Treatment Centers</strong><br />
@@ -73,7 +94,7 @@ const Wellness = () => {
         Connection with Nature: These destinations often emphasize a deep connection with nature, encouraging guests to unplug from technology and immerse themselves in natural surroundings.
       </p>
       <DestinationList destinations={retreats} title="Top Wellness Retreats" />
-      <SearchButton /> {/* Add the search button here */}
+      <SearchButton /> {/* Add the search button here if needed */}
       <BackButton />
     </div>
   );
