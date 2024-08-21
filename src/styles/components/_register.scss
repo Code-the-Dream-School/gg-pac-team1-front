@@ -1,0 +1,107 @@
+.register-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.register-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  text-align: left;
+}
+
+.close-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1.8rem !important;
+  cursor: pointer;
+  color: #333;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 2rem !important;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 0.9rem !important;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem; /* Reducir el espacio entre campos */
+  width: 100%;
+}
+
+.input-field label {
+  flex: 0 0 100px; /* Reducir el ancho del label para menos espacio entre label e input */
+  font-weight: bold;
+  font-size: 0.9rem !important;
+  margin-right: 0.5rem; /* Reducir el espacio entre label e input */
+}
+
+.input-field input {
+  flex: 1;
+  padding: 0.8rem; /* Mantener el padding para una buena apariencia del campo de entrada */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 0.9rem !important;
+}
+
+.submit-button {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 1.1rem !important;
+  text-align: center;
+  margin-top: 1.5rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+.submit-button:active {
+  transform: translateY(1px);
+}
+
+.success-message {
+  color: green;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 0.9rem !important;
+  font-weight: bold;
+}

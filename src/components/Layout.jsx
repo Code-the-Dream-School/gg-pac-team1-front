@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
-import Header from "./Header";
 import Footer from "./Footer";
+import Header from "./Header";
 
-const Layout = () => {
+const Layout = ({ currentUser, onLogout }) => {
   return (
     <>
-        <Header />
+        <Header currentUser={currentUser} onLogout={onLogout} />
         <main>
            <Outlet />     
         </main>

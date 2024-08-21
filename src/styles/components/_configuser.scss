@@ -1,0 +1,81 @@
+// Estilos para el menú desplegable del usuario
+.dropdown-menu {
+  background-color: #333; // Fondo oscuro para el menú
+  border: 1px solid #444; // Borde gris oscuro
+  border-radius: 6px; // Bordes más redondeados para un look más suave
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); // Sombra más pronunciada para resaltar el menú
+  margin-top: 8px; // Espacio superior reducido para un ajuste más cercano al botón
+  position: absolute;
+  right: 0;
+  z-index: 1000;
+  min-width: 220px; // Ancho mínimo ampliado para más espacio
+  padding: 10px;
+  display: none; // Ocultar menú por defecto
+
+  // Asegurar que el menú se ajuste bien al contenido
+  box-sizing: border-box;
+}
+
+// Mostrar el menú al hacer clic o cuando esté enfocado
+.user-button:focus + .dropdown-menu,
+.user-button:active + .dropdown-menu,
+.dropdown-menu:hover {
+  display: block;
+}
+
+// Estilos para los elementos del menú
+.dropdown-menu li {
+  padding: 10px 16px; // Mayor padding para un área de clic más grande
+
+  // Añadir una línea divisoria entre los elementos
+  &:not(:last-child) {
+    border-bottom: 1px solid #555; // Línea divisoria gris más claro
+  }
+
+  // Eliminar el margen inferior de la última opción
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  // Estilos para enlaces y botones dentro del menú
+  a,
+  button {
+    color: #fff; // Color de texto blanco
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 15px; // Tamaño de fuente ligeramente más grande para mejor legibilidad
+    background-color: transparent; // Fondo transparente para los botones
+    border: none; // Eliminar borde para los botones
+
+    i {
+      margin-right: 12px; // Mayor espacio entre el icono y el texto
+    }
+
+    // Cambiar color de texto al pasar el mouse
+    &:hover {
+      color: #007bff; // Color azul al pasar el mouse
+      cursor: pointer; // Cambiar cursor a mano
+    }
+  }
+}
+
+// Estilos adicionales para el botón de usuario
+.user-button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover {
+    color: #007bff; // Color azul al pasar el mouse
+  }
+}
+
+// Ajustes de posición del menú
+.dropdown {
+  position: relative;
+}
+
+
