@@ -9,9 +9,10 @@ import FoodieDestination from './components/FoodieDestination';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Search from './pages/Search';
+import TripDescription from './components/TripSection/TripDescription';
 import ReviewSection from './components/ReviewSection/ReviewSection';
 import AllReviews from './components/ReviewSection/AllReviews'; 
-import LeaveReview from './components/ReviewSection/LeaveReview'; // Updated import
+import LeaveReview from './components/ReviewSection/LeaveReview'; 
 import { getAllData } from './util/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -78,8 +79,13 @@ function App() {
         },
         {
           path: 'leave-review',
-          element: <LeaveReview /> // Updated route
+          element: <LeaveReview /> 
+        },
+        {
+          path: 'trip-description',
+          element: <TripDescription /> 
         }
+      
       ]
     }
   ]);
