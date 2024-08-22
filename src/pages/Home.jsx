@@ -1,11 +1,20 @@
-import FormSearch from "../components/FormSearch";
+import SearchForm from "../components/SearchForm";
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const navigate = useNavigate(); // Initializes useNavigate to handle navigation
+
+  const handleSearch = (searchData) => {
+    navigate('/search', { state: searchData });  // Redirect to the search page with the data
+};
+
   return (
     <>
         <div>
             <section className="slider-section">
-                <FormSearch />
+                <div className="home-container">
+                <SearchForm onSearch={handleSearch} />
+                </div>
             </section>
 
             <section className="auto-generated-section">
