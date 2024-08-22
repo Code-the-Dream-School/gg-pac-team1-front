@@ -1,7 +1,7 @@
 import React from 'react';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
-import SearchButton from './SearchButton';
+
 import familyFriendlyImage from '../../images/familyFriendlyImage.jpg'; // Import your background image
 
 const FamilyFriendly = () => {
@@ -74,7 +74,7 @@ const FamilyFriendly = () => {
         Family Resorts: Resorts specifically tailored for families may include water parks, multiple pools, playgrounds, and babysitting services.
       </p>
       <DestinationList destinations={destinations} />
-      <SearchButton />
+    
       <BackButton />
     </div>
   );

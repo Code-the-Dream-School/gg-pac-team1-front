@@ -1,6 +1,7 @@
 
 import Discover from "../components/Discover";
 import FormSearch from "../components/FormSearch";
+import ReviewSection from "../components/ReviewSection/ReviewSection";
 
 function Home() {
   return (
@@ -20,8 +21,8 @@ function Home() {
 
             <section className="auto-generated-section">
                 <div className="container">
-                <h2>Reviews</h2>
-                <p>Read what other travelers have to say about their experiences.</p>
+              
+                <ReviewSection></ReviewSection>
                 </div>
             </section>
 

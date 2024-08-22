@@ -1,8 +1,7 @@
 import React from 'react';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
-import SearchButton from './SearchButton'; // Include if needed
-import budgetTravel from '../../images/budgetTravel.jpg'; // Make sure to import your background image
+import budgetTravel from '../../images/budgetTravel.jpg'; 
 
 const BudgetTravel = () => {
   const budgetSpots = [
@@ -54,9 +53,9 @@ const BudgetTravel = () => {
         margin: '0 auto 40px', 
         textAlign: 'justify', 
         fontFamily: "'Lato', sans-serif",
-        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Background color for better text readability
-        padding: '20px', // Padding for better spacing
-        borderRadius: '8px' // Rounded corners for a softer look
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+        padding: '20px', 
+        borderRadius: '8px' 
       }}>
         Budget destinations are locations where families can enjoy a memorable vacation without breaking the bank. These destinations typically offer affordable accommodations, dining options, and activities that provide great value. Here’s what defines a budget-friendly destination:
         <br /><br />
@@ -73,7 +72,7 @@ const BudgetTravel = () => {
         These budget-friendly destinations ensure that families can have an enjoyable and memorable vacation without overspending.
       </p>
       <DestinationList destinations={budgetSpots} title="Top Budget Travel Spots" />
-      <SearchButton /> {/* Add the search button here if needed */}
+     
       <BackButton />
     </div>
   );

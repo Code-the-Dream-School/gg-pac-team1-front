@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import this if you plan to use Links
-import { Row, Col } from 'react-bootstrap'; // Import this if you plan to use Bootstrap grid
+import { Link } from 'react-router-dom'; 
+import { Row, Col } from 'react-bootstrap'; 
 
 import DestinationList from './DestinationList'; 
 import BackButton from './BackButton'; 
@@ -55,9 +55,9 @@ const TrendingDestination = () => {
         margin: '0 auto 40px', 
         textAlign: 'justify', 
         fontFamily: "'Lato', sans-serif",
-        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Background color for better text readability
-        padding: '20px', // Padding for better spacing
-        borderRadius: '8px' // Rounded corners for a softer look
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+        padding: '20px', 
+        borderRadius: '8px' 
       }}>
         Trending destinations are locations that are currently gaining popularity due to new attractions, cultural significance, or social media buzz. These places often offer a mix of modern experiences and unique local culture, drawing in travelers looking for something fresh and exciting. Here's what characterizes a trending destination:
         <br /><br />
@@ -73,7 +73,7 @@ const TrendingDestination = () => {
         Influencer Endorsements: Social media influencers and travel bloggers often highlight these locations, helping to drive their popularity among a wider audience.
       </p>
       <DestinationList destinations={trendingPlaces} title="Top Trending Destinations" />
-      <SearchButton /> {/* Add the search button here if needed */}
+    
       <BackButton />
     </div>
   );

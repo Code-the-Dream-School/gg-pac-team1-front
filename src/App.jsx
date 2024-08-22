@@ -9,6 +9,9 @@ import FoodieDestination from './components/FoodieDestination';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Search from './pages/Search';
+import ReviewSection from './components/ReviewSection/ReviewSection';
+import AllReviews from './components/ReviewSection/AllReviews'; 
+import LeaveReview from './components/ReviewSection/LeaveReview'; // Updated import
 import { getAllData } from './util/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -28,7 +31,6 @@ function App() {
     })();
   }, []);
   
-  // Configuring the router using createBrowserRouter
   const router = createBrowserRouter([
     {
       path: "/",
@@ -61,6 +63,22 @@ function App() {
         {
           path: 'foodie-destination',
           element: <FoodieDestination />
+        },
+        {
+          path: 'reviews',
+          element: <ReviewSection /> 
+        },
+        {
+          path: 'all-reviews',
+          element: <AllReviews /> 
+        },
+        {
+          path: 'search',
+          element: <Search /> 
+        },
+        {
+          path: 'leave-review',
+          element: <LeaveReview /> // Updated route
         }
       ]
     }

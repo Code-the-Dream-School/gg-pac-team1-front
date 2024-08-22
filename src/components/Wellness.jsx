@@ -1,8 +1,7 @@
 import React from 'react';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
-import SearchButton from './SearchButton';
-import WellnessImage from '../../images/WellnessImage.jpg'; // Import the background image
+import WellnessImage from '../../images/WellnessImage.jpg'; 
 
 const Wellness = () => {
   const retreats = [
@@ -94,7 +93,7 @@ const Wellness = () => {
         Connection with Nature: These destinations often emphasize a deep connection with nature, encouraging guests to unplug from technology and immerse themselves in natural surroundings.
       </p>
       <DestinationList destinations={retreats} title="Top Wellness Retreats" />
-      <SearchButton /> {/* Add the search button here if needed */}
+    
       <BackButton />
     </div>
   );
