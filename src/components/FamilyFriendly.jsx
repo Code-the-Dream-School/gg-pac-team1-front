@@ -2,7 +2,7 @@ import React from 'react';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
 
-import familyFriendlyImage from '../../images/familyFriendlyImage.jpg'; // Import your background image
+import familyFriendlyImage from '../../images/FamilyFriendlyImage.jpg'; // Import your background image
 
 const FamilyFriendly = () => {
   const destinations = [

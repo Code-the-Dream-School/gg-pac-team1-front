@@ -9,7 +9,7 @@ import RomanticImg from '../../images/RomanticImg.jpg'
 import FamilyFriendly from './FamilyFriendly';
 import FamilyFriendlyImage from '../../images/FamilyFriendlyImage.jpg'
 import BudgetTravel from './BudgetTravel';
-import BudgetTravelImage from '../../images/BudgetTravel.jpg'; 
+import BudgetTravelImage from '../../images/Budgettravel.jpg'; 
 import TrendingDestination from './TrendingDestination';
 import TrendingDestinationsImg from '../../images/TrendingDestinationsImg.jpg';
 import FoodieDestination from './FoodieDestination';

@@ -1,7 +1,7 @@
 import React from 'react';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
-import budgetTravel from '../../images/budgetTravel.jpg'; 
+import budgetTravel from '../../images/Budgettravel.jpg'; 
 
 const BudgetTravel = () => {
   const budgetSpots = [
