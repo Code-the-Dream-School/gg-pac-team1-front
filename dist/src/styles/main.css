@@ -241,67 +241,6 @@ p {
   color: #333;
 }
 
-form {
-  margin-top: 1rem;
-}
-
-.form-group {
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-}
-
-label {
-  margin-right: 0.5rem;
-}
-
-input[type=text], input[type=date], input[type=number] {
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 4px;
-  border: 1px solid #ced4da;
-  box-sizing: border-box;
-}
-input[type=radio] {
-  margin-right: 0.5rem;
-}
-input[type=number] {
-  width: auto;
-  max-width: 6ch;
-}
-
-button {
-  padding: 0.5rem 1rem;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #0056b3;
-}
-
-.error-text {
-  color: #dc3545;
-  font-size: 0.875rem;
-}
-
-.date-group {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.radio-group {
-  display: flex;
-  gap: 1rem;
-}
-
-.home-container {
-  padding: 20px;
-  width: 30%;
-}
-
 .container {
   width: 100%;
   max-width: 1140px;
@@ -339,21 +278,13 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding: 20px;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  transition: padding 0.3s ease;
 }
-header .header-left,
-header .header-right {
-  display: flex;
-  align-items: center;
-}
-header .header-left a {
-  color: #fff;
-  text-decoration: none;
+header .header-left h1 {
   font-size: 24px;
   margin-left: 20px;
 }
@@ -377,9 +308,6 @@ header .header-right nav ul li a:hover {
 header .header-right nav ul li a .fa-bell {
   font-size: 1.5em;
   color: inherit;
-}
-header.small {
-  padding: 1px;
 }
 
 /* Footer Styles */
@@ -443,8 +371,7 @@ footer .footer-section ul li a:hover {
   background-size: cover;
   background-position: center;
   position: relative;
-  margin-top: 5em;
-  padding: 5em;
+  padding: 3em 0;
 }
 
 .auto-generated-section {
