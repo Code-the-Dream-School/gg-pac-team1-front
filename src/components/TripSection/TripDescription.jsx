@@ -1,9 +1,9 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import WellnessImage from '../../../images/WellnessImage.jpg'; // Ensure path is correct
-import BackgroundCard from '../TripSection/BackgroundCard'; // Ensure path is correct
-
-import './TripDescription.css'; // Ensure this file exists
+import WellnessImage from '../../../images/WellnessImage.jpg'; 
+import BackgroundCard from '../TripSection/BackgroundCard'; 
+import './TripDescription.css';
+import Search from '../../pages/Search';
 
 const TripDescription = () => {
   const location = useLocation();
@@ -21,7 +21,7 @@ const TripDescription = () => {
         description={city.description}
       />
       <div className="form-section">
-        <FormSearch /> {/* Include FormSearch component */}
+        <Search /> {/* Include FormSearch component */}
       </div>
     </div>
   );

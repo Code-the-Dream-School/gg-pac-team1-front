@@ -53,9 +53,9 @@ const FoodieDestination = () => {
         margin: '0 auto 40px', 
         textAlign: 'justify', 
         fontFamily: "'Lato', sans-serif",
-        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Background color for better text readability
-        padding: '20px', // Padding for better spacing
-        borderRadius: '8px' // Rounded corners for a softer look
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+        padding: '20px', 
+        borderRadius: '8px' 
       }}>
         Foodie destinations are regions celebrated for their diverse and rich culinary landscapes. These destinations cater to travelers with a passion for food, offering a blend of traditional and innovative culinary experiences. Whether you’re indulging in street food, dining at a high-end restaurant, or exploring local markets, these locations are a paradise for food enthusiasts.
         <br /><br />
@@ -82,7 +82,7 @@ const FoodieDestination = () => {
         For those who want a deeper dive into the local food culture, foodie destinations frequently offer cooking classes, where participants can learn to prepare regional dishes, and culinary tours that provide insight into the area’s food history and best-kept culinary secrets.
       </p>
       <DestinationList destinations={destinations} />
-      <SearchButton /> {/* Add the search button here if needed */}
+      
       <BackButton />
     </div>
   );

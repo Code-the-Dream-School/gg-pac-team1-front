@@ -3,20 +3,20 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-
+import DestinationList from './DestinationList';
 function DestinationCardChoice({ city, hotels, price }) {
   const navigate = useNavigate();
-
+  
   const handleClick = () => {
     navigate(`/search?city=${encodeURIComponent(city)}`);
   };
 
   return (
-    <Card style={{ width: '18rem', cursor: 'pointer' }} onClick={handleClick}>
-      <Card.Header>{city}</Card.Header>
+    <Card className="destination-card" onClick={handleClick}>
+      <Card.Header className="destination-card-header">{city}</Card.Header>
       <ListGroup variant="flush">
-        <ListGroup.Item>{hotels}</ListGroup.Item>
-        <ListGroup.Item>{price}</ListGroup.Item>
+        <ListGroup.Item className="destination-card-item">{hotels}</ListGroup.Item>
+        <ListGroup.Item className="destination-card-item">{price}</ListGroup.Item>
       </ListGroup>
     </Card>
   );
