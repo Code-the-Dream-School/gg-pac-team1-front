@@ -1,6 +1,6 @@
 import React from 'react';
 import Discover from '../components/Discover';
-import FormSearch from '../components/FormSearch';
+import Search from '../pages/Search';
 import ReviewSection from '../components/ReviewSection/ReviewSection';
 import CarouselComponent from '../components/TripSection/Carousel';
 
@@ -9,7 +9,7 @@ function Home() {
     <>
       <div>
         <section className="slider-section">
-          <FormSearch />
+          <Search />
         </section>
 
         <section className="auto-generated-section">
