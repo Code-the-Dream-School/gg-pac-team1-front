@@ -1,0 +1,37 @@
+.background-card {
+    position: relative;
+    width: 100%;
+    max-width: 600px; /* Adjust as needed */
+    border-radius: 8px;
+    overflow: hidden; /* Ensure content does not overflow */
+  }
+  
+  .background-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(0.5); /* Darken the image for better text contrast */
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5); /* Background color with opacity */
+    border-radius: 8px;
+  }
+  
+  .title {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .description {
+    font-size: 16px;
+    margin: 10px 0 0;
+  }
+  
