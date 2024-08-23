@@ -2,7 +2,7 @@ import React from 'react';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
 
-import familyFriendlyImage from '../../images/FamilyFriendlyImage.jpg'; // Import your background image
+import familyFriendlyImage from '../../images/FamilyFriendlyImage.jpg'; npm 
 
 const FamilyFriendly = () => {
   const destinations = [
@@ -32,9 +32,9 @@ const FamilyFriendly = () => {
     <div style={{ 
       padding: '40px 20px', 
       minHeight: '100vh',
-      backgroundImage: `url(${familyFriendlyImage})`, // Set background image
-      backgroundSize: 'cover', // Cover the whole container
-      backgroundPosition: 'center', // Center the background image
+      backgroundImage: `url(${familyFriendlyImage})`, 
+      backgroundSize: 'cover', 
+      backgroundPosition: 'center', 
     }}>
       <h1 style={{ 
         textAlign: 'center', 

@@ -2,7 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router-dom';
 import WellnessImage from '../../../images/WellnessImage.jpg'; // Ensure path is correct
 import BackgroundCard from '../TripSection/BackgroundCard'; // Ensure path is correct
-import FormSearch from '../../components/FormSearch'; // Ensure path is correct
+
 import './TripDescription.css'; // Ensure this file exists
 
 const TripDescription = () => {
