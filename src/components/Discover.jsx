@@ -1,6 +1,6 @@
 import React from 'react';
 import DestinationCard from './DestinationCard';
-import './Discover.css';
+
 import './DestinationCard.css';
 import Wellness from './Wellness';
 import WellnessImage from '../../images/WellnessImage.jpg';

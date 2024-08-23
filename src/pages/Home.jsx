@@ -1,15 +1,15 @@
 import React from 'react';
 import Discover from '../components/Discover';
-import FormSearch from '../components/FormSearch';
+
 import ReviewSection from '../components/ReviewSection/ReviewSection';
 import CarouselComponent from '../components/TripSection/Carousel';
-
+import Search from './Search';
 function Home() {
   return (
     <>
       <div>
         <section className="slider-section">
-          <FormSearch />
+          <Search />
         </section>
 
         <section className="auto-generated-section">

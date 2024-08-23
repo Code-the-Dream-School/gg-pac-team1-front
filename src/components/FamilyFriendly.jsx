@@ -2,7 +2,7 @@ import React from 'react';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
 
-import familyFriendlyImage from '../../images/FamilyFriendlyImage.jpg'; npm 
+import familyFriendlyImage from '../../images/FamilyFriendlyImage.jpg'; 
 
 const FamilyFriendly = () => {
   const destinations = [
@@ -53,9 +53,9 @@ const FamilyFriendly = () => {
         margin: '0 auto 40px', 
         textAlign: 'justify', 
         fontFamily: "'Lato', sans-serif",
-        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Background color for better text readability
-        padding: '20px', // Padding for better spacing
-        borderRadius: '8px' // Rounded corners for a softer look
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+        padding: '20px', 
+        borderRadius: '8px' 
       }}>
         Family-friendly destinations are locations that offer a wide range of activities and amenities designed to cater to families with children. These destinations typically prioritize safety, convenience, and entertainment for all ages, ensuring that both kids and adults can enjoy their vacation. Here are some characteristics that define family-friendly destinations:
         <br /><br />
