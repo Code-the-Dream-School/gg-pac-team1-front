@@ -3,9 +3,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { getAllData } from './util/index';
 
 import Layout from './components/Layout';
-import Home from './pages/Home';
-import Search from './pages/Search';
 // Here all future page imports
+import Home from './pages/Home';
+import HotelSearchPage from './pages/HotelSearchPage';
 
 const URL = 'http://localhost:8000/api/v1/';
 
@@ -41,8 +41,8 @@ function App() {
         },
         {
           path: 'search',
-          element: <Search />
-        }
+          element: <HotelSearchPage />
+        },
       ]
     }
   ]);
