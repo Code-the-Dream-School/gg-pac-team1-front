@@ -1,3 +1,105 @@
+*** Search page ***
+## Recent Updates
+
+### August 22, 2024
+
+### Components
+
+**New Feature Added: HotelSearchPage**
+
+In the latest update, we have introduced a new feature to the project—a dedicated Hotel Search page. This enhancement includes:
+
+- **HotelSearchPage Route**: A new route (`/search`) has been added to the application's routing configuration. This route is designed to render the `HotelSearchPage` component, allowing users to search for hotels directly within the application.
+- **Integration with Layout**: The new `HotelSearchPage` route has been integrated seamlessly with the existing `Layout` component, ensuring a consistent user experience across the application.
+- **Future Expansion**: Placeholder comments have been added to the codebase to facilitate the addition of future routes and features, such as authentication and discovery pages.
+
+These updates enhance the application's functionality.
+
+**Implemented HotelSearchPage with Filtering, Sorting, and Pagination**
+
+- **HotelSearchPage Component**: Added the core functionality for the HotelSearchPage component, allowing users to search for hotels based on their preferences.
+- **Search Handling**: Integrated `useLocation` and `useNavigate` from `react-router-dom` to manage search data and user navigation within the application.
+- **Filtering**: Implemented filtering options, enabling users to filter hotels by price range, number of reviews, and room type.
+- **Sorting**: Added sorting options to allow users to sort hotels by price (low to high or high to low) and by reviews (best to worst).
+- **Pagination**: Implemented pagination to manage and display a limited number of search results per page, with the ability to navigate between pages.
+- **Component Integration**: Integrated `ResultList`, `Pagination`, and `HotelSearchFilter` components to display and manage the filtered and sorted search results.
+- **Navigation**: Added a `NavLink` component for easy navigation back to the Home page.
+
+**Added ResultList Component with Conditional Rendering**
+
+- **ResultList Component**: Introduced the `ResultList` component to manage and display hotel search results.
+- **Conditional Rendering**: Implemented logic to handle different search states:
+    - Displays a prompt to perform a search if none has been conducted.
+    - Shows a message when no hotels match the search criteria.
+    - Renders a list of hotels using the `HotelSearchResultCard` component for each result.
+- **Component Integration**: Integrated `HotelSearchResultCard` to provide detailed information about each hotel within the result list.
+
+**Added HotelSearchResultCard Component with Detailed Features**
+
+- **Amenity Icons**: Integrated FontAwesome icons to visually represent hotel amenities such as a pool, restaurant, Wi-Fi, gym, spa, and parking availability. These icons provide a quick overview of the facilities offered by each hotel.
+- **Review Color Coding**: Implemented a color-coded system for displaying hotel reviews. The rating is highlighted in green, yellow, or red, depending on the review score, giving users a quick visual cue about the hotel's quality.
+- **Hotel Details Link**: Added a direct link for users to navigate to a detailed view of each hotel. This enhances the user experience by making it easy to access more information about the hotel directly from the search results.
+
+**Added HotelSearchFilter Component with Multiple Filter Options**
+
+- **Price Filter**: Introduced a price filter allowing users to set a minimum and maximum price range to narrow down hotel search results based on their budget.
+- **Room Type Filter**: Added a room type filter that enables users to select specific types of rooms (e.g., single, double, suite) they are interested in.
+- **Star Rating Filter**: Implemented a star rating filter that lets users filter hotels based on the number of stars or reviews they have received.
+- **Apply Filters**: Added an "Apply Filters" button to apply the selected filters and update the search results accordingly.
+
+**Enhanced Filtering Functionality with Star, Price, and Room Type Filters**
+
+- **Star Rating Filter**: Added the `StarFilter` component, allowing users to filter hotels based on star ratings. Users can choose from options like "4 stars and up," "3 stars and up," and "2 stars and up," or select "All" to see all available hotels regardless of rating.
+- **Price Filter**: Integrated a price filter that enables users to define a minimum and maximum price range for hotel rooms, helping them find options within their budget.
+- **Room Type Filter**: Added the ability to filter search results by room type (e.g., single, double, suite), providing users with more specific search results based on their accommodation needs.
+
+**Implemented Pagination for Hotel Search Results**
+
+- **Pagination Component**: Added the `Pagination` component to manage navigation through hotel search results. This component dynamically generates page numbers based on the total number of results and results per page.
+- **User Interaction**: Users can easily navigate between different pages of search results using the pagination buttons. The current page is highlighted for better user experience.
+- **Enhanced Search Experience**: This feature improves the overall usability of the hotel search functionality, allowing users to browse through large sets of results more efficiently.
+
+### Styles
+
+**Enhanced Styling for HotelSearchFilter Component**
+
+- **Filters Container Styling**: Added general styles for the filters container, including padding, a light background color, rounded corners, and shadow effects to create a clean, modern look.
+- **Filter Section Styling**: Applied specific styles to each filter section, ensuring consistent spacing between labels and inputs, bold text for labels, and clear text color.
+- **Input Fields and Select Styling**: Styled the filter input fields and select dropdowns with full-width sizing, padding, and border-radius for better usability and visual consistency.
+- **Apply Filters Button**: Designed the "Apply Filters" button with a prominent blue background, white text, and smooth transition effects on hover to enhance the user interaction experience.
+- **Price Input Adjustments**: Made specific adjustments to the price input fields to ensure they are properly sized and aligned, making them easier to use within the filter section.
+
+**Enhanced Styling for HotelSearchPage Layout and Components**
+
+- **HotelSearchPage Container Styling**: Applied styles to the `HotelSearchPage` container, including padding, a clean white background, rounded corners, and subtle shadow effects to enhance the overall visual appeal.
+- **Page Layout Adjustments**: Updated the layout for the hotel search page with centered alignment, appropriate margins, and a structured layout for better user experience.
+- **Navigation Link Styling**: Styled the home navigation link with hover effects, improving the interactivity and usability of the navigation.
+- **Summary Section Styling**: Enhanced the summary section with a centered title and styled list items, providing a clean and organized presentation of summary information.
+- **Flexible Layout for Search and Filters**: Implemented a flexible layout for the hotel search results and filter sections, ensuring proper spacing and alignment for a more intuitive user interface.
+- **Sorting Options Styling**: Added specific styles for the sorting options container, aligning content to the right and spacing elements for better usability.
+
+**Custom Styling for HotelSearchResultCard Component**
+
+- **Flexible Layout**: Applied a flexible layout to the `HotelSearchResultCard` component, with a well-structured image container and card body to ensure content is displayed clearly and consistently.
+- **Visual Enhancements**: Added padding, a white background, rounded corners, and shadow effects to give the result cards a polished, modern look.
+- **Text and Amenity Styling**: Styled card elements, including the title, descriptive text, and amenities, with appropriate spacing and color schemes for better readability and aesthetic consistency.
+- **Review Rating Colors**: Implemented color coding for review ratings with green for high ratings (success), yellow for moderate ratings (warning), and red for lower ratings (danger).
+- **Interactive Details Link**: Added a details link with hover effects to improve user interaction, making it easier for users to view more information about a specific hotel.
+
+**Styling Enhancements for Pagination Component**
+
+- **Centered Layout**: Styled the pagination component with a centered layout, ensuring that the pagination controls are prominently displayed and easy to navigate.
+- **Clean Appearance**: Removed default margins and padding, and eliminated list bullet points for a cleaner and more streamlined appearance.
+- **Page Link Styling**: Applied background color, padding, and rounded corners to the pagination links, enhancing their visibility and usability. The links now also include hover effects for improved interactivity.
+- **Active State Highlighting**: Added a distinct background color to the active page link, clearly indicating the current page to users and improving navigation clarity.
+
+**Modularization of SCSS with Component-Specific Partials**
+
+- **SCSS Partial Imports**: Organized the project's SCSS by importing partial files for various components, including `hotelSearchPage`, `hotelSearchFilter`, `hotelSearchResultCard`, and `pagination`.
+- **Improved Maintainability**: This update streamlines the main stylesheet, making the codebase more modular and easier to maintain by keeping styles specific to each component in their respective partial files.
+- **Cleaner Code Structure**: By separating styles into component-specific partials, the project's overall code structure has been improved, enhancing readability and facilitating easier updates in the future.
+*** Search page ***
+
 *** Search Form ***
 # readme searchForm
 
