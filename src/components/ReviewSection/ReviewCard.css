@@ -1,0 +1,39 @@
+.review-card {
+    width: 250px; /* Set a fixed width */
+    height: 250px; /* Make it square */
+    background-color: rgba(0, 255, 0, 0.1); /* Light green tint */
+    border: 2px solid green; /* Green border */
+    padding: 16px; /* Some padding inside the card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: add some shadow */
+    border-radius: 8px; /* Optional: round the corners */
+    text-align: center;
+  }
+  
+  .review-author {
+    font-weight: bold;
+    color: green;
+  }
+  
+  .review-text {
+    padding-top: 10px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .review-rating {
+    margin-top: 10px;
+  }
+  
+  .star {
+    font-size: 20px;
+    color: #ccc; /* Grey for unfilled stars */
+  }
+  
+  .star.filled {
+    color: gold; /* Gold for filled stars */
+  }
+  

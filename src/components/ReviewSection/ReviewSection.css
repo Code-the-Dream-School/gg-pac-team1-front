@@ -1,0 +1,68 @@
+/* Add to ReviewSection.css */
+.review-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .review-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .reviews-container {
+    margin-bottom: 20px;
+  }
+  
+  .review-toggle-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .review-toggle-button:hover {
+    background-color: darkgreen;
+  }
+  
+  .login-form, .review-form {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .login-form form, .review-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-form input, .review-form textarea {
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .review-form textarea {
+    height: 100px;
+  }
+  
+  .login-form button, .review-form button {
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-form button:hover, .review-form button:hover {
+    background-color: darkgreen;
+  }
+  
