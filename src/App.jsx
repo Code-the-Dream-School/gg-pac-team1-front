@@ -85,8 +85,9 @@ function App() {
         {
           path: 'trip-description',
           element: <TripDescription /> 
-        }
-      
+        },
+        {
+          path: 'search',
           element: <HotelSearchPage />
         },
       ]
