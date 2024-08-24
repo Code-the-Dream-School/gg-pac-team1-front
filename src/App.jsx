@@ -75,10 +75,6 @@ function App() {
           element: <AllReviews /> 
         },
         {
-          path: 'search',
-          element: <Search /> 
-        },
-        {
           path: 'leave-review',
           element: <LeaveReview /> 
         },
