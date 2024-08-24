@@ -10,9 +10,11 @@
 //@import 'components/modals';    // Modal styles no create 
 @import 'components/cards';     // Card styles
 //@import 'components/navbar';    // Navbar styles no create
-@import 'components/searchForm'; // Importa el archivo parcial searchForm
-
-
+@import 'components/searchForm'; // Imports the searchForm 
+@import 'components/hotelSearchPage'; // Imports the hotelSearchPage 
+@import 'components/hotelSearchFilter'; // Imports the hotelSearchFilter 
+@import 'components/hotelSearchResultCard'; // Imports the hotelSearchResultCard 
+@import 'components/pagination'; // Imports the pagination
 
 
 // Import layouts

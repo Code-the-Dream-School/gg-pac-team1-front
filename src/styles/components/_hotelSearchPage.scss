@@ -1,0 +1,81 @@
+.hotel-search-page {
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hotel-search-page-container {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5em;
+    margin-bottom: 1em;
+  }
+  
+  .navlink-home {
+    text-decoration: none;
+  
+    &:hover {
+      color: #5a6268;
+    }
+  }
+  
+  /* Title for the summary section */
+  .resume-title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Summary list */
+  .resume-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+  }
+  
+  /* Summary list item */
+  .resume-list-item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+  }
+  
+  /* Layout for the hotel search */
+  .hotel-search-layout {
+    display: flex;
+    gap: 20px;
+  }
+  
+  /* Results container */
+  .results {
+    flex: 1;
+  }
+  
+  /* Container for sorting options */
+  .sort-options-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center; /* Vertically aligns the content */
+    justify-content: flex-end; /* Aligns the content to the right */
+  
+    label {
+      margin-right: 10px; /* Space between the label and the select */
+      font-weight: bold;
+      font-size: 1rem;
+    }
+  }
+  
+  /* Style for the sorting select */
+  .sort-select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    width: auto; /* Adjusts the width to fit the content */
+  }
+  
+  .results-container {
+    margin-top: 1em;
+  }
+  

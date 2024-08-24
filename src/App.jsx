@@ -7,14 +7,15 @@ import TrendingDestination from './components/TrendingDestination';
 import Romantic from './components/Romantic';
 import FoodieDestination from './components/FoodieDestination';
 import Layout from './components/Layout';
+// Here all future page imports
 import Home from './pages/Home';
-import Search from './pages/Search';
 import TripDescription from './components/TripSection/TripDescription';
 import ReviewSection from './components/ReviewSection/ReviewSection';
 import AllReviews from './components/ReviewSection/AllReviews'; 
 import LeaveReview from './components/ReviewSection/LeaveReview'; 
 import { getAllData } from './util/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import HotelSearchPage from './pages/HotelSearchPage';
 
 const URL = 'http://localhost:8000/api/v1/';
 
@@ -86,6 +87,8 @@ function App() {
           element: <TripDescription /> 
         }
       
+          element: <HotelSearchPage />
+        },
       ]
     }
   ]);

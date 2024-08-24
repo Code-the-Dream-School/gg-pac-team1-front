@@ -1,0 +1,109 @@
+/* Estilos personalizados para el componente HotelSearchResultCard */
+
+.hotel-search-result-card {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .img-container {
+    width: 30%;
+    overflow: hidden;
+    border-radius: 0.5rem;
+  
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+  
+  .card-body {
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .card-text {
+    margin-bottom: 0.75rem;
+    color: #666;
+  }
+  
+  .amenities {
+    margin-bottom: 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+  
+    .icon {
+      margin-right: 0.5rem;
+      color: #007bff; /* Color azul para los íconos */
+    }
+  }
+  
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+  
+  .reviews {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+  
+    .star-icon {
+      margin-right: 0.25rem;
+    }
+  }
+  
+  .review-success {
+    color: #28a745; /* Verde */
+  }
+  
+  .review-warning {
+    color: #ffc107; /* Amarillo */
+  }
+  
+  .review-danger {
+    color: #dc3545; /* Rojo */
+  }
+  
+  .price {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .perNight {
+    font-size: 0.85rem;
+    color: #666;
+  }
+  
+  .details-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 0.25rem;
+  
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+  
