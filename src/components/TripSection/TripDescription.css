@@ -1,0 +1,27 @@
+.trip-description {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5); /* Optional: background color with opacity */
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
