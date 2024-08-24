@@ -1,16 +1,25 @@
 import React from 'react';
 import Discover from '../components/Discover';
-import Search from '../pages/Search';
 import ReviewSection from '../components/ReviewSection/ReviewSection';
 import CarouselComponent from '../components/TripSection/Carousel';
+import SearchForm from "../components/SearchForm";
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const navigate = useNavigate(); // Initializes useNavigate to handle navigation
+
+  const handleSearch = (searchData) => {
+    navigate('/search', { state: searchData });  // Redirect to the search page with the data
+};
+
   return (
     <>
-      <div>
-        <section className="slider-section">
-          <Search />
-        </section>
+        <div>
+            <section className="slider-section">
+                <div className="home-container">
+                <SearchForm onSearch={handleSearch} />
+                </div>
+            </section>
 
         <section className="auto-generated-section">
           <div className="container">
