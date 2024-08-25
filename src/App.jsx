@@ -30,10 +30,15 @@ function App() {
     fetchUsers();
   }, []);
 
+  const handleLogout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem('token');
+  };
+
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Layout users={users} currentUser={currentUser} onLogout={() => setCurrentUser(null)} />,
+      element: <Layout users={users} currentUser={currentUser} onLogout={handleLogout} />,
       children: [
         {
           index: true,
@@ -56,8 +61,8 @@ function App() {
           element: <FormSearch />,
         },
         {
-          path: 'account', // Ruta para la página de cuenta
-          element: <Account />, // Componente Account
+          path: 'account',
+          element: <Account currentUser={currentUser} />,
         },
       ],
     },
@@ -65,7 +70,7 @@ function App() {
 
   return (
     <>
-      <Session onUserLoaded={setCurrentUser} /> {/* Llama a Session para manejar la sesión */}
+      <Session onUserLoaded={setCurrentUser} />
       <RouterProvider router={router} />
     </>
   );

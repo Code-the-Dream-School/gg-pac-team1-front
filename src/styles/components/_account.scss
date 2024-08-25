@@ -1,37 +1,98 @@
 .account-settings {
+  padding: 2rem;
+  background: #ffffff; /* Fondo blanco para una apariencia más limpia */
+  border-radius: 8px;
+  max-width: 900px; /* Aumenta el ancho máximo para una mejor visualización en pantallas grandes */
+  margin: 2rem auto; /* Asegura que el contenedor esté centrado y tenga un margen superior e inferior */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 70px; /* Ajusta la sombra para una apariencia más sutil */
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 1.5rem; /* Ajusta el margen inferior para más espacio */
+  font-size: 2rem; /* Aumenta el tamaño de la fuente para un encabezado más destacado */
+}
+
+.settings-nav {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Ocupa toda la altura de la ventana */
-  padding: 20px;
-  background-color: #f9f9f9;
+  justify-content: space-around;
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 1.5rem; /* Ajusta el margen inferior para más espacio */
+}
 
-  h2 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-  }
+.settings-nav-item {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem; /* Aumenta el padding para un botón más grande y fácil de hacer clic */
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1rem; /* Aumenta el tamaño de la fuente para una mejor legibilidad */
+  transition: background 0.3s ease; /* Añade transición para un efecto suave en el hover */
+}
 
-  .settings-list {
-    list-style: none;
-    padding: 0;
+.settings-nav-item.active {
+  background: #0056b3;
+}
 
-    .settings-item {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      text-align: center;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+.settings-nav-item.sign-out {
+  background: #dc3545; /* Color rojo para el botón de salir */
+}
 
-      &:hover {
-        background-color: #f0f0f0;
-      }
-    }
-  }
+.settings-nav-item.sign-out:hover {
+  background: #c82333; /* Color más oscuro al pasar el cursor */
+}
+
+.settings-content {
+  background: #f9f9f9; /* Fondo ligeramente gris para diferenciar el área del contenido */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Igualar sombra con la del contenedor principal */
+}
+
+.form-group {
+  margin-bottom: 1.5rem; /* Aumenta el margen inferior para más espacio entre los campos */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333; /* Color del texto para más contraste */
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem; /* Ajusta el tamaño de la fuente para mejor legibilidad */
+}
+
+button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  transition: background 0.3s ease; /* Añade transición para un efecto suave en el hover */
+}
+
+button:hover {
+  background: #0056b3;
+}
+.btn-profile{
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-credit{
+  background-color: #007bff;
+  color: white;
 }

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/components/_login.scss';
+import '../styles/components/_login.scss'; // Asegúrate de que el archivo SCSS esté correctamente enlazado
 
 const Login = ({ onLogin, onClose }) => {
   const [email, setEmail] = useState('');
@@ -28,9 +28,14 @@ const Login = ({ onLogin, onClose }) => {
     <div className="login-popup">
       <div className="login-popup-content">
         <button className="close-button" onClick={onClose}>
-          X
+          &times;
         </button>
-        <h2>Login</h2>
+        <div className="login-header">
+          <h1>TravelAmigos</h1>
+          <p className="subtitle">Buscando hoteles</p>
+          <span className="hotel-icon">🏨</span>
+        </div>
+        <hr className="divider" />
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleLogin}>
           <div className="input-group">
@@ -62,4 +67,3 @@ const Login = ({ onLogin, onClose }) => {
 };
 
 export default Login;
-

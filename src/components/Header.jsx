@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/components/_configuser.scss';
+import Account from './Account';
 import Login from './Login';
 
 const Header = () => {
@@ -11,6 +12,7 @@ const Header = () => {
   const [userEmail, setUserEmail] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showAccount, setShowAccount] = useState(false); // Nuevo estado para mostrar Account
 
   const navigate = useNavigate();
 
@@ -51,6 +53,7 @@ const Header = () => {
     setUserEmail('');
     setIsLoggedIn(false);
     setShowDropdown(false);
+    setShowAccount(false); // Asegúrate de cerrar el componente Account si está abierto
     localStorage.removeItem('token');
     navigate('/');
   };
@@ -60,8 +63,12 @@ const Header = () => {
   };
 
   const goToAccount = () => {
-    navigate('/account');
+    setShowAccount(true); // Mostrar el componente Account
     setShowDropdown(false);
+  };
+
+  const handleAccountSignOut = () => {
+    handleLogout();
   };
 
   return (
@@ -104,7 +111,7 @@ const Header = () => {
                   )}
                 </li>
               ) : (
-                <li><button onClick={() => setShowLogin(true)}>Login</button></li>
+                <li><button onClick={() => setShowLogin(true)} className="login-button">Login</button></li>
               )}
             </ul>
           </nav>
@@ -116,8 +123,10 @@ const Header = () => {
         setIsLoggedIn(true);
         setShowLogin(false);
       }} onClose={() => setShowLogin(false)} />}
+      {showAccount && <Account setIsLoggedIn={handleAccountSignOut} />} {/* Pasar función de cierre de sesión */}
     </>
   );
 };
 
 export default Header;
+
