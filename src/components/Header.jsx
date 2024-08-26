@@ -2,32 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-    const [isSmall, setIsSmall] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setIsSmall(true);
-            } else {
-                setIsSmall(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        // Cleanup function to remove the event listener
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []); // Empty array ensures this effect only runs on mount and unmount
-
     return (
         <>
-            <header className={isSmall ? 'small' : ''}>
+            <header>
                 <div className="header-left">
-                    <a href="/" className="brand-link">
-                        <h1>TravelAmigos</h1>
-                    </a>
+                    <Link to="/" className="brand-link">
+                         <h1>TravelAmigos</h1>
+                    </Link> 
                 </div>
                 <div className="header-right">
                     <nav>
