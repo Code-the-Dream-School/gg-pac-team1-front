@@ -1,0 +1,64 @@
+$body-font-family: Arial, sans-serif;
+$body-line-height: 1.6;
+$body-color: #333;
+$body-background-color: rgb(243, 243, 243); 
+$header-height: 2em; // height of the header, should match padding-top in main
+$container-max-width: 80%;
+$h2-margin-bottom: 10px;
+$h2-border-color: #333;
+$h2-padding-bottom: 5px;
+$section-padding: 3em 0;
+$reviews-bg-color: rgb(189, 187, 187);
+
+// General Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $body-font-family;
+  line-height: $body-line-height;
+  color: $body-color;
+  background: $body-background-color;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  min-height: calc(100vh - 16em); 
+  padding-top: $header-height; // padding-top should match the height of the header (3em)
+}
+
+// Headlines and Paragraphs
+h2 {
+  margin-bottom: $h2-margin-bottom;
+  color: $body-color;
+  border-bottom: 2px solid $h2-border-color;
+  padding-bottom: $h2-padding-bottom;
+}
+
+// This container is used for everything
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+}
+
+#discover,
+#reviews,
+#trips {
+  padding: $section-padding;
+}
+
+#discover {
+  background: $body-background-color;
+}
+
+#reviews {
+  background: $reviews-bg-color;
+}
+
+#trips {
+  background: $body-background-color;
+}
