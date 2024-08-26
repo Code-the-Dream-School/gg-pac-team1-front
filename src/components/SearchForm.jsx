@@ -10,7 +10,7 @@ function SearchForm({
   destinationLabel = "Destination", 
   destinationPlaceholder = "Going to", 
   travelersLabel = "Number of Travelers", 
-  searchButtonLabel = "Buscar" 
+  searchButtonLabel = "Search" 
 }) {
   const [destination, setDestination] = useState('');
   const [checkInDate, setCheckInDate] = useState('');
