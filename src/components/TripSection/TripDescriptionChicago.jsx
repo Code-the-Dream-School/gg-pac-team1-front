@@ -5,7 +5,7 @@ import HotelList from './HotelList.jsx';
 import { filterByProximity, calculateAveragePrice, filterByCoastalLocation } from '../../util/filterUtils.js';
 import ChicagoCar from '../../../images/CarouselImg/ChicagoCar.jpg'; 
 import BackgroundCardContainer from '../TripSection/BackgroundCardContainer.jsx';
-import './Tripdescription.css'; 
+import './TripDescription.css'; 
 
 const TripDescriptionChicago = () => {
   const location = useLocation();
@@ -16,7 +16,7 @@ const TripDescriptionChicago = () => {
 
   useEffect(() => {
     if (city && city.hotels) {
-      const userLocation = { latitude: 41.8781, longitude: -87.6298 }; // Chicago coordinates
+      const userLocation = { latitude: 41.8781, longitude: -87.6298 }; 
 
       const nearbyHotels = filterByProximity(city.hotels, userLocation, 500);
       const avgPrice = calculateAveragePrice(nearbyHotels);

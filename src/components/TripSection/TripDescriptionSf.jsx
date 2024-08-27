@@ -5,7 +5,7 @@ import HotelList from './HotelList.jsx';
 import { filterByProximity, calculateAveragePrice, filterByCoastalLocation } from '../../util/filterUtils.js';
 import SanFrCar from '../../../images/CarouselImg/SanFrCar.jpg'; 
 import BackgroundCardContainer from '../TripSection/BackgroundCardContainer.jsx';
-import './Tripdescription.css'; 
+import './TripDescription.css'; 
 
 const TripDestinationSf = () => {
   const location = useLocation();
