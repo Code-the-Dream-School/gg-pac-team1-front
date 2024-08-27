@@ -1,0 +1,21 @@
+.star-rating {
+    display: flex;
+    direction: row;
+    justify-content: center;
+    padding-top: 10px;
+  }
+  
+  .star-rating input {
+    display: none;
+  }
+  
+  .star-rating i {
+    font-size: 2rem;
+    color: #ddd;
+    cursor: pointer;
+  }
+  
+  .star-rating .star-filled {
+    color: #ffc107;
+  }
+  

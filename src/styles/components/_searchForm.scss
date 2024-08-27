@@ -1,0 +1,87 @@
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+  width: 90%; /* Cambia a un width más flexible */
+  max-width: 500px; /* Set a maximum for larger screens */
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  margin-top: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+
+  i, svg, img {  /* Ajusta este selector según sea necesario */
+    transform: scale(2); /* Escala los íconos al doble de su tamaño */
+    margin-right: 0.5rem; /* Espacio entre el ícono y el texto */
+  }
+}
+
+label {
+  margin-right: 0.5rem;
+}
+
+input {
+  &[type="text"],
+  &[type="date"],
+  &[type="number"] {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    box-sizing: border-box;
+  }
+
+  &[type="radio"] {
+    margin-right: 0.5rem;
+  }
+
+  &[type="number"] {
+    width: auto;
+    max-width: 6ch;
+  }
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 50%;
+  margin-left: 5em;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
+
+.error-text {
+  color: #dc3545;
+  font-size: 0.875rem;
+}
+
+.date-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.radio-group {
+  display: flex;
+  gap: 1rem;
+}
+

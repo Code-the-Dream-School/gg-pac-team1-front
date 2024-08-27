@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   box-sizing: border-box;
   
@@ -249,7 +250,384 @@ p {
   color: #333;
 }
 
-.container {
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+  width: 90%; /* Cambia a un width más flexible */
+  max-width: 500px; /* Set a maximum for larger screens */
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  margin-top: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+}
+.form-group i, .form-group svg, .form-group img { /* Ajusta este selector según sea necesario */
+  transform: scale(2); /* Escala los íconos al doble de su tamaño */
+  margin-right: 0.5rem; /* Espacio entre el ícono y el texto */
+}
+
+label {
+  margin-right: 0.5rem;
+}
+
+input[type=text], input[type=date], input[type=number] {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  box-sizing: border-box;
+}
+input[type=radio] {
+  margin-right: 0.5rem;
+}
+input[type=number] {
+  width: auto;
+  max-width: 6ch;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 50%;
+  margin-left: 5em;
+}
+button:hover {
+  background-color: #0056b3;
+}
+
+.error-text {
+  color: #dc3545;
+  font-size: 0.875rem;
+}
+
+.date-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.radio-group {
+  display: flex;
+  gap: 1rem;
+}
+
+.hotel-search-page {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-search-page-container {
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 5em;
+  margin-bottom: 1em;
+}
+
+.navlink-home {
+  text-decoration: none;
+}
+.navlink-home:hover {
+  color: #5a6268;
+}
+
+/* Title for the summary section */
+.resume-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Summary list */
+.resume-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+
+/* Summary list item */
+.resume-list-item {
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  background-color: #f8f9fa;
+}
+
+/* Layout for the hotel search */
+.hotel-search-layout {
+  display: flex;
+  gap: 20px;
+}
+
+/* Results container */
+.results {
+  flex: 1;
+}
+
+/* Container for sorting options */
+.sort-options-container {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center; /* Vertically aligns the content */
+  justify-content: flex-end; /* Aligns the content to the right */
+}
+.sort-options-container label {
+  margin-right: 10px; /* Space between the label and the select */
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Style for the sorting select */
+.sort-select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  width: auto; /* Adjusts the width to fit the content */
+}
+
+.results-container {
+  margin-top: 1em;
+}
+
+/* General style for the filters container */
+.filters-container {
+  padding: 20px;
+  background-color: #f8f9fa; /* Light background color */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  margin-bottom: 20px; /* Bottom space to separate from other elements */
+  width: 35%;
+  margin-top: 1em;
+}
+
+/* Style for each filter section */
+.filter-section {
+  margin-bottom: 20px; /* Space between filter sections */
+}
+.filter-section label {
+  display: block;
+  margin-bottom: 8px; /* Space between the label and the input/select */
+  font-weight: bold;
+  color: #333; /* Text color */
+}
+
+/* Style for the filter inputs */
+.filter-input,
+.filter-select {
+  width: 100%; /* Make inputs take up the full width */
+  padding: 10px; /* Internal padding */
+  border-radius: 4px; /* Rounded borders */
+  border: 1px solid #ced4da; /* Border color */
+  box-sizing: border-box; /* Ensure padding is included in the width */
+  font-size: 1rem; /* Font size */
+}
+
+/* Style for the apply filters button */
+.apply-filters-btn {
+  width: 100%; /* Make the button take up the full width */
+  padding: 12px;
+  background-color: #007bff; /* Blue background color */
+  color: #fff; /* White text color */
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem; /* Font size */
+  cursor: pointer; /* Change cursor on hover */
+  transition: background-color 0.3s; /* Smooth transition for color change */
+}
+.apply-filters-btn:hover {
+  background-color: #0056b3; /* Darker color on hover */
+}
+
+/* Specific style for the price inputs */
+.price-input {
+  min-width: 50%; /* Adjust width to fit numbers like "999" */
+  width: 100%; /* Allow it to adjust automatically within the container */
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+/* Apply filters button */
+.btn-apply-filters {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.btn-apply-filters:hover {
+  background-color: #0056b3;
+}
+
+/* Style for the price inputs */
+.filter-input {
+  width: 100%; /* Ensure the input takes up the full available width */
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  box-sizing: border-box;
+  font-size: 1rem;
+  max-width: 120px; /* Set a maximum width for longer inputs */
+}
+
+/* Estilos personalizados para el componente HotelSearchResultCard */
+.hotel-search-result-card {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.img-container {
+  width: 30%;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+.img-container img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.card-body {
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  margin-bottom: 0.75rem;
+  color: #666;
+}
+
+.amenities {
+  margin-bottom: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+.amenities .icon {
+  margin-right: 0.5rem;
+  color: #007bff; /* Color azul para los íconos */
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.reviews {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+.reviews .star-icon {
+  margin-right: 0.25rem;
+}
+
+.review-success {
+  color: #28a745; /* Verde */
+}
+
+.review-warning {
+  color: #ffc107; /* Amarillo */
+}
+
+.review-danger {
+  color: #dc3545; /* Rojo */
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.perNight {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.details-link {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.25rem;
+}
+.details-link:hover {
+  background-color: #0056b3;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  list-style-type: none; /* Removes bullet points (list style) */
+  margin: 0; /* Removes default margin */
+  padding: 0; /* Removes default padding */
+}
+
+.page-item {
+  margin: 0 5px;
+}
+.page-item.active .page-link {
+  background-color: #0056b3;
+}
+
+.page-link {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none; /* Removes underline */
+}
+.page-link:hover {
+  background-color: #0056b3;
+}
+
+.container { /*Helps to locate and center everything in the main*/
   width: 100%;
   max-width: 1140px;
   margin: 0 auto;
@@ -279,44 +657,49 @@ p {
     max-width: 100%;
   }
 }
-/* Header Styles */
 header {
   background: #333;
   color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
   position: fixed;
-  width: 100%;
   top: 0;
   z-index: 1000;
-  transition: padding 0.3s ease;
-}
-header .header-left,
-header .header-right {
-  display: flex;
-  align-items: center;
+  height: 3em;
+  width: 100%;
+  padding-left: 3em;
 }
 header .header-left a {
   color: #fff;
   text-decoration: none;
+  font-weight: 400;
+}
+header .header-left a h1 {
+  color: inherit;
+  margin: 0;
   font-size: 24px;
-  margin-left: 20px;
+  font-weight: inherit;
+}
+header .header-left a:hover {
+  text-decoration: none;
 }
 header .header-right nav ul {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
+  align-items: center;
+  margin-right: 3em;
 }
 header .header-right nav ul li {
-  margin: 0 20px;
+  padding-left: 20px;
 }
 header .header-right nav ul li a {
   color: #fff;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 1em;
+  font-weight: 400;
 }
 header .header-right nav ul li a:hover {
   text-decoration: underline;
@@ -325,10 +708,8 @@ header .header-right nav ul li a .fa-bell {
   font-size: 1.5em;
   color: inherit;
 }
-header.small {
-  padding: 1px;
-}
 
+/* Variables */
 /* Footer Styles */
 footer {
   background: #333;
@@ -336,24 +717,37 @@ footer {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding: 0 3em;
+  padding: 0 3em; /* Keeps the general padding of the footer; the left and right spacing matches with the header */
   position: relative;
 }
 footer .footer-section {
   flex: 1;
-  margin: 10px;
-  min-width: 200px;
-  margin-bottom: 5em;
+  margin: 1em 0 3em 0;
+  padding-left: 0; /* Removes left padding */
+  text-align: left; /* Aligns text to the left */
+}
+footer .footer-section:nth-child(2), footer .footer-section:nth-child(3) {
+  padding-left: 10px; /* Adds left padding */
+  padding-right: 10px; /* Adds right padding */
 }
 footer .footer-section h3 {
   margin-bottom: 10px;
   font-size: 20px;
   border-bottom: 2px solid #fff;
   padding-bottom: 5px;
+  text-align: left; /* Ensures titles are also left-aligned */
+}
+footer .footer-section p,
+footer .footer-section ul,
+footer .footer-section ul li,
+footer .footer-section ul li a {
+  text-align: left; /* Ensures all content is left-aligned */
+  margin: 0; /* Removes any lateral margin that might center the text */
+  padding-left: 0; /* Removes left padding */
 }
 footer .footer-section ul {
   list-style: none;
-  padding: 0;
+  padding: 0; /* Ensures there is no padding in the ul */
 }
 footer .footer-section ul li {
   margin-bottom: 10px;
@@ -373,25 +767,73 @@ footer .footer-section ul li a:hover {
   left: 0;
   width: 100%;
   background-color: #eeeeee;
-  color: #000;
+  color: rgb(0, 0, 0);
   text-align: center;
-  padding: 1em 0;
   box-sizing: border-box;
+  font-size: 14px;
 }
 .footer-copyright p {
-  margin: 0;
   font-size: 14px;
+  margin: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: rgb(243, 243, 243);
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  min-height: calc(100vh - 16em);
+  padding-top: 2em;
+}
+
+h2 {
+  margin-bottom: 10px;
+  color: #333;
+  border-bottom: 2px solid #333;
+  padding-bottom: 5px;
+}
+
+.container {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+#discover,
+#reviews,
+#trips {
+  padding: 3em 0;
+}
+
+#discover {
+  background: rgb(243, 243, 243);
+}
+
+#reviews {
+  background: rgb(189, 187, 187);
+}
+
+#trips {
+  background: rgb(243, 243, 243);
 }
 
 .slider-section {
   width: 100%;
-  height: 80vh;
+  height: 70vh;
   background-image: url("images/image1.jpg");
   background-size: cover;
   background-position: center;
   position: relative;
-  margin-top: 5em;
-  padding: 5em;
 }
 
 .auto-generated-section {
@@ -400,11 +842,6 @@ footer .footer-section ul li a:hover {
 }
 .auto-generated-section:nth-child(even) {
   background-color: #bdbdbd;
-}
-.auto-generated-section .container {
-  max-width: 80%;
-  margin: 0 auto;
-  padding: 0 1em;
 }
 .auto-generated-section h2 {
   margin-bottom: 10px;

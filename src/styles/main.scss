@@ -7,29 +7,36 @@
 // Import components
 @import 'components/buttons';   // Button styles
 @import 'components/forms';     // Form styles
-@import 'components/modals';    // Modal styles
+//@import 'components/modals';    // Modal styles no create 
 @import 'components/cards';     // Card styles
-@import 'components/navbar';    // Navbar styles
+//@import 'components/navbar';    // Navbar styles no create
+@import 'components/searchForm'; // Imports the searchForm 
+@import 'components/hotelSearchPage'; // Imports the hotelSearchPage 
+@import 'components/hotelSearchFilter'; // Imports the hotelSearchFilter 
+@import 'components/hotelSearchResultCard'; // Imports the hotelSearchResultCard 
+@import 'components/pagination'; // Imports the pagination
+
 
 // Import layouts
 @import 'layouts/grid';         // Grid system
 @import 'layouts/header';       // Header styles,   used on all pages
 @import 'layouts/footer';       // Footer styles,   used on all pages
-@import 'layouts/sidebar';      // Sidebar styles
+@import 'layouts/main';         // main styles,   used on all pages
+//@import 'layouts/sidebar';      // Sidebar styles No create
 @import 'layouts/slider';       // slider home styles, used on home
 @import 'layouts/section';     // use in the sections that are within the main home page or any of the other pages
 
 
 // Import specific page styles examples 
-@import 'pages/home';           // Home page styles
-@import 'pages/search';         // Search page styles
-@import 'pages/booking';        // Booking page styles
-@import 'pages/discover';       // Discover page styles
-@import 'pages/reviews';        // Reviews page styles
-@import 'pages/profile';        // Profile page styles
-@import 'pages/notifications';  // Notifications page styles
-@import 'pages/trips';          // Trips page styles
-@import 'pages/support';        // Support page styles
-@import 'pages/travel';         // Travel page styles
-@import 'pages/auth';           // Authentication page styles
+//@import 'pages/home';           // Home page styles
+//@import 'pages/search';         // Search page styles
+//@import 'pages/booking';        // Booking page styles
+//@import 'pages/discover';       // Discover page styles
+//@import 'pages/reviews';        // Reviews page styles
+//@import 'pages/profile';        // Profile page styles
+//@import 'pages/notifications';  // Notifications page styles
+//@import 'pages/trips';          // Trips page styles
+//@import 'pages/support';        // Support page styles
+//@import 'pages/travel';         // Travel page styles
+//@import 'pages/auth';           // Authentication page styles
 

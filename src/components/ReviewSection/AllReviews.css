@@ -1,0 +1,36 @@
+.all-reviews {
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background color for readability */
+  }
+  
+  .reviews-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .review-card {
+    background-color: #e0ffe0; /* Light green background for reviews */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .review-author {
+    font-weight: bold;
+  }
+  
+  .review-text {
+    margin: 10px 0;
+  }
+  
+  .review-rating .star {
+    color: #ffd700; /* Gold color for stars */
+  }
+  
+  .review-rating .star.filled {
+    color: #ffd700;
+  }
+  
