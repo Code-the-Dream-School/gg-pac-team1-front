@@ -3,9 +3,9 @@ import { useLocation } from 'react-router-dom';
 import SearchForm from '../SearchForm.jsx';
 import HotelList from './HotelList.jsx';
 import { filterByProximity, calculateAveragePrice, filterByCoastalLocation } from '../../util/filterUtils.js';
-import MiamiCar from '../../../images/CarouselImg/Miamicar.jpg'; 
+import MiamiCar from '../../../images/CarouselImg/MiamiCar.jpg'; 
 import BackgroundCardContainer from '../TripSection/BackgroundCardContainer.jsx';
-import './Tripdescription.css'; 
+import './TripDescription.css'; 
 
 const TripDescriptionMiami = () => {
   const location = useLocation();

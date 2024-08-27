@@ -5,7 +5,7 @@ import HotelList from './HotelList.jsx';
 import { filterByProximity, calculateAveragePrice, filterByCoastalLocation } from '../../util/filterUtils.js';
 import NewYorkCar from '../../../images/CarouselImg/NewYorkCar.jpg'; 
 import BackgroundCardContainer from '../TripSection/BackgroundCardContainer.jsx';
-import './Tripdescription.css'; // Import the updated CSS
+import './TripDescription.css'; 
 
 const TripDescriptionNY = () => {
   const location = useLocation();
