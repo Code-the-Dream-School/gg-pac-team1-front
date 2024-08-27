@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import NewYorkCar from '../../../images/CarouselImg/NewYorkCar.jpg';
 import ChicagoCar from '../../../images/CarouselImg/ChicagoCar.jpg';
 import SanFrCar from '../../../images/CarouselImg/SanFrCar.jpg';
-import MiamiCar from '../../../images/CarouselImg/Miamicar.jpg';
+import MiamiCar from '../../../images/CarouselImg/MiamiCar.jpg';
 import LaCar from '../../../images/CarouselImg/LaCar.jpg';
 
 const CarouselComponent = () => {
