@@ -1,14 +1,33 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import '../styles/components/_configuser.scss';
 
 const Header = () => {
+    const [isSmall, setIsSmall] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsSmall(true);
+            } else {
+                setIsSmall(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Cleanup function to remove the event listener
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []); // Empty array ensures this effect only runs on mount and unmount
+
     return (
         <>
-            <header>
+            <header className={isSmall ? 'small' : ''}>
                 <div className="header-left">
-                    <Link to="/" className="brand-link">
-                         <h1>TravelAmigos</h1>
-                    </Link> 
+                    <a href="/" className="brand-link">
+                        <h1>TravelAmigos</h1>
+                    </a>
                 </div>
                 <div className="header-right">
                     <nav>
@@ -25,5 +44,4 @@ const Header = () => {
 };
 
 export default Header;
-
 
