@@ -1,6 +1,6 @@
 .all-reviews {
     padding: 20px;
-    background-color: #f9f9f9; /* Light background color for readability */
+    background-color: #f9f9f9;
   }
   
   .reviews-container {
@@ -10,7 +10,7 @@
   }
   
   .review-card {
-    background-color: #e0ffe0; /* Light green background for reviews */
+    background-color: #e0ffe0;
     border: 1px solid #ccc;
     border-radius: 8px;
     padding: 15px;
@@ -27,7 +27,7 @@
   }
   
   .review-rating .star {
-    color: #ffd700; /* Gold color for stars */
+    color: #ffd700; 
   }
   
   .review-rating .star.filled {

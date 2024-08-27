@@ -3,11 +3,17 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { getAllData } from './util/index';
 import Layout from './components/Layout';
 import Home from './pages/Home';
+import FamilyFriendly from './components/FamilyFriendly';
+import Wellness from './components/Wellness';
+import BudgetTravel from './components/BudgetTravel';
+import TrendingDestination from './components/TrendingDestination';
+import Romantic from './components/Romantic';
+import FoodieDestination from './components/FoodieDestination';
 import TripDescriptionNY from './components/TripSection/TripDescriptionNY'; 
 import TripDescriptionLa from './components/TripSection/TripDescriptionLa'; 
 import TripDescriptionChicago from './components/TripSection/TripDescriptionChicago';
 import TripDescriptionSf from './components/TripSection/TripDescriptionSf';
-import TripDescriptionMiami from './components/TripSection/TripDescriptionMiami'; // Add this import
+import TripDescriptionMiami from './components/TripSection/TripDescriptionMiami';
 import ReviewSection from './components/ReviewSection/ReviewSection';
 import AllReviews from './components/ReviewSection/AllReviews'; 
 import LeaveReview from './components/ReviewSection/LeaveReview'; 
@@ -44,6 +50,11 @@ function App() {
           index: true,
           element: <Home />,
         },
+        {
+          path: 'family-friendly',
+          element: <FamilyFriendly />
+        },
+        
         {
           path: 'wellness',
           element: <Wellness />
