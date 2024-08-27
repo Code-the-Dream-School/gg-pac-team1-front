@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { getAllData } from './util/index';
-
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import TripDescriptionNY from './components/TripSection/TripDescriptionNY'; 
@@ -12,7 +11,6 @@ import TripDescriptionMiami from './components/TripSection/TripDescriptionMiami'
 import ReviewSection from './components/ReviewSection/ReviewSection';
 import AllReviews from './components/ReviewSection/AllReviews'; 
 import LeaveReview from './components/ReviewSection/LeaveReview'; 
-import { getAllData } from './util/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HotelSearchPage from './pages/HotelSearchPage';
 import Search from './pages/Search';
