@@ -1,29 +1,42 @@
-/* Header Styles */
+$header-bg-color: #333;
+$header-text-color: #fff; // White color
+$header-height: 3em; // The height should be equal to the top padding of the main because it is overlapped
+$header-padding-left-right: 3em; // Makes everything have the same separation from left to right
+$font-size-h1: 24px; // Set the default font size for the h1
+$font-size-nav-link: 1em; // Set the font size for nav links
+$bell-icon-size: 1.5em;
+$font-weight-normal: 400; // Set a consistent font weight
+
+// Header Styles
 header {
-  background: #333;
-  color: #fff;
+  background: $header-bg-color;
+  color: $header-text-color;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 15px;
+  align-items: center; // Ensure vertical centering of child elements
   position: fixed;
-  width: 100%;
   top: 0;
   z-index: 1000;
-  transition: padding 0.3s ease; // Smooth transition for padding
-
-  .header-left,
-  .header-right {
-    display: flex;
-    align-items: center; // Centers content vertically within these sections
-  }
+  height: $header-height;
+  width: 100%;
+  padding-left: $header-padding-left-right;
 
   .header-left {
     a {
-      color: #fff;
-      text-decoration: none; // No underline or additional styling
-      font-size: 24px;
-      margin-left: 20px;
+      color: $header-text-color; // Apply the same white color to the link
+      text-decoration: none; // Remove the blue underline from the link
+      font-weight: $font-weight-normal; // Ensure the font weight is consistent
+
+      h1 {
+        color: inherit; // Ensure h1 inherits the color from the link
+        margin: 0; // Reset margin to avoid unnecessary spacing
+        font-size: $font-size-h1; // Use the variable for h1 font size
+        font-weight: inherit; // Inherit font weight from the link
+      }
+
+      &:hover {
+        text-decoration: none; // Prevent underline on hover
+      }
     }
   }
 
@@ -32,32 +45,31 @@ header {
       ul {
         display: flex;
         list-style: none;
-        margin: 0;
-        padding: 0;
+        margin: 0; // Reset margin to avoid pushing the content up or down
+        padding: 0; // Ensure no padding is affecting the vertical alignment
+        align-items: center; // Vertically center the nav items within the ul
+        margin-right: $header-padding-left-right;
 
         li {
-          margin: 0 20px;
+          padding-left: 20px;
 
           a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 16px;
+            color: $header-text-color; // White color for nav links
+            text-decoration: none; // Remove the blue underline from the nav links
+            font-size: $font-size-nav-link;
+            font-weight: $font-weight-normal; // Ensure font weight is consistent
 
             &:hover {
               text-decoration: underline;
             }
 
             .fa-bell {
-              font-size: 1.5em;
+              font-size: $bell-icon-size;
               color: inherit;
             }
           }
         }
       }
     }
-  }
-
-  &.small { // Styles when scrolled
-    padding: 1px; // Reduce padding when scrolled
   }
 }

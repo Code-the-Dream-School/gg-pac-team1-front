@@ -5,7 +5,7 @@ $col-width-6: 50%;
 $col-width-4: 33.333%;
 
 // Grid System
-.container {
+.container { /*Helps to locate and center everything in the main*/
   width: 100%;
   max-width: $container-max-width;
   margin: 0 auto;

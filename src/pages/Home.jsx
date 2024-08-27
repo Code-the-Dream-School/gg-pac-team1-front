@@ -16,8 +16,10 @@ function Home() {
     <>
         <div>
             <section className="slider-section">
-                <div className="home-container">
-                <SearchForm onSearch={handleSearch} />
+                <div className='form-container'> 
+                  <div className="container">
+                    <SearchForm onSearch={handleSearch} />
+                  </div>
                 </div>
             </section>
 

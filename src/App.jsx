@@ -1,11 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import FamilyFriendly from './components/FamilyFriendly';
-import Wellness from './components/Wellness';
-import BudgetTravel from './components/BudgetTravel';
-import TrendingDestination from './components/TrendingDestination';
-import Romantic from './components/Romantic';
-import FoodieDestination from './components/FoodieDestination';
+import { getAllData } from './util/index';
+
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import TripDescriptionNY from './components/TripSection/TripDescriptionNY'; 
@@ -19,35 +15,36 @@ import LeaveReview from './components/ReviewSection/LeaveReview';
 import { getAllData } from './util/index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HotelSearchPage from './pages/HotelSearchPage';
+import Search from './pages/Search';
 
-const URL = 'http://localhost:8000/api/v1/';
+const URL = 'http://localhost:8000/api/v1/users';
 
 function App() {
-  const [message, setMessage] = useState('');
+  
+  const [message, setMessage] = useState(''); 
 
   useEffect(() => {
     (async () => {
-      try {
-        const myData = await getAllData(URL);
-        setMessage(myData.data);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
+      const myData = await getAllData(URL);
+      setMessage(myData.data);
     })();
+      
+    return () => {
+      console.log('unmounting');
+    }
+
   }, []);
+
   
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Layout />,
-      children: [
+      children:
+      [
         {
           index: true,
-          element: <Home />
-        },
-        {
-          path: 'family-friendly',
-          element: <FamilyFriendly />
+          element: <Home />,
         },
         {
           path: 'wellness',
@@ -103,14 +100,21 @@ function App() {
         },
         {
           path: 'trip-description-miami',
-          element: <TripDescriptionMiami /> // Add this route
+          element: <TripDescriptionMiami /> 
+        },
+        {
+          path: 'search',
+          element: <Search />
         }
       ]
     }
   ]);
 
   return (
-    <RouterProvider router={router} />
+    <>
+      {/* Using RouterProvider to handle routing */}
+      <RouterProvider router={router} />
+    </>
   );
 }
 

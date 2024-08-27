@@ -3,13 +3,7 @@
     background-color: #f3f3f3;
 
     &:nth-child(even) {
-        background-color: #bdbdbd; // Color alternativo para las secciones pares
-    }
-
-    .container {
-        max-width: 80%;
-        margin: 0 auto;
-        padding: 0 1em;
+        background-color: #bdbdbd; // alternate color for even sections
     }
 
     h2 {

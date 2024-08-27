@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import '../styles/components/_configuser.scss';
 
 const Header = () => {
     const [isSmall, setIsSmall] = useState(false);
@@ -44,5 +44,4 @@ const Header = () => {
 };
 
 export default Header;
-
 

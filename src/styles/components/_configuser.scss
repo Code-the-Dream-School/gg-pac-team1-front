@@ -1,0 +1,96 @@
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center; /* Alinea los elementos verticalmente al centro */
+}
+
+nav li {
+  margin: 0 1rem;
+}
+
+nav a,
+nav button {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* Alinea los íconos y el texto verticalmente */
+  line-height: 1; /* Alinea el texto verticalmente */
+}
+
+nav a:hover,
+nav button:hover {
+  color: #007bff; /* Color al pasar el cursor */
+}
+
+.user-button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center; /* Alinea el texto y el ícono verticalmente */
+  line-height: 1; /* Alinea el texto verticalmente */
+}
+
+.dropdown-menu {
+  background-color: #333;
+  border: 1px solid #444;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 20px !important; /* Ajusta el margen superior para que el menú no se solape con el header */
+  position: absolute;
+  right: 0;
+  z-index: 1000;
+  min-width: 220px;
+  padding: 10px;
+  display: none;
+  box-sizing: border-box;
+}
+
+.dropdown.active .dropdown-menu {
+  display: block;
+}
+
+.dropdown-menu li {
+  padding: 10px 16px;
+  color: #fff;
+  font-size: 15px;
+  display: flex;
+  align-items: center; /* Alinea el contenido dentro del menú desplegable */
+}
+
+.dropdown-divider {
+  border: none;
+  border-top: 1px solid #555;
+  margin: 5px 0;
+}
+
+button {
+  font-size: 1rem;
+  border: none;
+  background: transparent; /* Quita el color de fondo */
+  color: #fff; /* Color del texto en blanco */
+  cursor: pointer;
+  line-height: 1; /* Alinea el texto verticalmente */
+}
+
+.login-button {
+  background: transparent; /* Fondo transparente */
+  color: #fff; /* Texto en blanco */
+  font-size: 1rem; /* Asegúrate de que el tamaño del texto sea consistente */
+   /* Asegura que el padding sea consistente con los otros botones */
+  display: flex;
+  align-items: center; /* Alinea verticalmente el contenido dentro del botón */
+  line-height: 1; /* Alinea el texto verticalmente */
+}
+
+.login-button:hover {
+  background: rgba(255, 255, 255, 0.2); /* Color de fondo al pasar el cursor, opcional */
+}
