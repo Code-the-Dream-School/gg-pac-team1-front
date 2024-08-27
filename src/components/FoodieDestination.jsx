@@ -3,29 +3,37 @@ import DestinationList from './DestinationList';
 import BackButton from './BackButton';
 import foodiedestinationsImg from '../../images/foodiedestinationsImg.jpg';
 
+// Function to group destinations by city and state and calculate average price
+const processFoodieData = (destinationsData) => {
+  const destinationsMap = {};
+
+  destinationsData.forEach(({ city, state, price }) => {
+    const key = `${city}, ${state}`;
+    if (!destinationsMap[key]) {
+      destinationsMap[key] = { city, state, totalPrice: 0, count: 0 };
+    }
+    destinationsMap[key].totalPrice += price;
+    destinationsMap[key].count += 1;
+  });
+
+  // Convert the map to an array and calculate the average price
+  return Object.values(destinationsMap).map(destination => ({
+    city: `${destination.city}, ${destination.state}`,
+    description: 'Various local cuisines and dining experiences.',
+    price: `$${(destination.totalPrice / destination.count).toFixed(2)}/night (avg)`, // Ensure two decimal places
+  }));
+};
+
 const FoodieDestination = () => {
-  const destinations = [
-    {
-      city: 'New Orleans, Louisiana',
-      description: 'Famous for Cajun and Creole cuisine.',
-      price: '$140/night (avg)',
-    },
-    {
-      city: 'New York City, New York',
-      description: 'Home to diverse food from around the world.',
-      price: '$200/night (avg)',
-    },
-    {
-      city: 'San Francisco, California',
-      description: 'Renowned for its seafood and fine dining.',
-      price: '$180/night (avg)',
-    },
-    {
-      city: 'Austin, Texas',
-      description: 'Known for BBQ and Tex-Mex.',
-      price: '$150/night (avg)',
-    },
+  const destinationsData = [
+    { city: 'New Orleans', state: 'Louisiana', price: 140 },
+    { city: 'New York City', state: 'New York', price: 200 },
+    { city: 'San Francisco', state: 'California', price: 180 },
+    { city: 'Austin', state: 'Texas', price: 150 },
+    { city: 'New Orleans', state: 'Louisiana', price: 145 }, // Example of multiple entries
   ];
+
+  const foodiePlaces = processFoodieData(destinationsData);
 
   return (
     <div style={{ 
@@ -45,17 +53,20 @@ const FoodieDestination = () => {
       }}>
         Foodie Destinations
       </h1>
+      
+      <DestinationList destinations={foodiePlaces} title="Top Foodie Destinations" />
+
       <p style={{ 
         fontSize: '1rem', 
         color: '#fff', 
         lineHeight: '1.6', 
         maxWidth: '800px', 
-        margin: '0 auto 40px', 
+        margin: '40px auto', 
         textAlign: 'justify', 
         fontFamily: "'Lato', sans-serif",
-        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Background color for better text readability
-        padding: '20px', // Padding for better spacing
-        borderRadius: '8px' // Rounded corners for a softer look
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+        padding: '20px', 
+        borderRadius: '8px' 
       }}>
         Foodie destinations are regions celebrated for their diverse and rich culinary landscapes. These destinations cater to travelers with a passion for food, offering a blend of traditional and innovative culinary experiences. Whether you’re indulging in street food, dining at a high-end restaurant, or exploring local markets, these locations are a paradise for food enthusiasts.
         <br /><br />
@@ -81,8 +92,7 @@ const FoodieDestination = () => {
         <br />
         For those who want a deeper dive into the local food culture, foodie destinations frequently offer cooking classes, where participants can learn to prepare regional dishes, and culinary tours that provide insight into the area’s food history and best-kept culinary secrets.
       </p>
-      <DestinationList destinations={destinations} />
-      <SearchButton /> {/* Add the search button here if needed */}
+
       <BackButton />
     </div>
   );

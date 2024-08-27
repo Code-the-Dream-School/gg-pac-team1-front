@@ -1,40 +1,51 @@
 import React from 'react';
 import DestinationList from './DestinationList';
 import BackButton from './BackButton';
-
 import familyFriendlyImage from '../../images/FamilyFriendlyImage.jpg'; // Import your background image
 
+// Function to group hotels by city and calculate average price
+const processHotelData = (hotelsData) => {
+  const destinationsMap = {};
+
+  hotelsData.forEach(({ city, state, price }) => {
+    const key = `${city}, ${state}`;
+    if (!destinationsMap[key]) {
+      destinationsMap[key] = { city, state, hotelsCount: 0, totalPrice: 0 };
+    }
+    destinationsMap[key].hotelsCount += 1;
+    destinationsMap[key].totalPrice += price;
+  });
+
+  // Convert the map to an array and calculate the average price
+  const result = Object.values(destinationsMap).map(destination => ({
+    city: `${destination.city}, ${destination.state}`,
+    hotels: `${destination.hotelsCount} hotels`,
+    price: `$${(destination.totalPrice / destination.hotelsCount).toFixed(2)}/night (avg)`,
+  }));
+
+  console.log(result); // Log the result to verify
+  return result;
+};
+
 const FamilyFriendly = () => {
-  const destinations = [
-    {
-      city: 'Orlando, Florida',
-      hotels: '1500+ hotels',
-      price: '$120/night (avg)',
-    },
-    {
-      city: 'San Diego, California',
-      hotels: '1200+ hotels',
-      price: '$130/night (avg)',
-    },
-    {
-      city: 'Yellowstone, Wyoming',
-      hotels: '300+ hotels',
-      price: '$180/night (avg)',
-    },
-    {
-      city: 'Washington, D.C.',
-      hotels: '800+ hotels',
-      price: '$160/night (avg)',
-    },
+  const hotelsData = [
+    { city: 'Orlando', state: 'Florida', price: 120 },
+    { city: 'San Diego', state: 'California', price: 130 },
+    { city: 'Yellowstone', state: 'Wyoming', price: 180 },
+    { city: 'Washington', state: 'D.C.', price: 160 },
+    { city: 'Orlando', state: 'Florida', price: 110 }, 
+    { city: 'San Diego', state: 'California', price: 140 }, 
   ];
+
+  const destinations = processHotelData(hotelsData);
 
   return (
     <div style={{ 
       padding: '40px 20px', 
       minHeight: '100vh',
-      backgroundImage: `url(${familyFriendlyImage})`, // Set background image
-      backgroundSize: 'cover', // Cover the whole container
-      backgroundPosition: 'center', // Center the background image
+      backgroundImage: `url(${familyFriendlyImage})`, 
+      backgroundSize: 'cover', 
+      backgroundPosition: 'center', 
     }}>
       <h1 style={{ 
         textAlign: 'center', 
@@ -45,12 +56,15 @@ const FamilyFriendly = () => {
       }}>
         Family-Friendly Destinations
       </h1>
+
+      <DestinationList destinations={destinations} />
+
       <p style={{ 
         fontSize: '1rem', 
         color: '#fff', 
         lineHeight: '1.6', 
         maxWidth: '800px', 
-        margin: '0 auto 40px', 
+        margin: '40px auto', 
         textAlign: 'justify', 
         fontFamily: "'Lato', sans-serif",
         backgroundColor: 'rgba(0, 0, 0, 0.5)', // Background color for better text readability
@@ -73,8 +87,7 @@ const FamilyFriendly = () => {
         <br />
         Family Resorts: Resorts specifically tailored for families may include water parks, multiple pools, playgrounds, and babysitting services.
       </p>
-      <DestinationList destinations={destinations} />
-    
+
       <BackButton />
     </div>
   );

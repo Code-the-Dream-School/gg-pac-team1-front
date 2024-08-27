@@ -7,9 +7,12 @@ import TrendingDestination from './components/TrendingDestination';
 import Romantic from './components/Romantic';
 import FoodieDestination from './components/FoodieDestination';
 import Layout from './components/Layout';
-// Here all future page imports
 import Home from './pages/Home';
-import TripDescription from './components/TripSection/TripDescription';
+import TripDescriptionNY from './components/TripSection/TripDescriptionNY'; 
+import TripDescriptionLa from './components/TripSection/TripDescriptionLa'; 
+import TripDescriptionChicago from './components/TripSection/TripDescriptionChicago';
+import TripDescriptionSf from './components/TripSection/TripDescriptionSf';
+import TripDescriptionMiami from './components/TripSection/TripDescriptionMiami'; // Add this import
 import ReviewSection from './components/ReviewSection/ReviewSection';
 import AllReviews from './components/ReviewSection/AllReviews'; 
 import LeaveReview from './components/ReviewSection/LeaveReview'; 
@@ -79,13 +82,29 @@ function App() {
           element: <LeaveReview /> 
         },
         {
-          path: 'trip-description',
-          element: <TripDescription /> 
+          path: 'trip-description-ny',
+          element: <TripDescriptionNY /> 
+        },
+        {
+          path: 'trip-description-la',
+          element: <TripDescriptionLa /> 
         },
         {
           path: 'search',
           element: <HotelSearchPage />
         },
+        {
+          path: 'trip-description-chicago',
+          element: <TripDescriptionChicago />
+        },
+        {
+          path: 'trip-description-sf',
+          element: <TripDescriptionSf />
+        },
+        {
+          path: 'trip-description-miami',
+          element: <TripDescriptionMiami /> // Add this route
+        }
       ]
     }
   ]);

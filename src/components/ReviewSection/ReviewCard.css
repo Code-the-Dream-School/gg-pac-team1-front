@@ -1,15 +1,15 @@
 .review-card {
-    width: 250px; /* Set a fixed width */
-    height: 250px; /* Make it square */
-    background-color: rgba(0, 255, 0, 0.1); /* Light green tint */
-    border: 2px solid green; /* Green border */
-    padding: 16px; /* Some padding inside the card */
+    width: 200px; 
+    height: 250px; 
+    background-color: rgba(0, 255, 0, 0.1); 
+    border: 2px solid green; 
+    padding: 16px; 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: add some shadow */
-    border-radius: 8px; /* Optional: round the corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    border-radius: 8px; 
     text-align: center;
   }
   
@@ -30,10 +30,10 @@
   
   .star {
     font-size: 20px;
-    color: #ccc; /* Grey for unfilled stars */
+    color: #ccc; 
   }
   
   .star.filled {
-    color: gold; /* Gold for filled stars */
+    color: gold;
   }
   

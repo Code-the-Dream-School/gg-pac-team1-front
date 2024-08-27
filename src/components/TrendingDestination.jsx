@@ -1,42 +1,48 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; 
-import { Row, Col } from 'react-bootstrap'; 
+import DestinationList from './DestinationList';
+import BackButton from './BackButton';
+import TrendingDestinationsImg from '../../images/TrendingDestinationsImg.jpg';
 
-import DestinationList from './DestinationList'; 
-import BackButton from './BackButton'; 
-import TrendingDestinationsImg from '../../images/TrendingDestinationsImg.jpg'; // Import the background image
+// Function to group hotels by city and calculate average price
+const processHotelData = (hotelsData) => {
+  const destinationsMap = {};
+
+  hotelsData.forEach(({ city, state, price }) => {
+    const key = `${city}, ${state}`;
+    if (!destinationsMap[key]) {
+      destinationsMap[key] = { city, state, hotelsCount: 0, totalPrice: 0 };
+    }
+    destinationsMap[key].hotelsCount += 1;
+    destinationsMap[key].totalPrice += price;
+  });
+
+  // Convert the map to an array and calculate the average price
+  return Object.values(destinationsMap).map(destination => ({
+    city: `${destination.city}, ${destination.state}`,
+    hotels: `${destination.hotelsCount} hotels`,
+    price: `$${(destination.totalPrice / destination.hotelsCount).toFixed(2)}/night (avg)`,
+  }));
+};
 
 const TrendingDestination = () => {
-  const trendingPlaces = [
-    {
-      city: 'Miami, Florida',
-      hotels: '800+ hotels',
-      price: '$150/night (avg)',
-    },
-    {
-      city: 'Nashville, Tennessee',
-      hotels: '600+ hotels',
-      price: '$140/night (avg)',
-    },
-    {
-      city: 'Portland, Oregon',
-      hotels: '500+ hotels',
-      price: '$130/night (avg)',
-    },
-    {
-      city: 'Savannah, Georgia',
-      hotels: '400+ hotels',
-      price: '$120/night (avg)',
-    },
+  const hotelsData = [
+    { city: 'Miami', state: 'Florida', price: 150 },
+    { city: 'Nashville', state: 'Tennessee', price: 140 },
+    { city: 'Portland', state: 'Oregon', price: 130 },
+    { city: 'Savannah', state: 'Georgia', price: 120 },
+    { city: 'Miami', state: 'Florida', price: 160 }, // Another hotel in Miami for demo
+    { city: 'Nashville', state: 'Tennessee', price: 150 }, // Another hotel in Nashville
   ];
+
+  const trendingPlaces = processHotelData(hotelsData);
 
   return (
     <div style={{ 
       padding: '40px 20px', 
       minHeight: '100vh',
-      backgroundImage: `url(${TrendingDestinationsImg})`, // Set the background image
-      backgroundSize: 'cover', // Cover the entire container
-      backgroundPosition: 'center', // Center the background image
+      backgroundImage: `url(${TrendingDestinationsImg})`, 
+      backgroundSize: 'cover', 
+      backgroundPosition: 'center', 
     }}>
       <h1 style={{ 
         textAlign: 'center', 
@@ -47,12 +53,15 @@ const TrendingDestination = () => {
       }}>
         Trending Destinations
       </h1>
+
+      <DestinationList destinations={trendingPlaces} title="Top Trending Destinations" />
+
       <p style={{ 
         fontSize: '1rem', 
         color: '#fff', 
         lineHeight: '1.6', 
         maxWidth: '800px', 
-        margin: '0 auto 40px', 
+        margin: '40px auto', 
         textAlign: 'justify', 
         fontFamily: "'Lato', sans-serif",
         backgroundColor: 'rgba(0, 0, 0, 0.5)', 
@@ -72,8 +81,7 @@ const TrendingDestination = () => {
         Instagrammable Spots: These destinations are filled with visually stunning spots—like picturesque landscapes, colorful street art, or architecturally unique buildings—that are frequently shared on social media, boosting their popularity.<br />
         Influencer Endorsements: Social media influencers and travel bloggers often highlight these locations, helping to drive their popularity among a wider audience.
       </p>
-      <DestinationList destinations={trendingPlaces} title="Top Trending Destinations" />
-    
+
       <BackButton />
     </div>
   );
