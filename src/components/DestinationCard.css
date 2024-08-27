@@ -1,52 +1,70 @@
+/* Destination card styles */
 .destination-card {
-  color: white;
-  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8); /* White shadow with a bit of transparency */
+  color: white; /* Default text color */
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); /* Softer shadow for readability */
   background-size: cover;
   background-position: center;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px; /* More rounded corners for a softer look */
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  
-  width: 250px; /* Adjust the width to make the card narrower */
-  height: 400px; /* Adjust the height to make the card taller */
+  width: 280px; /* Slightly wider card for a more balanced look */
+  height: 400px;
+  margin: 0 auto; /* Center the card horizontally */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
-
 
 .destination-card .card-body {
-  background: rgba(255, 255, 255, 0.3); 
+  background: rgba(255, 255, 255, 0.5); /* Increased transparency for the card body */
   padding: 1rem;
-  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.4); /* Softer white inset shadow */
-  color: black; /* Ensures text remains readable on a lighter background */
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1); /* Softer inset shadow */
+  color: #333; /* Dark text color for better readability */
+  border-top-left-radius: 12px; /* Rounded top corners for card body */
+  border-top-right-radius: 12px;
 }
-
 
 .destination-card .card-title {
-  font-size: 1.5rem;
+  font-size: 1.4rem; /* Slightly larger font size for titles */
   margin-bottom: 0.5rem;
- 
 }
-
 
 .destination-card .card-text {
   margin-bottom: 1rem;
+  font-size: 1rem; /* Adjusted font size for consistency */
 }
 
+/* Short description specifically in black color */
+.destination-card .short-description {
+  color: black; /* Set text color to black */
+}
+
+/* Button styling */
 .destination-card .btn-primary {
-  background-color: #007bff;
+  background-color: rgba(209, 231, 221, 0.6); /* Soft, semi-transparent light green color */
   border: none;
+  border-radius: 8px; /* Rounded button corners */
+  padding: 0.5rem 1rem; /* Adjusted button padding */
+  font-size: 1rem; /* Consistent font size */
+  color: #0f5132; /* Darker green text color for contrast */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
+}
+
+.destination-card .btn-primary:hover {
+  background-color: rgba(195, 230, 203, 0.8); /* Slightly more opaque on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
 }
 
 /* Flexbox to create two rows */
 .destination-card-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  gap: 1.5rem; /* Increased gap between cards */
+  justify-content: center; /* Center the cards horizontally */
 }
 
 .destination-card-container > .destination-card {
-  flex: 1 1 calc(50% - 1rem); /* Each card takes up roughly half of the container's width, minus the gap */
-  margin-bottom: 1rem; /* Add some spacing between rows */
+  flex: 1 1 calc(33% - 1.5rem); /* Each card takes up roughly one-third of the container's width */
+  margin-bottom: 1.5rem; /* Add more spacing between rows */
 }

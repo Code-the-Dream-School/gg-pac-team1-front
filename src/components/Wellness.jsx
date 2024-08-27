@@ -3,37 +3,46 @@ import DestinationList from './DestinationList';
 import BackButton from './BackButton';
 import WellnessImage from '../../images/WellnessImage.jpg'; 
 
+// Function to group hotels by city and calculate average price
+const processHotelData = (hotelsData) => {
+  const retreatsMap = {};
+
+  hotelsData.forEach(({ city, state, price }) => {
+    const key = `${city}, ${state}`;
+    if (!retreatsMap[key]) {
+      retreatsMap[key] = { city, state, hotelsCount: 0, totalPrice: 0 };
+    }
+    retreatsMap[key].hotelsCount += 1;
+    retreatsMap[key].totalPrice += price;
+  });
+
+  // Convert the map to an array and calculate the average price
+  return Object.values(retreatsMap).map(retreat => ({
+    city: `${retreat.city}, ${retreat.state}`,
+    hotels: `${retreat.hotelsCount} hotels`,
+    price: `$${(retreat.totalPrice / retreat.hotelsCount).toFixed(2)}/night (avg)`,
+  }));
+};
+
 const Wellness = () => {
-  const retreats = [
-    {
-      city: 'Sedona, Arizona',
-      hotels: '200+ hotels',
-      price: '$220/night (avg)',
-    },
-    {
-      city: 'Oahu, Hawaii',
-      hotels: '300+ hotels',
-      price: '$250/night (avg)',
-    },
-    {
-      city: 'Aspen, Colorado',
-      hotels: '100+ hotels',
-      price: '$300/night (avg)',
-    },
-    {
-      city: 'Palm Springs, California',
-      hotels: '350+ hotels',
-      price: '$210/night (avg)',
-    },
+  const hotelsData = [
+    { city: 'Sedona', state: 'Arizona', price: 220 },
+    { city: 'Oahu', state: 'Hawaii', price: 250 },
+    { city: 'Aspen', state: 'Colorado', price: 300 },
+    { city: 'Palm Springs', state: 'California', price: 210 },
+    { city: 'Sedona', state: 'Arizona', price: 230 }, // Another hotel in Sedona for demo
+    { city: 'Oahu', state: 'Hawaii', price: 260 }, // Another hotel in Oahu
   ];
+
+  const retreats = processHotelData(hotelsData);
 
   return (
     <div style={{ 
       padding: '40px 20px', 
       minHeight: '100vh',
-      backgroundImage: `url(${WellnessImage})`, // Set the background image
-      backgroundSize: 'cover', // Cover the entire container
-      backgroundPosition: 'center', // Center the background image
+      backgroundImage: `url(${WellnessImage})`, 
+      backgroundSize: 'cover', 
+      backgroundPosition: 'center', 
     }}>
       <h1 style={{ 
         textAlign: 'center', 
@@ -44,17 +53,20 @@ const Wellness = () => {
       }}>
         Wellness Retreats
       </h1>
+
+      <DestinationList destinations={retreats} title="Top Wellness Retreats" />
+
       <p style={{ 
         fontSize: '1rem', 
         color: '#fff', 
         lineHeight: '1.6', 
         maxWidth: '800px', 
-        margin: '0 auto 40px', 
+        margin: '40px auto', 
         textAlign: 'justify', 
         fontFamily: "'Lato', sans-serif",
-        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Background color for better text readability
-        padding: '20px', // Padding for better spacing
-        borderRadius: '8px' // Rounded corners for a softer look
+        backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+        padding: '20px', 
+        borderRadius: '8px' 
       }}>
         Wellness destinations are locations specifically designed to promote health and well-being through a variety of activities, treatments, and environments. These destinations often focus on relaxation, rejuvenation, and holistic health, offering experiences that help travelers disconnect from the stresses of daily life and reconnect with themselves. Here’s what defines a wellness destination:
         <br /><br />
@@ -92,8 +104,7 @@ const Wellness = () => {
         <br />
         Connection with Nature: These destinations often emphasize a deep connection with nature, encouraging guests to unplug from technology and immerse themselves in natural surroundings.
       </p>
-      <DestinationList destinations={retreats} title="Top Wellness Retreats" />
-    
+
       <BackButton />
     </div>
   );
