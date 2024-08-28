@@ -1,18 +1,18 @@
 .account-settings {
   padding: 2rem;
-  background: #ffffff; /* Fondo blanco para una apariencia más limpia */
+  background: #ffffff; 
   border-radius: 8px;
-  max-width: 900px; /* Aumenta el ancho máximo para una mejor visualización en pantallas grandes */
-  margin: 2rem auto; /* Asegura que el contenedor esté centrado y tenga un margen superior e inferior */
+  max-width: 900px; 
+  margin: 2rem auto; 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-top: 70px; /* Ajusta la sombra para una apariencia más sutil */
+  margin-top: 80px; 
 }
 
 h2 {
   text-align: center;
   color: #333;
-  margin-bottom: 1.5rem; /* Ajusta el margen inferior para más espacio */
-  font-size: 2rem; /* Aumenta el tamaño de la fuente para un encabezado más destacado */
+  margin-bottom: 1.5rem; 
+  font-size: 2rem; 
 }
 
 .settings-nav {
@@ -20,48 +20,56 @@ h2 {
   justify-content: space-around;
   list-style-type: none;
   padding: 0;
-  margin-bottom: 1.5rem; /* Ajusta el margen inferior para más espacio */
+  margin-bottom: 1.5rem; 
+  border-bottom: 2px solid #eee; 
 }
 
 .settings-nav-item {
   background: #007bff;
   color: white;
   border: none;
-  padding: 0.75rem 1.5rem; /* Aumenta el padding para un botón más grande y fácil de hacer clic */
+  padding: 0.75rem 1.5rem; 
   border-radius: 4px;
   cursor: pointer;
-  font-size: 1.1rem; /* Aumenta el tamaño de la fuente para una mejor legibilidad */
-  transition: background 0.3s ease; /* Añade transición para un efecto suave en el hover */
+  font-size: 1.1rem; 
+  transition: background 0.3s ease, transform 0.2s ease; 
+  
+  &:hover {
+    background: #0056b3;
+    transform: translateY(-2px); 
+  }
 }
 
 .settings-nav-item.active {
   background: #0056b3;
+  box-shadow: inset 0 -2px 0 #ffffff; 
 }
 
 .settings-nav-item.sign-out {
-  background: #dc3545; /* Color rojo para el botón de salir */
-}
-
-.settings-nav-item.sign-out:hover {
-  background: #c82333; /* Color más oscuro al pasar el cursor */
+  background: #dc3545; 
+  
+  &:hover {
+    background: #c82333; 
+    transform: translateY(-2px); 
+  }
 }
 
 .settings-content {
-  background: #f9f9f9; /* Fondo ligeramente gris para diferenciar el área del contenido */
+  background: #f9f9f9; 
   padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Igualar sombra con la del contenedor principal */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
 }
 
 .form-group {
-  margin-bottom: 1.5rem; /* Aumenta el margen inferior para más espacio entre los campos */
+  margin-bottom: 1.5rem; 
 }
 
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: bold;
-  color: #333; /* Color del texto para más contraste */
+  color: #333; 
 }
 
 .form-group input {
@@ -69,7 +77,7 @@ h2 {
   padding: 0.75rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 1rem; /* Ajusta el tamaño de la fuente para mejor legibilidad */
+  font-size: 1rem; 
 }
 
 button {
@@ -81,18 +89,10 @@ button {
   cursor: pointer;
   font-size: 1rem;
   margin-top: 1rem;
-  transition: background 0.3s ease; /* Añade transición para un efecto suave en el hover */
-}
-
-button:hover {
-  background: #0056b3;
-}
-.btn-profile{
-  background-color: #007bff;
-  color: white;
-}
-
-.btn-credit{
-  background-color: #007bff;
-  color: white;
+  transition: background 0.3s ease, transform 0.2s ease; 
+  
+  &:hover {
+    background: #0056b3;
+    transform: translateY(-2px); 
+  }
 }

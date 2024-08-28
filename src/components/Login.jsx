@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/components/_login.scss'; // Asegúrate de que el archivo SCSS esté correctamente enlazado
+import '../styles/components/_login.scss';
 
 const Login = ({ onLogin, onClose }) => {
   const [email, setEmail] = useState('');
@@ -16,9 +16,9 @@ const Login = ({ onLogin, onClose }) => {
         email,
         password,
       });
-      localStorage.setItem('token', response.data.token); // Almacenar el token en localStorage
-      onLogin(response.data.user); // Actualizar el estado del usuario
-      onClose(); // Cerrar el formulario de login
+      localStorage.setItem('token', response.data.token); 
+      onLogin(response.data.user); 
+      onClose(); 
     } catch (err) {
       setError('Invalid credentials');
     }
@@ -32,7 +32,9 @@ const Login = ({ onLogin, onClose }) => {
         </button>
         <div className="login-header">
           <h1>TravelAmigos</h1>
-          <p className="subtitle">Buscando hoteles</p>
+        </div>
+        <div className="login-subheader">
+          <p className="subtitle">search  <strong>hotels</strong></p>
           <span className="hotel-icon">🏨</span>
         </div>
         <hr className="divider" />

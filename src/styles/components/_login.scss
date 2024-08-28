@@ -4,7 +4,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.8); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,47 +12,77 @@
 }
 
 .login-popup-content {
-  background: #f4f4f4; /* Color de fondo claro para mejor contraste */
-  padding: 2rem;
+  background: #fff; 
+  padding: 1rem; 
   border-radius: 8px;
   width: 100%;
-  max-width: 400px; /* Ajuste del ancho máximo para mejorar la proporción */
+  max-width: 500px; 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   position: relative;
-  color: #333; /* Color de texto oscuro para buen contraste */
+  color: #333; 
+  max-height: 80vh; 
+  overflow-y: auto; 
 }
 
 .close-button {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
+  top: 5px;
+  right: 5px;
+  background: #f8f9fa; 
+  border: 2px solid #007bff; /* Blue border */
+  border-radius: 50%;
+  width: 40px; /* Adjust button size */
+  height: 40px; /* Adjust button size */
+  font-size: 1.5rem !important; /* Reduce font size */
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  color: #333;
+  color: #007bff; /* Icon color */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.close-button:hover {
+  background: #000; /* Black background on hover */
+  color: #fff; /* White color on hover */
 }
 
 .login-header {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .login-header h1 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #007bff;
   margin: 0;
 }
 
-.login-header .subtitle {
-  font-size: 1rem;
-  color: #666;
+.login-subheader {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subtitle {
+  font-size: 1.25rem; /* Adjusted text size */
+  margin: 0;
+  font-family: 'Arial', sans-serif; /* More eye-catching font */
+}
+
+.subtitle strong {
+  font-weight: bold;
+  color: #000; /* More eye-catching color for "hoteles" */
 }
 
 .hotel-icon {
   font-size: 2rem;
   margin-left: 0.5rem;
   color: #007bff;
+  display: inline-block;
+  vertical-align: middle; /* Vertical alignment for the icon */
 }
 
 .divider {
@@ -70,41 +100,40 @@
 form {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Espaciado entre elementos del formulario */
+  gap: 0.75rem; /* Reduce spacing between elements */
 }
 
 .input-group {
   display: flex;
-  align-items: center;
-  gap: 0.5rem; /* Espaciado entre label y input */
+  flex-direction: column;
 }
 
 .input-group label {
-  width: 100px; /* Ancho fijo para las etiquetas */
   font-weight: bold;
-  color: #333; /* Color del texto del label */
+  color: #333; /* Label text color */
+  margin-bottom: 0.25rem; /* Reduce spacing below the label */
 }
 
 .input-group input {
-  flex: 1; /* Hace que el input ocupe el espacio restante */
-  padding: 0.75rem;
+  padding: 0.5rem; /* Reduce padding for inputs */
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
 }
 
 .button {
-  padding: 0.75rem 1.5rem; /* Tamaño del botón */
+  padding: 0.5rem 1rem; /* Adjust button size */
   border: none;
-  border-radius: 20px; /* Esquinas redondeadas del botón */
+  border-radius: 20px;
   background: #007bff;
   color: white;
   cursor: pointer;
   font-size: 1rem;
   text-align: center;
-  margin: 1rem auto; /* Centra el botón horizontalmente y agrega margen vertical */
-  display: block; /* Hace que el botón ocupe el ancho disponible */
-  width: 100%; /* Ajusta el ancho para que sea proporcional al contenido */
+  margin: 0.5rem auto; /* Center button and adjust margins */
+  display: block;
+  width: 100%;
+  transition: background-color 0.3s ease;
 }
 
 .button:hover {
@@ -124,3 +153,4 @@ form {
 .register-link a:hover {
   text-decoration: underline;
 }
+
