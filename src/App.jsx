@@ -1,27 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { getAllData } from './util/index';
+import Account from './components/Account';
 import Layout from './components/Layout';
+import Login from './components/Login';
+import Register from './components/Register';
+import Session from './components/Session';
 import Home from './pages/Home';
-import FamilyFriendly from './components/FamilyFriendly';
-import Wellness from './components/Wellness';
-import BudgetTravel from './components/BudgetTravel';
-import TrendingDestination from './components/TrendingDestination';
-import Romantic from './components/Romantic';
-import FoodieDestination from './components/FoodieDestination';
-import TripDescriptionNY from './components/TripSection/TripDescriptionNY'; 
-import TripDescriptionLa from './components/TripSection/TripDescriptionLa'; 
-import TripDescriptionChicago from './components/TripSection/TripDescriptionChicago';
-import TripDescriptionSf from './components/TripSection/TripDescriptionSf';
-import TripDescriptionMiami from './components/TripSection/TripDescriptionMiami';
-import ReviewSection from './components/ReviewSection/ReviewSection';
-import AllReviews from './components/ReviewSection/AllReviews'; 
-import LeaveReview from './components/ReviewSection/LeaveReview'; 
+import { getAllData } from './util/index';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
+import BudgetTravel from './components/BudgetTravel';
+import FamilyFriendly from './components/FamilyFriendly';
+import FoodieDestination from './components/FoodieDestination';
+import AllReviews from './components/ReviewSection/AllReviews';
+import LeaveReview from './components/ReviewSection/LeaveReview';
+import ReviewSection from './components/ReviewSection/ReviewSection';
+import Romantic from './components/Romantic';
+import TrendingDestination from './components/TrendingDestination';
+import TripDescriptionChicago from './components/TripSection/TripDescriptionChicago';
+import TripDescriptionLa from './components/TripSection/TripDescriptionLa';
+import TripDescriptionMiami from './components/TripSection/TripDescriptionMiami';
+import TripDescriptionNY from './components/TripSection/TripDescriptionNY';
+import TripDescriptionSf from './components/TripSection/TripDescriptionSf';
+import Wellness from './components/Wellness';
 import HotelSearchPage from './pages/HotelSearchPage';
 import Search from './pages/Search';
 
 const URL = 'http://localhost:8000/api/v1/users';
+const AUTH_URL = 'http://localhost:8000/api/v1/auth';
 
 function App() {
   
@@ -50,6 +56,19 @@ function App() {
           index: true,
           element: <Home />,
         },
+
+        { path: 'login', 
+          element: <Login authURL={AUTH_URL} /> 
+        },
+
+        { path: 'register', 
+          element: <Register authURL={AUTH_URL} /> 
+        },
+
+        { path: 'account',
+          element: <Account /> 
+        },
+
         {
           path: 'family-friendly',
           element: <FamilyFriendly />
@@ -120,10 +139,10 @@ function App() {
   ]);
 
   return (
-    <>
-      {/* Using RouterProvider to handle routing */}
+    <Session authURL={AUTH_URL}>
       <RouterProvider router={router} />
-    </>
+    </Session>
+    
   );
 }
 

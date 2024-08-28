@@ -3,7 +3,7 @@ import '../styles/components/_account.scss';
 import CreditCardInfo from './CreditCardInfo';
 import ProfileInfo from './ProfileInfo';
 
-const Account = ({ setIsLoggedIn }) => {
+const Account = () => {
   const [activeSection, setActiveSection] = useState('profile');
 
   const handleSectionChange = (section) => {
@@ -15,7 +15,11 @@ const Account = ({ setIsLoggedIn }) => {
     const confirmation = window.confirm("Are you sure you want to sign out?");
     
     if (confirmation) {
-      setIsLoggedIn(false); // Llamar a la función de cierre de sesión
+      // Eliminar el token del localStorage
+      localStorage.removeItem('token');
+      
+      // Redirigir a la página de inicio de sesión o inicio
+      window.location.href = '/';
     }
   };
 
@@ -24,13 +28,28 @@ const Account = ({ setIsLoggedIn }) => {
       <h2>Account Settings</h2>
       <ul className="settings-nav">
         <li>
-          <button className={`settings-nav-item ${activeSection === 'profile' ? 'active' : ''}`} onClick={() => handleSectionChange('profile')}>Edit Profile</button>
+          <button 
+            className={`settings-nav-item ${activeSection === 'profile' ? 'active' : ''}`} 
+            onClick={() => handleSectionChange('profile')}
+          >
+            Edit Profile
+          </button>
         </li>
         <li>
-          <button className={`settings-nav-item ${activeSection === 'creditCard' ? 'active' : ''}`} onClick={() => handleSectionChange('creditCard')}>Credit Card Information</button>
+          <button 
+            className={`settings-nav-item ${activeSection === 'creditCard' ? 'active' : ''}`} 
+            onClick={() => handleSectionChange('creditCard')}
+          >
+            Credit Card Information
+          </button>
         </li>
         <li>
-          <button className="settings-nav-item sign-out" onClick={handleSignOut}>Sign Out</button>
+          <button 
+            className="settings-nav-item sign-out" 
+            onClick={handleSignOut}
+          >
+            Sign Out
+          </button>
         </li>
       </ul>
       <div className="settings-content">

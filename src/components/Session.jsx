@@ -1,30 +1,39 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
-const Session = ({ onUserLoaded }) => {
+export const SessionContext = createContext(null);
+
+const Session = ({ authURL, children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      const fetchCurrentUser = async () => {
-        try {
-          const response = await axios.get('http://localhost:8000/api/v1/auth/current', {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          onUserLoaded(response.data.user); // Notificar a App.jsx que el usuario ha sido cargado
-        } catch (error) {
-          console.error('Error fetching current user:', error);
-          onUserLoaded(null); // Notificar a App.jsx que no hay usuario
-        }
-      };
-
-      fetchCurrentUser();
-    } else {
-      onUserLoaded(null); // Notificar a App.jsx que no hay usuario
+      axios.get(`${authURL}/current`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then(response => {
+          setCurrentUser(response.data.user);
+        })
+        .catch(error => {
+          console.error('Error restoring session:', error);
+          handleLogout();
+        });
     }
-  }, [onUserLoaded]);
+  }, [authURL]);
 
-  return null; // Este componente no necesita renderizar nada
+  const handleLogout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem('token');
+  };
+
+  return (
+    <SessionContext.Provider value={{ currentUser, handleLogout }}>
+      {children}
+    </SessionContext.Provider>
+  );
 };
 
-export default Session;
+export const useSession = () => useContext(SessionContext);
 
+export default Session;
