@@ -1,87 +1,151 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faUser } from '@fortawesome/free-solid-svg-icons';
-import DateInput from './DateInput';
-import ChildrenSelector from './ChildrenSelector';
-import { validateForm } from './formValidations';
+import { faMapMarkerAlt, faUser, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import tripsData from '../tripsData';
 
-function SearchForm({ 
-  onSearch, 
-  destinationLabel = "Destination", 
-  destinationPlaceholder = "Going to", 
-  travelersLabel = "Number of Travelers", 
-  searchButtonLabel = "Search" 
-}) {
+function SearchForm({ destinationPlaceholder = "Going to", searchButtonLabel = "Search" }) {
   const [destination, setDestination] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
   const [showCheckOut, setShowCheckOut] = useState(false);
   const [adults, setAdults] = useState(1);
-  const [showChildrenOption, setShowChildrenOption] = useState(false);
-  const [hasChildren, setHasChildren] = useState(false);
-  const [children, setChildren] = useState(1);
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+  const suggestionsRef = useRef(null);
+
+  // Handle clicks outside the input field to close the suggestion list
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (suggestionsRef.current && !suggestionsRef.current.contains(event.target)) {
+        setSuggestions([]);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleDestinationChange = (e) => {
+    const value = e.target.value.toLowerCase();
+    setDestination(value);
+
+    if (value.length > 0) {
+      const filteredSuggestions = tripsData
+        .flatMap(trip => 
+          trip.hotels.map(hotel => ({
+            hotelName: hotel.name,
+            city: trip.destination.split(', ')[0],
+            state: trip.destination.split(', ')[1]
+          }))
+        )
+        .filter(({ hotelName, city, state }) => 
+          city.toLowerCase().includes(value) || 
+          state.toLowerCase().includes(value) || 
+          hotelName.toLowerCase().includes(value)
+        );
+
+      setSuggestions(filteredSuggestions);
+    } else {
+      setSuggestions([]);
+    }
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    const fullDestination = `${suggestion.city}, ${suggestion.state}, ${suggestion.hotelName}`;
+    setDestination(fullDestination);
+    setSuggestions([]);
+  };
 
   const handleCheckInChange = (e) => {
-    setCheckInDate(e.target.value);
-    setShowCheckOut(true);
+    const date = e.target.value;
+    const today = new Date().toISOString().split('T')[0];
+
+    if (date >= today) {
+      setCheckInDate(date);
+      setShowCheckOut(true);
+      setErrors(prev => ({ ...prev, checkInDate: '' }));
+    } else {
+      setErrors(prev => ({ ...prev, checkInDate: 'Must be today or later.' }));
+    }
   };
 
   const handleCheckOutChange = (e) => {
-    setCheckOutDate(e.target.value);
-  };
+    const date = e.target.value;
 
-  const handleAdultsChange = (e) => {
-    const value = parseInt(e.target.value);
-    setAdults(value);
-    setShowChildrenOption(value > 0);
-    setHasChildren(false);
-    setChildren(0);
-  };
-
-  const handleHasChildrenChange = (e) => {
-    setHasChildren(e.target.value === "yes");
-  };
-
-  const handleChildrenChange = (e) => {
-    setChildren(e.target.value);
+    if (date > checkInDate) {
+      setCheckOutDate(date);
+      setErrors(prev => ({ ...prev, checkOutDate: '' }));
+    } else {
+      setErrors(prev => ({ ...prev, checkOutDate: 'Must be after the check-in date.' }));
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const validationErrors = validateForm({ destination, checkInDate, checkOutDate, adults, hasChildren, children });
-
-    if (Object.keys(validationErrors).length === 0) {
-      onSearch({ destination, checkInDate, checkOutDate, adults, children });
+    if (destination && checkInDate && checkOutDate && adults > 0) {
+      const [city, state] = destination.split(', ');
+      navigate(`/${state}/${city}`, { state: { checkInDate, checkOutDate, adults } });
     } else {
-      setErrors(validationErrors);
+      setErrors({ form: 'Please fill out all required fields correctly.' });
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
+      <div className="form-group" style={{ position: 'relative' }}>
         <label>
           <FontAwesomeIcon icon={faMapMarkerAlt} />
         </label>
         <input 
           type="text" 
           value={destination}
-          onChange={(e) => setDestination(e.target.value)} 
+          onChange={handleDestinationChange} 
           placeholder={destinationPlaceholder} 
           required 
         />
+        {suggestions.length > 0 && (
+          <ul ref={suggestionsRef} className="suggestions-list" style={{ position: 'absolute', top: '100%', left: 0, width: '100%', zIndex: 1000, backgroundColor: 'white', listStyleType: 'none', margin: 0, padding: 0 }}>
+            {suggestions.map((suggestion, index) => (
+              <li key={index} onClick={() => handleSuggestionClick(suggestion)} style={{ padding: '8px', cursor: 'pointer', borderBottom: '1px solid #ddd' }}>
+                {suggestion.city}, {suggestion.state}, {suggestion.hotelName}
+              </li>
+            ))}
+          </ul>
+        )}
         {errors.destination && <p className="error-text">{errors.destination}</p>}
       </div>
 
-      <DateInput 
-        checkInDate={checkInDate} 
-        checkOutDate={checkOutDate} 
-        handleCheckInChange={handleCheckInChange} 
-        handleCheckOutChange={handleCheckOutChange}
-        showCheckOut={showCheckOut}
-      />
+      <div className="form-group">
+        <label>
+          <FontAwesomeIcon icon={faCalendarAlt} />
+        </label>
+        <input 
+          type="date" 
+          value={checkInDate}
+          onChange={handleCheckInChange}
+          required 
+        />
+        {errors.checkInDate && <p className="error-text">{errors.checkInDate}</p>}
+      </div>
+
+      {showCheckOut && (
+        <div className="form-group">
+          <label>
+            <FontAwesomeIcon icon={faCalendarAlt} />
+          </label>
+          <input 
+            type="date" 
+            value={checkOutDate}
+            onChange={handleCheckOutChange}
+            required 
+          />
+          {errors.checkOutDate && <p className="error-text"> {errors.checkOutDate}</p>}
+        </div>
+      )}
 
       <div className="form-group">
         <label>
@@ -90,24 +154,15 @@ function SearchForm({
         <input 
           type="number" 
           value={adults}
-          onChange={handleAdultsChange} 
+          onChange={(e) => setAdults(e.target.value)} 
           min="1" 
-          placeholder={travelersLabel} 
           required 
         />
         {errors.adults && <p className="error-text">{errors.adults}</p>}
       </div>
 
-      {showChildrenOption && (
-        <ChildrenSelector 
-          hasChildren={hasChildren} 
-          children={children} 
-          handleHasChildrenChange={handleHasChildrenChange} 
-          handleChildrenChange={handleChildrenChange}
-        />
-      )}
-
-      <button type="submit">{searchButtonLabel}</button>
+      <button type="submit" className="search-button">{searchButtonLabel}</button>
+      {errors.form && <p className="error-text">{errors.form}</p>}
     </form>
   );
 }
