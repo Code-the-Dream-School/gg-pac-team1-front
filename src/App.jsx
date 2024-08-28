@@ -83,7 +83,7 @@ function App() {
           element: <TripDescription /> 
         },
         {
-          path: 'search',
+          path: "/:state/:city",
           element: <HotelSearchPage />
         },
       ]
