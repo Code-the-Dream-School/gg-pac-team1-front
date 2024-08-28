@@ -1,81 +1,47 @@
-.hotel-search-page {
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+// Hotel Search Page Container
+.hotel-search-page-container {
+  display: flex;
+  width: 100%;
+}
+
+// Sidebar
+.sidebar {
+  width: 400px; // Fixed width for the sidebar
+  background-color: #f8f9fa; // Background color to differentiate
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); // Adds shadow for depth
+  padding-left: 3em; // Maintain consistent spacing from the structure
+  padding-top: 5em;
+}
+
+// Main Content
+.main-content {
+  flex: 1; // Takes up the remaining space to the right of the sidebar
+  background-color: #f8f9fa;
+  padding: 2em 3em 1em 1em;
+}
+
+// Sort Options Container
+.sort-options-container {
+  display: flex;
+  justify-content: flex-end; // Aligns sort options to the right
+  align-items: center;
+  height: 2em;
+
+  label {
+    margin-right: 10px;
+    font-weight: bold;
+    font-size: 1rem;
   }
-  
-  .hotel-search-page-container {
-    width: 90%;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 5em;
-    margin-bottom: 1em;
-  }
-  
-  .navlink-home {
-    text-decoration: none;
-  
-    &:hover {
-      color: #5a6268;
-    }
-  }
-  
-  /* Title for the summary section */
-  .resume-title {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  /* Summary list */
-  .resume-list {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 20px;
-  }
-  
-  /* Summary list item */
-  .resume-list-item {
-    padding: 10px;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-    background-color: #f8f9fa;
-  }
-  
-  /* Layout for the hotel search */
-  .hotel-search-layout {
-    display: flex;
-    gap: 20px;
-  }
-  
-  /* Results container */
-  .results {
-    flex: 1;
-  }
-  
-  /* Container for sorting options */
-  .sort-options-container {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center; /* Vertically aligns the content */
-    justify-content: flex-end; /* Aligns the content to the right */
-  
-    label {
-      margin-right: 10px; /* Space between the label and the select */
-      font-weight: bold;
-      font-size: 1rem;
-    }
-  }
-  
-  /* Style for the sorting select */
+
   .sort-select {
     padding: 8px;
     border-radius: 4px;
     border: 1px solid #ced4da;
-    width: auto; /* Adjusts the width to fit the content */
   }
-  
-  .results-container {
-    margin-top: 1em;
-  }
-  
+}
+
+// Results Container
+.results-container {
+  width: 100%;
+  margin-top: 20px;
+}

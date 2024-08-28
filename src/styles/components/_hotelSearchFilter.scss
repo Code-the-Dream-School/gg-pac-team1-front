@@ -1,88 +1,87 @@
-/* General style for the filters container */
+// Filters Container
 .filters-container {
-    padding: 20px;
-    background-color: #f8f9fa; /* Light background color */
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-    margin-bottom: 20px; /* Bottom space to separate from other elements */
-    width: 35%;
-    margin-top: 1em;
+  padding: 20px;
+  background-color: #f8f9fa; // Light background color
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Shadow for depth
+  margin-bottom: 20px; // Bottom space to separate from other elements
+  // width: 35%; interferes with the hotelsearchpage
+  // margin-top: 1em; interferes with the hotelsearchpage
+}
+
+// Style for each filter section
+.filter-section {
+  margin-bottom: 20px; // Space between filter sections
+
+  label {
+    display: block;
+    margin-bottom: 8px; // Space between the label and the input/select
+    font-weight: bold;
+    color: #333; // Text color
   }
-  
-  /* Style for each filter section */
-  .filter-section {
-    margin-bottom: 20px; /* Space between filter sections */
-  
-    label {
-      display: block;
-      margin-bottom: 8px; /* Space between the label and the input/select */
-      font-weight: bold;
-      color: #333; /* Text color */
-    }
+}
+
+// Style for the filter inputs
+.filter-input,
+.filter-select {
+  width: 100%; // Make inputs take up the full width
+  padding: 10px; // Internal padding
+  border-radius: 4px; // Rounded borders
+  border: 1px solid #ced4da; // Border color
+  box-sizing: border-box; // Ensure padding is included in the width
+  font-size: 1rem; // Font size
+}
+
+// Style for the apply filters button
+.apply-filters-btn {
+  width: 100%; // Make the button take up the full width
+  padding: 12px;
+  background-color: #007bff; // Blue background color
+  color: #fff; // White text color
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem; // Font size
+  cursor: pointer; // Change cursor on hover
+  transition: background-color 0.3s; // Smooth transition for color change
+
+  &:hover {
+    background-color: #0056b3; // Darker color on hover
   }
-  
-  /* Style for the filter inputs */
-  .filter-input,
-  .filter-select {
-    width: 100%; /* Make inputs take up the full width */
-    padding: 10px; /* Internal padding */
-    border-radius: 4px; /* Rounded borders */
-    border: 1px solid #ced4da; /* Border color */
-    box-sizing: border-box; /* Ensure padding is included in the width */
-    font-size: 1rem; /* Font size */
+}
+
+// Specific style for the price inputs
+.price-input {
+  min-width: 50%; // Adjust width to fit numbers like "999"
+  width: 100%; // Allow it to adjust automatically within the container
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+// Apply filters button
+.btn-apply-filters {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3;
   }
-  
-  /* Style for the apply filters button */
-  .apply-filters-btn {
-    width: 100%; /* Make the button take up the full width */
-    padding: 12px;
-    background-color: #007bff; /* Blue background color */
-    color: #fff; /* White text color */
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem; /* Font size */
-    cursor: pointer; /* Change cursor on hover */
-    transition: background-color 0.3s; /* Smooth transition for color change */
-  
-    &:hover {
-      background-color: #0056b3; /* Darker color on hover */
-    }
-  }
-  
-  /* Specific style for the price inputs */
-  .price-input {
-    min-width: 50%; /* Adjust width to fit numbers like "999" */
-    width: 100%; /* Allow it to adjust automatically within the container */
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ced4da;
-    box-sizing: border-box;
-    font-size: 1rem;
-  }
-  
-  /* Apply filters button */
-  .btn-apply-filters {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  
-    &:hover {
-      background-color: #0056b3;
-    }
-  }
-  
-  /* Style for the price inputs */
-  .filter-input {
-    width: 100%; /* Ensure the input takes up the full available width */
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ced4da;
-    box-sizing: border-box;
-    font-size: 1rem;
-    max-width: 120px; /* Set a maximum width for longer inputs */
-  }
-  
+}
+
+// Style for the filter inputs with max-width
+.filter-input {
+  width: 100%; // Ensure the input takes up the full available width
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  box-sizing: border-box;
+  font-size: 1rem;
+  max-width: 120px; // Set a maximum width for longer inputs
+}

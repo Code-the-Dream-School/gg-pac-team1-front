@@ -1,3 +1,24 @@
+## Recent Updates
+
+### August 27, 2024
+
+## SearchForm Refactor
+
+The `SearchForm` component has been refactored to enhance usability and streamline the code. Key improvements and changes include:
+
+### Additions:
+- **Dynamic Destination Suggestions:** As users type in the destination field, relevant suggestions from available trips are displayed, improving the search experience.
+- **Improved Date Validation:** Enhanced validation for check-in and check-out dates to ensure logical date selections.
+- **Simplified Logic:** Focused on core functionality to improve maintainability and user experience.
+- **New URL Parameters:** The `HotelSearchPage` now dynamically receives `state` and `city` as parameters from the URL, allowing the page to filter search results effectively based on the user's selected destination.
+
+### Removals:
+- **Child Selection Options:** Removed the functionality related to selecting and managing the number of children during the search process, simplifying the form.
+- **`DateInput` and `ChildrenSelector` Components:** These components were removed to streamline the form and focus on essential features.
+- **`validateForm` Function:** The centralized validation function was removed in favor of inline validation logic, which may simplify the code but also reduces some validation robustness.
+
+These changes aim to provide a more intuitive and responsive user interface while maintaining code simplicity and focusing on the most critical features.
+
 *** Search page ***
 ## Recent Updates
 
