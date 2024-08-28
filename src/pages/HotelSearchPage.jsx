@@ -1,66 +1,42 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useNavigate, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import ResultList from '../components/HotelSearchResultList';
 import Pagination from '../components/Pagination';
-import HotelSearchFilter from '../components/HotelSearchFilter'; 
+import HotelSearchFilter from '../components/HotelSearchFilter';
 import tripsData from '../tripsData';
 
 function HotelSearchPage() {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const { city, state } = useParams();  // Get URL parameters
   const [results, setResults] = useState([]);
-  const [sortedResults, setSortedResults] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({
     priceMin: '',
     priceMax: '',
     reviews: 0,
     roomType: '',
   });
-  const [sortOption, setSortOption] = useState('price-asc');
-  const [hasSearched, setHasSearched] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const resultsPerPage = 2;
-  const searchData = location.state || {};
+  const [sortOption, setSortOption] = useState('price-asc'); // State for sorting option
+  const resultsPerPage = 2; // Number of results per page
 
   useEffect(() => {
-    if (location.state) {
-      const filteredTrips = tripsData.filter(trip => {
-        const matchesDestination = trip.destination.toLowerCase().includes(searchData.destination.toLowerCase());
-        const matchesDates = trip.check_in_date <= searchData.checkInDate && trip.check_out_date >= searchData.checkOutDate;
-        const matchesGuests = trip.guests.adults >= searchData.adults && trip.guests.children >= searchData.children;
-        
-        return matchesDestination && matchesDates && matchesGuests;
-      });
+    if (city && state) {
+      const destination = `${city}, ${state}`.toLowerCase();
+      
+      // Filter hotels that match the destination
+      const filteredTrips = tripsData.filter(trip => 
+        trip.destination.toLowerCase().includes(destination)
+      );
 
       const hotels = filteredTrips.flatMap(trip => trip.hotels);
       setResults(hotels);
-      setSortedResults(hotels);
-      setHasSearched(true);
     }
-  }, [location.state]);
-
-  const handleSearch = (newSearchData) => {
-    navigate('/search', { state: newSearchData });
-  };
-
-  const handleSortChange = (e) => {
-    const sortValue = e.target.value;
-    setSortOption(sortValue);
-    let sorted = [...results];
-
-    if (sortValue === 'price-asc') {
-      sorted = sorted.sort((a, b) => a.room_cost_per_night - b.room_cost_per_night);
-    } else if (sortValue === 'price-desc') {
-      sorted = sorted.sort((a, b) => b.room_cost_per_night - a.room_cost_per_night);
-    } else if (sortValue === 'reviews-desc') {
-      sorted = sorted.sort((a, b) => b.reviews - a.reviews);
-    }
-
-    setSortedResults(sorted);
-  };
+  }, [city, state]);
 
   const handleFilterChange = (name, value) => {
-    setFilters(prev => ({ ...prev, [name]: value }));
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      [name]: value,
+    }));
   };
 
   const applyFilters = () => {
@@ -85,44 +61,64 @@ function HotelSearchPage() {
       filtered = filtered.filter(hotel => hotel.room_type === filters.roomType);
     }
 
-    setSortedResults(filtered);
-    setCurrentPage(1);
+    setResults(filtered);
+    setCurrentPage(1); // Reset to the first page after applying filters
   };
 
+  const handleSortChange = (e) => {
+    const sortValue = e.target.value;
+    setSortOption(sortValue);
+
+    let sortedResults = [...results];
+
+    if (sortValue === 'price-asc') {
+      sortedResults.sort((a, b) => a.room_cost_per_night - b.room_cost_per_night);
+    } else if (sortValue === 'price-desc') {
+      sortedResults.sort((a, b) => b.room_cost_per_night - a.room_cost_per_night);
+    } else if (sortValue === 'reviews-desc') {
+      sortedResults.sort((a, b) => b.reviews - a.reviews);
+    }
+
+    setResults(sortedResults);
+    setCurrentPage(1); // Reset to the first page after sorting
+  };
+
+  // Get the index of the last and first hotel on the current page
   const indexOfLastResult = currentPage * resultsPerPage;
   const indexOfFirstResult = indexOfLastResult - resultsPerPage;
-  const currentResults = sortedResults.slice(indexOfFirstResult, indexOfLastResult);
+  
+  // Get the hotels for the current page
+  const currentResults = results.slice(indexOfFirstResult, indexOfLastResult);
 
+  // Change page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="hotel-search-page-container">
-      <div className="navlink-container">
-        <NavLink to="/" className="navlink-home">Home</NavLink>
-      </div>
-
-      <div className="hotel-search-layout">
+      <div className="sidebar">
         <HotelSearchFilter 
           filters={filters} 
           onFilterChange={handleFilterChange} 
           onApplyFilters={applyFilters} 
         />
+      </div>
+
+      <div className="main-content">
+        <div className="sort-options-container">
+          <label htmlFor="sort-select">Sort by:</label>
+          <select id="sort-select" value={sortOption} onChange={handleSortChange} className="sort-select">
+            <option value="price-asc">Price (low to high)</option>
+            <option value="price-desc">Price (high to low)</option>
+            <option value="reviews-desc">Reviews (best to worst)</option>
+          </select>
+        </div>
 
         <div className="results-container">
-          <div className="sort-options-container">
-            <label htmlFor="sort-select">Sort by</label>
-            <select id="sort-select" value={sortOption} onChange={handleSortChange} className="sort-select">
-              <option value="price-asc">Price (low to high)</option>
-              <option value="price-desc">Price (high to low)</option>
-              <option value="reviews-desc">Reviews (best to worst)</option>
-            </select>
-          </div>
-
-          <ResultList results={currentResults} hasSearched={hasSearched} />
-
+          <ResultList results={currentResults} hasSearched={true} />
+          
           <Pagination
             resultsPerPage={resultsPerPage}
-            totalResults={sortedResults.length}
+            totalResults={results.length}
             paginate={paginate}
             currentPage={currentPage}
           />
