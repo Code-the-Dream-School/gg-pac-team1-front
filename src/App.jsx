@@ -115,7 +115,7 @@ function App() {
           element: <TripDescriptionLa /> 
         },
         {
-          path: 'search',
+          path: "/:state/:city",
           element: <HotelSearchPage />
         },
         {

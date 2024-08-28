@@ -1,3 +1,4 @@
+// Form Container
 .form-container {
   position: absolute;
   top: 50%;
@@ -6,27 +7,27 @@
   background: rgba(255, 255, 255, 0.5);
   padding: 10px;
   border-radius: 10px;
-  width: 90%; /* Cambia a un width más flexible */
-  max-width: 500px; /* Set a maximum for larger screens */
+  width: 90%; // Change to a more flexible width
+  max-width: 500px; // Set a maximum for larger screens
+
+  form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+  }
 }
 
-.form-container form {
-  display: flex;
-  flex-direction: column;
-}
-
-form {
-  margin-top: 1rem;
-}
-
+// Form Group
 .form-group {
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
 
-  i, svg, img {  /* Ajusta este selector según sea necesario */
-    transform: scale(2); /* Escala los íconos al doble de su tamaño */
-    margin-right: 0.5rem; /* Espacio entre el ícono y el texto */
+  i,
+  svg,
+  img { // Adjust this selector as needed
+    transform: scale(2); // Scale icons to double their size
+    margin-right: 0.5rem; // Space between the icon and the text
   }
 }
 
@@ -34,6 +35,7 @@ label {
   margin-right: 0.5rem;
 }
 
+// Input Styles
 input {
   &[type="text"],
   &[type="date"],
@@ -55,6 +57,7 @@ input {
   }
 }
 
+// Button Styles (This component is affecting all buttons)
 button {
   padding: 0.5rem 1rem;
   background-color: #007bff;
@@ -63,25 +66,36 @@ button {
   border-radius: 4px;
   cursor: pointer;
   width: 50%;
-  margin-left: 5em;
 
   &:hover {
     background-color: #0056b3;
   }
 }
 
-.error-text {
-  color: #dc3545;
-  font-size: 0.875rem;
+// Search Button Specific Styles
+.search-button {
+  display: block;
+  margin: 0 auto; // Center the button
 }
 
+// Error Text Styles
+.error-text {
+  color: red;
+  border-radius: 4px;
+  font-size: 12px;
+  width: 200px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+// Date Group Styles
 .date-group {
   display: flex;
   gap: 0.5rem;
 }
 
+// Radio Group Styles
 .radio-group {
   display: flex;
   gap: 1rem;
 }
-

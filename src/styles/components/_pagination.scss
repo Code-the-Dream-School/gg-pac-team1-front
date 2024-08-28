@@ -1,31 +1,36 @@
+// Pagination
 .pagination {
-    display: flex;
-    justify-content: center;
-    padding: 10px 0;
-    list-style-type: none; /* Removes bullet points (list style) */
-    margin: 0; /* Removes default margin */
-    padding: 0; /* Removes default padding */
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  list-style-type: none; // Removes bullet points (list style)
+  margin: 0; // Removes default margin
+  padding: 0; // Removes default padding
+}
+
+// Page Item
+.page-item {
+  margin: 0 5px;
+
+  &.active .page-link {
+    background-color: #0056b3;
   }
-  
-  .page-item {
-    margin: 0 5px;
-  
-    &.active .page-link {
-      background-color: #0056b3;
-    }
+}
+
+// Page Link
+.page-link {
+  display: flex; // Ensures that the content inside is aligned using flexbox
+  justify-content: center; // Centers content horizontally
+  align-items: center; // Centers content vertically
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none; // Removes underline
+
+  &:hover {
+    background-color: #0056b3;
   }
-  
-  .page-link {
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none; /* Removes underline */
-  
-    &:hover {
-      background-color: #0056b3;
-    }
-  }
-  
+}

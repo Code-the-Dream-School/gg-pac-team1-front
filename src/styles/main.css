@@ -1,4 +1,3 @@
-@charset "UTF-8";
 html {
   box-sizing: border-box;
   
@@ -258,16 +257,12 @@ p {
   background: rgba(255, 255, 255, 0.5);
   padding: 10px;
   border-radius: 10px;
-  width: 90%; /* Cambia a un width más flexible */
-  max-width: 500px; /* Set a maximum for larger screens */
+  width: 90%;
+  max-width: 500px;
 }
-
 .form-container form {
   display: flex;
   flex-direction: column;
-}
-
-form {
   margin-top: 1rem;
 }
 
@@ -276,9 +271,11 @@ form {
   display: flex;
   align-items: center;
 }
-.form-group i, .form-group svg, .form-group img { /* Ajusta este selector según sea necesario */
-  transform: scale(2); /* Escala los íconos al doble de su tamaño */
-  margin-right: 0.5rem; /* Espacio entre el ícono y el texto */
+.form-group i,
+.form-group svg,
+.form-group img {
+  transform: scale(2);
+  margin-right: 0.5rem;
 }
 
 label {
@@ -308,15 +305,23 @@ button {
   border-radius: 4px;
   cursor: pointer;
   width: 50%;
-  margin-left: 5em;
 }
 button:hover {
   background-color: #0056b3;
 }
 
+.search-button {
+  display: block;
+  margin: 0 auto;
+}
+
 .error-text {
-  color: #dc3545;
-  font-size: 0.875rem;
+  color: red;
+  border-radius: 4px;
+  font-size: 12px;
+  width: 200px;
+  margin-left: 10px;
+  font-weight: bold;
 }
 
 .date-group {
@@ -329,138 +334,68 @@ button:hover {
   gap: 1rem;
 }
 
-.hotel-search-page {
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
 .hotel-search-page-container {
-  width: 90%;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 5em;
-  margin-bottom: 1em;
+  display: flex;
+  width: 100%;
 }
 
-.navlink-home {
-  text-decoration: none;
-}
-.navlink-home:hover {
-  color: #5a6268;
-}
-
-/* Title for the summary section */
-.resume-title {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Summary list */
-.resume-list {
-  list-style: none;
-  padding-left: 0;
-  margin-bottom: 20px;
-}
-
-/* Summary list item */
-.resume-list-item {
-  padding: 10px;
-  border: 1px solid #ddd;
-  margin-bottom: 10px;
+.sidebar {
+  width: 400px;
   background-color: #f8f9fa;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  padding-left: 3em;
+  padding-top: 5em;
 }
 
-/* Layout for the hotel search */
-.hotel-search-layout {
-  display: flex;
-  gap: 20px;
-}
-
-/* Results container */
-.results {
+.main-content {
   flex: 1;
+  background-color: #f8f9fa;
+  padding: 2em 3em 1em 1em;
 }
 
-/* Container for sorting options */
 .sort-options-container {
-  margin-bottom: 20px;
   display: flex;
-  align-items: center; /* Vertically aligns the content */
-  justify-content: flex-end; /* Aligns the content to the right */
+  justify-content: flex-end;
+  align-items: center;
+  height: 2em;
 }
 .sort-options-container label {
-  margin-right: 10px; /* Space between the label and the select */
+  margin-right: 10px;
   font-weight: bold;
   font-size: 1rem;
 }
-
-/* Style for the sorting select */
-.sort-select {
+.sort-options-container .sort-select {
   padding: 8px;
   border-radius: 4px;
   border: 1px solid #ced4da;
-  width: auto; /* Adjusts the width to fit the content */
 }
 
 .results-container {
-  margin-top: 1em;
+  width: 100%;
+  margin-top: 20px;
 }
 
-/* General style for the filters container */
 .filters-container {
   padding: 20px;
-  background-color: #f8f9fa; /* Light background color */
+  background-color: #f8f9fa;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-  margin-bottom: 20px; /* Bottom space to separate from other elements */
-  width: 35%;
-  margin-top: 1em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-/* Style for each filter section */
 .filter-section {
-  margin-bottom: 20px; /* Space between filter sections */
+  margin-bottom: 20px;
 }
 .filter-section label {
   display: block;
-  margin-bottom: 8px; /* Space between the label and the input/select */
+  margin-bottom: 8px;
   font-weight: bold;
-  color: #333; /* Text color */
+  color: #333;
 }
 
-/* Style for the filter inputs */
 .filter-input,
 .filter-select {
-  width: 100%; /* Make inputs take up the full width */
-  padding: 10px; /* Internal padding */
-  border-radius: 4px; /* Rounded borders */
-  border: 1px solid #ced4da; /* Border color */
-  box-sizing: border-box; /* Ensure padding is included in the width */
-  font-size: 1rem; /* Font size */
-}
-
-/* Style for the apply filters button */
-.apply-filters-btn {
-  width: 100%; /* Make the button take up the full width */
-  padding: 12px;
-  background-color: #007bff; /* Blue background color */
-  color: #fff; /* White text color */
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem; /* Font size */
-  cursor: pointer; /* Change cursor on hover */
-  transition: background-color 0.3s; /* Smooth transition for color change */
-}
-.apply-filters-btn:hover {
-  background-color: #0056b3; /* Darker color on hover */
-}
-
-/* Specific style for the price inputs */
-.price-input {
-  min-width: 50%; /* Adjust width to fit numbers like "999" */
-  width: 100%; /* Allow it to adjust automatically within the container */
+  width: 100%;
   padding: 10px;
   border-radius: 4px;
   border: 1px solid #ced4da;
@@ -468,7 +403,31 @@ button:hover {
   font-size: 1rem;
 }
 
-/* Apply filters button */
+.apply-filters-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.apply-filters-btn:hover {
+  background-color: #0056b3;
+}
+
+.price-input {
+  min-width: 50%;
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ced4da;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
 .btn-apply-filters {
   width: 100%;
   padding: 10px;
@@ -482,109 +441,94 @@ button:hover {
   background-color: #0056b3;
 }
 
-/* Style for the price inputs */
 .filter-input {
-  width: 100%; /* Ensure the input takes up the full available width */
+  width: 100%;
   padding: 10px;
   border-radius: 4px;
   border: 1px solid #ced4da;
   box-sizing: border-box;
   font-size: 1rem;
-  max-width: 120px; /* Set a maximum width for longer inputs */
+  max-width: 120px;
 }
 
-/* Estilos personalizados para el componente HotelSearchResultCard */
 .hotel-search-result-card {
   display: flex;
   flex-direction: row;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   padding: 1rem;
   background-color: #ffffff;
   border-radius: 0.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-.img-container {
+.hotel-search-result-card .img-container {
   width: 30%;
   overflow: hidden;
   border-radius: 0.5rem;
 }
-.img-container img {
+.hotel-search-result-card .img-container img {
   width: 100%;
   height: auto;
   -o-object-fit: cover;
      object-fit: cover;
 }
-
-.card-body {
+.hotel-search-result-card .card-body {
   padding-left: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   flex: 1;
 }
-
-.card-title {
+.hotel-search-result-card .card-title {
   font-size: 1.25rem;
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
-
-.card-text {
+.hotel-search-result-card .card-text {
   margin-bottom: 0.75rem;
   color: #666;
 }
-
-.amenities {
+.hotel-search-result-card .amenities {
   margin-bottom: 0.75rem;
   display: flex;
   flex-wrap: wrap;
 }
-.amenities .icon {
+.hotel-search-result-card .amenities .icon {
   margin-right: 0.5rem;
-  color: #007bff; /* Color azul para los íconos */
+  color: #007bff;
 }
-
-.footer {
+.hotel-search-result-card .footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 0.5rem;
 }
-
-.reviews {
+.hotel-search-result-card .reviews {
   display: flex;
   align-items: center;
   font-weight: bold;
 }
-.reviews .star-icon {
+.hotel-search-result-card .reviews .star-icon {
   margin-right: 0.25rem;
 }
-
-.review-success {
-  color: #28a745; /* Verde */
+.hotel-search-result-card .review-success {
+  color: #28a745;
 }
-
-.review-warning {
-  color: #ffc107; /* Amarillo */
+.hotel-search-result-card .review-warning {
+  color: #ffc107;
 }
-
-.review-danger {
-  color: #dc3545; /* Rojo */
+.hotel-search-result-card .review-danger {
+  color: #dc3545;
 }
-
-.price {
+.hotel-search-result-card .price {
   font-size: 1.25rem;
   font-weight: bold;
   color: #333;
 }
-
-.perNight {
+.hotel-search-result-card .perNight {
   font-size: 0.85rem;
   color: #666;
 }
-
-.details-link {
+.hotel-search-result-card .details-link {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
@@ -594,7 +538,7 @@ button:hover {
   text-decoration: none;
   border-radius: 0.25rem;
 }
-.details-link:hover {
+.hotel-search-result-card .details-link:hover {
   background-color: #0056b3;
 }
 
@@ -602,9 +546,9 @@ button:hover {
   display: flex;
   justify-content: center;
   padding: 10px 0;
-  list-style-type: none; /* Removes bullet points (list style) */
-  margin: 0; /* Removes default margin */
-  padding: 0; /* Removes default padding */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 .page-item {
@@ -615,13 +559,16 @@ button:hover {
 }
 
 .page-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 8px 12px;
   background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  text-decoration: none; /* Removes underline */
+  text-decoration: none;
 }
 .page-link:hover {
   background-color: #0056b3;
