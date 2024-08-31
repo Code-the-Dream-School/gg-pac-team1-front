@@ -9,11 +9,49 @@ const tripsData = [
         "id": 1,
         "name": "The Palms Hotel & Spa",
         "address": "3025 Collins Ave, Miami Beach, FL 33140",
-        "image": "https://via.placeholder.com/150",
-        "galleryImages": [
-          { "url": "https://via.placeholder.com/150", "description": "Vista de la piscina" },
-          { "url": "https://via.placeholder.com/150", "description": "Habitación Deluxe" }
-        ],
+        "image": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
+          "galleryImages": [
+            {
+              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
+              "description": "Vista de la piscina"
+            },
+            {
+              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
+              "description": "Habitación Deluxe"
+            },
+            {
+              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
+              "description": "Restaurante del hotel"
+            },
+            {
+              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
+              "description": "Vista al mar desde la habitación"
+            },
+            {
+              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
+              "description": "Lobby del hotel"
+            },
+            {
+              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
+              "description": "Spa del hotel"
+            },
+            {
+              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
+              "description": "Área de juegos"
+            },
+            {
+              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
+              "description": "Centro de fitness"
+            },
+            {
+              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
+              "description": "Salón de eventos"
+            },
+            {
+              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
+              "description": "Cafetería del hotel"
+            }
+          ],
         "description": "Un oasis tropical con servicios de primera clase y vistas impresionantes.",
         "room_cost_per_night": 250,
         "pool": true,
