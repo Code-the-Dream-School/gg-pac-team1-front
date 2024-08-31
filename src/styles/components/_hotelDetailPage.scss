@@ -1,0 +1,156 @@
+.hotel-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hotel-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #343a40;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .hotel-detail-img-container {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  .hotel-info {
+    margin-bottom: 20px;
+  
+    .hotel-address {
+      font-size: 1.25rem;
+      color: #6c757d;
+      margin-bottom: 10px;
+    }
+  
+    .hotel-price {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+  
+    .hotel-description {
+      font-size: 1rem;
+      color: #343a40;
+      margin-bottom: 20px;
+    }
+  
+    .hotel-check-in-out {
+      font-size: 1rem;
+      color: #6c757d;
+      margin-bottom: 20px;
+    }
+  }
+  
+  .hotel-facilities,
+  .hotel-room-types,
+  .hotel-pet-policy {
+    margin-bottom: 20px;
+  
+    h3 {
+      font-size: 1.5rem;
+      color: #343a40;
+      margin-bottom: 10px;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        margin-bottom: 10px;
+      }
+    }
+  }
+  
+  .children-selection {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  
+    p {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #343a40;
+    }
+  
+    label {
+      margin-right: 20px;
+      font-size: 1rem;
+      color: #343a40;
+    }
+  
+    .children-count {
+      margin-top: 10px;
+  
+      label {
+        font-size: 1rem;
+        color: #343a40;
+      }
+  
+      input[type="number"] {
+        margin-left: 10px;
+        width: 60px;
+        padding: 5px;
+      }
+    }
+  }
+  
+  .extra-options {
+    margin-bottom: 20px;
+  
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      color: #343a40;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+  
+      li {
+        margin-bottom: 10px;
+  
+        input[type="checkbox"] {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+  
+  .reservation-button-container {
+    text-align: center;
+  
+    .btn-primary {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #ffffff;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+  
