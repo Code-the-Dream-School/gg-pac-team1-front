@@ -6,74 +6,84 @@ const HotelDetailPage = () => {
       {/* Título del Hotel */}
       <h1 className="hotel-title">Hotel Name</h1>
 
-      {/* Galería de Imágenes */}
-      <div className="hotel-gallery">
-        <img src="path-to-image1.jpg" alt="Hotel Image 1" className="hotel-gallery-image" />
-        <img src="path-to-image2.jpg" alt="Hotel Image 2" className="hotel-gallery-image" />
+      {/* Imagen Destacada del Hotel */}
+      <div className="hotel-detail-img-container">
+        <img src="path-to-image.jpg" alt="Hotel Image" />
       </div>
 
       {/* Información del Hotel */}
       <div className="hotel-info">
         <p className="hotel-address">Hotel Address</p>
-        {/* Otros detalles del hotel */}
+        <p className="hotel-price">$200 per night</p>
+        <p className="hotel-description">
+          This is a description of the hotel. It includes details about the hotel's
+          features and amenities.
+        </p>
+        <p className="hotel-check-in-out">
+          Check-in: 3:00 PM | Check-out: 11:00 AM
+        </p>
       </div>
 
-      {/* Servicios del Hotel */}
+      {/* Instalaciones del Hotel */}
       <div className="hotel-facilities">
         <h3 className="facilities-title">Facilities</h3>
         <ul className="facilities-list">
-          <li className="facility-item">Facility 1</li>
-          <li className="facility-item">Facility 2</li>
-          {/* Más instalaciones */}
+          <li className="facility-item">Free Wi-Fi</li>
+          <li className="facility-item">Swimming Pool</li>
+          <li className="facility-item">Free Parking</li>
         </ul>
       </div>
 
       {/* Tipos de Habitación */}
-      <div className="room-types">
+      <div className="hotel-room-types">
         <h3 className="room-types-title">Room Types</h3>
-        <ul className="room-types-list">
-          <li className="room-type-item">Room Type 1</li>
-          <li className="room-type-item">Room Type 2</li>
+        <ul>
+          <li>Single Room</li>
+          <li>Double Room</li>
+          <li>Suite</li>
         </ul>
       </div>
 
-      {/* Políticas del Hotel */}
-      <div className="hotel-policies">
-        <h3 className="policies-title">Policies</h3>
-        <ul className="policies-list">
-          <li className="policy-item">Policy 1</li>
-          <li className="policy-item">Policy 2</li>
-        </ul>
-      </div>
-
-      {/* Calificación del Hotel */}
-      <div className="hotel-rating">
-        <h3 className="rating-title">Rating: 4.5/5</h3>
+      {/* Políticas de Mascotas */}
+      <div className="hotel-pet-policy">
+        <h3>Pet Policy</h3>
+        <p>Pets are allowed on request. Charges may apply.</p>
       </div>
 
       {/* Selección de Niños */}
       <div className="children-selection">
-        <label className="children-label">
+        <p>Children and Extra Beds</p>
+        <label>
           <input type="checkbox" className="children-checkbox" />
-          ¿Viaja con niños?
+          Include children
         </label>
-        <input type="number" className="children-count-input" />
+        <div className="children-count">
+          <label>Number of children:</label>
+          <input type="number" min="0" max="5" />
+        </div>
       </div>
 
       {/* Opciones Extra */}
       <div className="extra-options">
-        <h3 className="extras-title">Extras</h3>
-        <ul className="extras-list">
-          <li className="extra-item">Extra 1</li>
-          <li className="extra-item">Extra 2</li>
+        <h3>Extra Options</h3>
+        <ul>
+          <li>
+            <input type="checkbox" />
+            Breakfast ($20)
+          </li>
+          <li>
+            <input type="checkbox" />
+            Airport Shuttle ($50)
+          </li>
         </ul>
       </div>
 
       {/* Botón de Reservación */}
       <div className="reservation-button-container">
-        <button className="reservation-button">Make a Reservation</button>
+        <button className="btn-primary">Make a Reservation</button>
       </div>
     </div>
+
 
   )
 }
