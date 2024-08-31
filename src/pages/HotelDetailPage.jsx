@@ -1,10 +1,21 @@
-import React from 'react'
+import { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import tripsData from '../tripsData';
 
-const HotelDetailPage = () => {
+function HotelDetailPage() {
+  const { id } = useParams();
+  const hotel = tripsData.flatMap(trip => trip.hotels).find(h => h.id === parseInt(id));
+
+  // const [hasChildren, setHasChildren] = useState(false);
+  // const [childrenCount, setChildrenCount] = useState(0);
+
+  if (!hotel) {
+    return <div>Hotel no encontrado</div>;
+  }
   return (
     <div className="hotel-detail-container">
       {/* Título del Hotel */}
-      <h1 className="hotel-title">Hotel Name</h1>
+      <h1 className="hotel-title">{hotel.name}</h1>
 
       {/* Imagen Destacada del Hotel */}
       <div className="hotel-detail-img-container">
