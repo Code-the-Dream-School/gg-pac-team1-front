@@ -10,19 +10,19 @@ function HotelDetailPage() {
   // const [childrenCount, setChildrenCount] = useState(0);
 
   if (!hotel) {
-    return <div>Hotel no encontrado</div>;
+    return <div>Hotel not found</div>;
   }
   return (
     <div className="hotel-detail-container">
-      {/* Título del Hotel */}
+      {/* Hotel Title */}
       <h1 className="hotel-title">{hotel.name}</h1>
 
-      {/* Imagen Destacada del Hotel */}
+      {/* Hotel Featured Image */}
       <div className="hotel-detail-img-container">
         <img src="path-to-image.jpg" alt="Hotel Image" />
       </div>
 
-      {/* Información del Hotel */}
+      {/* Hotel Information */}
       <div className="hotel-info">
         <p className="hotel-address">Hotel Address</p>
         <p className="hotel-price">$200 per night</p>
@@ -35,7 +35,7 @@ function HotelDetailPage() {
         </p>
       </div>
 
-      {/* Instalaciones del Hotel */}
+      {/* Hotel Facilities */}
       <div className="hotel-facilities">
         <h3 className="facilities-title">Facilities</h3>
         <ul className="facilities-list">
@@ -45,7 +45,7 @@ function HotelDetailPage() {
         </ul>
       </div>
 
-      {/* Tipos de Habitación */}
+      {/* Room Types */}
       <div className="hotel-room-types">
         <h3 className="room-types-title">Room Types</h3>
         <ul>
@@ -55,13 +55,13 @@ function HotelDetailPage() {
         </ul>
       </div>
 
-      {/* Políticas de Mascotas */}
+      {/* Pet Policy */}
       <div className="hotel-pet-policy">
         <h3>Pet Policy</h3>
         <p>Pets are allowed on request. Charges may apply.</p>
       </div>
 
-      {/* Selección de Niños */}
+      {/* Children Selection */}
       <div className="children-selection">
         <p>Children and Extra Beds</p>
         <label>
@@ -74,7 +74,7 @@ function HotelDetailPage() {
         </div>
       </div>
 
-      {/* Opciones Extra */}
+      {/* Extra Options */}
       <div className="extra-options">
         <h3>Extra Options</h3>
         <ul>
@@ -89,14 +89,12 @@ function HotelDetailPage() {
         </ul>
       </div>
 
-      {/* Botón de Reservación */}
+      {/* Reservation Button */}
       <div className="reservation-button-container">
         <button className="btn-primary">Make a Reservation</button>
       </div>
     </div>
-
-
   )
 }
 
-export default HotelDetailPage
+export default HotelDetailPage;
