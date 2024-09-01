@@ -1,55 +1,105 @@
 const tripsData = [
   {
     "destination": "Orlando, Florida",
-    "check_in_date": "2024-09-01",
-    "check_out_date": "2024-09-05",
     "guests": { "adults": 2, "children": 1 },
     "hotels": [
       {
         "id": 1,
         "name": "The Palms Hotel & Spa",
         "address": "3025 Collins Ave, Miami Beach, FL 33140",
-        "image": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
+        "image": "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/9ac9ac8c.jpg?impolicy=resizecrop&rw=1200&ra=fit",
           "galleryImages": [
             {
-              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
-              "description": "Vista de la piscina"
+              "url": "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/9ac9ac8c.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              "description": "Image 1"
             },
             {
-              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
-              "description": "Habitación Deluxe"
+              "url": "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/98c0f3da.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              "description": "Image 2"
             },
             {
-              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
-              "description": "Restaurante del hotel"
+              "url": "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/f8185ba9.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              "description": "Image 3"
             },
             {
-              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
-              "description": "Vista al mar desde la habitación"
+              "url": "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/ea03bbe9.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              "description": "Image 4"
             },
             {
-              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
-              "description": "Lobby del hotel"
+              "url": "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/592ff049.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              "description": "Image 5"
             },
             {
-              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
-              "description": "Spa del hotel"
+              "url": "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/365708e8.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              "description": "Image 6"
             },
             {
-              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
-              "description": "Área de juegos"
+              "url": "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/9c80a84b.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              "description": "Image 7"
             },
             {
-              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
-              "description": "Centro de fitness"
+              "url": "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/2a2d0835.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              "description": "Image 8"
             },
             {
-              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
-              "description": "Salón de eventos"
+              "url": "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/7941842f.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              "description": "Image 9"
             },
             {
-              "url": "https://www.ca.kayak.com/news/wp-content/uploads/sites/186/2023/08/THEME_HOTEL_SIGN_FIVE_STARS_FACADE_BUILDING_GettyImages-1320779330-3.jpg",
-              "description": "Cafetería del hotel"
+              "url": "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/b8406ddf.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              "description": "Image 10"
+            },
+            {
+              url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/96c4b3b0.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              description: "Sunny Getaway"
+            },
+            {
+              url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/63f42055.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              description: "Cozy Retreat"
+            },
+            {
+              url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/6de998e9.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              description: "Lush Escape"
+            },
+            {
+              url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/9533ac11.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              description: "Urban Oasis"
+            },
+            {
+              url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/c7b5ec9e.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              description: "Beachfront Paradise"
+            },
+            {
+              url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/3f0c3a3f.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              description: "Mountain Hideaway"
+            },
+            {
+              url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/6ac8eab7.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              description: "Serene Vista"
+            },
+            {
+              url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/662f9394.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              description: "Tropical Escape"
+            },
+            {
+              url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/816d3c86.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              description: "Lakeside Retreat"
+            },
+            {
+              url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/14acff0b.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              description: "Desert Adventure"
+            },
+            {
+              url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/e64ec609.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              description: "Countryside Getaway"
+            },
+            {
+              url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/9cc1770c.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              description: "Historic Haven"
+            },
+            {
+              url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/a92154a5.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+              description: "Riverside Escape"
             }
           ],
         "description": "Un oasis tropical con servicios de primera clase y vistas impresionantes.",
@@ -102,10 +152,76 @@ const tripsData = [
         "id": 7,
         "name": "Walt Disney World Resort",
         "address": "Lake Buena Vista, FL 32830",
-        "image": "https://via.placeholder.com/150",
+        "image": "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/e68a2040.jpg?impolicy=resizecrop&rw=1200&ra=fit",
         "galleryImages": [
-          { "url": "https://via.placeholder.com/150", "description": "Parque temático" },
-          { "url": "https://via.placeholder.com/150", "description": "Habitación familiar" }
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/3e74ad68.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Sunset Serenity"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/ef1e5b0d.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Tranquil Oasis"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/e68a2040.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Peaceful Retreat"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/60c5847d.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Modern Escape"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/acf45d1e.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Urban Chic"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/46ddb472.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Luxury Stay"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/4e234698.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Elegant Ambiance"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/9af763a2.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Rooftop Views"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/aecd12e8.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Coastal Comfort"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/095025b5.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Seaside Escape"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/3ce899b4.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Garden Tranquility"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/4a312f4a.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Vintage Charm"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/60f1c603.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Classic Elegance"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/ef691998.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Urban Retreat"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/1fb49b1d.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Modern Marvel"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/5c880271.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Quiet Hideaway"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/ec469698.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Sophisticated Stay"
+          }
         ],
         "description": "Experiencia mágica para toda la familia con acceso a parques temáticos.",
         "room_cost_per_night": 300,
@@ -144,10 +260,88 @@ const tripsData = [
         "id": 8,
         "name": "Universal's Cabana Bay Beach Resort",
         "address": "6550 Adventure Way, Orlando, FL 32819",
-        "image": "https://via.placeholder.com/150",
+        "image": "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/96c4b3b0.jpg?impolicy=resizecrop&rw=1200&ra=fit",
         "galleryImages": [
-          { "url": "https://via.placeholder.com/150", "description": "Vista de la piscina" },
-          { "url": "https://via.placeholder.com/150", "description": "Habitación temática" }
+          {
+            url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/96c4b3b0.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Resort Lobby Area"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/63f42055.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Deluxe Poolside Room"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/6de998e9.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Family Suite - Living Area"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/9533ac11.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Poolside Lounge Area"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/c7b5ec9e.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Cabana Bay Courtyard"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/3f0c3a3f.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Poolside Dining"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/6ac8eab7.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Resort Gym Facilities"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/662f9394.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Lobby Lounge Area"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/816d3c86.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Standard Room"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/14acff0b.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Courtyard View"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/e64ec609.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Poolside Cabanas"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/9cc1770c.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Resort Dining Area"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/a92154a5.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Volcano Bay View Suite"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/1000000/10000/4800/4745/3e74ad68.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Family Suite Interior"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/ef1e5b0d.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Poolside Cabana"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/e68a2040.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Beachside Lounge"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/60c5847d.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Room with a View"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/acf45d1e.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Cabana Room"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/46ddb472.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Exterior at Dusk"
+          },
+          {
+            url: "https://images.trvl-media.com/lodging/8000000/7380000/7374500/7374428/4e234698.jpg?impolicy=resizecrop&rw=1200&ra=fit",
+            description: "Lobby Entrance"
+          }
         ],
         "description": "Resort temático con acceso a Universal Studios.",
         "room_cost_per_night": 180,
