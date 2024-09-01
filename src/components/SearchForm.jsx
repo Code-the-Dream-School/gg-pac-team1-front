@@ -161,7 +161,10 @@ function SearchForm({ destinationPlaceholder = "Going to", searchButtonLabel = "
         <input 
           type="number" 
           value={adults}
-          onChange={(e) => setAdults(e.target.value)} 
+          onChange={(e) => {
+            setAdults(e.target.value); 
+            localStorage.setItem('adults', e.target.value); //localStorage adults
+          }} 
           min="1" 
           required 
         />
