@@ -12,7 +12,7 @@ function ChildrenSelector({ hasChildren, children, handleHasChildrenChange, hand
 
   return (
     <div className="children-selector">
-      <p>Children and Extra Beds</p>
+      <h3>Children and Extra Beds</h3>
       <label>
         <input
           type="checkbox"
