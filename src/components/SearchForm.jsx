@@ -67,6 +67,9 @@ function SearchForm({ destinationPlaceholder = "Going to", searchButtonLabel = "
       setCheckInDate(date);
       setShowCheckOut(true);
       setErrors(prev => ({ ...prev, checkInDate: '' }));
+
+      localStorage.setItem('checkInDate', date); //local storage in
+
     } else {
       setErrors(prev => ({ ...prev, checkInDate: 'Must be today or later.' }));
     }
@@ -78,6 +81,10 @@ function SearchForm({ destinationPlaceholder = "Going to", searchButtonLabel = "
     if (date > checkInDate) {
       setCheckOutDate(date);
       setErrors(prev => ({ ...prev, checkOutDate: '' }));
+
+       //check-out localStorage
+       localStorage.setItem('checkOutDate', date);
+
     } else {
       setErrors(prev => ({ ...prev, checkOutDate: 'Must be after the check-in date.' }));
     }
