@@ -1,9 +1,17 @@
-import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const ReservationButton = () => {
-  return (
-    <div>ReservationButton</div>
-  )
-}
+  const navigate = useNavigate();
 
-export default ReservationButton
+  const handleReservationClick = () => {
+    navigate('/reservation-review'); 
+  };
+
+  return (
+    <button onClick={handleReservationClick} className="btn-primary">
+      Make a Reservation
+    </button>
+  );
+};
+
+export default ReservationButton;
