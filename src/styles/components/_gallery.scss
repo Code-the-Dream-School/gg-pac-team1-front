@@ -1,0 +1,88 @@
+.gallery-container,
+.main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-row {
+  display: flex;
+  width: 100%;
+}
+
+.top-row-left, 
+.top-row-right {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.top-row-right {
+  .small-image {
+    width: 50%; // Each image takes up 50% of the top-row-right
+  }
+}
+
+.large-image,
+.bottom-row {
+  .bottom-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover; // Ensures the image covers the container while maintaining its aspect ratio
+    aspect-ratio: 16/9; // Forces a 16/9 aspect ratio for horizontal images
+    cursor: pointer;
+  }
+}
+
+.bottom-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  
+  .bottom-image-container {
+    width: 12.5%; // Each image takes up 12.5% of the bottom-row
+    position: relative; // Necessary for the positioning of the link
+    overflow: hidden; // Prevents content from overflowing
+  }
+}
+
+.view-more {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
+// Responsiveness for smaller screens
+@media (max-width: 768px) {
+  .top-row {
+    flex-direction: column;
+  }
+
+  .top-row-left, 
+  .top-row-right, 
+  .bottom-row {
+    width: 100%; // Each container takes up 100% of the width
+  }
+
+  .top-row-right {
+    .small-image,
+    .bottom-image-container {
+      width: 100%; // Images take up 100% of the width in their container
+    }
+  }
+}

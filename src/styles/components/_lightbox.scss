@@ -1,0 +1,72 @@
+/* lightbox.scss */
+
+.lightbox {
+  position: fixed !important;
+  z-index: 999999 !important; /* Asegúrate de que tenga un z-index alto */
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.lightbox-content {
+  max-width: 90% !important;
+  max-height: 80% !important;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Botones y cerrador */
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute !important;
+  color: white !important;
+  cursor: pointer !important;
+  z-index: 1000000 !important; /* Prioridad alta para botones */
+  background-color: transparent !important;
+  border: none !important;
+  font-size: 40px !important;
+  user-select: none !important;
+  transition: color 0.3s ease !important;
+}
+
+.lightbox-close {
+  top: 20px !important;
+  right: 30px !important;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.lightbox-prev {
+  left: 0px !important;
+}
+
+.lightbox-next {
+  right: 10px !important;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover,
+.lightbox-close:hover {
+  color: #ccc !important;
+}
+
+/* Contador de imágenes */
+.lightbox-counter {
+  position: absolute !important;
+  bottom: 20px !important;
+  right: 30px !important;
+  font-size: 16px !important;
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  padding: 5px 10px !important;
+  border-radius: 5px !important;
+}
