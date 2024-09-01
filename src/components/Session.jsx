@@ -1,30 +1,29 @@
-import axios from 'axios';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
 export const SessionContext = createContext(null);
 
-const Session = ({ authURL, children }) => {
+const Session = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      axios.get(`${authURL}/current`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then(response => {
-          setCurrentUser(response.data.user);
-        })
-        .catch(error => {
-          console.error('Error restoring session:', error);
-          handleLogout();
-        });
+    // Obtén el token y los datos del usuario de sessionStorage
+    const token = sessionStorage.getItem('token');
+    const storedUser = JSON.parse(sessionStorage.getItem('user'));
+
+    if (token && storedUser) {
+      // Si hay un token y un usuario almacenado, establece el usuario actual
+      setCurrentUser(storedUser);
+    } else {
+      // Si no, asegúrate de que currentUser sea null
+      setCurrentUser(null);
     }
-  }, [authURL]);
+  }, []);
 
   const handleLogout = () => {
+    // Limpia la información de la sesión
     setCurrentUser(null);
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
   };
 
   return (
