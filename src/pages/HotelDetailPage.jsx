@@ -7,6 +7,7 @@ import HoteFacilities from '../components/HotelFacilities';
 import RoomTypesList from '../components/RoomTypesList';
 import HotelPolicies from '../components/HotelPolicies';
 import PetPolicy from '../components/PetPolicy';
+import HotelRating from '../components/HotelRating';
 
 
 function HotelDetailPage() {
@@ -52,6 +53,11 @@ function HotelDetailPage() {
       {/* Pet Policy */}
       <div className="hotel-pet-policy">
         <PetPolicy hotel={hotel}/>
+      </div>
+
+      {/* Hotel Rating */}     
+      <div className="hotel-rating">
+        <HotelRating rating={hotel.rating} />
       </div>
 
       {/* Children Selection */}
