@@ -25,6 +25,7 @@ import TripDescriptionSf from './components/TripSection/TripDescriptionSf';
 import Wellness from './components/Wellness';
 import HotelSearchPage from './pages/HotelSearchPage';
 import HotelDetailPage from './pages/HotelDetailPage';
+import ReservationReviewPage from './pages/ReservationReviewPage';
 import Search from './pages/Search';
 
 const URL = 'http://localhost:8000/api/v1/users';
@@ -122,6 +123,10 @@ function App() {
         {
           path: 'hotel/:id',
           element: <HotelDetailPage />
+        },
+        {
+          path: 'reservation-review',
+          element: <ReservationReviewPage />
         },
         {
           path: 'trip-description-chicago',
