@@ -1,7 +1,7 @@
 import Image from './Image';
 
 const ImageGrid = ({ images, openLightbox, totalImages }) => {
-  // Verifica que images sea un array y tenga al menos un elemento
+  // Verify that images is an array and has at least one element
   if (!images || images.length === 0) {
     return <div>No images available</div>;
   }
@@ -22,7 +22,7 @@ const ImageGrid = ({ images, openLightbox, totalImages }) => {
         <div className="top-row-right">
           {images.slice(1, 5).map((image, index) => (
             <Image 
-              key={index + 1}  // Cambiado para evitar problemas de claves duplicadas
+              key={index + 1}  // Changed to avoid duplicate key issues
               src={image.url} 
               alt={image.description} 
               className="small-image" 
@@ -49,7 +49,7 @@ const ImageGrid = ({ images, openLightbox, totalImages }) => {
                   openLightbox(13);
                 }}
               >
-                {`+${totalImages - 13} more`}
+                {`+${totalImages - 9} more`}
               </a>
             )}
           </div>

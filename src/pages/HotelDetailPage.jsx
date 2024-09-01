@@ -19,7 +19,7 @@ function HotelDetailPage() {
       <h1 className="hotel-title">{hotel.name}</h1>
 
       {/* Hotel Featured Image */}
-      <div className="hotel-detail-img-container">
+      <div className="gallery-container">
         <Gallery />
       </div>
 

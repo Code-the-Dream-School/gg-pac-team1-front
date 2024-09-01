@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import tripsData from '../tripsData'; // Asegúrate de que la ruta sea correcta
+import tripsData from '../tripsData'; 
 import ImageGrid from './GalleryGrid.jsx';
 import Lightbox from './Lightbox.jsx';
 
 const Gallery = () => {
-  const { id } = useParams(); // Captura el id de la URL
+  const { id } = useParams(); // Captures the id from the URL
   const [hotel, setHotel] = useState(null);
   const [images, setImages] = useState([]);
   const [lightbox, setLightbox] = useState({ isOpen: false, index: 0, image: null });
 
-  // Coloca aquí el useEffect que revisa los datos del hotel
-  useEffect(() => {
+   useEffect(() => {
     console.log('Captured id from URL:', id);
 
     if (!tripsData || tripsData.length === 0) {
@@ -22,11 +21,11 @@ const Gallery = () => {
     let foundHotel = null;
 
     for (let city of tripsData) {
-      console.log(`Checking city: ${city.destination}`); // Verifica cada ciudad
+      console.log(`Checking city: ${city.destination}`); // Checks city
 
       const selectedHotel = city.hotels.find(hotel => hotel.id === parseInt(id));
       if (selectedHotel) {
-        console.log('Found hotel:', selectedHotel); // Verifica si el hotel fue encontrado
+        console.log('Found hotel:', selectedHotel); // Verifies if the hotel was found
         foundHotel = selectedHotel;
         break; 
       }
@@ -70,7 +69,7 @@ const Gallery = () => {
   }
 
   return (
-    <div className="gallery-container">
+    <>
       <ImageGrid images={images} openLightbox={openLightbox} totalImages={images.length} />
 
       {lightbox.isOpen && (
@@ -82,7 +81,7 @@ const Gallery = () => {
           totalImages={images.length}
         />
       )}
-    </div>
+    </>
   );
 };
 
