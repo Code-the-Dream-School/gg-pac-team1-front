@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import tripsData from '../tripsData';
+import Gallery from '../gallery/Gallery';
 
 function HotelDetailPage() {
   const { id } = useParams();
@@ -19,7 +20,7 @@ function HotelDetailPage() {
 
       {/* Hotel Featured Image */}
       <div className="hotel-detail-img-container">
-        <img src="path-to-image.jpg" alt="Hotel Image" />
+        <Gallery />
       </div>
 
       {/* Hotel Information */}
