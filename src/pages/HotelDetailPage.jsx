@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import tripsData from '../tripsData';
 import Gallery from '../gallery/Gallery';
 import HotelInfo from '../components/HotelInfo';
+import HoteFacilities from '../components/HotelFacilities';
 
 
 function HotelDetailPage() {
@@ -32,12 +33,7 @@ function HotelDetailPage() {
 
       {/* Hotel Facilities */}
       <div className="hotel-facilities">
-        <h3 className="facilities-title">Facilities</h3>
-        <ul className="facilities-list">
-          <li className="facility-item">Free Wi-Fi</li>
-          <li className="facility-item">Swimming Pool</li>
-          <li className="facility-item">Free Parking</li>
-        </ul>
+        <HoteFacilities hotel={hotel} />
       </div>
 
       {/* Room Types */}
