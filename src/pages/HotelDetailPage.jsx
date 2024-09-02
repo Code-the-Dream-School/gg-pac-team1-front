@@ -5,6 +5,7 @@ import Gallery from '../gallery/Gallery';
 import HotelInfo from '../components/HotelInfo';
 import HoteFacilities from '../components/HotelFacilities';
 import RoomTypesList from '../components/RoomTypesList';
+import HotelPolicies from '../components/HotelPolicies';
 
 
 function HotelDetailPage() {
@@ -40,6 +41,11 @@ function HotelDetailPage() {
       {/* Room Types */}
       <div className="hotel-room-types">
         <RoomTypesList roomTypes={hotel.room_types}/>
+      </div>
+
+      {/* Hotel Policy */}
+      <div className="hotel-policies">
+        <HotelPolicies hotel={hotel}/>
       </div>
 
       {/* Pet Policy */}
