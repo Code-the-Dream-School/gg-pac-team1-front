@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import tripsData from '../tripsData';
-import ReservationSummary from './ReservationSummary';
+import HotelInfo from '../components/HotelInfo';
+import ReservationSummary from '../components/ReservationSummary';
 
 const ReservationReviewPage = () => {
-  const [hotelInfo, setHotelInfo] = useState({});
+  const [hotel, setHotel] = useState(null);
   const [roomCostPerNight, setRoomCostPerNight] = useState(0);
   const [totalNights, setTotalNights] = useState(0);
   const [reservationNumber, setReservationNumber] = useState('N/A');
@@ -28,11 +29,14 @@ const ReservationReviewPage = () => {
     if (hotelId) {
       currentHotel = tripsData.flatMap(trip => trip.hotels).find(h => h.id === parseInt(hotelId));
       if (currentHotel) {
-        setHotelInfo({
+        setHotel({
           name: currentHotel.name,
           address: currentHotel.address || 'Address not available',
           category: currentHotel.category || 'Category not available',
-          description: currentHotel.description || 'Description not available'
+          description: currentHotel.description || 'Description not available',
+          room_cost_per_night: currentHotel.room_cost_per_night,
+          check_in_time: currentHotel.check_in_time,
+          check_out_time: currentHotel.check_out_time
         });
         setRoomCostPerNight(currentHotel.room_cost_per_night || 0);
       }
@@ -63,15 +67,21 @@ const ReservationReviewPage = () => {
   return (
     <div className="reservation-review-page">
       <h1>Review Your Reservation</h1>
-      <ReservationSummary
-        hotelInfo={hotelInfo}
-        totalNights={totalNights}
-        roomCostPerNight={roomCostPerNight}
-        totalRoomCost={totalRoomCost}
-        selectedExtras={selectedExtras}
-        totalExtrasCost={totalExtrasCost}
-        finalTotalCost={finalTotalCost}
-      />
+      {hotel ? (
+        <>
+          <HotelInfo hotel={hotel} />
+          <ReservationSummary
+            totalNights={totalNights}
+            roomCostPerNight={roomCostPerNight}
+            totalRoomCost={totalRoomCost}
+            selectedExtras={selectedExtras}
+            totalExtrasCost={totalExtrasCost}
+            finalTotalCost={finalTotalCost}
+          />
+        </>
+      ) : (
+        <p>Loading reservation summary...</p>
+      )}
       <p className="reservation-number"><strong>Reservation Number:</strong> {reservationNumber}</p>
       <div className="confirm-button-container">
         <button className="confirm-reservation-btn">Confirm Reservation</button>
