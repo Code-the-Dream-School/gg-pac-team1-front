@@ -11,18 +11,6 @@ const ErrorMessage = ({ error }) => (
   <p style={{ color: 'red' }}>{error}</p>
 );
 
-// Componente para mostrar el resumen de costos
-const CostSummary = ({ totalNights, roomCostPerNight, totalRoomCost, selectedExtras, totalExtrasCost, finalTotalCost }) => (
-  <ReservationSummary
-    totalNights={totalNights}
-    roomCostPerNight={roomCostPerNight}
-    totalRoomCost={totalRoomCost}
-    selectedExtras={selectedExtras}
-    totalExtrasCost={totalExtrasCost}
-    finalTotalCost={finalTotalCost}
-  />
-);
-
 const ReservationReviewPage = () => {
   const [hotel, setHotel] = useState(null);
   const [roomCostPerNight, setRoomCostPerNight] = useState(0);
@@ -34,6 +22,7 @@ const ReservationReviewPage = () => {
   const [allExtras, setAllExtras] = useState([]); // Estado para todos los extras disponibles
   const [checkInDate, setCheckInDate] = useState(localStorage.getItem('checkInDate') || '');
   const [checkOutDate, setCheckOutDate] = useState(localStorage.getItem('checkOutDate') || '');
+  const [adults, setAdults] = useState(parseInt(localStorage.getItem('adults')) || 2); // Estado para el número de adultos
   const [checkInError, setCheckInError] = useState(null); // Estado para manejar errores de check-in
   const [checkOutError, setCheckOutError] = useState(null); // Estado para manejar errores de check-out
   const [error, setError] = useState(null); // Estado para manejar errores generales
@@ -137,17 +126,25 @@ const ReservationReviewPage = () => {
     localStorage.setItem('checkOutDate', newCheckOutDate);
   };
 
+  // Función para manejar el cambio del número de adultos
+  const handleAdultsChange = (e) => {
+    const newAdults = parseInt(e.target.value);
+    setAdults(newAdults);
+    localStorage.setItem('adults', newAdults);
+  };
+
   // Memorizar el resumen de costos
   const memoizedCostSummary = useMemo(() => (
-    <CostSummary
+    <ReservationSummary
       totalNights={totalNights}
       roomCostPerNight={roomCostPerNight}
       totalRoomCost={totalRoomCost}
       selectedExtras={selectedExtras}
       totalExtrasCost={totalExtrasCost}
       finalTotalCost={finalTotalCost}
+      adults={adults}
     />
-  ), [totalNights, roomCostPerNight, totalRoomCost, selectedExtras, totalExtrasCost, finalTotalCost]);
+  ), [totalNights, roomCostPerNight, totalRoomCost, selectedExtras, totalExtrasCost, finalTotalCost, adults]);
 
   return (
     <div className="reservation-review-page">
@@ -166,6 +163,15 @@ const ReservationReviewPage = () => {
             />
             {checkInError && <ErrorMessage error={checkInError} />}
             {checkOutError && <ErrorMessage error={checkOutError} />}
+            <div>
+              <label>Adults:</label>
+              <input 
+                type="number" 
+                value={adults} 
+                onChange={handleAdultsChange} 
+                min="1" 
+              />
+            </div>
             <h3>Selected Extras:</h3>
             <ul>
               {selectedExtras.map(extra => (
