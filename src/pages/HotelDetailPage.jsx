@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';  
+import { useParams, useNavigate } from 'react-router-dom';
 import tripsData from '../tripsData';
 import Gallery from '../gallery/Gallery';
 import HotelInfo from '../components/HotelInfo';
@@ -12,30 +12,64 @@ import ChildrenSelector from '../components/ChildrenSelector';
 import HotelExtraOptions from '../components/HotelExtraOptions';
 import ReservationButton from '../components/ReservationButton';
 
-
 function HotelDetailPage() {
   const { id } = useParams();
+  const navigate = useNavigate(); // Hook to handle navigation
   const hotel = tripsData.flatMap(trip => trip.hotels).find(h => h.id === parseInt(id));
 
   const [hasChildren, setHasChildren] = useState(false); 
-  const [children, setChildren] = useState(0); 
+  const [children, setChildren] = useState(0);
+  const [checkInDate, setCheckInDate] = useState('');  
+  const [checkOutDate, setCheckOutDate] = useState('');  
 
-  // children selector
+  useEffect(() => {
+    // Redirect to 404 if hotel is not found
+    if (!hotel) {
+      navigate('/404');
+      return;
+    }
+
+    // Save hotel id to localStorage if it has changed
+    const savedHotelId = localStorage.getItem('hotelId');
+    if (savedHotelId !== String(hotel.id)) {
+      localStorage.setItem('hotelId', hotel.id);
+    }
+
+    // Retrieve other saved data from localStorage
+    const savedHasChildren = localStorage.getItem('hasChildren');
+    const savedChildren = localStorage.getItem('children');
+    const savedCheckInDate = localStorage.getItem('checkInDate');
+    const savedCheckOutDate = localStorage.getItem('checkOutDate');
+
+    if (savedHasChildren) setHasChildren(JSON.parse(savedHasChildren));
+    if (savedChildren) setChildren(Number(savedChildren));
+    if (savedCheckInDate) setCheckInDate(savedCheckInDate);
+    if (savedCheckOutDate) setCheckOutDate(savedCheckOutDate);
+  }, [hotel, navigate]);
+
+  // Function to handle changes in children selection
   const handleHasChildrenChange = (e) => {
-    setHasChildren(e.target.value === 'yes');
-    if (e.target.value !== 'yes') {
-      setChildren(0); // children selector
+    const value = e.target.value === 'yes';
+    setHasChildren(value);
+    localStorage.setItem('hasChildren', JSON.stringify(value));  
+
+    if (!value) {
+      setChildren(0);
+      localStorage.setItem('children', '0');  
     }
   };
 
-  // children selector
+  // Function to handle number of children
   const handleChildrenChange = (e) => {
-    setChildren(e.target.value);
+    const value = e.target.value;
+    setChildren(value);
+    localStorage.setItem('children', value);  
   };
 
   if (!hotel) {
-    return <div>Hotel not found</div>;
+    return null; // Render nothing while redirecting
   }
+  
   return (
     <div className="hotel-detail-container">
       {/* Hotel Title */}
@@ -84,6 +118,12 @@ function HotelDetailPage() {
        handleChildrenChange={handleChildrenChange}
       />
 
+      {/* Check-in and Check-out Dates */}
+      <div className="date-selection">
+        <p><strong>Check-in Date:</strong> {checkInDate}</p>
+        <p><strong>Check-out Date:</strong> {checkOutDate}</p>
+      </div>
+
       {/* Extra Options */}
       <HotelExtraOptions extras={hotel.extras}/>
 
@@ -92,7 +132,7 @@ function HotelDetailPage() {
         <ReservationButton />
       </div>
     </div>
-  )
+  );
 }
 
 export default HotelDetailPage;
