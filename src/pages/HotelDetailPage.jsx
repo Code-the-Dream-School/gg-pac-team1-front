@@ -4,6 +4,7 @@ import tripsData from '../tripsData';
 import Gallery from '../gallery/Gallery';
 import HotelInfo from '../components/HotelInfo';
 import HoteFacilities from '../components/HotelFacilities';
+import RoomTypesList from '../components/RoomTypesList';
 
 
 function HotelDetailPage() {
@@ -38,12 +39,7 @@ function HotelDetailPage() {
 
       {/* Room Types */}
       <div className="hotel-room-types">
-        <h3 className="room-types-title">Room Types</h3>
-        <ul>
-          <li>Single Room</li>
-          <li>Double Room</li>
-          <li>Suite</li>
-        </ul>
+        <RoomTypesList roomTypes={hotel.room_types}/>
       </div>
 
       {/* Pet Policy */}
