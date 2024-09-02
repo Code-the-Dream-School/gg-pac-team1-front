@@ -8,14 +8,28 @@ import RoomTypesList from '../components/RoomTypesList';
 import HotelPolicies from '../components/HotelPolicies';
 import PetPolicy from '../components/PetPolicy';
 import HotelRating from '../components/HotelRating';
+import ChildrenSelector from '../components/ChildrenSelector';
 
 
 function HotelDetailPage() {
   const { id } = useParams();
   const hotel = tripsData.flatMap(trip => trip.hotels).find(h => h.id === parseInt(id));
 
-  // const [hasChildren, setHasChildren] = useState(false);
-  // const [childrenCount, setChildrenCount] = useState(0);
+  const [hasChildren, setHasChildren] = useState(false); 
+  const [children, setChildren] = useState(0); 
+
+  // children selector
+  const handleHasChildrenChange = (e) => {
+    setHasChildren(e.target.value === 'yes');
+    if (e.target.value !== 'yes') {
+      setChildren(0); // children selector
+    }
+  };
+
+  // children selector
+  const handleChildrenChange = (e) => {
+    setChildren(e.target.value);
+  };
 
   if (!hotel) {
     return <div>Hotel not found</div>;
@@ -61,17 +75,12 @@ function HotelDetailPage() {
       </div>
 
       {/* Children Selection */}
-      <div className="children-selection">
-        <p>Children and Extra Beds</p>
-        <label>
-          <input type="checkbox" className="children-checkbox" />
-          Include children
-        </label>
-        <div className="children-count">
-          <label>Number of children:</label>
-          <input type="number" min="0" max="5" />
-        </div>
-      </div>
+      <ChildrenSelector
+       hasChildren={hasChildren}
+       children={children}
+       handleHasChildrenChange={handleHasChildrenChange}
+       handleChildrenChange={handleChildrenChange}
+      />
 
       {/* Extra Options */}
       <div className="extra-options">
