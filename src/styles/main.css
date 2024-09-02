@@ -1,6 +1,6 @@
+@charset "UTF-8";
 html {
   box-sizing: border-box;
-  
 }
 
 *, *::before, *::after {
@@ -574,6 +574,288 @@ button:hover {
   background-color: #0056b3;
 }
 
+.hotel-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2em;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.hotel-info {
+  margin-bottom: 20px;
+}
+.hotel-info .hotel-address {
+  font-size: 1.25rem;
+  color: #6c757d;
+  margin-bottom: 10px;
+}
+.hotel-info .hotel-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 10px;
+}
+.hotel-info .hotel-description {
+  font-size: 1rem;
+  color: #343a40;
+  margin-bottom: 20px;
+}
+.hotel-info .hotel-check-in-out {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+.hotel-facilities,
+.hotel-room-types,
+.hotel-pet-policy {
+  margin-bottom: 20px;
+}
+.hotel-facilities h3,
+.hotel-room-types h3,
+.hotel-pet-policy h3 {
+  font-size: 1.5rem;
+  color: #343a40;
+  margin-bottom: 10px;
+}
+.hotel-facilities ul,
+.hotel-room-types ul,
+.hotel-pet-policy ul {
+  list-style: none;
+  padding: 0;
+}
+.hotel-facilities ul li,
+.hotel-room-types ul li,
+.hotel-pet-policy ul li {
+  margin-bottom: 10px;
+}
+
+.children-selection {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.children-selection p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #343a40;
+}
+.children-selection label {
+  margin-right: 20px;
+  font-size: 1rem;
+  color: #343a40;
+}
+.children-selection .children-count {
+  margin-top: 10px;
+}
+.children-selection .children-count label {
+  font-size: 1rem;
+  color: #343a40;
+}
+.children-selection .children-count input[type=number] {
+  margin-left: 10px;
+  width: 60px;
+  padding: 5px;
+}
+
+.extra-options {
+  margin-bottom: 20px;
+}
+.extra-options h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #343a40;
+}
+.extra-options ul {
+  list-style: none;
+  padding: 0;
+}
+.extra-options ul li {
+  margin-bottom: 10px;
+}
+.extra-options ul li input[type=checkbox] {
+  margin-right: 10px;
+}
+
+.reservation-button-container {
+  text-align: center;
+}
+.reservation-button-container .btn-primary {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+.reservation-button-container .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* lightbox.scss */
+.lightbox {
+  position: fixed !important;
+  z-index: 999999 !important; /* Asegúrate de que tenga un z-index alto */
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-color: rgba(0, 0, 0, 0.9) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.lightbox-content {
+  max-width: 90% !important;
+  max-height: 80% !important;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Botones y cerrador */
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute !important;
+  color: white !important;
+  cursor: pointer !important;
+  z-index: 1000000 !important; /* Prioridad alta para botones */
+  background-color: transparent !important;
+  border: none !important;
+  font-size: 40px !important;
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+          user-select: none !important;
+  transition: color 0.3s ease !important;
+}
+
+.lightbox-close {
+  top: 20px !important;
+  right: 30px !important;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+}
+
+.lightbox-prev {
+  left: 0px !important;
+}
+
+.lightbox-next {
+  right: 10px !important;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover,
+.lightbox-close:hover {
+  color: #ccc !important;
+}
+
+/* Contador de imágenes */
+.lightbox-counter {
+  position: absolute !important;
+  bottom: 20px !important;
+  right: 30px !important;
+  font-size: 16px !important;
+  color: white !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  padding: 5px 10px !important;
+  border-radius: 5px !important;
+}
+
+.gallery-container,
+.main-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-row {
+  display: flex;
+  width: 100%;
+}
+
+.top-row-left,
+.top-row-right {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.top-row-right .small-image {
+  width: 50%;
+}
+
+.large-image .bottom-image,
+.bottom-row .bottom-image {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  aspect-ratio: 16/9;
+  cursor: pointer;
+}
+
+.bottom-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.bottom-row .bottom-image-container {
+  width: 12.5%;
+  position: relative;
+  overflow: hidden;
+}
+
+.view-more {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.view-more:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 768px) {
+  .top-row {
+    flex-direction: column;
+  }
+  .top-row-left,
+  .top-row-right,
+  .bottom-row {
+    width: 100%;
+  }
+  .top-row-right .small-image,
+  .top-row-right .bottom-image-container {
+    width: 100%;
+  }
+}
 .container { /*Helps to locate and center everything in the main*/
   width: 100%;
   max-width: 1140px;

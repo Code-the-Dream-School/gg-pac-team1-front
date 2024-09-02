@@ -28,6 +28,7 @@ import TripDescriptionSf from './components/TripSection/TripDescriptionSf';
 import Wellness from './components/Wellness';
 import Home from './pages/Home';
 import HotelSearchPage from './pages/HotelSearchPage';
+import HotelDetailPage from './pages/HotelDetailPage';
 import Search from './pages/Search';
 import { getAllData } from './util/index';
 
@@ -122,6 +123,10 @@ function App() {
         {
           path: 'trip-description-la',
           element: <TripDescriptionLa />,
+        },
+        {
+          path: 'hotel/:id',
+          element: <HotelDetailPage />
         },
         {
           path: 'trip-description-chicago',
