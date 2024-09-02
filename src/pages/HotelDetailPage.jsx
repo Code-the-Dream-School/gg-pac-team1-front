@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import tripsData from '../tripsData';
 import Gallery from '../gallery/Gallery';
+import HotelInfo from '../components/HotelInfo';
+
 
 function HotelDetailPage() {
   const { id } = useParams();
@@ -25,15 +27,7 @@ function HotelDetailPage() {
 
       {/* Hotel Information */}
       <div className="hotel-info">
-        <p className="hotel-address">Hotel Address</p>
-        <p className="hotel-price">$200 per night</p>
-        <p className="hotel-description">
-          This is a description of the hotel. It includes details about the hotel's
-          features and amenities.
-        </p>
-        <p className="hotel-check-in-out">
-          Check-in: 3:00 PM | Check-out: 11:00 AM
-        </p>
+        <HotelInfo hotel={hotel}/>
       </div>
 
       {/* Hotel Facilities */}
