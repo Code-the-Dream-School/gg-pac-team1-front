@@ -9,6 +9,7 @@ import HotelPolicies from '../components/HotelPolicies';
 import PetPolicy from '../components/PetPolicy';
 import HotelRating from '../components/HotelRating';
 import ChildrenSelector from '../components/ChildrenSelector';
+import HotelExtraOptions from '../components/HotelExtraOptions';
 
 
 function HotelDetailPage() {
@@ -83,19 +84,7 @@ function HotelDetailPage() {
       />
 
       {/* Extra Options */}
-      <div className="extra-options">
-        <h3>Extra Options</h3>
-        <ul>
-          <li>
-            <input type="checkbox" />
-            Breakfast ($20)
-          </li>
-          <li>
-            <input type="checkbox" />
-            Airport Shuttle ($50)
-          </li>
-        </ul>
-      </div>
+      <HotelExtraOptions extras={hotel.extras}/>
 
       {/* Reservation Button */}
       <div className="reservation-button-container">
