@@ -1,83 +1,151 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import tripsData from '../tripsData';
 import HotelInfo from '../components/HotelInfo';
 import ReservationSummary from '../components/ReservationSummary';
 import ReservationNumber from '../components/ReservationNumber';
-import DateInput from '../components/DateInput';
-import AdultsInput from '../components/AdultsInput';
-import ChildrenInput from '../components/ChildrenInput';
-import ErrorMessage from '../components/ErrorMessage';
+import DateInput from '../components/DateInput'; // Importar el componente DateInput
 import useReservation from '../hooks/useReservation';
-import useLoadHotelData from '../hooks/useLoadHotelData';
-import useCalculateCosts from '../hooks/useCalculateCosts';
+
+// Componente para mostrar mensajes de error
+const ErrorMessage = ({ error }) => (
+  <p style={{ color: 'red' }}>{error}</p>
+);
 
 const ReservationReviewPage = () => {
+  const [hotel, setHotel] = useState(null);
+  const [roomCostPerNight, setRoomCostPerNight] = useState(0);
+  const [totalNights, setTotalNights] = useState(0);
+  const [totalRoomCost, setTotalRoomCost] = useState(0);
+  const [totalExtrasCost, setTotalExtrasCost] = useState(0);
+  const [finalTotalCost, setFinalTotalCost] = useState(0);
+  const [selectedExtras, setSelectedExtras] = useState([]);
+  const [allExtras, setAllExtras] = useState([]); // Estado para todos los extras disponibles
   const [checkInDate, setCheckInDate] = useState(localStorage.getItem('checkInDate') || '');
   const [checkOutDate, setCheckOutDate] = useState(localStorage.getItem('checkOutDate') || '');
-  const [adults, setAdults] = useState(parseInt(localStorage.getItem('adults')) || 2);
-  const [children, setChildren] = useState(parseInt(localStorage.getItem('children')) || 0);
-  const [selectedExtras, setSelectedExtras] = useState(JSON.parse(localStorage.getItem('selectedExtras')) || []);
-  const [allExtras, setAllExtras] = useState([]); // Estado para todos los extras disponibles
-  const [checkInError, setCheckInError] = useState(null);
-  const [checkOutError, setCheckOutError] = useState(null);
-
-  const { hotel, error, loadHotelData } = useLoadHotelData();
-  const { totalNights, totalRoomCost, totalExtrasCost, finalTotalCost, calculateCosts } = useCalculateCosts(hotel, checkInDate, checkOutDate, selectedExtras);
+  const [adults, setAdults] = useState(parseInt(localStorage.getItem('adults')) || 2); // Estado para el número de adultos
+  const [children, setChildren] = useState(parseInt(localStorage.getItem('children')) || 0); // Estado para el número de niños
+  const [checkInError, setCheckInError] = useState(null); // Estado para manejar errores de check-in
+  const [checkOutError, setCheckOutError] = useState(null); // Estado para manejar errores de check-out
+  const [error, setError] = useState(null); // Estado para manejar errores generales
 
   const reservationNumber = useReservation(15 * 1000); // 15 segundos para pruebas
 
+  // Función para cargar los datos del hotel
+  const loadHotelData = (hotelId) => {
+    try {
+      const currentHotel = tripsData.flatMap(trip => trip.hotels).find(h => h.id === parseInt(hotelId));
+      if (!currentHotel) {
+        throw new Error('Hotel not found');
+      }
+      setHotel({
+        name: currentHotel.name,
+        address: currentHotel.address || 'Address not available',
+        category: currentHotel.category || 'Category not available',
+        description: currentHotel.description || 'Description not available',
+        room_cost_per_night: currentHotel.room_cost_per_night,
+        check_in_time: currentHotel.check_in_time,
+        check_out_time: currentHotel.check_out_time
+      });
+      setRoomCostPerNight(currentHotel.room_cost_per_night || 0);
+      setAllExtras(currentHotel.extras || []); // Cargar todos los extras disponibles
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  // Función para calcular los costos totales
+  const calculateCosts = (checkInDate, checkOutDate, hotel, extras) => {
+    try {
+      if (!checkInDate || !checkOutDate) {
+        throw new Error('Invalid check-in or check-out date');
+      }
+      const date1 = new Date(checkInDate);
+      const date2 = new Date(checkOutDate);
+      if (date1 >= date2) {
+        setCheckOutError('Check-out date must be later than check-in date');
+        return;
+      }
+      setCheckOutError(null); // Limpiar el error si las fechas son válidas
+
+      const differenceInTime = date2.getTime() - date1.getTime();
+      const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+      setTotalNights(differenceInDays);
+
+      const roomCost = differenceInDays * (hotel.room_cost_per_night || 0);
+      setTotalRoomCost(roomCost);
+
+      let extrasCost = 0;
+      extras.forEach(extra => {
+        extrasCost += extra.price * differenceInDays;
+      });
+      setTotalExtrasCost(extrasCost);
+
+      setFinalTotalCost(roomCost + extrasCost); // Asegurarse de sumar los costos de los extras al costo total
+      setSelectedExtras(extras);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  // Manejo de la lógica de carga
   useEffect(() => {
     const hotelId = localStorage.getItem('hotelId');
+    const storedExtras = JSON.parse(localStorage.getItem('selectedExtras') || '[]');
 
     if (hotelId) {
       loadHotelData(hotelId);
     } else {
-      setCheckInError('Hotel ID not found in localStorage');
+      setError('Hotel ID not found in localStorage');
     }
-  }, []);
+  }, []); 
 
   useEffect(() => {
     if (hotel) {
-      setAllExtras(hotel.extras || []); // Asignar los extras disponibles al estado allExtras
-      calculateCosts();
+      calculateCosts(checkInDate, checkOutDate, hotel, selectedExtras);
     }
-  }, [hotel, checkInDate, checkOutDate, selectedExtras]);
+  }, [hotel, checkInDate, checkOutDate, selectedExtras]); // Este `useEffect` depende de `hotel`, `checkInDate`, `checkOutDate` y `selectedExtras`
+  
+  // Función para activar/desactivar extras
+  const toggleExtra = (extra) => {
+    const updatedExtras = selectedExtras.includes(extra)
+      ? selectedExtras.filter(e => e !== extra)
+      : [...selectedExtras, extra];
+    setSelectedExtras(updatedExtras);
+  };
 
+  // Función para manejar el cambio de fecha de check-in
   const handleCheckInChange = (e) => {
     const newCheckInDate = e.target.value;
     setCheckInDate(newCheckInDate);
     localStorage.setItem('checkInDate', newCheckInDate);
   };
 
+  // Función para manejar el cambio de fecha de check-out
   const handleCheckOutChange = (e) => {
     const newCheckOutDate = e.target.value;
     setCheckOutDate(newCheckOutDate);
     localStorage.setItem('checkOutDate', newCheckOutDate);
   };
 
+  // Función para manejar el cambio del número de adultos
   const handleAdultsChange = (e) => {
     const newAdults = parseInt(e.target.value);
     setAdults(newAdults);
     localStorage.setItem('adults', newAdults);
   };
 
+  // Función para manejar el cambio del número de niños
   const handleChildrenChange = (e) => {
     const newChildren = parseInt(e.target.value);
     setChildren(newChildren);
     localStorage.setItem('children', newChildren);
   };
 
-  const toggleExtra = (extra) => {
-    const updatedExtras = selectedExtras.includes(extra)
-      ? selectedExtras.filter(e => e !== extra)
-      : [...selectedExtras, extra];
-    setSelectedExtras(updatedExtras);
-    localStorage.setItem('selectedExtras', JSON.stringify(updatedExtras));
-  };
-
+  // Memorizar el resumen de costos
   const memoizedCostSummary = useMemo(() => (
     <ReservationSummary
       totalNights={totalNights}
-      roomCostPerNight={hotel?.room_cost_per_night || 0}
+      roomCostPerNight={roomCostPerNight}
       totalRoomCost={totalRoomCost}
       selectedExtras={selectedExtras}
       totalExtrasCost={totalExtrasCost}
@@ -85,7 +153,7 @@ const ReservationReviewPage = () => {
       adults={adults}
       children={children}
     />
-  ), [totalNights, hotel?.room_cost_per_night, totalRoomCost, selectedExtras, totalExtrasCost, finalTotalCost, adults, children]);
+  ), [totalNights, roomCostPerNight, totalRoomCost, selectedExtras, totalExtrasCost, finalTotalCost, adults, children]);
 
   return (
     <div className="reservation-review-page">
@@ -104,14 +172,24 @@ const ReservationReviewPage = () => {
             />
             {checkInError && <ErrorMessage error={checkInError} />}
             {checkOutError && <ErrorMessage error={checkOutError} />}
-            <AdultsInput 
-              adults={adults}
-              handleAdultsChange={handleAdultsChange}
-            />
-            <ChildrenInput 
-              children={children}
-              handleChildrenChange={handleChildrenChange}
-            />
+            <div>
+              <label>Adults:</label>
+              <input 
+                type="number" 
+                value={adults} 
+                onChange={handleAdultsChange} 
+                min="1" 
+              />
+            </div>
+            <div>
+              <label>Children:</label>
+              <input 
+                type="number" 
+                value={children} 
+                onChange={handleChildrenChange} 
+                min="0" 
+              />
+            </div>
             <h3>Selected Extras:</h3>
             <ul>
               {selectedExtras.map(extra => (
