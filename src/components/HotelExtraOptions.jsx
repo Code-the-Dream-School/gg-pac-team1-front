@@ -12,11 +12,11 @@ const HotelExtraOptions = ({ extras }) => {
   const handleExtraChange = (e, extra) => {
     const isChecked = e.target.checked;
     if (isChecked) {
-      // Add extra ID to the selectedExtras array
-      setSelectedExtras([...selectedExtras, extra.id]);
+      // Add the extra object (with name and price) to the selectedExtras array
+      setSelectedExtras([...selectedExtras, { name: extra.name, price: extra.price }]);
     } else {
-      // Remove extra ID from the selectedExtras array
-      setSelectedExtras(selectedExtras.filter(id => id !== extra.id));
+      // Remove the extra object from the selectedExtras array
+      setSelectedExtras(selectedExtras.filter(item => item.name !== extra.name));
     }
   };
 
@@ -29,7 +29,7 @@ const HotelExtraOptions = ({ extras }) => {
             <input
               type="checkbox"
               id={`extra-${extra.id}`}
-              checked={selectedExtras.includes(extra.id)} // Check if extra is selected
+              checked={selectedExtras.some(item => item.name === extra.name)} // Check if extra is selected
               onChange={(e) => handleExtraChange(e, extra)} // Handle change in selection
             />
             <label htmlFor={`extra-${extra.id}`}>{extra.name} (+${extra.price})</label>
@@ -38,7 +38,6 @@ const HotelExtraOptions = ({ extras }) => {
       </ul>
     </div>
   );
-}
+};
 
 export default HotelExtraOptions;
-
