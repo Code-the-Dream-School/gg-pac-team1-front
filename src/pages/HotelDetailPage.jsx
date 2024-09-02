@@ -6,6 +6,7 @@ import HotelInfo from '../components/HotelInfo';
 import HoteFacilities from '../components/HotelFacilities';
 import RoomTypesList from '../components/RoomTypesList';
 import HotelPolicies from '../components/HotelPolicies';
+import PetPolicy from '../components/PetPolicy';
 
 
 function HotelDetailPage() {
@@ -50,8 +51,7 @@ function HotelDetailPage() {
 
       {/* Pet Policy */}
       <div className="hotel-pet-policy">
-        <h3>Pet Policy</h3>
-        <p>Pets are allowed on request. Charges may apply.</p>
+        <PetPolicy hotel={hotel}/>
       </div>
 
       {/* Children Selection */}
