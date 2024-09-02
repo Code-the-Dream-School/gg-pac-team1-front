@@ -3,11 +3,12 @@ import tripsData from '../tripsData';
 import HotelInfo from '../components/HotelInfo';
 import ReservationSummary from '../components/ReservationSummary';
 import ReservationNumber from '../components/ReservationNumber';
+import DateInput from '../components/DateInput'; // Importar el componente DateInput
 import useReservation from '../hooks/useReservation';
 
 // Componente para mostrar mensajes de error
 const ErrorMessage = ({ error }) => (
-  <p style={{ color: 'red' }}>Error: {error}</p>
+  <p style={{ color: 'red' }}>{error}</p>
 );
 
 // Componente para mostrar el resumen de costos
@@ -31,7 +32,11 @@ const ReservationReviewPage = () => {
   const [finalTotalCost, setFinalTotalCost] = useState(0);
   const [selectedExtras, setSelectedExtras] = useState([]);
   const [allExtras, setAllExtras] = useState([]); // Estado para todos los extras disponibles
-  const [error, setError] = useState(null); // Estado para manejar errores
+  const [checkInDate, setCheckInDate] = useState(localStorage.getItem('checkInDate') || '');
+  const [checkOutDate, setCheckOutDate] = useState(localStorage.getItem('checkOutDate') || '');
+  const [checkInError, setCheckInError] = useState(null); // Estado para manejar errores de check-in
+  const [checkOutError, setCheckOutError] = useState(null); // Estado para manejar errores de check-out
+  const [error, setError] = useState(null); // Estado para manejar errores generales
 
   const reservationNumber = useReservation(15 * 1000); // 15 segundos para pruebas
 
@@ -67,8 +72,11 @@ const ReservationReviewPage = () => {
       const date1 = new Date(checkInDate);
       const date2 = new Date(checkOutDate);
       if (date1 >= date2) {
-        throw new Error('Check-out date must be later than check-in date');
+        setCheckOutError('Check-out date must be later than check-in date');
+        return;
       }
+      setCheckOutError(null); // Limpiar el error si las fechas son válidas
+
       const differenceInTime = date2.getTime() - date1.getTime();
       const differenceInDays = differenceInTime / (1000 * 3600 * 24);
       setTotalNights(differenceInDays);
@@ -92,8 +100,6 @@ const ReservationReviewPage = () => {
   // Manejo de la lógica de carga
   useEffect(() => {
     const hotelId = localStorage.getItem('hotelId');
-    const checkInDate = localStorage.getItem('checkInDate');
-    const checkOutDate = localStorage.getItem('checkOutDate');
     const storedExtras = JSON.parse(localStorage.getItem('selectedExtras') || '[]');
 
     if (hotelId) {
@@ -105,13 +111,9 @@ const ReservationReviewPage = () => {
 
   useEffect(() => {
     if (hotel) {
-      const checkInDate = localStorage.getItem('checkInDate');
-      const checkOutDate = localStorage.getItem('checkOutDate');
-      const storedExtras = JSON.parse(localStorage.getItem('selectedExtras') || '[]');
-      
-      calculateCosts(checkInDate, checkOutDate, hotel, storedExtras);
+      calculateCosts(checkInDate, checkOutDate, hotel, selectedExtras);
     }
-  }, [hotel]); // Este `useEffect` depende de `hotel`
+  }, [hotel, checkInDate, checkOutDate, selectedExtras]); // Este `useEffect` depende de `hotel`, `checkInDate`, `checkOutDate` y `selectedExtras`
   
   // Función para activar/desactivar extras
   const toggleExtra = (extra) => {
@@ -119,9 +121,20 @@ const ReservationReviewPage = () => {
       ? selectedExtras.filter(e => e !== extra)
       : [...selectedExtras, extra];
     setSelectedExtras(updatedExtras);
-    const checkInDate = localStorage.getItem('checkInDate');
-    const checkOutDate = localStorage.getItem('checkOutDate');
-    calculateCosts(checkInDate, checkOutDate, hotel, updatedExtras);
+  };
+
+  // Función para manejar el cambio de fecha de check-in
+  const handleCheckInChange = (e) => {
+    const newCheckInDate = e.target.value;
+    setCheckInDate(newCheckInDate);
+    localStorage.setItem('checkInDate', newCheckInDate);
+  };
+
+  // Función para manejar el cambio de fecha de check-out
+  const handleCheckOutChange = (e) => {
+    const newCheckOutDate = e.target.value;
+    setCheckOutDate(newCheckOutDate);
+    localStorage.setItem('checkOutDate', newCheckOutDate);
   };
 
   // Memorizar el resumen de costos
@@ -139,14 +152,20 @@ const ReservationReviewPage = () => {
   return (
     <div className="reservation-review-page">
       <h1>Review Your Reservation</h1>
-      {error ? (
-        <ErrorMessage error={error} />
-      ) : hotel ? (
+      {error && <ErrorMessage error={error} />}
+      {hotel ? (
         <>
           <HotelInfo hotel={hotel} />
           <div>
-            <h2>Check-in: {localStorage.getItem('checkInDate')}</h2>
-            <h2>Check-out: {localStorage.getItem('checkOutDate')}</h2>
+            <DateInput 
+              checkInDate={checkInDate}
+              checkOutDate={checkOutDate}
+              handleCheckInChange={handleCheckInChange}
+              handleCheckOutChange={handleCheckOutChange}
+              showCheckOut={true}
+            />
+            {checkInError && <ErrorMessage error={checkInError} />}
+            {checkOutError && <ErrorMessage error={checkOutError} />}
             <h3>Selected Extras:</h3>
             <ul>
               {selectedExtras.map(extra => (
