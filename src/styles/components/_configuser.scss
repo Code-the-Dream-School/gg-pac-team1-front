@@ -66,6 +66,12 @@
   line-height: 1;
 }
 
+.user-button:hover {
+  background: transparent !important;
+  color: rgb(27, 136, 219);
+  text-decoration:underline;
+}
+
 .login-button {
   background: transparent;
   color: #fff;

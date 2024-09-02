@@ -1,61 +1,61 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import '../styles/components/_account.scss';
-import CreditCardInfo from './CreditCardInfo';
-import ProfileInfo from './ProfileInfo';
 
 const Account = () => {
-  const [activeSection, setActiveSection] = useState('profile');
+  const navigate = useNavigate();
 
-  const handleSectionChange = (section) => {
-    setActiveSection(section);
-  };
+  useEffect(() => {
+    // Redirigir automáticamente a /account/profile al acceder a /account
+    navigate('profile');
+  }, [navigate]);
 
   const handleSignOut = () => {
-    // Mostrar un mensaje de confirmación antes de cerrar sesión
     const confirmation = window.confirm("Are you sure you want to sign out?");
-    
     if (confirmation) {
-      // Eliminar el token del localStorage
-      localStorage.removeItem('token');
-      
-      // Redirigir a la página de inicio de sesión o inicio
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('user');
       window.location.href = '/';
     }
   };
 
   return (
-    <div className="account-settings">
-      <h2>Account Settings</h2>
-      <ul className="settings-nav">
-        <li>
-          <button 
-            className={`settings-nav-item ${activeSection === 'profile' ? 'active' : ''}`} 
-            onClick={() => handleSectionChange('profile')}
-          >
-            Edit Profile
-          </button>
-        </li>
-        <li>
-          <button 
-            className={`settings-nav-item ${activeSection === 'creditCard' ? 'active' : ''}`} 
-            onClick={() => handleSectionChange('creditCard')}
-          >
-            Credit Card Information
-          </button>
-        </li>
-        <li>
-          <button 
-            className="settings-nav-item sign-out" 
-            onClick={handleSignOut}
-          >
-            Sign Out
-          </button>
-        </li>
-      </ul>
-      <div className="settings-content">
-        {activeSection === 'profile' && <ProfileInfo />}
-        {activeSection === 'creditCard' && <CreditCardInfo />}
-      </div>
+    <div className="account-container">
+      <aside className="account-sidebar">
+        <ul className="sidebar-menu">
+          <li className="menu-item">
+            <Link to="profile">
+              <i className="fas fa-user"></i> Profile
+            </Link>
+          </li>
+          <li className="menu-item">
+            <Link to="addresses">
+              <i className="fas fa-map-marker-alt"></i> Addresses
+            </Link>
+          </li>
+          <li className="menu-item">
+            <Link to="payments">
+              <i className="fas fa-credit-card"></i> Payment Methods
+            </Link>
+          </li>
+          <li className="menu-item">
+            <Link to="changepassword">
+              <i className="fas fa-key"></i> Change Password
+            </Link>
+          </li>
+          <li className="menu-item">
+            <Link to="history">
+              <i className="fas fa-history"></i> Travel History
+            </Link>
+          </li>
+          <li className="menu-item sign-out" onClick={handleSignOut}>
+            <i className="fas fa-sign-out-alt"></i> Sign Out
+          </li>
+        </ul>
+      </aside>
+      <main className="account-content">
+        <Outlet />
+      </main>
     </div>
   );
 };
