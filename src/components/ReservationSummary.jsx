@@ -1,19 +1,24 @@
 import React from 'react';
-import HotelInfo from './HotelInfo';
-import CostDetails from './CostDetails';
 
-const ReservationSummary = ({ hotelInfo, totalNights, roomCostPerNight, totalRoomCost, selectedExtras, totalExtrasCost, finalTotalCost }) => (
+const ReservationSummary = ({ totalNights, roomCostPerNight, totalRoomCost, selectedExtras, totalExtrasCost, finalTotalCost }) => (
   <div className="reservation-summary">
-    <HotelInfo hotelInfo={hotelInfo} />
     <p className="stay-dates"><strong>Check-in:</strong> {localStorage.getItem('checkInDate')} - <strong>Check-out:</strong> {localStorage.getItem('checkOutDate')}</p>
     <p className="total-nights"><strong>Total Nights:</strong> <span>{totalNights}</span></p>
-    <CostDetails
-      totalNights={totalNights}
-      roomCostPerNight={roomCostPerNight}
-      totalRoomCost={totalRoomCost}
-      selectedExtras={selectedExtras}
-      totalExtrasCost={totalExtrasCost}
-    />
+    
+    <p className="cost-details">Room Cost: <span>{totalNights} nights * ${roomCostPerNight} per night = ${totalRoomCost}</span></p>
+
+    <div className="extras-section">
+      <h5><strong>Total extras:</strong></h5>
+      <ul className="extras-list">
+        {selectedExtras.map((extra, index) => (
+          <li key={index}>
+            {extra.name}: <span>{totalNights} nights * ${extra.price} per day = ${extra.price * totalNights}</span>
+          </li>
+        ))}
+      </ul>
+      <p className="cost-details">Total Extras Cost: <span>${totalExtrasCost}</span></p>
+    </div>
+
     <p className="summary-line">Total Cost: <span>${finalTotalCost}</span></p>
   </div>
 );
