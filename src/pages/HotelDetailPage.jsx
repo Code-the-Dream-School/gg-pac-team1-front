@@ -10,6 +10,7 @@ import PetPolicy from '../components/PetPolicy';
 import HotelRating from '../components/HotelRating';
 import ChildrenSelector from '../components/ChildrenSelector';
 import HotelExtraOptions from '../components/HotelExtraOptions';
+import ReservationButton from '../components/ReservationButton';
 
 
 function HotelDetailPage() {
@@ -88,7 +89,7 @@ function HotelDetailPage() {
 
       {/* Reservation Button */}
       <div className="reservation-button-container">
-        <button className="btn-primary">Make a Reservation</button>
+        <ReservationButton />
       </div>
     </div>
   )
