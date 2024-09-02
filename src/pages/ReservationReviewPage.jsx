@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import tripsData from '../tripsData';
+import ReservationSummary from './ReservationSummary';
 
 const ReservationReviewPage = () => {
   const [hotelInfo, setHotelInfo] = useState({});
@@ -60,45 +61,22 @@ const ReservationReviewPage = () => {
   }, []);
 
   return (
-    <>
-      <div className="reservation-review-page">
-        <h1>Review Your Reservation</h1>
-
-        <div className="reservation-summary">
-          <h2 className="hotel-name">{hotelInfo.name || 'Hotel Name'}</h2>
-          <div className="hotel-info">
-            <p><strong>Address:</strong> {hotelInfo.address || 'Address not available'}</p>
-            <p><strong>Category:</strong> {hotelInfo.category || 'Category not available'}</p>
-            <p><strong>Description:</strong> {hotelInfo.description || 'Description not available'}</p>
-          </div>
-
-          <p className="stay-dates"><strong>Check-in:</strong> {localStorage.getItem('checkInDate')} - <strong>Check-out:</strong> {localStorage.getItem('checkOutDate')}</p>
-          <p className="total-nights"><strong>Total Nights:</strong> <span>{totalNights}</span></p>
-          
-          <p className="cost-details">Room Cost: <span>{totalNights} nights * ${roomCostPerNight} per night = ${totalRoomCost}</span></p>
-
-          <div className="extras-section">
-          <h5><strong>Total extras:</strong></h5>
-            <ul className="extras-list">
-              {selectedExtras.map((extra, index) => (
-                <li key={index}>
-                  {extra.name}: <span>{totalNights} nights * ${extra.price} per day = ${extra.price * totalNights}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="cost-details">Total Extras Cost: <span>${totalExtrasCost}</span></p>
-          </div>
-
-          <p className="summary-line">Total Cost: <span>${finalTotalCost}</span></p>
-        </div>
-
-        <p className="reservation-number"><strong>Reservation Number:</strong> {reservationNumber}</p>
-
-        <div className="confirm-button-container">
-          <button className="confirm-reservation-btn">Confirm Reservation</button>
-        </div>
+    <div className="reservation-review-page">
+      <h1>Review Your Reservation</h1>
+      <ReservationSummary
+        hotelInfo={hotelInfo}
+        totalNights={totalNights}
+        roomCostPerNight={roomCostPerNight}
+        totalRoomCost={totalRoomCost}
+        selectedExtras={selectedExtras}
+        totalExtrasCost={totalExtrasCost}
+        finalTotalCost={finalTotalCost}
+      />
+      <p className="reservation-number"><strong>Reservation Number:</strong> {reservationNumber}</p>
+      <div className="confirm-button-container">
+        <button className="confirm-reservation-btn">Confirm Reservation</button>
       </div>
-    </>
+    </div>
   );
 };
 
