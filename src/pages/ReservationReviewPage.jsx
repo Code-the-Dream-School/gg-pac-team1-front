@@ -23,6 +23,7 @@ const ReservationReviewPage = () => {
   const [checkInDate, setCheckInDate] = useState(localStorage.getItem('checkInDate') || '');
   const [checkOutDate, setCheckOutDate] = useState(localStorage.getItem('checkOutDate') || '');
   const [adults, setAdults] = useState(parseInt(localStorage.getItem('adults')) || 2); // Estado para el número de adultos
+  const [children, setChildren] = useState(parseInt(localStorage.getItem('children')) || 0); // Estado para el número de niños
   const [checkInError, setCheckInError] = useState(null); // Estado para manejar errores de check-in
   const [checkOutError, setCheckOutError] = useState(null); // Estado para manejar errores de check-out
   const [error, setError] = useState(null); // Estado para manejar errores generales
@@ -133,6 +134,13 @@ const ReservationReviewPage = () => {
     localStorage.setItem('adults', newAdults);
   };
 
+  // Función para manejar el cambio del número de niños
+  const handleChildrenChange = (e) => {
+    const newChildren = parseInt(e.target.value);
+    setChildren(newChildren);
+    localStorage.setItem('children', newChildren);
+  };
+
   // Memorizar el resumen de costos
   const memoizedCostSummary = useMemo(() => (
     <ReservationSummary
@@ -143,8 +151,9 @@ const ReservationReviewPage = () => {
       totalExtrasCost={totalExtrasCost}
       finalTotalCost={finalTotalCost}
       adults={adults}
+      children={children}
     />
-  ), [totalNights, roomCostPerNight, totalRoomCost, selectedExtras, totalExtrasCost, finalTotalCost, adults]);
+  ), [totalNights, roomCostPerNight, totalRoomCost, selectedExtras, totalExtrasCost, finalTotalCost, adults, children]);
 
   return (
     <div className="reservation-review-page">
@@ -170,6 +179,15 @@ const ReservationReviewPage = () => {
                 value={adults} 
                 onChange={handleAdultsChange} 
                 min="1" 
+              />
+            </div>
+            <div>
+              <label>Children:</label>
+              <input 
+                type="number" 
+                value={children} 
+                onChange={handleChildrenChange} 
+                min="0" 
               />
             </div>
             <h3>Selected Extras:</h3>

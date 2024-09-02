@@ -1,12 +1,13 @@
 import React from 'react';
 
-const ReservationSummary = ({ totalNights, roomCostPerNight, totalRoomCost, selectedExtras, totalExtrasCost, finalTotalCost, adults }) => (
+const ReservationSummary = ({ totalNights, roomCostPerNight, totalRoomCost, selectedExtras, totalExtrasCost, finalTotalCost, adults, children }) => (
   <div className="reservation-summary">
     <p className="stay-dates"><strong>Check-in:</strong> {localStorage.getItem('checkInDate')} - <strong>Check-out:</strong> {localStorage.getItem('checkOutDate')}</p>
     <p className="total-nights"><strong>Total Nights:</strong> <span>{totalNights}</span></p>
     
     <p className="cost-details">Room Cost: <span>{totalNights} nights * ${roomCostPerNight} per night = ${totalRoomCost}</span></p>
     <p className="cost-details">Adults: <span>{adults}</span></p> {/* Mostrar el número de adultos debajo del costo de la habitación */}
+    <p className="cost-details">Children: <span>{children}</span></p> {/* Mostrar el número de niños debajo del costo de la habitación */}
 
     <div className="extras-section">
       <h5><strong>Total extras:</strong></h5>
