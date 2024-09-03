@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
 import '../styles/components/_login.scss';
 
 const Login = ({ onLogin, onClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const navigate = useNavigate(); // Initialize navigate
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -24,6 +25,11 @@ const Login = ({ onLogin, onClose }) => {
     }
   };
 
+  const handleForgotPassword = () => {
+    onClose(); // Close the login popup
+    navigate('/reset-password'); // Redirect to the reset password page
+  };
+
   return (
     <div className="login-popup">
       <div className="login-popup-content">
@@ -34,7 +40,7 @@ const Login = ({ onLogin, onClose }) => {
           <h1>TravelAmigos</h1>
         </div>
         <div className="login-subheader">
-          <p className="subtitle">search  <strong>hotels</strong></p>
+          <p className="subtitle">search <strong>hotels</strong></p>
           <span className="hotel-icon">🏨</span>
         </div>
         <hr className="divider" />
@@ -63,9 +69,15 @@ const Login = ({ onLogin, onClose }) => {
         <p className="register-link">
           Don't have an account? <Link to="/register">Register here</Link>
         </p>
+        <p className="forgot-password-link">
+          <button type="button" className="forgot-password-button" onClick={handleForgotPassword}>
+            Forgot your password?
+          </button>
+        </p>
       </div>
     </div>
   );
 };
 
 export default Login;
+

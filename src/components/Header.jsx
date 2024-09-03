@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/components/_configuser.scss';
@@ -15,20 +14,14 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      axios.get('http://localhost:8000/api/v1/auth/current', {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then(response => {
-          setWelcomeMessage(response.data.user.name);
-          setUserEmail(response.data.user.email);
-          setIsLoggedIn(true);
-        })
-        .catch(error => {
-          console.error('Error fetching current user:', error);
-          handleLogout();
-        });
+    // Verifica si hay un token en sessionStorage
+    const token = sessionStorage.getItem('token');
+    const storedUser = JSON.parse(sessionStorage.getItem('user'));
+
+    if (token && storedUser) {
+      setWelcomeMessage(storedUser.name);
+      setUserEmail(storedUser.email);
+      setIsLoggedIn(true);
     }
 
     const handleScroll = () => {
@@ -51,7 +44,8 @@ const Header = () => {
     setUserEmail('');
     setIsLoggedIn(false);
     setShowDropdown(false);
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
     navigate('/');
   };
 
@@ -117,6 +111,8 @@ const Header = () => {
             setUserEmail(user.email);
             setIsLoggedIn(true);
             setShowLogin(false);
+            sessionStorage.setItem('user', JSON.stringify(user)); // Guardar la información del usuario
+            sessionStorage.setItem('token', user.token); // Guardar el token del usuario
           }}
           onClose={() => setShowLogin(false)}
         />
@@ -126,3 +122,5 @@ const Header = () => {
 };
 
 export default Header;
+
+
