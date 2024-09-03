@@ -866,11 +866,21 @@ button:hover {
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-h1 {
+.reservation-review-page .hotel-address {
+  border: 1px solid red;
+}
+
+.reservation-review-page .hotel-info2 {
+  border: 1px solid red;
+  margin-bottom: 1em;
+}
+
+.reservation-review-page .tittle {
   text-align: center;
   margin-bottom: 20px;
   font-size: 24px;
   color: #333;
+  border: 1px solid red;
 }
 
 .reservation-summary {
@@ -889,6 +899,7 @@ h1 {
   margin-bottom: 15px;
   line-height: 1.5;
   color: #666666;
+  border: 1px solid red;
 }
 .reservation-summary .stay-dates,
 .reservation-summary .total-nights,
@@ -958,6 +969,124 @@ h1 {
 }
 .confirm-button-container .confirm-reservation-btn:hover {
   background-color: #1e7e34;
+}
+
+.reservation-details {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los bloques se ajusten a la siguiente línea si es necesario */
+  justify-content: space-between; /* Espacio uniforme entre bloques */
+  gap: 10px; /* Espacio entre los bloques */
+  width: 100%;
+  padding: 10px; /* Ajusta el padding según sea necesario */
+  box-sizing: border-box;
+}
+
+.block {
+  flex: 1 1 calc(20% - 10px); /* Cada bloque ocupa el 25% del contenedor menos el espacio del gap */
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .block {
+    flex: 1 1 100%; /* En pantallas pequeñas, los bloques ocupan el 100% del ancho y se apilan */
+  }
+}
+.input-group {
+  margin-bottom: 15px;
+}
+
+.selected-extras li, .deactivated-extras li {
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.deactivated-extras li {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 800px) {
+  .block {
+    flex: 1 1 100%; /* Cada bloque ocupará el 100% del ancho disponible en pantallas pequeñas */
+  }
+}
+.date-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Ajustar el espacio entre los bloques */
+  width: 100%;
+}
+
+.date-input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.date-input label {
+  margin-bottom: 5px;
+}
+
+.date-input input[type=date] {
+  font-size: 16px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px; /* Espacio entre el input y el mensaje de error */
+}
+
+@media (max-width: 768px) {
+  .date-input input[type=date] {
+    font-size: 14px;
+  }
+}
+.input-group.vertical {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.input-group.vertical label {
+  display: flex;
+  align-items: center; /* Alinea el ícono y el input en el mismo nivel */
+  gap: 10px; /* Espacio entre el ícono y el input */
+  font-size: 18px;
+  color: #007bff;
+}
+.input-group.vertical label .icon {
+  font-size: 50px !important; /* Aumentar el tamaño del ícono a 1.5 veces (18px * 1.5 = 27px) */
+  background-color: #28a745;
+}
+.input-group.vertical input {
+  flex: 1; /* Permite que el input ocupe el espacio disponible */
+  padding: 6px;
+  border: 2px solid #007bff;
+  border-radius: 4px;
+  font-size: 16px;
+  text-align: center;
+  color: #333;
+  background-color: #f0f8ff;
+  box-shadow: 0px 2px 4px rgba(0, 123, 255, 0.2);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+.input-group.vertical input:focus {
+  border-color: #0056b3;
+  box-shadow: 0px 0px 6px rgba(0, 123, 255, 0.4);
+  background-color: #e6f0ff;
+  outline: none;
 }
 
 .container { /*Helps to locate and center everything in the main*/
