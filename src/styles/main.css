@@ -1089,6 +1089,39 @@ button:hover {
   outline: none;
 }
 
+.dropdown-panel {
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-header {
+  background-color: #f7f7f7;
+  padding: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+.dropdown-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.dropdown-header:hover {
+  background-color: #e7e7e7;
+}
+
+.dropdown-content {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+}
+
 .container { /*Helps to locate and center everything in the main*/
   width: 100%;
   max-width: 1140px;
@@ -1155,6 +1188,7 @@ header .header-right nav ul {
   margin-right: 3em;
 }
 header .header-right nav ul li {
+  position: relative;
   padding-left: 20px;
 }
 header .header-right nav ul li a {
@@ -1314,4 +1348,66 @@ h2 {
 .auto-generated-section p {
   font-size: 18px;
   line-height: 1.6;
+}
+
+.custom-dropdown {
+  position: relative;
+}
+.custom-dropdown .dropdown-toggle {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.custom-dropdown .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  border: 1px solid #444;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  list-style-type: none;
+  min-width: 150px;
+  max-width: 200px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+.custom-dropdown .dropdown-header {
+  color: #fff;
+  font-size: 14px;
+  padding-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.custom-dropdown .dropdown-email {
+  font-size: 12px;
+  color: #ddd !important;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.custom-dropdown .dropdown-menu .dropdown-item {
+  background: transparent;
+  border: none;
+  color: #fff;
+  width: 100%;
+  text-align: left;
+  padding: 8px 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  /* Align the icon and text vertically */
+}
+.custom-dropdown .dropdown-menu .dropdown-item:hover {
+  color: #a5a1a1;
+}
+.custom-dropdown .dropdown-menu .dropdown-item span {
+  margin-left: 8px;
 }/*# sourceMappingURL=main.css.map */

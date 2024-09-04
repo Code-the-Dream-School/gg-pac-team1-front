@@ -21,14 +21,14 @@
 @import 'components/reservationReviewPage'; //Imports the hotel review page
 
 // Import layouts
-@import 'layouts/grid';         // Grid system
-@import 'layouts/header';       // Header styles,   used on all pages
-@import 'layouts/footer';       // Footer styles,   used on all pages
-@import 'layouts/main';         // main styles,   used on all pages
-//@import 'layouts/sidebar';    // Sidebar styles No create
-@import 'layouts/slider';       // slider home styles, used on home
-@import 'layouts/section';      // use in the sections that are within the main home page or any of the other pages
-
+@import 'layouts/grid';                      // Grid system
+@import 'layouts/header';                // Header styles,   used on all pages
+@import 'layouts/footer';               // Footer styles,   used on all pages
+@import 'layouts/main';                  // main styles,   used on all pages
+//@import 'layouts/sidebar';            // Sidebar styles No create
+@import 'layouts/slider';               // slider home styles, used on home
+@import 'layouts/section';              // use in the sections that are within the main home page or any of the other pages
+@import 'layouts/customDropdown';      // use in the sections that are within the main home page or any of the other pages
 
 
 // Import specific page styles examples 
