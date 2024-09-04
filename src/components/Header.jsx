@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import '../styles/components/_configuser.scss';
-import Login from './Login';
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/components/_configuser.scss";
+import Login from "./Login";
 
 const Header = () => {
-  const [isSmall, setIsSmall] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
-  const [welcomeMessage, setWelcomeMessage] = useState('');
-  const [userEmail, setUserEmail] = useState('');
+  const [welcomeMessage, setWelcomeMessage] = useState("");
+  const [userEmail, setUserEmail] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -15,38 +14,24 @@ const Header = () => {
 
   useEffect(() => {
     // Verifica si hay un token en sessionStorage
-    const token = sessionStorage.getItem('token');
-    const storedUser = JSON.parse(sessionStorage.getItem('user'));
+    const token = sessionStorage.getItem("token");
+    const storedUser = JSON.parse(sessionStorage.getItem("user"));
 
     if (token && storedUser) {
       setWelcomeMessage(storedUser.name);
       setUserEmail(storedUser.email);
       setIsLoggedIn(true);
     }
-
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsSmall(true);
-      } else {
-        setIsSmall(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, []);
 
   const handleLogout = () => {
-    setWelcomeMessage('');
-    setUserEmail('');
+    setWelcomeMessage("");
+    setUserEmail("");
     setIsLoggedIn(false);
     setShowDropdown(false);
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('user');
-    navigate('/');
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user");
+    navigate("/");
   };
 
   const toggleDropdown = () => {
@@ -55,12 +40,12 @@ const Header = () => {
 
   const goToAccount = () => {
     setShowDropdown(false);
-    navigate('/account');
+    navigate("/account");
   };
 
   return (
     <>
-      <header className={`header ${isSmall ? 'small' : ''}`}>
+      <header>
         <div className="header-left">
           <Link to="/" className="brand-link">
             <h1>TravelAmigos</h1>
@@ -69,17 +54,24 @@ const Header = () => {
         <div className="header-right">
           <nav>
             <ul>
-              <li><a href="#support">Support</a></li>
-              <li><a href="#notifications"><i className="fas fa-bell"></i></a></li>
+              <li>
+                <a href="#support">Support</a>
+              </li>
+              <li>
+                <a href="#notifications">
+                  <i className="fas fa-bell"></i>
+                </a>
+              </li>
               {isLoggedIn ? (
-                <li className={`dropdown ${showDropdown ? 'active' : ''}`}>
+                <li className={`dropdown ${showDropdown ? "active" : ""}`}>
                   <button onClick={toggleDropdown} className="user-button">
                     {welcomeMessage}
                   </button>
                   {showDropdown && (
                     <ul className="dropdown-menu">
                       <li className="user-info">
-                        Hi, <strong>{welcomeMessage}</strong><br />
+                        Hi, <strong>{welcomeMessage}</strong>
+                        <br />
                         <small>{userEmail}</small>
                       </li>
                       <hr className="dropdown-divider" />
@@ -98,7 +90,14 @@ const Header = () => {
                   )}
                 </li>
               ) : (
-                <li><button onClick={() => setShowLogin(true)} className="login-button">Login</button></li>
+                <li>
+                  <button
+                    onClick={() => setShowLogin(true)}
+                    className="login-button"
+                  >
+                    Login
+                  </button>
+                </li>
               )}
             </ul>
           </nav>
@@ -111,8 +110,8 @@ const Header = () => {
             setUserEmail(user.email);
             setIsLoggedIn(true);
             setShowLogin(false);
-            sessionStorage.setItem('user', JSON.stringify(user)); // Guardar la información del usuario
-            sessionStorage.setItem('token', user.token); // Guardar el token del usuario
+            sessionStorage.setItem("user", JSON.stringify(user)); // Guardar la información del usuario
+            sessionStorage.setItem("token", user.token); // Guardar el token del usuario
           }}
           onClose={() => setShowLogin(false)}
         />
@@ -122,5 +121,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
