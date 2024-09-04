@@ -15,22 +15,20 @@ function CustomDropdown({ userName, userEmail, goToAccount, handleLogout }) {
           Hi, <strong>{userName}</strong>
         </span>
       </button>
-      {isOpen && (
-        <ul className="dropdown-menu">
-          <li>
-            <button onClick={goToAccount} className="dropdown-item">
-              <FontAwesomeIcon icon={faCog} size="lg" />
-              <span style={{ marginLeft: "8px" }}>Setting</span>
-            </button>
-          </li>
-          <li>
-            <button onClick={handleLogout} className="dropdown-item">
-              <FontAwesomeIcon icon={faSignOutAlt} size="lg" />
-              <span style={{ marginLeft: "8px" }}>Sign Out</span>
-            </button>
-          </li>
-        </ul>
-      )}
+      <ul className={`dropdown-menu ${isOpen ? "show" : ""}`}>
+        <li>
+          <button onClick={goToAccount} className="dropdown-item">
+            <FontAwesomeIcon icon={faCog} size="xl" />
+            <span>Setting</span>
+          </button>
+        </li>
+        <li>
+          <button onClick={handleLogout} className="dropdown-item">
+            <FontAwesomeIcon icon={faSignOutAlt} size="xl" />
+            <span>Sign Out</span>
+          </button>
+        </li>
+      </ul>
     </div>
   );
 }
