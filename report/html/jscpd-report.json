@@ -1,0 +1,3198 @@
+{
+  "statistics": {
+    "detectionDate": "2024-09-05T19:40:05.230Z",
+    "formats": {
+      "scss": {
+        "sources": {
+          "./src/styles/layouts/_slider.scss": {
+            "lines": 10,
+            "tokens": 73,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/layouts/_section.scss": {
+            "lines": 19,
+            "tokens": 123,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/layouts/_main.scss": {
+            "lines": 63,
+            "tokens": 367,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/layouts/_header.scss": {
+            "lines": 74,
+            "tokens": 451,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/layouts/_grid.scss": {
+            "lines": 41,
+            "tokens": 258,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/layouts/_footer.scss": {
+            "lines": 81,
+            "tokens": 511,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/layouts/_customDropdown.scss": {
+            "lines": 64,
+            "tokens": 461,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_searchForm.scss": {
+            "lines": 100,
+            "tokens": 575,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_reset-password.scss": {
+            "lines": 53,
+            "tokens": 353,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_reservationReviewPage.scss": {
+            "lines": 284,
+            "tokens": 1869,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_register.scss": {
+            "lines": 139,
+            "tokens": 933,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_pagination.scss": {
+            "lines": 35,
+            "tokens": 227,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_login.scss": {
+            "lines": 158,
+            "tokens": 1028,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_lightbox.scss": {
+            "lines": 71,
+            "tokens": 503,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_hotelSearchResultCard.scss": {
+            "lines": 106,
+            "tokens": 644,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_hotelSearchPage.scss": {
+            "lines": 46,
+            "tokens": 290,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_hotelSearchFilter.scss": {
+            "lines": 86,
+            "tokens": 581,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_hotelDetailPage.scss": {
+            "lines": 140,
+            "tokens": 809,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_gallery.scss": {
+            "lines": 88,
+            "tokens": 517,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_forms.scss": {
+            "lines": 85,
+            "tokens": 494,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_creditcardinfo.scss": {
+            "lines": 130,
+            "tokens": 842,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_configuser.scss": {
+            "lines": 85,
+            "tokens": 623,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_changepassword.scss": {
+            "lines": 60,
+            "tokens": 435,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_cards.scss": {
+            "lines": 27,
+            "tokens": 182,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_buttons.scss": {
+            "lines": 38,
+            "tokens": 305,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_addresses.scss": {
+            "lines": 13,
+            "tokens": 105,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/components/_account.scss": {
+            "lines": 59,
+            "tokens": 380,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/base/_variables.scss": {
+            "lines": 14,
+            "tokens": 80,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/base/_utilities.scss": {
+            "lines": 77,
+            "tokens": 467,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/base/_typography.scss": {
+            "lines": 54,
+            "tokens": 277,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/base/_reset.scss": {
+            "lines": 27,
+            "tokens": 128,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/styles/main.scss": {
+            "lines": 44,
+            "tokens": 243,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 2371,
+          "tokens": 15134,
+          "sources": 32,
+          "clones": 0,
+          "duplicatedLines": 0,
+          "duplicatedTokens": 0,
+          "percentage": 0,
+          "percentageTokens": 0,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "javascript": {
+        "sources": {
+          "./src/components/TripSection/TripDescriptionSf.jsx": {
+            "lines": 8,
+            "tokens": 69,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/TripDescriptionNY.jsx": {
+            "lines": 11,
+            "tokens": 93,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/TripDescriptionMiami.jsx": {
+            "lines": 8,
+            "tokens": 69,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/TripDescriptionLa.jsx": {
+            "lines": 8,
+            "tokens": 69,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/TripDescriptionChicago.jsx": {
+            "lines": 8,
+            "tokens": 69,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/HotelList.jsx": {
+            "lines": 0,
+            "tokens": 3,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/CitySlide.jsx": {
+            "lines": 1,
+            "tokens": 38,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/Carousel.jsx": {
+            "lines": 1,
+            "tokens": 45,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/BackgroundCardContainer.jsx": {
+            "lines": 4,
+            "tokens": 28,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/BackgroundCard.jsx": {
+            "lines": 0,
+            "tokens": 15,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/StarRating.jsx": {
+            "lines": 12,
+            "tokens": 102,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/ReviewSection.jsx": {
+            "lines": 7,
+            "tokens": 98,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/ReviewForm.jsx": {
+            "lines": 38,
+            "tokens": 369,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 38,
+            "duplicatedTokens": 369,
+            "percentage": 100,
+            "percentageTokens": 100,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/LeaveReview.jsx": {
+            "lines": 38,
+            "tokens": 369,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 38,
+            "duplicatedTokens": 369,
+            "percentage": 100,
+            "percentageTokens": 100,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/AllReviews.jsx": {
+            "lines": 0,
+            "tokens": 9,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/util/index.js": {
+            "lines": 24,
+            "tokens": 240,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/util/filterUtils.js": {
+            "lines": 33,
+            "tokens": 461,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/pages/ReservationReviewPage.jsx": {
+            "lines": 277,
+            "tokens": 2641,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/pages/HotelSearchPage.jsx": {
+            "lines": 23,
+            "tokens": 248,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/pages/HotelDetailPage.jsx": {
+            "lines": 43,
+            "tokens": 342,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/pages/Home.jsx": {
+            "lines": 0,
+            "tokens": 3,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/gallery/Lightbox.jsx": {
+            "lines": 5,
+            "tokens": 121,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/gallery/Image.jsx": {
+            "lines": 0,
+            "tokens": 21,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/gallery/GalleryGrid.jsx": {
+            "lines": 35,
+            "tokens": 347,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/gallery/Gallery.jsx": {
+            "lines": 8,
+            "tokens": 69,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Wellness.jsx": {
+            "lines": 23,
+            "tokens": 127,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 39,
+            "duplicatedTokens": 216,
+            "percentage": 169.57,
+            "percentageTokens": 170.08,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TrendingDestination.jsx": {
+            "lines": 23,
+            "tokens": 127,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 13,
+            "duplicatedTokens": 72,
+            "percentage": 56.52,
+            "percentageTokens": 56.69,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/StarFilter.jsx": {
+            "lines": 1,
+            "tokens": 9,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Session.jsx": {
+            "lines": 0,
+            "tokens": 7,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/SearchForm.jsx": {
+            "lines": 62,
+            "tokens": 626,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/RoomTypesList.jsx": {
+            "lines": 0,
+            "tokens": 3,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/RoomFilter.jsx": {
+            "lines": 1,
+            "tokens": 9,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Romantic.jsx": {
+            "lines": 23,
+            "tokens": 129,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 13,
+            "duplicatedTokens": 72,
+            "percentage": 56.52,
+            "percentageTokens": 55.81,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ResetPassword.jsx": {
+            "lines": 7,
+            "tokens": 76,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReservationSummary.jsx": {
+            "lines": 0,
+            "tokens": 3,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReservationNumber.jsx": {
+            "lines": 0,
+            "tokens": 19,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReservationButton.jsx": {
+            "lines": 0,
+            "tokens": 3,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Register.jsx": {
+            "lines": 7,
+            "tokens": 74,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ProfileInfo.jsx": {
+            "lines": 0,
+            "tokens": 6,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/PriceFilter.jsx": {
+            "lines": 9,
+            "tokens": 52,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Pagination.jsx": {
+            "lines": 1,
+            "tokens": 42,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Login.jsx": {
+            "lines": 37,
+            "tokens": 393,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Layout.jsx": {
+            "lines": 0,
+            "tokens": 9,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/HotelSearchResultList.jsx": {
+            "lines": 0,
+            "tokens": 11,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/HotelSearchResultCard.jsx": {
+            "lines": 40,
+            "tokens": 353,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/HotelSearchFilter.jsx": {
+            "lines": 18,
+            "tokens": 98,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/HotelExtraOptions.jsx": {
+            "lines": 7,
+            "tokens": 102,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Header.jsx": {
+            "lines": 30,
+            "tokens": 215,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/FoodieDestination.jsx": {
+            "lines": 23,
+            "tokens": 127,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 13,
+            "duplicatedTokens": 72,
+            "percentage": 56.52,
+            "percentageTokens": 56.69,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/FamilyFriendly.jsx": {
+            "lines": 23,
+            "tokens": 129,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ErrorMessage.jsx": {
+            "lines": 0,
+            "tokens": 9,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/DropdownPanel.jsx": {
+            "lines": 0,
+            "tokens": 12,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Discover.jsx": {
+            "lines": 40,
+            "tokens": 214,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/DestinationList.jsx": {
+            "lines": 4,
+            "tokens": 45,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/DestinationCardChoice.jsx": {
+            "lines": 0,
+            "tokens": 20,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/DestinationCard.jsx": {
+            "lines": 0,
+            "tokens": 3,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/DateInput.jsx": {
+            "lines": 13,
+            "tokens": 82,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/CustomDropdown.jsx": {
+            "lines": 15,
+            "tokens": 197,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/CreditCardInfo.jsx": {
+            "lines": 89,
+            "tokens": 888,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/CostDetails.jsx": {
+            "lines": 0,
+            "tokens": 3,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ChildrenSelector.jsx": {
+            "lines": 38,
+            "tokens": 257,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ChildrenInput.jsx": {
+            "lines": 1,
+            "tokens": 9,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ChangePassword.jsx": {
+            "lines": 27,
+            "tokens": 242,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/BudgetTravel.jsx": {
+            "lines": 23,
+            "tokens": 128,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/BackButton.jsx": {
+            "lines": 2,
+            "tokens": 80,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/AdultsInput.jsx": {
+            "lines": 1,
+            "tokens": 9,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Addresses.jsx": {
+            "lines": 3,
+            "tokens": 36,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Account.jsx": {
+            "lines": 0,
+            "tokens": 3,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/axiosConfig.js": {
+            "lines": 10,
+            "tokens": 70,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/App.jsx": {
+            "lines": 99,
+            "tokens": 769,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 1292,
+          "tokens": 11763,
+          "sources": 70,
+          "clones": 4,
+          "duplicatedLines": 77,
+          "duplicatedTokens": 585,
+          "percentage": 5.96,
+          "percentageTokens": 4.97,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "jsx": {
+        "sources": {
+          "./src/components/TripSection/TripDescriptionSf.jsx": {
+            "lines": 60,
+            "tokens": 503,
+            "sources": 1,
+            "clones": 9,
+            "duplicatedLines": 139,
+            "duplicatedTokens": 1131,
+            "percentage": 231.67,
+            "percentageTokens": 224.85,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/TripDescriptionNY.jsx": {
+            "lines": 68,
+            "tokens": 537,
+            "sources": 1,
+            "clones": 4,
+            "duplicatedLines": 83,
+            "duplicatedTokens": 522,
+            "percentage": 122.06,
+            "percentageTokens": 97.21,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/TripDescriptionMiami.jsx": {
+            "lines": 61,
+            "tokens": 503,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 50,
+            "duplicatedTokens": 377,
+            "percentage": 81.97,
+            "percentageTokens": 74.95,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/TripDescriptionLa.jsx": {
+            "lines": 60,
+            "tokens": 501,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 51,
+            "duplicatedTokens": 384,
+            "percentage": 85,
+            "percentageTokens": 76.65,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/TripDescriptionChicago.jsx": {
+            "lines": 60,
+            "tokens": 501,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 51,
+            "duplicatedTokens": 384,
+            "percentage": 85,
+            "percentageTokens": 76.65,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/HotelList.jsx": {
+            "lines": 20,
+            "tokens": 233,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/CitySlide.jsx": {
+            "lines": 20,
+            "tokens": 218,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/CityDescription.jsx": {
+            "lines": 11,
+            "tokens": 79,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/Carousel.jsx": {
+            "lines": 64,
+            "tokens": 559,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/BackgroundCardContainer.jsx": {
+            "lines": 18,
+            "tokens": 140,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/BackgroundCard.jsx": {
+            "lines": 15,
+            "tokens": 166,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/StarRating.jsx": {
+            "lines": 33,
+            "tokens": 281,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/ReviewSection.jsx": {
+            "lines": 55,
+            "tokens": 477,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/ReviewForm.jsx": {
+            "lines": 60,
+            "tokens": 575,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 60,
+            "duplicatedTokens": 575,
+            "percentage": 100,
+            "percentageTokens": 100,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/ReviewCard.jsx": {
+            "lines": 22,
+            "tokens": 206,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/LeaveReview.jsx": {
+            "lines": 60,
+            "tokens": 575,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 60,
+            "duplicatedTokens": 575,
+            "percentage": 100,
+            "percentageTokens": 100,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/AllReviews.jsx": {
+            "lines": 34,
+            "tokens": 261,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/pages/Search.jsx": {
+            "lines": 21,
+            "tokens": 215,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/pages/ReservationReviewPage.jsx": {
+            "lines": 295,
+            "tokens": 2831,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 8,
+            "duplicatedTokens": 102,
+            "percentage": 2.71,
+            "percentageTokens": 3.6,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/pages/HotelSearchPage.jsx": {
+            "lines": 130,
+            "tokens": 1349,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/pages/HotelDetailPage.jsx": {
+            "lines": 137,
+            "tokens": 1263,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/pages/Home.jsx": {
+            "lines": 52,
+            "tokens": 460,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/hooks/useReservation.jsx": {
+            "lines": 55,
+            "tokens": 538,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/hooks/useLoadHotelData.jsx": {
+            "lines": 31,
+            "tokens": 326,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/hooks/useCalculateCosts.jsx": {
+            "lines": 42,
+            "tokens": 466,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 8,
+            "duplicatedTokens": 102,
+            "percentage": 19.05,
+            "percentageTokens": 21.89,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/gallery/Lightbox.jsx": {
+            "lines": 18,
+            "tokens": 275,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/gallery/Image.jsx": {
+            "lines": 4,
+            "tokens": 73,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/gallery/GalleryGrid.jsx": {
+            "lines": 61,
+            "tokens": 560,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/gallery/Gallery.jsx": {
+            "lines": 87,
+            "tokens": 941,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Wellness.jsx": {
+            "lines": 112,
+            "tokens": 1930,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TrendingDestination.jsx": {
+            "lines": 89,
+            "tokens": 1323,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 43,
+            "duplicatedTokens": 514,
+            "percentage": 48.31,
+            "percentageTokens": 38.85,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TravelHistory.jsx": {
+            "lines": 26,
+            "tokens": 223,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/StarFilter.jsx": {
+            "lines": 23,
+            "tokens": 226,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Session.jsx": {
+            "lines": 37,
+            "tokens": 327,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/SearchForm.jsx": {
+            "lines": 179,
+            "tokens": 1947,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/RoomTypesList.jsx": {
+            "lines": 17,
+            "tokens": 176,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/RoomFilter.jsx": {
+            "lines": 23,
+            "tokens": 209,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Romantic.jsx": {
+            "lines": 91,
+            "tokens": 1135,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 43,
+            "duplicatedTokens": 694,
+            "percentage": 47.25,
+            "percentageTokens": 61.15,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ResetPassword.jsx": {
+            "lines": 52,
+            "tokens": 495,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReservationSummary.jsx": {
+            "lines": 27,
+            "tokens": 495,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 8,
+            "duplicatedTokens": 113,
+            "percentage": 29.63,
+            "percentageTokens": 22.83,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReservationNumber.jsx": {
+            "lines": 21,
+            "tokens": 215,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReservationButton.jsx": {
+            "lines": 16,
+            "tokens": 129,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Register.jsx": {
+            "lines": 130,
+            "tokens": 1258,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ProfileInfo.jsx": {
+            "lines": 74,
+            "tokens": 748,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/PriceFilter.jsx": {
+            "lines": 29,
+            "tokens": 212,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/PetPolicy.jsx": {
+            "lines": 11,
+            "tokens": 108,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Pagination.jsx": {
+            "lines": 22,
+            "tokens": 236,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Login.jsx": {
+            "lines": 81,
+            "tokens": 815,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Layout.jsx": {
+            "lines": 16,
+            "tokens": 133,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/HotelSearchResultList.jsx": {
+            "lines": 20,
+            "tokens": 203,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/HotelSearchResultCard.jsx": {
+            "lines": 76,
+            "tokens": 790,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/HotelSearchFilter.jsx": {
+            "lines": 34,
+            "tokens": 230,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/HotelRating.jsx": {
+            "lines": 10,
+            "tokens": 73,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/HotelPolicies.jsx": {
+            "lines": 14,
+            "tokens": 143,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/HotelInfo.jsx": {
+            "lines": 21,
+            "tokens": 287,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/HotelFacilities.jsx": {
+            "lines": 26,
+            "tokens": 426,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/HotelExtraOptions.jsx": {
+            "lines": 42,
+            "tokens": 452,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Header.jsx": {
+            "lines": 98,
+            "tokens": 829,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/FormSearch.jsx": {
+            "lines": 56,
+            "tokens": 509,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Footer.jsx": {
+            "lines": 52,
+            "tokens": 602,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/FoodieDestination.jsx": {
+            "lines": 100,
+            "tokens": 1412,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/FamilyFriendly.jsx": {
+            "lines": 95,
+            "tokens": 1265,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 20,
+            "duplicatedTokens": 251,
+            "percentage": 21.05,
+            "percentageTokens": 19.84,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ErrorMessage.jsx": {
+            "lines": 7,
+            "tokens": 69,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/DropdownPanel.jsx": {
+            "lines": 15,
+            "tokens": 171,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Discover.jsx": {
+            "lines": 71,
+            "tokens": 430,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/DestinationList.jsx": {
+            "lines": 18,
+            "tokens": 166,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/DestinationCardChoice.jsx": {
+            "lines": 30,
+            "tokens": 289,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/DestinationCard.jsx": {
+            "lines": 25,
+            "tokens": 251,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/DateInput.jsx": {
+            "lines": 30,
+            "tokens": 216,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/CustomDropdown.jsx": {
+            "lines": 35,
+            "tokens": 401,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/CreditCardInfo.jsx": {
+            "lines": 172,
+            "tokens": 1793,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/CostDetails.jsx": {
+            "lines": 19,
+            "tokens": 278,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 8,
+            "duplicatedTokens": 113,
+            "percentage": 42.11,
+            "percentageTokens": 40.65,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ChildrenSelector.jsx": {
+            "lines": 69,
+            "tokens": 513,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ChildrenInput.jsx": {
+            "lines": 12,
+            "tokens": 89,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ChangePassword.jsx": {
+            "lines": 82,
+            "tokens": 768,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/BudgetTravel.jsx": {
+            "lines": 110,
+            "tokens": 1096,
+            "sources": 1,
+            "clones": 1,
+            "duplicatedLines": 20,
+            "duplicatedTokens": 431,
+            "percentage": 18.18,
+            "percentageTokens": 39.32,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/BackButton.jsx": {
+            "lines": 13,
+            "tokens": 172,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/AdultsInput.jsx": {
+            "lines": 14,
+            "tokens": 99,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Addresses.jsx": {
+            "lines": 76,
+            "tokens": 822,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/Account.jsx": {
+            "lines": 62,
+            "tokens": 610,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/main.jsx": {
+            "lines": 9,
+            "tokens": 71,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/App.jsx": {
+            "lines": 166,
+            "tokens": 1385,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 4409,
+          "tokens": 44862,
+          "sources": 82,
+          "clones": 18,
+          "duplicatedLines": 326,
+          "duplicatedTokens": 3134,
+          "percentage": 7.39,
+          "percentageTokens": 6.99,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "css": {
+        "sources": {
+          "./src/components/TripSection/TripDescription.css": {
+            "lines": 35,
+            "tokens": 269,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/TripSection/BackgroundCard.css": {
+            "lines": 35,
+            "tokens": 259,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/StarRating.css": {
+            "lines": 19,
+            "tokens": 114,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/ReviewSection.css": {
+            "lines": 66,
+            "tokens": 411,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/ReviewCard.css": {
+            "lines": 37,
+            "tokens": 262,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/ReviewSection/AllReviews.css": {
+            "lines": 34,
+            "tokens": 219,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./src/components/DestinationCard.css": {
+            "lines": 69,
+            "tokens": 577,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 295,
+          "tokens": 2111,
+          "sources": 7,
+          "clones": 0,
+          "duplicatedLines": 0,
+          "duplicatedTokens": 0,
+          "percentage": 0,
+          "percentageTokens": 0,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "markdown": {
+        "sources": {
+          "./src/styles/README.md": {
+            "lines": 220,
+            "tokens": 2431,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 220,
+          "tokens": 2431,
+          "sources": 1,
+          "clones": 0,
+          "duplicatedLines": 0,
+          "duplicatedTokens": 0,
+          "percentage": 0,
+          "percentageTokens": 0,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      }
+    },
+    "total": {
+      "lines": 8587,
+      "tokens": 76301,
+      "sources": 192,
+      "clones": 22,
+      "duplicatedLines": 403,
+      "duplicatedTokens": 3719,
+      "percentage": 4.69,
+      "percentageTokens": 4.87,
+      "newDuplicatedLines": 0,
+      "newClones": 0
+    }
+  },
+  "duplicates": [
+    {
+      "format": "jsx",
+      "lines": 10,
+      "fragment": "= () => {\r\n  const location = useLocation();\r\n  const { city } = location.state || {};\r\n\r\n  const [hotels, setHotels] = useState([]);\r\n  const [averagePrice, setAveragePrice] = useState(0);\r\n\r\n  useEffect(() => {\r\n    if (city && city.hotels) {\r\n      const userLocation = { latitude: 40.7128",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionNY.jsx",
+        "start": 10,
+        "end": 19,
+        "startLoc": {
+          "line": 10,
+          "column": 2,
+          "position": 106
+        },
+        "endLoc": {
+          "line": 19,
+          "column": 8,
+          "position": 233
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionSf.jsx",
+        "start": 10,
+        "end": 19,
+        "startLoc": {
+          "line": 10,
+          "column": 2,
+          "position": 106
+        },
+        "endLoc": {
+          "line": 19,
+          "column": 8,
+          "position": 233
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 27,
+      "fragment": "const nearbyHotels = filterByProximity(city.hotels, userLocation, 500);\r\n      const avgPrice = calculateAveragePrice(nearbyHotels);\r\n      const coastalHotels = filterByCoastalLocation(nearbyHotels);\r\n\r\n      setHotels(coastalHotels);\r\n      setAveragePrice(avgPrice);\r\n    }\r\n  }, [city]);\r\n\r\n  if (!city) {\r\n    return <div>No city data available</div>;\r\n  }\r\n\r\n  const cityDescription = `\r\n    New York City, often simply called New York, is the most populous city in the United States, \r\n    known for its towering skyscrapers, bustling streets, and diverse neighborhoods. \r\n    The city's five boroughs—Manhattan, Brooklyn, Queens, The Bronx, and Staten Island—each offer \r\n    a unique experience. Manhattan is home to iconic landmarks such as the Statue of Liberty, Times Square, \r\n    and Central Park. The city is a global hub for finance, arts, and culture, boasting world-renowned \r\n    museums like the Metropolitan Museum of Art and the Museum of Modern Art. Broadway is the epicenter of \r\n    American theater, offering an array of spectacular shows. With a culinary scene that spans every \r\n    imaginable cuisine, New York is a food lover’s paradise. The city's vibrant nightlife, historic \r\n    neighborhoods, and endless shopping opportunities make it a destination that truly has something \r\n    for everyone. Whether you're exploring the architectural marvels of Midtown, enjoying a stroll \r\n    through the high-line parks, or visiting the trendy neighborhoods of Brooklyn, New York City \r\n    promises an unforgettable experience.\r\n  `",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionNY.jsx",
+        "start": 21,
+        "end": 47,
+        "startLoc": {
+          "line": 21,
+          "column": 7,
+          "position": 249
+        },
+        "endLoc": {
+          "line": 47,
+          "column": 4,
+          "position": 376
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionSf.jsx",
+        "start": 21,
+        "end": 43,
+        "startLoc": {
+          "line": 21,
+          "column": 7,
+          "position": 251
+        },
+        "endLoc": {
+          "line": 43,
+          "column": 4,
+          "position": 378
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 10,
+      "fragment": "= () => {\r\n  const location = useLocation();\r\n  const { city } = location.state || {};\r\n\r\n  const [hotels, setHotels] = useState([]);\r\n  const [averagePrice, setAveragePrice] = useState(0);\r\n\r\n  useEffect(() => {\r\n    if (city && city.hotels) {\r\n      const userLocation = { latitude: 25.7617",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionMiami.jsx",
+        "start": 10,
+        "end": 19,
+        "startLoc": {
+          "line": 10,
+          "column": 2,
+          "position": 106
+        },
+        "endLoc": {
+          "line": 19,
+          "column": 8,
+          "position": 233
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionSf.jsx",
+        "start": 10,
+        "end": 19,
+        "startLoc": {
+          "line": 10,
+          "column": 2,
+          "position": 106
+        },
+        "endLoc": {
+          "line": 19,
+          "column": 8,
+          "position": 233
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 24,
+      "fragment": "const nearbyHotels = filterByProximity(city.hotels, userLocation, 500);\r\n      const avgPrice = calculateAveragePrice(nearbyHotels);\r\n      const coastalHotels = filterByCoastalLocation(nearbyHotels);\r\n\r\n      setHotels(coastalHotels);\r\n      setAveragePrice(avgPrice);\r\n    }\r\n  }, [city]);\r\n\r\n  if (!city) {\r\n    return <div>No city data available</div>;\r\n  }\r\n\r\n  const cityDescription = `\r\n    Miami, a vibrant city located on the southeastern coast of Florida, is renowned for its stunning \r\n    beaches, lively nightlife, and rich cultural diversity. The city's Art Deco Historic District in \r\n    South Beach is famous for its colorful buildings and bustling oceanfront. Miami's vibrant neighborhoods, \r\n    such as Little Havana and Wynwood, offer a unique blend of cultures, arts, and cuisine. The city is \r\n    also home to beautiful parks, including the expansive Biscayne National Park and the lush Fairchild \r\n    Tropical Botanic Garden. With its warm climate, Miami is a popular destination for sun-seekers and \r\n    those looking to enjoy a dynamic urban experience. Whether you're lounging on the sandy shores, exploring \r\n    the city's eclectic art scene, or savoring its diverse culinary offerings, Miami provides a memorable \r\n    getaway for visitors.\r\n  `",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionMiami.jsx",
+        "start": 21,
+        "end": 44,
+        "startLoc": {
+          "line": 21,
+          "column": 7,
+          "position": 251
+        },
+        "endLoc": {
+          "line": 44,
+          "column": 4,
+          "position": 378
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionSf.jsx",
+        "start": 21,
+        "end": 43,
+        "startLoc": {
+          "line": 21,
+          "column": 7,
+          "position": 251
+        },
+        "endLoc": {
+          "line": 43,
+          "column": 4,
+          "position": 378
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 19,
+      "fragment": ";\r\n\r\n  return (\r\n    <div className=\"trip-description\">\r\n      <BackgroundCardContainer\r\n        imageSrc={MiamiCar}\r\n        title={city.name}\r\n        description={city.description}\r\n        cityDescription={cityDescription}\r\n      />\r\n      <div className=\"form-section\">\r\n        <SearchForm />\r\n      </div>\r\n      <HotelList hotels={hotels} averagePrice={averagePrice} />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default TripDescriptionMiami",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionMiami.jsx",
+        "start": 44,
+        "end": 62,
+        "startLoc": {
+          "line": 44,
+          "column": 4,
+          "position": 379
+        },
+        "endLoc": {
+          "line": 62,
+          "column": 21,
+          "position": 502
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionSf.jsx",
+        "start": 43,
+        "end": 61,
+        "startLoc": {
+          "line": 43,
+          "column": 4,
+          "position": 379
+        },
+        "endLoc": {
+          "line": 61,
+          "column": 18,
+          "position": 502
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 10,
+      "fragment": "= () => {\r\n  const location = useLocation();\r\n  const { city } = location.state || {};\r\n\r\n  const [hotels, setHotels] = useState([]);\r\n  const [averagePrice, setAveragePrice] = useState(0);\r\n\r\n  useEffect(() => {\r\n    if (city && city.hotels) {\r\n      const userLocation = { latitude: 34.0522",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionLa.jsx",
+        "start": 10,
+        "end": 19,
+        "startLoc": {
+          "line": 10,
+          "column": 2,
+          "position": 106
+        },
+        "endLoc": {
+          "line": 19,
+          "column": 8,
+          "position": 233
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionSf.jsx",
+        "start": 10,
+        "end": 19,
+        "startLoc": {
+          "line": 10,
+          "column": 2,
+          "position": 106
+        },
+        "endLoc": {
+          "line": 19,
+          "column": 8,
+          "position": 233
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 25,
+      "fragment": "}; \r\n\r\n      const nearbyHotels = filterByProximity(city.hotels, userLocation, 500);\r\n      const avgPrice = calculateAveragePrice(nearbyHotels);\r\n      const coastalHotels = filterByCoastalLocation(nearbyHotels);\r\n\r\n      setHotels(coastalHotels);\r\n      setAveragePrice(avgPrice);\r\n    }\r\n  }, [city]);\r\n\r\n  if (!city) {\r\n    return <div>No city data available</div>;\r\n  }\r\n\r\n  const cityDescription = `\r\n    Los Angeles, often known simply as LA, is the largest city in California and the second most populous \r\n    city in the United States. It is renowned for its entertainment industry, particularly Hollywood, \r\n    which is synonymous with movies, television, and music. LA's stunning beaches, such as Venice Beach \r\n    and Santa Monica Beach, offer sun and sand, while neighborhoods like Beverly Hills and Hollywood \r\n    are famous for their luxury and glamour. The city is a cultural melting pot, with diverse cuisine, \r\n    vibrant arts scenes, and numerous museums and galleries. Iconic landmarks include the Hollywood Sign, \r\n    Griffith Observatory, and the Getty Center. Whether you're exploring the star-studded streets of Hollywood \r\n    or relaxing by the ocean, Los Angeles provides an exciting and dynamic experience.\r\n  `",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionLa.jsx",
+        "start": 19,
+        "end": 43,
+        "startLoc": {
+          "line": 19,
+          "column": 2,
+          "position": 242
+        },
+        "endLoc": {
+          "line": 43,
+          "column": 4,
+          "position": 376
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionNY.jsx",
+        "start": 19,
+        "end": 43,
+        "startLoc": {
+          "line": 19,
+          "column": 2,
+          "position": 242
+        },
+        "endLoc": {
+          "line": 43,
+          "column": 4,
+          "position": 378
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 19,
+      "fragment": ";\r\n\r\n  return (\r\n    <div className=\"trip-description\">\r\n      <BackgroundCardContainer\r\n        imageSrc={LaCar}\r\n        title={city.name}\r\n        description={city.description}\r\n        cityDescription={cityDescription}\r\n      />\r\n      <div className=\"form-section\">\r\n        <SearchForm />\r\n      </div>\r\n      <HotelList hotels={hotels} averagePrice={averagePrice} />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default TripDescriptionLA",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionLa.jsx",
+        "start": 43,
+        "end": 61,
+        "startLoc": {
+          "line": 43,
+          "column": 4,
+          "position": 377
+        },
+        "endLoc": {
+          "line": 61,
+          "column": 18,
+          "position": 500
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionSf.jsx",
+        "start": 43,
+        "end": 61,
+        "startLoc": {
+          "line": 43,
+          "column": 4,
+          "position": 379
+        },
+        "endLoc": {
+          "line": 61,
+          "column": 18,
+          "position": 502
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 10,
+      "fragment": "= () => {\r\n  const location = useLocation();\r\n  const { city } = location.state || {};\r\n\r\n  const [hotels, setHotels] = useState([]);\r\n  const [averagePrice, setAveragePrice] = useState(0);\r\n\r\n  useEffect(() => {\r\n    if (city && city.hotels) {\r\n      const userLocation = { latitude: 41.8781",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionChicago.jsx",
+        "start": 10,
+        "end": 19,
+        "startLoc": {
+          "line": 10,
+          "column": 2,
+          "position": 106
+        },
+        "endLoc": {
+          "line": 19,
+          "column": 8,
+          "position": 233
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionSf.jsx",
+        "start": 10,
+        "end": 19,
+        "startLoc": {
+          "line": 10,
+          "column": 2,
+          "position": 106
+        },
+        "endLoc": {
+          "line": 19,
+          "column": 8,
+          "position": 233
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 25,
+      "fragment": "}; \r\n\r\n      const nearbyHotels = filterByProximity(city.hotels, userLocation, 500);\r\n      const avgPrice = calculateAveragePrice(nearbyHotels);\r\n      const coastalHotels = filterByCoastalLocation(nearbyHotels);\r\n\r\n      setHotels(coastalHotels);\r\n      setAveragePrice(avgPrice);\r\n    }\r\n  }, [city]);\r\n\r\n  if (!city) {\r\n    return <div>No city data available</div>;\r\n  }\r\n\r\n  const cityDescription = `\r\n    Chicago, known as the Windy City, is the third-largest city in the United States and is famous for its \r\n    stunning architecture, deep-dish pizza, and vibrant arts scene. Located on the shores of Lake Michigan, \r\n    Chicago offers a rich cultural experience with world-class museums like the Art Institute of Chicago and \r\n    attractions such as Millennium Park and Navy Pier. The city's diverse neighborhoods each have their own \r\n    unique character, from the historic architecture of the Loop to the trendy, eclectic vibe of Wicker Park. \r\n    Visitors can enjoy a stroll along the Chicago Riverwalk, explore the bustling Magnificent Mile for shopping, \r\n    or take in a show at one of the city's renowned theaters. With a mix of modern skyscrapers and historic buildings, \r\n    Chicago is a city that blends the old with the new, offering something for everyone.\r\n  `",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionChicago.jsx",
+        "start": 19,
+        "end": 43,
+        "startLoc": {
+          "line": 19,
+          "column": 2,
+          "position": 242
+        },
+        "endLoc": {
+          "line": 43,
+          "column": 4,
+          "position": 376
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionNY.jsx",
+        "start": 19,
+        "end": 43,
+        "startLoc": {
+          "line": 19,
+          "column": 2,
+          "position": 242
+        },
+        "endLoc": {
+          "line": 43,
+          "column": 4,
+          "position": 378
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 19,
+      "fragment": ";\r\n\r\n  return (\r\n    <div className=\"trip-description\">\r\n      <BackgroundCardContainer\r\n        imageSrc={ChicagoCar}\r\n        title={city.name}\r\n        description={city.description}\r\n        cityDescription={cityDescription}\r\n      />\r\n      <div className=\"form-section\">\r\n        <SearchForm />\r\n      </div>\r\n      <HotelList hotels={hotels} averagePrice={averagePrice} />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default TripDescriptionChicago",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionChicago.jsx",
+        "start": 43,
+        "end": 61,
+        "startLoc": {
+          "line": 43,
+          "column": 4,
+          "position": 377
+        },
+        "endLoc": {
+          "line": 61,
+          "column": 23,
+          "position": 500
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\TripSection\\TripDescriptionSf.jsx",
+        "start": 43,
+        "end": 61,
+        "startLoc": {
+          "line": 43,
+          "column": 4,
+          "position": 379
+        },
+        "endLoc": {
+          "line": 61,
+          "column": 18,
+          "position": 502
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 39,
+      "fragment": "={{ padding: '20px' }}>\r\n      <h2>Leave a Review</h2>\r\n      <form onSubmit={handleSubmit}>\r\n        <div style={{ marginBottom: '10px' }}>\r\n          <label>\r\n            Username:\r\n            <input\r\n              type=\"text\"\r\n              value={username}\r\n              onChange={(e) => setUsername(e.target.value)}\r\n              required\r\n              style={{ marginLeft: '10px' }}\r\n            />\r\n          </label>\r\n        </div>\r\n        <div style={{ marginBottom: '10px' }}>\r\n          <label>\r\n            Password:\r\n            <input\r\n              type=\"password\"\r\n              value={password}\r\n              onChange={(e) => setPassword(e.target.value)}\r\n              required\r\n              style={{ marginLeft: '10px' }}\r\n            />\r\n          </label>\r\n        </div>\r\n        <div style={{ marginBottom: '10px' }}>\r\n          <label>\r\n            Your Review:\r\n            <textarea\r\n              value={review}\r\n              onChange={(e) => setReview(e.target.value)}\r\n              required\r\n              style={{ marginLeft: '10px', width: '100%', height: '100px' }}\r\n            />\r\n          </label>\r\n        </div>\r\n        <button type=\"submit\" style={{ padding: '10px 20px', cursor: 'pointer', background: 'green', color: 'white', border: 'none', borderRadius: '5px' }}",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\ReviewSection\\LeaveReview.jsx",
+        "start": 15,
+        "end": 53,
+        "startLoc": {
+          "line": 15,
+          "column": 6,
+          "position": 162
+        },
+        "endLoc": {
+          "line": 53,
+          "column": 2,
+          "position": 531
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\ReviewSection\\ReviewForm.jsx",
+        "start": 15,
+        "end": 53,
+        "startLoc": {
+          "line": 15,
+          "column": 6,
+          "position": 162
+        },
+        "endLoc": {
+          "line": 53,
+          "column": 2,
+          "position": 531
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 61,
+      "fragment": "import React, { useState } from 'react';\r\n\r\nconst LeaveReview = () => {\r\n  const [review, setReview] = useState('');\r\n  const [username, setUsername] = useState('');\r\n  const [password, setPassword] = useState('');\r\n\r\n  const handleSubmit = (e) => {\r\n    e.preventDefault();\r\n    // Handle the review submission\r\n    console.log('Review submitted:', { username, password, review });\r\n  };\r\n\r\n  return (\r\n    <div style={{ padding: '20px' }}>\r\n      <h2>Leave a Review</h2>\r\n      <form onSubmit={handleSubmit}>\r\n        <div style={{ marginBottom: '10px' }}>\r\n          <label>\r\n            Username:\r\n            <input\r\n              type=\"text\"\r\n              value={username}\r\n              onChange={(e) => setUsername(e.target.value)}\r\n              required\r\n              style={{ marginLeft: '10px' }}\r\n            />\r\n          </label>\r\n        </div>\r\n        <div style={{ marginBottom: '10px' }}>\r\n          <label>\r\n            Password:\r\n            <input\r\n              type=\"password\"\r\n              value={password}\r\n              onChange={(e) => setPassword(e.target.value)}\r\n              required\r\n              style={{ marginLeft: '10px' }}\r\n            />\r\n          </label>\r\n        </div>\r\n        <div style={{ marginBottom: '10px' }}>\r\n          <label>\r\n            Your Review:\r\n            <textarea\r\n              value={review}\r\n              onChange={(e) => setReview(e.target.value)}\r\n              required\r\n              style={{ marginLeft: '10px', width: '100%', height: '100px' }}\r\n            />\r\n          </label>\r\n        </div>\r\n        <button type=\"submit\" style={{ padding: '10px 20px', cursor: 'pointer', background: 'green', color: 'white', border: 'none', borderRadius: '5px' }}>\r\n          Submit Review\r\n        </button>\r\n      </form>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default LeaveReview;",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\ReviewSection\\LeaveReview.jsx",
+        "start": 1,
+        "end": 61,
+        "startLoc": {
+          "line": 1,
+          "column": 1,
+          "position": 0
+        },
+        "endLoc": {
+          "line": 61,
+          "column": 2,
+          "position": 575
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\ReviewSection\\ReviewForm.jsx",
+        "start": 1,
+        "end": 61,
+        "startLoc": {
+          "line": 1,
+          "column": 1,
+          "position": 0
+        },
+        "endLoc": {
+          "line": 61,
+          "column": 2,
+          "position": 575
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 9,
+      "fragment": "const differenceInTime = date2.getTime() - date1.getTime();\r\n      const differenceInDays = differenceInTime / (1000 * 3600 * 24);\r\n      setTotalNights(differenceInDays);\r\n\r\n      const roomCost = differenceInDays * (hotel.room_cost_per_night || 0);\r\n      setTotalRoomCost(roomCost);\r\n\r\n      let extrasCost = 0;\r\n      selectedExtras",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\hooks\\useCalculateCosts.jsx",
+        "start": 21,
+        "end": 29,
+        "startLoc": {
+          "line": 21,
+          "column": 7,
+          "position": 239
+        },
+        "endLoc": {
+          "line": 29,
+          "column": 15,
+          "position": 341
+        }
+      },
+      "secondFile": {
+        "name": "src\\pages\\ReservationReviewPage.jsx",
+        "start": 79,
+        "end": 87,
+        "startLoc": {
+          "line": 79,
+          "column": 7,
+          "position": 956
+        },
+        "endLoc": {
+          "line": 87,
+          "column": 7,
+          "position": 1058
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 14,
+      "fragment": "} title=\"Top Trending Destinations\" />\r\n\r\n      <p style={{ \r\n        fontSize: '1rem', \r\n        color: '#fff', \r\n        lineHeight: '1.6', \r\n        maxWidth: '800px', \r\n        margin: '40px auto', \r\n        textAlign: 'justify', \r\n        fontFamily: \"'Lato', sans-serif\",\r\n        backgroundColor: 'rgba(0, 0, 0, 0.5)', \r\n        padding: '20px', \r\n        borderRadius: '8px' \r\n      }}",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\TrendingDestination.jsx",
+        "start": 57,
+        "end": 70,
+        "startLoc": {
+          "line": 57,
+          "column": 15,
+          "position": 619
+        },
+        "endLoc": {
+          "line": 70,
+          "column": 2,
+          "position": 691
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\Wellness.jsx",
+        "start": 57,
+        "end": 70,
+        "startLoc": {
+          "line": 57,
+          "column": 9,
+          "position": 619
+        },
+        "endLoc": {
+          "line": 70,
+          "column": 2,
+          "position": 691
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 14,
+      "fragment": "} title=\"Top Budget Travel Spots\" />\r\n\r\n      <p style={{ \r\n        fontSize: '1rem', \r\n        color: '#fff', \r\n        lineHeight: '1.6', \r\n        maxWidth: '800px', \r\n        margin: '40px auto', \r\n        textAlign: 'justify', \r\n        fontFamily: \"'Lato', sans-serif\",\r\n        backgroundColor: 'rgba(0, 0, 0, 0.5)', \r\n        padding: '20px', \r\n        borderRadius: '8px' \r\n      }}",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\Romantic.jsx",
+        "start": 58,
+        "end": 71,
+        "startLoc": {
+          "line": 58,
+          "column": 13,
+          "position": 629
+        },
+        "endLoc": {
+          "line": 71,
+          "column": 2,
+          "position": 701
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\Wellness.jsx",
+        "start": 57,
+        "end": 70,
+        "startLoc": {
+          "line": 57,
+          "column": 9,
+          "position": 619
+        },
+        "endLoc": {
+          "line": 70,
+          "column": 2,
+          "position": 691
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 24,
+      "fragment": ";\r\n\r\n// Function to group hotels by city and calculate average price\r\nconst processHotelData = (hotelsData) => {\r\n  const destinationsMap = {};\r\n\r\n  hotelsData.forEach(({ city, state, price }) => {\r\n    const key = `${city}, ${state}`;\r\n    if (!destinationsMap[key]) {\r\n      destinationsMap[key] = { city, state, hotelsCount: 0, totalPrice: 0 };\r\n    }\r\n    destinationsMap[key].hotelsCount += 1;\r\n    destinationsMap[key].totalPrice += price;\r\n  });\r\n\r\n  // Convert the map to an array and calculate the average price\r\n  return Object.values(destinationsMap).map(destination => ({\r\n    city: `${destination.city}, ${destination.state}`,\r\n    hotels: `${destination.hotelsCount} hotels`,\r\n    price: `$${(destination.totalPrice / destination.hotelsCount).toFixed(2)}/night (avg)`,\r\n  }));\r\n};\r\n\r\nconst BudgetTravel",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\Romantic.jsx",
+        "start": 4,
+        "end": 27,
+        "startLoc": {
+          "line": 4,
+          "column": 32,
+          "position": 37
+        },
+        "endLoc": {
+          "line": 27,
+          "column": 13,
+          "position": 300
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\TrendingDestination.jsx",
+        "start": 4,
+        "end": 27,
+        "startLoc": {
+          "line": 4,
+          "column": 43,
+          "position": 37
+        },
+        "endLoc": {
+          "line": 27,
+          "column": 20,
+          "position": 300
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 14,
+      "fragment": "} title=\"Top Foodie Destinations\" />\r\n\r\n      <p style={{ \r\n        fontSize: '1rem', \r\n        color: '#fff', \r\n        lineHeight: '1.6', \r\n        maxWidth: '800px', \r\n        margin: '40px auto', \r\n        textAlign: 'justify', \r\n        fontFamily: \"'Lato', sans-serif\",\r\n        backgroundColor: 'rgba(0, 0, 0, 0.5)', \r\n        padding: '20px', \r\n        borderRadius: '8px' \r\n      }}",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\FoodieDestination.jsx",
+        "start": 57,
+        "end": 70,
+        "startLoc": {
+          "line": 57,
+          "column": 13,
+          "position": 597
+        },
+        "endLoc": {
+          "line": 70,
+          "column": 2,
+          "position": 669
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\Wellness.jsx",
+        "start": 57,
+        "end": 70,
+        "startLoc": {
+          "line": 57,
+          "column": 9,
+          "position": 619
+        },
+        "endLoc": {
+          "line": 70,
+          "column": 2,
+          "position": 691
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 15,
+      "fragment": "// Function to group hotels by city and calculate average price\r\nconst processHotelData = (hotelsData) => {\r\n  const destinationsMap = {};\r\n\r\n  hotelsData.forEach(({ city, state, price }) => {\r\n    const key = `${city}, ${state}`;\r\n    if (!destinationsMap[key]) {\r\n      destinationsMap[key] = { city, state, hotelsCount: 0, totalPrice: 0 };\r\n    }\r\n    destinationsMap[key].hotelsCount += 1;\r\n    destinationsMap[key].totalPrice += price;\r\n  });\r\n\r\n  // Convert the map to an array and calculate the average price\r\n  const",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\FamilyFriendly.jsx",
+        "start": 6,
+        "end": 20,
+        "startLoc": {
+          "line": 6,
+          "column": 1,
+          "position": 44
+        },
+        "endLoc": {
+          "line": 20,
+          "column": 6,
+          "position": 209
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\TrendingDestination.jsx",
+        "start": 6,
+        "end": 20,
+        "startLoc": {
+          "line": 6,
+          "column": 1,
+          "position": 42
+        },
+        "endLoc": {
+          "line": 20,
+          "column": 7,
+          "position": 207
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 7,
+      "fragment": "Object.values(destinationsMap).map(destination => ({\r\n    city: `${destination.city}, ${destination.state}`,\r\n    hotels: `${destination.hotelsCount} hotels`,\r\n    price: `$${(destination.totalPrice / destination.hotelsCount).toFixed(2)}/night (avg)`,\r\n  }));\r\n\r\n  console",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\FamilyFriendly.jsx",
+        "start": 20,
+        "end": 26,
+        "startLoc": {
+          "line": 20,
+          "column": 2,
+          "position": 215
+        },
+        "endLoc": {
+          "line": 26,
+          "column": 8,
+          "position": 301
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\TrendingDestination.jsx",
+        "start": 20,
+        "end": 25,
+        "startLoc": {
+          "line": 20,
+          "column": 2,
+          "position": 209
+        },
+        "endLoc": {
+          "line": 25,
+          "column": 2,
+          "position": 292
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 9,
+      "fragment": ">\r\n      <ul className=\"extras-list\">\r\n        {selectedExtras.map((extra, index) => (\r\n          <li key={index}>\r\n            {extra.name}: <span>{totalNights} nights * ${extra.price} per day = ${extra.price * totalNights}</span>\r\n          </li>\r\n        ))}\r\n      </ul>\r\n      <p>",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\CostDetails.jsx",
+        "start": 7,
+        "end": 15,
+        "startLoc": {
+          "line": 7,
+          "column": 3,
+          "position": 119
+        },
+        "endLoc": {
+          "line": 15,
+          "column": 2,
+          "position": 232
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\ReservationSummary.jsx",
+        "start": 13,
+        "end": 21,
+        "startLoc": {
+          "line": 13,
+          "column": 3,
+          "position": 298
+        },
+        "endLoc": {
+          "line": 21,
+          "column": 2,
+          "position": 411
+        }
+      }
+    },
+    {
+      "format": "jsx",
+      "lines": 21,
+      "fragment": ">\r\n        Budget destinations are locations where families can enjoy a memorable vacation without breaking the bank. These destinations typically offer affordable accommodations, dining options, and activities that provide great value. Here’s what defines a budget-friendly destination:\r\n        <br /><br />\r\n        1. <strong>Affordable Accommodations</strong><br />\r\n        Budget Hotels & Motels: These destinations offer a range of budget-friendly lodging options, including motels, inns, and budget hotels that provide basic amenities at lower prices.\r\n        <br /><br />\r\n        2. <strong>Why Choose a Budget Destination?</strong><br />\r\n        Cost Savings: These destinations allow families to enjoy a vacation without the high costs associated with more popular or luxury destinations.\r\n        <br />\r\n        Value for Money: Even with a smaller budget, families can still enjoy a wide range of activities and experiences.\r\n        <br />\r\n        Accessibility: Many budget destinations are easy to reach, making them ideal for road trips and weekend getaways.\r\n        <br /><br />\r\n        These budget-friendly destinations ensure that families can have an enjoyable and memorable vacation without overspending.\r\n      </p>\r\n      <BackButton />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default BudgetTravel;",
+      "tokens": 0,
+      "firstFile": {
+        "name": "src\\components\\BudgetTravel.jsx",
+        "start": 91,
+        "end": 111,
+        "startLoc": {
+          "line": 91,
+          "column": 7,
+          "position": 665
+        },
+        "endLoc": {
+          "line": 111,
+          "column": 2,
+          "position": 1096
+        }
+      },
+      "secondFile": {
+        "name": "src\\components\\Romantic.jsx",
+        "start": 71,
+        "end": 92,
+        "startLoc": {
+          "line": 71,
+          "column": 2,
+          "position": 702
+        },
+        "endLoc": {
+          "line": 92,
+          "column": 2,
+          "position": 1135
+        }
+      }
+    }
+  ],
+  "filename": "C:\\xampp\\htdocs\\first-dtd\\Practicum Project\\gg-pac-team1-front\\node_modules\\@jscpd\\html-reporter\\dist\\templates\\main.pug"
+}
