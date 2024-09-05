@@ -1,35 +1,33 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReviewCard from './ReviewCard'; 
 import './AllReviews.css'; 
 
-const allReviews = [
-  {
-    author: 'John Doe',
-    text: 'Amazing place! Highly recommend visiting.',
-    rating: 4,
-  },
-  {
-    author: 'Jane Smith',
-    text: 'Beautiful scenery and friendly locals.',
-    rating: 5,
-  },
-  
-];
-
-function AllReviews() {
+const AllReviews = ({ reviews }) => {
   return (
     <div className="all-reviews">
       <h2>All Reviews</h2>
       <div className="reviews-container">
-        {allReviews.map((review, index) => (
-          <ReviewCard key={index} review={review} />
-        ))}
-        <div className="all-reviews-section">
-        <AllReviews /> {/* Add AllReviews component here */}
-      </div>
+        {reviews.length > 0 ? (
+          reviews.map((review, index) => (
+            <ReviewCard key={index} review={review} />
+          ))
+        ) : (
+          <p>No reviews available.</p>
+        )}
       </div>
     </div>
   );
-}
+};
+
+AllReviews.propTypes = {
+  reviews: PropTypes.arrayOf(
+    PropTypes.shape({
+      author: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired,
+      rating: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+};
 
 export default AllReviews;

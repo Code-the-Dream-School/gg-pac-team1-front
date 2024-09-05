@@ -1,3 +1,5 @@
+// src/components/DestinationCardChoice.js
+
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
@@ -13,10 +15,13 @@ function DestinationCardChoice({ city, hotels, price }) {
 
   return (
     <Card style={{ width: '18rem', cursor: 'pointer' }} onClick={handleClick}>
-      <Card.Header>{city}</Card.Header>
+      <Card.Header>
+        {city}
+        <br />
+        <small>{hotels}</small> {/* Display number of hotels here */}
+      </Card.Header>
       <ListGroup variant="flush">
-        <ListGroup.Item>{hotels}</ListGroup.Item>
-        <ListGroup.Item>{price}</ListGroup.Item>
+        <ListGroup.Item>Price: {price}</ListGroup.Item>
       </ListGroup>
     </Card>
   );

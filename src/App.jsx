@@ -28,23 +28,31 @@ import TripDescriptionNY from './components/TripSection/TripDescriptionNY';
 import TripDescriptionSf from './components/TripSection/TripDescriptionSf';
 import Wellness from './components/Wellness';
 import Home from './pages/Home';
+import VirginiaHotels from './components/TravelBlog/VirginiaHotels'; 
+import LakeTahoeHotels from './components/TravelBlog/LakeTahoeHotels'; 
+import NorthCarolinaHotels from './components/TravelBlog/NorthCarolinaHotels'; 
+import OhioHotels from './components/TravelBlog/OhioHotels'; 
+import HotelSearchPage from './pages/HotelSearchPage';
 import HotelDetailPage from './pages/HotelDetailPage';
 import HotelSearchPage from './pages/HotelSearchPage';
 import ReservationReviewPage from './pages/ReservationReviewPage';
 import Search from './pages/Search';
 import { getAllData } from './util/index';
+import TravelBlog from './components/TravelBlog/TravelBlog';
 
 const AUTH_URL = 'http://localhost:8000/api/v1/auth';
 
 function App() {
-  const [message, setMessage] = useState('');
-
+  const [message, setMessage] = useState(''); 
+  const [reviews, setReviews] = useState([]);
   useEffect(() => {
     (async () => {
       const myData = await getAllData(AUTH_URL);
       setMessage(myData.data);
-    })();
 
+      const reviewsData = myData.data.reviews || [];
+      setReviews(Array.isArray(reviewsData) ? reviewsData : []);
+    })();
     return () => {
       console.log('unmounting');
     };
@@ -158,10 +166,26 @@ function App() {
           path: 'search',
           element: <Search />,
         },
+        { 
+          path: 'virginia-hotels',
+          element: <VirginiaHotels /> 
+        }, 
+        { 
+          path: 'lake-tahoe-hotels',
+           element: <LakeTahoeHotels /> 
+        },
+        { 
+          path: 'north-carolina-hotels',
+          element: <NorthCarolinaHotels /> 
+        },
+        { 
+          path: 'ohio-hotels', 
+          element: <OhioHotels /> 
+        },
         {
           path: '/:state/:city',
           element: <HotelSearchPage />,
-        },
+        }
       ],
     },
   ]);

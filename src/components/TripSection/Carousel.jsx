@@ -6,6 +6,7 @@ import ChicagoCar from '../../../images/CarouselImg/ChicagoCar.jpg';
 import SanFrCar from '../../../images/CarouselImg/SanFrCar.jpg';
 import MiamiCar from '../../../images/CarouselImg/MiamiCar.jpg';
 import LaCar from '../../../images/CarouselImg/LaCar.jpg';
+import '../../components/TripSection/CarouselStyle.css';
 
 const CarouselComponent = () => {
   const navigate = useNavigate();
