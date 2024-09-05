@@ -3,11 +3,11 @@ import { useLocation } from 'react-router-dom';
 import SearchForm from '../SearchForm.jsx';
 import HotelList from './HotelList.jsx';
 import { filterByProximity, calculateAveragePrice, filterByCoastalLocation } from '../../util/filterUtils.js';
-import NewYorkCar from '../../../images/CarouselImg/NewYorkCar.jpg'; 
+import SanFrCar from '../../../images/CarouselImg/SanFrCar.jpg'; 
 import BackgroundCardContainer from '../TripSection/BackgroundCardContainer.jsx';
 import './TripDescription.css'; 
 
-const TripDescriptionNY = () => {
+const TripDestinationSf = () => {
   const location = useLocation();
   const { city } = location.state || {};
 
@@ -16,7 +16,7 @@ const TripDescriptionNY = () => {
 
   useEffect(() => {
     if (city && city.hotels) {
-      const userLocation = { latitude: 40.7128, longitude: -74.0060 }; 
+      const userLocation = { latitude: 37.7749, longitude: -122.4194 }; // San Francisco coordinates
 
       const nearbyHotels = filterByProximity(city.hotels, userLocation, 500);
       const avgPrice = calculateAveragePrice(nearbyHotels);
@@ -32,25 +32,21 @@ const TripDescriptionNY = () => {
   }
 
   const cityDescription = `
-    New York City, often simply called New York, is the most populous city in the United States, 
-    known for its towering skyscrapers, bustling streets, and diverse neighborhoods. 
-    The city's five boroughs—Manhattan, Brooklyn, Queens, The Bronx, and Staten Island—each offer 
-    a unique experience. Manhattan is home to iconic landmarks such as the Statue of Liberty, Times Square, 
-    and Central Park. The city is a global hub for finance, arts, and culture, boasting world-renowned 
-    museums like the Metropolitan Museum of Art and the Museum of Modern Art. Broadway is the epicenter of 
-    American theater, offering an array of spectacular shows. With a culinary scene that spans every 
-    imaginable cuisine, New York is a food lover’s paradise. The city's vibrant nightlife, historic 
-    neighborhoods, and endless shopping opportunities make it a destination that truly has something 
-    for everyone. Whether you're exploring the architectural marvels of Midtown, enjoying a stroll 
-    through the high-line parks, or visiting the trendy neighborhoods of Brooklyn, New York City 
-    promises an unforgettable experience.
+    San Francisco, known for its stunning bay views and iconic landmarks, is a vibrant city located on the 
+    west coast of the United States. The city is famous for the Golden Gate Bridge, Alcatraz Island, and 
+    its historic cable cars. San Francisco offers a diverse cultural experience with neighborhoods like 
+    Chinatown, the Mission District, and Fisherman's Wharf. Visitors can explore the bustling markets, enjoy 
+    fresh seafood, and take in the panoramic views from Twin Peaks. The city’s hilly terrain provides unique 
+    vistas and scenic walks, while the Presidio and Golden Gate Park offer green spaces for relaxation and 
+    recreation. San Francisco's eclectic architecture, cultural attractions, and rich history make it a 
+    must-visit destination.
   `;
 
   return (
     <div className="trip-description">
       <div className="background-card-container">
         <BackgroundCardContainer
-          imageSrc={NewYorkCar}
+          imageSrc={SanFrCar}
           title={city.name}
           description={city.description}
         />
@@ -66,4 +62,4 @@ const TripDescriptionNY = () => {
   );
 };
 
-export default TripDescriptionNY;
+export default TripDestinationSf;

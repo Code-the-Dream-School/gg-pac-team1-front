@@ -1,61 +1,56 @@
+// src/components/ReviewForm.js
+
 import React, { useState } from 'react';
+import StarRating from './StarRating'; // Import the StarRating component
+import './ReviewForm.css'; // Import the CSS file for styling
 
-const LeaveReview = () => {
-  const [review, setReview] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const ReviewForm = ({ onSubmit }) => {
+  const [email, setEmail] = useState('');
+  const [reviewText, setReviewText] = useState('');
+  const [rating, setRating] = useState(0); // Add state for the rating
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle the review submission
-    console.log('Review submitted:', { username, password, review });
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleReviewTextChange = (event) => {
+    setReviewText(event.target.value);
+  };
+
+  const handleRatingChange = (newRating) => {
+    setRating(newRating);
+  };
+
+  const handleSubmit = () => {
+    if (email && reviewText && rating) {
+      onSubmit({ email, reviewText, rating });
+      setEmail('');
+      setReviewText('');
+      setRating(0);
+    }
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h2>Leave a Review</h2>
-      <form onSubmit={handleSubmit}>
-        <div style={{ marginBottom: '10px' }}>
-          <label>
-            Username:
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              style={{ marginLeft: '10px' }}
-            />
-          </label>
-        </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>
-            Password:
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              style={{ marginLeft: '10px' }}
-            />
-          </label>
-        </div>
-        <div style={{ marginBottom: '10px' }}>
-          <label>
-            Your Review:
-            <textarea
-              value={review}
-              onChange={(e) => setReview(e.target.value)}
-              required
-              style={{ marginLeft: '10px', width: '100%', height: '100px' }}
-            />
-          </label>
-        </div>
-        <button type="submit" style={{ padding: '10px 20px', cursor: 'pointer', background: 'green', color: 'white', border: 'none', borderRadius: '5px' }}>
-          Submit Review
-        </button>
-      </form>
+    <div className="review-form">
+      <h3>Leave a Review</h3>
+      <input
+        type="email"
+        value={email}
+        onChange={handleEmailChange}
+        placeholder="Your email address"
+        className="review-input"
+      />
+      <textarea
+        value={reviewText}
+        onChange={handleReviewTextChange}
+        placeholder="Write your review here..."
+        rows="4"
+        className="review-textarea"
+      />
+      <StarRating rating={rating} onChange={handleRatingChange} /> {/* Add StarRating component */}
+      <button onClick={handleSubmit} className="review-submit-button">Submit Review</button>
     </div>
   );
 };
 
-export default LeaveReview;
+export default ReviewForm;
