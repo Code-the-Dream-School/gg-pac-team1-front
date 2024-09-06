@@ -1,0 +1,72 @@
+.payment-form {
+    .form-group {
+      margin-bottom: 15px;
+      
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+  
+      input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        
+        &:focus {
+          border-color: #007bff;
+          outline: none;
+        }
+      }
+  
+      .cvv-input-container {
+        display: flex;
+        align-items: center;
+  
+        input {
+          flex: 1;
+        }
+  
+        button {
+          margin-left: 10px;
+          padding: 5px 10px;
+          border: none;
+          background-color: #007bff;
+          color: #fff;
+          border-radius: 5px;
+          cursor: pointer;
+          font-size: 14px;
+  
+          &:hover {
+            background-color: #0056b3;
+          }
+        }
+      }
+  
+      .error {
+        color: red;
+        font-size: 12px;
+      }
+  
+      .success {
+        color: green;
+        font-size: 14px;
+      }
+    }
+  
+    button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+  
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
+  }
+  

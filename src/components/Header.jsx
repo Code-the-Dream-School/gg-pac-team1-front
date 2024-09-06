@@ -58,6 +58,13 @@ const Header = () => {
     navigate('/account');
   };
 
+  const openLoginModal = () => {
+    setShowLogin(true);
+  };
+
+  // Exponer la función globalmente para poder ser llamada desde cualquier parte de la aplicación
+  window.openLoginModal = openLoginModal;
+
   return (
     <>
       <header className={`header ${isSmall ? 'small' : ''}`}>
@@ -98,7 +105,7 @@ const Header = () => {
                   )}
                 </li>
               ) : (
-                <li><button onClick={() => setShowLogin(true)} className="login-button">Login</button></li>
+                <li><button onClick={openLoginModal} className="login-button">Login</button></li>
               )}
             </ul>
           </nav>
@@ -113,6 +120,7 @@ const Header = () => {
             setShowLogin(false);
             sessionStorage.setItem('user', JSON.stringify(user)); // Guardar la información del usuario
             sessionStorage.setItem('token', user.token); // Guardar el token del usuario
+            navigate('/'); // Redirigir a la página principal después del login
           }}
           onClose={() => setShowLogin(false)}
         />
@@ -122,5 +130,7 @@ const Header = () => {
 };
 
 export default Header;
+
+
 
 

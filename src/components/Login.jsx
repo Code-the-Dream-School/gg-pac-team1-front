@@ -1,13 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate for redirection
+import { Link, useNavigate } from 'react-router-dom';
 import '../styles/components/_login.scss';
 
 const Login = ({ onLogin, onClose }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate(); // Initialize navigate
+  const navigate = useNavigate(); // Inicializar navigate
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -17,17 +17,17 @@ const Login = ({ onLogin, onClose }) => {
         email,
         password,
       });
-      localStorage.setItem('token', response.data.token); 
-      onLogin(response.data.user); 
-      onClose(); 
+      localStorage.setItem('token', response.data.token); // Guardar el token en localStorage
+      onLogin(response.data.user); // Pasar la información del usuario logueado al componente padre
+      onClose(); // Cerrar el popup de login
     } catch (err) {
-      setError('Invalid credentials');
+      setError('Invalid credentials'); // Mostrar error en caso de credenciales incorrectas
     }
   };
 
   const handleForgotPassword = () => {
-    onClose(); // Close the login popup
-    navigate('/reset-password'); // Redirect to the reset password page
+    onClose(); // Cerrar el popup de login antes de redirigir
+    navigate('/forgot-password'); // Redirigir a la página de forgot password
   };
 
   return (
@@ -80,4 +80,5 @@ const Login = ({ onLogin, onClose }) => {
 };
 
 export default Login;
+
 

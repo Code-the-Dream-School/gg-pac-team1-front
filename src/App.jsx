@@ -4,10 +4,11 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Account from './components/Account';
 import Addresses from './components/Addresses';
 import BudgetTravel from './components/BudgetTravel';
-import ChangePassword from './components/ChangePassword'; // Importar nuevo componente
+import ChangePassword from './components/ChangePassword';
 import CreditCardInfo from './components/CreditCardInfo';
 import FamilyFriendly from './components/FamilyFriendly';
 import FoodieDestination from './components/FoodieDestination';
+import ForgotPassword from './components/ForgotPassword'; // Importar ForgotPassword
 import Layout from './components/Layout';
 import Login from './components/Login';
 import ProfileInfo from './components/ProfileInfo';
@@ -27,8 +28,8 @@ import TripDescriptionNY from './components/TripSection/TripDescriptionNY';
 import TripDescriptionSf from './components/TripSection/TripDescriptionSf';
 import Wellness from './components/Wellness';
 import Home from './pages/Home';
-import HotelSearchPage from './pages/HotelSearchPage';
 import HotelDetailPage from './pages/HotelDetailPage';
+import HotelSearchPage from './pages/HotelSearchPage';
 import ReservationReviewPage from './pages/ReservationReviewPage';
 import Search from './pages/Search';
 import { getAllData } from './util/index';
@@ -62,9 +63,17 @@ function App() {
           path: 'login',
           element: <Login authURL={AUTH_URL} />,
         },
+       
+
         {
-          path: 'reset-password',
-          element: <ResetPassword />,
+          path: 'reset-password/:token',
+          element: <ResetPassword authURL={AUTH_URL} />,
+        },
+
+
+        {
+          path: 'forgot-password', // Nueva ruta para ForgotPassword
+          element: <ForgotPassword />,
         },
         {
           path: 'register',
@@ -77,7 +86,7 @@ function App() {
             { path: 'profile', element: <ProfileInfo /> },
             { path: 'addresses', element: <Addresses /> },
             { path: 'payments', element: <CreditCardInfo /> },
-            { path: 'changepassword', element: <ChangePassword /> }, // Nueva ruta para Change Password
+            { path: 'changepassword', element: <ChangePassword /> },
             { path: 'history', element: <TravelHistory /> },
           ],
         },

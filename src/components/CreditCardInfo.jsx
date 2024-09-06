@@ -1,39 +1,63 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FaEdit, FaTrash } from 'react-icons/fa'; // Importar iconos
 import '../styles/components/_creditcardinfo.scss';
+
+// Supongamos que tienes una función para obtener el ID del usuario autenticado
+const getUserId = () => {
+  // Aquí deberías obtener el ID del usuario desde el contexto, un hook, o el almacenamiento
+  // Esto es solo un ejemplo, ajusta según tu implementación
+  return localStorage.getItem('userId');
+};
 
 const CreditCardInfo = () => {
   const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm();
   const [cardList, setCardList] = useState([]);
   const [cardId, setCardId] = useState(null); // Guardar el ID de la tarjeta si ya está registrada
   const [showCvv, setShowCvv] = useState(false);
+  const userId = getUserId(); // Obtener el ID del usuario
+
+  useEffect(() => {
+    // Recuperar los datos almacenados en localStorage al montar el componente
+    const storedCards = JSON.parse(localStorage.getItem(`cards_${userId}`)) || [];
+    
+    // Filtrar tarjetas para asegurarse de que sólo se muestran las del usuario actual
+    const filteredCards = storedCards.filter(card => card.userId === userId);
+    
+    setCardList(filteredCards);
+  }, [userId]);
 
   const onSubmit = (data) => {
     const cardData = { 
       id: cardId || Date.now(), // Usar un timestamp para simular un ID único
+      userId: userId, // Asociar la tarjeta con el ID del usuario
       name: data.cardHolderName,
       number: data.cardNumber.replace(/-/g, ''), // Remover los guiones del número
       expiryDate: data.expiryDate, 
       cvv: data.cvv 
     };
 
+    let updatedList;
+
     if (cardId) {
       // Si existe, actualizar la tarjeta
-      const updatedList = cardList.map(card => 
+      updatedList = cardList.map(card => 
         card.id === cardId ? cardData : card
       );
-      setCardList(updatedList);
     } else {
       // Si no existe, agregar una nueva tarjeta
-      setCardList([...cardList, cardData]);
+      updatedList = [...cardList, cardData];
     }
+
+    setCardList(updatedList);
+    localStorage.setItem(`cards_${userId}`, JSON.stringify(updatedList)); // Guardar en localStorage
     clearForm();
   };
 
   const handleDelete = (id) => {
     const updatedList = cardList.filter(card => card.id !== id);
     setCardList(updatedList);
+    localStorage.setItem(`cards_${userId}`, JSON.stringify(updatedList)); // Actualizar en localStorage
   };
 
   const handleEdit = (card) => {
@@ -171,6 +195,9 @@ const CreditCardInfo = () => {
 };
 
 export default CreditCardInfo;
+
+
+
 
 
 
