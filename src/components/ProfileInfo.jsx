@@ -1,72 +1,115 @@
-import React, { useEffect } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import '../styles/components/_profileinfo.scss';
 
 const ProfileInfo = () => {
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+
+  // Inicializa el hook useForm
   const { register, handleSubmit, setValue, formState: { errors } } = useForm();
 
   useEffect(() => {
-    const user = JSON.parse(sessionStorage.getItem('user'));
-    if (user) {
-      // Set form values using setValue from react-hook-form
-      setValue('name', user.name || '');
-      setValue('email', user.email || '');
-      setValue('phone', user.phone || '');
-      setValue('address', user.address || '');
-    }
+    // Obtener datos del usuario al montar el componente
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get('http://localhost:8000/api/v1/auth/user', {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+          },
+        });
+        const { name, phone, address } = response.data;
+        // Rellenar los campos del formulario con los datos obtenidos
+        setValue('name', name);
+        setValue('phone', phone);
+        setValue('address', address);
+      } catch (err) {
+        setError('Failed to load user data');
+      }
+    };
+
+    fetchUserData();
   }, [setValue]);
 
-  const onSubmit = (data) => {
-    console.log('Profile updated:', data);
-    // Add logic here to update profile information
+  const handleUpdateProfile = async (data) => {
+    try {
+      await axios.patch('http://localhost:8000/api/v1/auth/user', data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      setSuccess('Profile updated successfully');
+    } catch (err) {
+      if (err.response) {
+        // Si el error proviene del backend, muestra el mensaje personalizado
+        setError(err.response.data.message || 'An error occurred during the update');
+      } else {
+        // Si hay un error genérico
+        setError('An unexpected error occurred');
+      }
+    }
   };
 
   return (
     <div className="profile-info">
-      <h3>Profile Information</h3>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="name">Name</label>
-        <input
-          id="name"
-          type="text"
-          {...register('name', { required: 'Name is required' })}
-        />
-        {errors.name && <span className="error">{errors.name.message}</span>}
+      <form onSubmit={handleSubmit(handleUpdateProfile)}>
+        <h2>Profile Information</h2>
+        
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <input
+            id="name"
+            type="text"
+            placeholder="Name"
+            {...register('name', {
+              required: 'Name is required',
+            })}
+          />
+          {errors.name && <p className="error">{errors.name.message}</p>}
+        </div>
 
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          {...register('email', { required: 'Email is required' })}
-        />
-        {errors.email && <span className="error">{errors.email.message}</span>}
+        <div className="form-group">
+          <label htmlFor="phone">Phone:</label>
+          <input
+            id="phone"
+            type="text"
+            placeholder="Phone"
+            {...register('phone', {
+              required: 'Phone number is required',
+              pattern: {
+                value: /^[0-9]{10,15}$/,
+                message: 'Invalid phone number. Must be 10 to 15 digits',
+              },
+            })}
+          />
+          {errors.phone && <p className="error">{errors.phone.message}</p>}
+        </div>
 
-        <label htmlFor="phone">Phone</label>
-        <input
-          id="phone"
-          type="tel"
-          {...register('phone', {
-            pattern: {
-              value: /^[0-9]{10}$/,
-              message: 'Phone number must be 10 digits'
-            }
-          })}
-        />
-        {errors.phone && <span className="error">{errors.phone.message}</span>}
+        <div className="form-group">
+          <label htmlFor="address">Address:</label>
+          <input
+            id="address"
+            type="text"
+            placeholder="Address"
+            {...register('address', {
+              required: 'Address is required',
+              minLength: {
+                value: 10,
+                message: 'Address must be at least 10 characters long',
+              },
+              maxLength: {
+                value: 100,
+                message: 'Address must be less than 100 characters long',
+              },
+            })}
+          />
+          {errors.address && <p className="error">{errors.address.message}</p>}
+        </div>
 
-        <label htmlFor="address">Address</label>
-        <input
-          id="address"
-          type="text"
-          {...register('address', {
-            minLength: {
-              value: 5,
-              message: 'Address must be at least 5 characters long'
-            }
-          })}
-        />
-        {errors.address && <span className="error">{errors.address.message}</span>}
-
-        <button type="submit">Save</button>
+        <button type="submit">Update Profile</button>
+        {error && <p className="error">{error}</p>}
+        {success && <p className="success">{success}</p>}
       </form>
     </div>
   );

@@ -1,54 +1,86 @@
-import React, { useState } from 'react';
-import '../styles/components/_reset-password.scss';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import '../styles/components/_resetPassword.scss';
 
-const ResetPassword = ({ authURL }) => {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+function ResetPassword({ authURL }) {
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const { token } = useParams();
+  const navigate = useNavigate();
 
-  const handleResetPassword = async (e) => {
+  useEffect(() => {
+    if (!token) {
+      setErrorMessage('Invalid or missing token.');
+    }
+  }, [token]);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await fetch(`${authURL}/reset-password`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email }),
-      });
+    if (password !== confirmPassword) {
+      setErrorMessage('Passwords do not match.');
+      return;
+    }
 
-      if (response.ok) {
-        setMessage("Password reset link has been sent to your email.");
-        setEmail('');
+    try {
+      const response = await axios.patch(`${authURL}/reset-password/${token}`, { password });
+
+      if (response.status === 200) {
+        setSuccessMessage('Password has been successfully reset.');
+        setErrorMessage('');
+
+        setTimeout(() => {
+          // Cierra el componente actual y navega a la página principal (donde está el Header)
+          navigate('/');
+          // Despues de navegar, simula un clic en el botón de login para abrir el modal
+          setTimeout(() => {
+            const loginButton = document.querySelector('.login-button');
+            if (loginButton) {
+              loginButton.click();
+            }
+          }, 500); // Un pequeño retraso para asegurar que la página haya cargado
+        }, 2000);
       } else {
-        const data = await response.json();
-        setMessage(data.error || "Error sending reset password email.");
+        setErrorMessage('Failed to reset password. Please try again.');
       }
     } catch (error) {
-      setMessage("An error occurred. Please try again later.");
+      console.error('Error resetting password:', error);
+      if (error.response) {
+        setErrorMessage(error.response.data.message || 'Failed to connect to server.');
+      } else {
+        setErrorMessage('Failed to connect to server.');
+      }
     }
   };
 
   return (
     <div className="reset-password-container">
-      <h2>Reset Password</h2>
-      {message && <p className="message">{message}</p>}
-      <form onSubmit={handleResetPassword}>
-        <div className="form-group">
-          <label htmlFor="email">Email Address</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" className="btn btn-primary">Reset Password</button>
+      <form className="reset-password-form" onSubmit={handleSubmit}>
+        <h2>Reset Password</h2>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Enter new password"
+          required
+        />
+        <input
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder="Confirm new password"
+          required
+        />
+        <button type="submit">Reset Password</button>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+        {successMessage && <p className="success-message">{successMessage}</p>}
       </form>
     </div>
   );
-};
+}
 
 export default ResetPassword;
 
