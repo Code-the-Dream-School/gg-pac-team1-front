@@ -1,80 +1,68 @@
 /* src/components/TravelBlog/TravelBlog.css */
 
 /* Container for the entire blog section */
-.travel-blog-container {
-    display: flex; /* Flexbox for alignment */
-    justify-content: space-between; /* Space between content and sidebar */
-    margin: 0 auto; /* Center the container */
-    max-width: 1200px; /* Max width for the container */
-    padding: 1rem; /* Padding inside the container */
-  }
-  
-  /* Content area for the main blog content */
-  .travel-blog-content {
-    flex: 1; /* Take up the remaining space */
-    padding: 1rem; /* Padding inside the content area */
-  }
-  
-  /* Sidebar on the right side of the container */
-  .travel-blog-sidebar {
-    width: 240px; /* Fixed width for the sidebar */
+.travel-blog-section {
     background-color: #ffffff; /* White background color */
     border: 1px solid #e0e5e9; /* Light grey border color */
-    border-radius: 8px; 
-    padding: 1rem; 
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-    height: auto; 
-    box-sizing: border-box; 
-    margin-top: 20px; 
-    z-index: 1000; 
-    position: sticky; /* Keep it in view when scrolling */
-    top: 20px; /* Offset from top */
+    border-radius: 8px; /* Rounded corners */
+    padding: 2rem; /* Padding inside the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin: 2rem 0; /* Space around the section */
   }
   
   /* Title of the blog section */
   .blog-title {
-    font-size: 1.2rem; /* Title font size */
-    margin: 0;
-    text-align: center;
+    font-size: 2rem; /* Larger font size for the title */
+    margin: 0 0 1rem 0; /* Space below the title */
     color: #004a8f; /* Deep blue color for the title */
     font-weight: 700; /* Bolder title */
+    text-align: center; /* Center-align the title */
   }
   
   /* Description under the title */
   .blog-description {
-    font-size: 0.85rem; /* Font size for the description */
-    margin: 0.5rem 0;
-    text-align: center;
+    font-size: 1rem; /* Font size for the description */
+    margin: 0 0 1.5rem 0; /* Space below the description */
+    text-align: center; /* Center-align the description */
     color: #555; /* Dark grey color for description */
+    line-height: 1.4; /* Line height for readability */
   }
   
-  /* List of posts in the sidebar */
+  /* List of posts in the section */
   .post-list {
-    display: flex; /* Flexbox for column layout */
-    flex-direction: column; /* Align items vertically */
-    padding: 0;
-    margin: 0;
+    display: flex; /* Flexbox for row layout */
+    flex-direction: column; /* Stack posts vertically */
+    gap: 1.5rem; /* Space between posts */
   }
   
   /* Preview of each post */
   .post-preview {
+    display: flex; /* Flexbox for column layout */
+    flex-direction: column; /* Align items vertically */
     width: 100%; /* Full width for each post */
-    padding: 0.5rem; /* Padding around each post */
-    margin-bottom: 1rem; /* Space between posts */
+    max-width: 800px; /* Max width for each post */
+    padding: 1rem; /* Padding around each post */
     background-color: #f8f9fa; /* Very light grey background for each post */
     border: 1px solid #e0e5e9; /* Light grey border for each post */
     border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Soft shadow for depth */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
     overflow: hidden; /* Hide overflow content */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  /* Hover effect for each post */
+  .post-preview:hover {
+    transform: translateY(-5px); /* Slight lift effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Deeper shadow on hover */
   }
   
   /* Container for post image */
   .post-image-container {
     width: 100%; /* Full width for image container */
-    height: 120px; /* Height for images */
+    height: 200px; /* Height for images */
     overflow: hidden;
     border-radius: 8px; /* Rounded corners for images */
-    margin-bottom: 0.5rem; /* Margin between image and text */
+    margin-bottom: 1rem; /* Margin between image and text */
     background-color: #e9ecef; /* Light grey background for image container */
   }
   
@@ -93,7 +81,7 @@
   
   /* Title of each post */
   .post-title {
-    font-size: 0.9rem; /* Font size for titles */
+    font-size: 1.4rem; /* Font size for titles */
     color: #333; /* Dark grey for text */
     margin: 0;
     line-height: 1.4; /* Adjust line height */
@@ -101,16 +89,22 @@
   
   /* Subtitle of each post */
   .post-subtitle {
-    font-size: 0.8rem; /* Font size for subtitles */
+    font-size: 1.1rem; /* Font size for subtitles */
     color: #666; /* Medium grey for subtitle */
-    margin: 0;
+    margin: 0.5rem 0;
     line-height: 1.3; /* Adjust line height */
   }
   
   /* Metadata of each post */
   .post-meta {
-    font-size: 0.65rem; /* Font size for metadata */
+    font-size: 0.9rem; /* Font size for metadata */
     color: #999; /* Light grey for metadata */
     margin: 0;
+  }
+  
+  /* Ensure links inside post previews look consistent */
+  .post-link {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
   }
   
