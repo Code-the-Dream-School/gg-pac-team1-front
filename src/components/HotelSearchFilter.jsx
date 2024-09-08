@@ -1,6 +1,7 @@
 import RoomFilter from './RoomFilter';
 import StarFilter from './StarFilter';
 import PriceFilter from './PriceFilter'; 
+import PropTypes from 'prop-types';
 
 function HotelSearchFilter({ filters, onFilterChange, onApplyFilters }) {
   return (
@@ -31,5 +32,16 @@ function HotelSearchFilter({ filters, onFilterChange, onApplyFilters }) {
     </div>
   );
 }
+
+HotelSearchFilter.propTypes = {
+  filters: PropTypes.shape({
+    priceMin: PropTypes.string,
+    priceMax: PropTypes.string,
+    reviews: PropTypes.number,
+    roomType: PropTypes.string,
+  }).isRequired,
+  onFilterChange: PropTypes.func.isRequired,
+  onApplyFilters: PropTypes.func.isRequired,
+};
 
 export default HotelSearchFilter;
