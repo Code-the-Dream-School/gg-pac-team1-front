@@ -34,7 +34,6 @@ import NorthCarolinaHotels from './components/TravelBlog/NorthCarolinaHotels';
 import OhioHotels from './components/TravelBlog/OhioHotels'; 
 import HotelSearchPage from './pages/HotelSearchPage';
 import HotelDetailPage from './pages/HotelDetailPage';
-import HotelSearchPage from './pages/HotelSearchPage';
 import ReservationReviewPage from './pages/ReservationReviewPage';
 import Search from './pages/Search';
 import { getAllData } from './util/index';
