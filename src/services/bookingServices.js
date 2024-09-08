@@ -6,6 +6,7 @@
 export async function searchHotels(city, state) {
   const token = localStorage.getItem('token');
   try {
+    // Fetch the data from the backend
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/hotels`, {
       headers: {
         Authorization: `Bearer ${token}`
@@ -23,18 +24,21 @@ export async function searchHotels(city, state) {
       throw new Error('Expected hotels to be an array');
     }
 
-    // Ensure city and state are defined
-    const destination = `${city || ''}, ${state || ''}`.toLowerCase();
+    // Normalize search criteria to lowercase
+    const cityLower = city ? city.toLowerCase() : '';
+    const stateLower = state ? state.toLowerCase() : '';
 
+    // Filter hotels based on city and state
     const filteredHotels = hotels.filter(hotel => {
-      // Ensure hotel.destination is defined and not null
-      if (!hotel.destination) return false;
-      
-      // Split destination into city and state
-      const [hotelCity = '', hotelState = ''] = hotel.destination.split(', ').map(part => part.toLowerCase());
+      // Ensure hotel.city and hotel.state are defined and not null
+      const hotelCity = hotel.city ? hotel.city.toLowerCase() : '';
+      const hotelState = hotel.state ? hotel.state.toLowerCase() : '';
 
-      // Return true if either city or state matches the destination
-      return hotelCity.includes(destination) || hotelState.includes(destination);
+      // Check if the city and state match the search criteria
+      const cityMatches = cityLower ? hotelCity.includes(cityLower) : true;
+      const stateMatches = stateLower ? hotelState.includes(stateLower) : true;
+
+      return cityMatches && stateMatches;
     });
 
     return filteredHotels;
