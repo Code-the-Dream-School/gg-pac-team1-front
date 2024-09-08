@@ -1,0 +1,58 @@
+/* src/components/HotelPages/HotelCardStyles.css */
+.hotel-page-container {
+    padding: 20px;
+  }
+  
+  .hotel-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .hotel-card {
+    display: flex;
+    border: 1px solid #d3b899; /* Coffee color border */
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hotel-card-content {
+    display: flex;
+    flex-direction: row; /* Align items horizontally */
+  }
+  
+  .hotel-card-text {
+    padding: 20px;
+    flex: 2;
+  }
+  
+  .hotel-card-image {
+    width: 40%; /* Adjust width to fit the layout */
+    height: auto;
+  }
+  
+  .hotel-card-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .divider-line {
+    width: 100px; /* Adjust width to make it short and wide */
+    height: 8px; /* Height of the stripe */
+    background-color: #3E2723; /* Dark chocolate color */
+    margin: 5px 0; /* Margin to space it out from the title and other content */
+  }
+  
+  .hotel-card-footer {
+    background-color: #d3b899; /* Light brown stripe */
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .hotel-price {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
