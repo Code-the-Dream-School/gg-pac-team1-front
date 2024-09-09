@@ -1,7 +1,16 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import HotelSearchResultCard from './HotelSearchResultCard';
 import PropTypes from 'prop-types';
 
 function ResultList({ results, hasSearched }) {
+  const navigate = useNavigate();
+
+  const handleHotelClick = (hotelId) => {
+    localStorage.setItem('hotel_Id', hotelId);
+    navigate(`/hotel/${hotelId}`);
+  };
+
   if (!hasSearched) {
     return <p>Please perform a search to see the results.</p>;
   }
@@ -11,23 +20,23 @@ function ResultList({ results, hasSearched }) {
   }
 
   return (
-<div className="result-list-container">
-  {results.map(hotel => {
-    console.log(hotel);
-    const roomCost = hotel.rooms && hotel.rooms.length > 0 && hotel.rooms[0].room_cost_per_night 
-      ? hotel.rooms[0].room_cost_per_night.$numberDecimal : 185; // Default value if there is no data
-      
-    return (
-      <HotelSearchResultCard 
-        key={hotel._id} 
-        hotel={hotel} 
-        imageUrl={hotel.image && hotel.image.length > 0 ? hotel.image[0].url : 'default-image-url'} 
-        roomCostPerNight={roomCost} 
-      />
-    );
-  })}
-</div>
-
+    <div className="result-list-container">
+      {results.map(hotel => {
+        console.log(hotel);
+        const roomCost = hotel.rooms && hotel.rooms.length > 0 && hotel.rooms[0].room_cost_per_night 
+          ? hotel.rooms[0].room_cost_per_night.$numberDecimal : 185; // Default value if there is no data
+          
+        return (
+          <div key={hotel._id} onClick={() => handleHotelClick(hotel._id)}>
+            <HotelSearchResultCard 
+              hotel={hotel} 
+              imageUrl={hotel.image && hotel.image.length > 0 ? hotel.image[0].url : 'default-image-url'} 
+              roomCostPerNight={roomCost} 
+            />
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -42,7 +51,6 @@ ResultList.propTypes = {
           url: PropTypes.string
         })
       ),
-
     })
   ).isRequired,
   hasSearched: PropTypes.bool.isRequired,
