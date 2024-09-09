@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getHotelById, getRoomsByHotelId } from '../services/bookingServices'; // Asegúrate de tener estas funciones en tu servicio
 import Gallery from '../gallery/Gallery'; // Importa el componente Gallery
 import HotelInfo from '../components/HotelInfo'; // Importa el componente HotelInfo
+import PoliciesAndRating from '../components/PoliciesAndRating'; // Importa el nuevo componente
+import RoomTypesList from '../components/RoomTypesList'; // Importa el componente RoomTypesList
 
 function HotelDetailPage() {
   const { id } = useParams();
@@ -52,47 +54,12 @@ function HotelDetailPage() {
       {console.log('Rendering hotel data:', hotel)}
       <h1 className="hotel-title">{hotel.name}</h1>
       
-      {/* Integrar el componente HotelInfo */}
       <HotelInfo hotel={hotel} />
 
-      <h2>Policies and Rating</h2>
-      <p><strong>Cancellation Policy:</strong> {hotel.cancellation_policy}</p>
-      <p><strong>Rating:</strong> {hotel.rating}</p>
-      <p><strong>Languages Spoken:</strong> {hotel.languages_spoken.join(', ')}</p>
-      
-      <h2>Rooms</h2>
-      {rooms && rooms.length > 0 ? (
-        rooms.map((room, index) => {
-          console.log('Room object:', room);
-          const roomCost = room.room_cost_per_night?.$numberDecimal || room.room_cost_per_night || 'N/A';
-          return (
-            <div key={index} className="room-detail">
-              <p><strong>Room Number:</strong> {room.roomNumber}</p>
-              <p><strong>Bedrooms:</strong> {room.bedrooms}</p>
-              <p><strong>Floor:</strong> {room.floor}</p>
-              <p><strong>Currency:</strong> {room.currency}</p>
-              <p><strong>Cost per Night:</strong> ${roomCost}</p>
-              <p><strong>Room Type:</strong> {room.room_types}</p>
-              <p><strong>Bed Type:</strong> {room.bed_type}</p>
-              <p><strong>View:</strong> {room.view}</p>
-              <h3>Room Images</h3>
-              {room.images && room.images.length > 0 ? (
-                room.images.map((img, imgIndex) => (
-                  <div key={imgIndex}>
-                    <img src={img.url} alt={img.description} style={{ width: '200px' }} />
-                    <p>{img.description}</p>
-                  </div>
-                ))
-              ) : (
-                <p>No images available for this room</p>
-              )}
-            </div>
-          );
-        })
-      ) : (
-        <p>No rooms available</p>
-      )}
+      <PoliciesAndRating hotel={hotel} />
 
+      <RoomTypesList rooms={rooms} />
+           
       <h2>Gallery</h2>
       <Gallery images={hotel.galeryImage || []} /> {/* Pasar las imágenes del hotel al componente Gallery */}
     </div>
