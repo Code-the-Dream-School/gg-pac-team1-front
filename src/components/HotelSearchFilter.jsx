@@ -3,7 +3,7 @@ import StarFilter from './StarFilter';
 import PriceFilter from './PriceFilter'; 
 import PropTypes from 'prop-types';
 
-function HotelSearchFilter({ filters, onFilterChange, onApplyFilters }) {
+function HotelSearchFilter({ filters, onFilterChange}) {
   return (
     <div className="filters-container">
       <h3>Filter by</h3>
@@ -27,8 +27,6 @@ function HotelSearchFilter({ filters, onFilterChange, onApplyFilters }) {
         onFilterChange={onFilterChange} 
       />
 
-      {/* Button to Apply Filters */}
-      <button onClick={onApplyFilters} className="apply-filters-btn">Apply Filters</button>
     </div>
   );
 }
