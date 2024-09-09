@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import ResultList from "../components/ResultList";
 import Pagination from "../components/Pagination";
 import HotelSearchFilter from "../components/HotelSearchFilter";
+import PriceFilter from "../components/PriceFilter"; // Importa el nuevo componente
 import { searchHotels, sortHotels, filterHotelsByRating } from "../services/bookingServices";
 
 function HotelSearchPage() {
@@ -47,11 +48,17 @@ function HotelSearchPage() {
 
   // Apply filters
   const applyFilters = (updatedFilters) => {
-    const { reviews, roomType } = updatedFilters;
+    const { reviews, roomType, priceMin, priceMax } = updatedFilters;
     const filteredHotels = results.filter(hotel => {
       const matchesRating = reviews ? hotel.rating >= reviews : true;
       const matchesRoomType = roomType ? hotel.rooms.some(room => room.room_types === roomType) : true;
-      return matchesRating && matchesRoomType;
+      const matchesPrice = hotel.rooms.some(room => {
+        const roomCost = room.room_cost_per_night.$numberDecimal || room.room_cost_per_night;
+        const minPrice = priceMin ? roomCost >= priceMin : true;
+        const maxPrice = priceMax ? roomCost <= priceMax : true;
+        return minPrice && maxPrice;
+      });
+      return matchesRating && matchesRoomType && matchesPrice;
     });
     setFilteredResults(filteredHotels);
     setCurrentPage(1);
