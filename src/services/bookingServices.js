@@ -150,6 +150,28 @@ export async function getHotelById(id) {
   }
 }
 
+export async function getRoomsByHotelId(hotelId) {
+  const token = localStorage.getItem('token');
+  try {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/rooms/${hotelId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error('Error fetching rooms details.');
+    }
+
+    const rooms = await response.json();
+    return rooms;
+  } catch (error) {
+    console.error('Error fetching rooms details:', error.message);
+    return null; // Return null in case of error
+  }
+}
+
+
 // ============================
 // Validations and Utilities
 // ============================
