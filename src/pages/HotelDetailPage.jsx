@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getHotelById, getRoomsByHotelId } from "../services/bookingServices";
+import { getHotelById, getRoomsByHotelId, saveHotelIdToLocalStorage, loadHotelDataFromLocalStorage, saveHasChildrenToLocalStorage, saveChildrenToLocalStorage } from "../services/bookingServices";
 import Gallery from "../gallery/Gallery";
 import HotelInfo from "../components/HotelInfo";
 import PoliciesAndRating from "../components/PoliciesAndRating";
@@ -26,6 +26,8 @@ function HotelDetailPage() {
           return;
         }
         setHotelData(data);
+        saveHotelIdToLocalStorage(data.id); // Save hotel ID to localStorage
+        loadHotelDataFromLocalStorage(setHasChildren, setChildren); // Load related data from localStorage
       })
       .catch((error) => {
         console.error("Error fetching hotel data:", error);
@@ -39,7 +41,7 @@ function HotelDetailPage() {
         if (!data || data.length === 0) {
           console.log("No rooms data available");
         } else {
-          setRooms(data.rooms); // Asegúrate de acceder al array de habitaciones correctamente
+          setRooms(data.rooms); 
         }
       })
       .catch((error) => {
@@ -55,11 +57,20 @@ function HotelDetailPage() {
   const hotel = hotelData.hotel; // Access the nested hotel object
   
   const handleHasChildrenChange = (event) => {
-    setHasChildren(event.target.value === 'yes');
+    const value = event.target.value === 'yes';
+    setHasChildren(value);
+    saveHasChildrenToLocalStorage(value); // Save hasChildren to localStorage
+
+    if (!value) {
+      setChildren(0); // Reset the number of children if "no" is selected
+      saveChildrenToLocalStorage(0); // Save children to localStorage
+    }
   };
 
   const handleChildrenChange = (event) => {
-    setChildren(event.target.value);
+    const value = event.target.value;
+    setChildren(value);
+    saveChildrenToLocalStorage(value); // Save children to localStorage
   };
 
   return (

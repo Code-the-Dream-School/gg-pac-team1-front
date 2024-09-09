@@ -88,15 +88,12 @@ export const filterHotels = (hotels, filters) => {
     return meetsPriceMin && meetsPriceMax && meetsReviews && meetsRoomType;
   });
 };
+
 export const filterHotelsByRating = (hotels, rating) => {
   return hotels.filter(hotel => hotel.rating >= rating);
 };
 
-
-
 // Function to sort hotels based on sort option
-// bookingServices.js
-
 export const sortHotels = (hotels, sortOption) => {
   let sortedHotels = [...hotels];
   switch (sortOption) {
@@ -117,12 +114,12 @@ export const sortHotels = (hotels, sortOption) => {
       break;
     case 'name-desc':
       sortedHotels.sort((a, b) => b.name.localeCompare(a.name));
+      break;
     default:
       break;
   }
   return sortedHotels;
 };
-
 
 // ============================
 // Detail Page
@@ -171,7 +168,6 @@ export async function getRoomsByHotelId(hotelId) {
   }
 }
 
-
 // ============================
 // Validations and Utilities
 // ============================
@@ -201,6 +197,30 @@ export const getItemFromLocalStorage = (key) => {
 };
 
 // ============================
+// Specific LocalStorage Functions
+// ============================
+
+export const saveHotelIdToLocalStorage = (hotelId) => {
+  setItemInLocalStorage('hotelId', hotelId);
+};
+
+export const loadHotelDataFromLocalStorage = (setHasChildren, setChildren) => {
+  const hasChildren = getItemFromLocalStorage('hasChildren') === 'true';
+  const children = parseInt(getItemFromLocalStorage('children'), 10) || 0;
+
+  setHasChildren(hasChildren);
+  setChildren(children);
+};
+
+export const saveHasChildrenToLocalStorage = (hasChildren) => {
+  setItemInLocalStorage('hasChildren', hasChildren);
+};
+
+export const saveChildrenToLocalStorage = (children) => {
+  setItemInLocalStorage('children', children);
+};
+
+// ============================
 // Booking Page
 // ============================
 
@@ -224,13 +244,32 @@ export const loadHotelData = async (hotelId) => {
     }
     return {
       name: currentHotel.name,
-      address: currentHotel.address || 'Address not available',
-      category: currentHotel.category || 'Category not available',
-      description: currentHotel.description || 'Description not available',
-      room_cost_per_night: currentHotel.room_cost_per_night,
-      check_in_time: currentHotel.check_in_time,
-      check_out_time: currentHotel.check_out_time,
-      extras: currentHotel.extras || []
+      state: currentHotel.state || '',
+      city: currentHotel.city || '',
+      street: currentHotel.street || '',
+      zipCode: currentHotel.zipCode || '',
+      brand: currentHotel.brand || '',
+      stars: currentHotel.stars || 0,
+      latitude: currentHotel.latitude || '',
+      longitude: currentHotel.longitude || '',
+      chain: currentHotel.chain || '',
+      createdBy: currentHotel.createdBy || '',
+      wifi: currentHotel.wifi || false,
+      okeanView: currentHotel.okeanView || false,
+      pool: currentHotel.pool || false,
+      gym: currentHotel.gym || false,
+      spa: currentHotel.spa || false,
+      parking: {
+        aviability: currentHotel.parking?.aviability || false,
+        cost_per_day: currentHotel.parking?.cost_per_day || 0
+      },
+      restaurant: currentHotel.restaurant || false,
+      image: currentHotel.image || [{ url: '', description: '' }],
+      galeryImage: currentHotel.galeryImage || [{ url: '', description: '' }],
+      languages_spoken: currentHotel.languages_spoken || [''],
+      cancelation_policy: currentHotel.cancelation_policy || '',
+      rating: currentHotel.rating || 0,
+      rooms: currentHotel.rooms || []
     };
   } catch (error) {
     throw new Error(error.message);
@@ -238,7 +277,7 @@ export const loadHotelData = async (hotelId) => {
 };
 
 // Function to calculate costs based on the reservation
-export const calculateCosts = (checkInDate, checkOutDate, hotel, extras) => {
+export const calculateCosts = (checkInDate, checkOutDate, hotel) => {
   if (!checkInDate || !checkOutDate) {
     throw new Error('Invalid dates');
   }
@@ -252,15 +291,10 @@ export const calculateCosts = (checkInDate, checkOutDate, hotel, extras) => {
   const differenceInDays = differenceInTime / (1000 * 3600 * 24);
 
   const roomCost = differenceInDays * (hotel.room_cost_per_night || 0);
-  let extrasCost = 0;
-  extras.forEach(extra => {
-    extrasCost += extra.price * differenceInDays;
-  });
 
   return {
     totalNights: differenceInDays,
     totalRoomCost: roomCost,
-    totalExtrasCost: extrasCost,
-    finalTotalCost: roomCost + extrasCost
+    finalTotalCost: roomCost
   };
 };
