@@ -7,7 +7,6 @@ const HotelInfo = ({ hotel }) => {
 
   return (
     <div className="hotel-info">
-      <h2 className="hotel-name">{hotel.name || 'Hotel Name'}</h2>
       <p className="hotel-address"><strong>Address:</strong> {hotel.street}, {hotel.city}, {hotel.state}, {hotel.zipCode}</p>
       <p className="hotel-brand"><strong>Brand:</strong> {hotel.brand || 'Brand not available'}</p>
       <p className="hotel-chain"><strong>Chain:</strong> {hotel.chain || 'Chain not available'}</p>
