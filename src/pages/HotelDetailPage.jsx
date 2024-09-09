@@ -14,6 +14,7 @@ function HotelDetailPage() {
   const [rooms, setRooms] = useState([]);
   const [hasChildren, setHasChildren] = useState(false);
   const [children, setChildren] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     console.log("Fetching hotel data for ID:", id); // Log the ID being fetched
@@ -28,6 +29,7 @@ function HotelDetailPage() {
         setHotelData(data);
         saveHotelIdToLocalStorage(data.id); // Save hotel ID to localStorage
         loadHotelDataFromLocalStorage(setHasChildren, setChildren); // Load related data from localStorage
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching hotel data:", error);
@@ -48,6 +50,10 @@ function HotelDetailPage() {
         console.error("Error fetching rooms data:", error);
       });
   }, [id, navigate]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   if (!hotelData) {
     console.log("No hotel data available"); // Log if no hotel data is available
