@@ -24,44 +24,19 @@ function ChildrenSelector({ hasChildren, children, handleHasChildrenChange, hand
       </label>
 
       {includeChildren && (
-        <>
-          <div className="children-selector__form-group">
-            <label>Are there children?</label>
-            <div className="children-selector__radio-group">
-              <div>
-                <input
-                  type="radio"
-                  name="hasChildren"
-                  value="yes"
-                  onChange={handleHasChildrenChange}
-                />
-                <label>Yes</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="hasChildren"
-                  value="no"
-                  onChange={handleHasChildrenChange}
-                />
-                <label>No</label>
-              </div>
-            </div>
-          </div>
-
-          {hasChildren && (
-            <div className="children-selector__count">
-              <label>Number of children:</label>
-              <input
-                type="number"
-                value={children}
-                onChange={handleChildrenChange}
-                min="0"
-                max="8"
-              />
-            </div>
-          )}
-        </>
+        <div className="children-selector__form-group">
+          <label>Number of children:</label>
+          <select
+            value={children}
+            onChange={handleChildrenChange}
+          >
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
       )}
     </div>
   );

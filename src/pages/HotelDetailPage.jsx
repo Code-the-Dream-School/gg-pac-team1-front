@@ -5,12 +5,15 @@ import Gallery from "../gallery/Gallery";
 import HotelInfo from "../components/HotelInfo";
 import PoliciesAndRating from "../components/PoliciesAndRating";
 import RoomTypesList from "../components/RoomTypesList";
+import ChildrenSelector from '../components/ChildrenSelector'; 
 
 function HotelDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate(); // Hook to handle navigation
   const [hotelData, setHotelData] = useState(null);
   const [rooms, setRooms] = useState([]);
+  const [hasChildren, setHasChildren] = useState(false);
+  const [children, setChildren] = useState(0);
 
   useEffect(() => {
     console.log("Fetching hotel data for ID:", id); // Log the ID being fetched
@@ -50,6 +53,14 @@ function HotelDetailPage() {
   }
 
   const hotel = hotelData.hotel; // Access the nested hotel object
+  
+  const handleHasChildrenChange = (event) => {
+    setHasChildren(event.target.value === 'yes');
+  };
+
+  const handleChildrenChange = (event) => {
+    setChildren(event.target.value);
+  };
 
   return (
     <div className="hotel-detail-container">
@@ -58,6 +69,12 @@ function HotelDetailPage() {
       <HotelInfo hotel={hotel} />
       <PoliciesAndRating hotel={hotel} />
       <RoomTypesList rooms={rooms} />
+      <ChildrenSelector
+        hasChildren={hasChildren}
+        children={children}
+        handleHasChildrenChange={handleHasChildrenChange}
+        handleChildrenChange={handleChildrenChange}
+      />
     </div>
   );
 }
