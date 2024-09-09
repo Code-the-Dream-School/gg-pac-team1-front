@@ -95,20 +95,34 @@ export const filterHotelsByRating = (hotels, rating) => {
 
 
 // Function to sort hotels based on sort option
-export const sortHotels = async (hotels, sortOption) => {
+// bookingServices.js
+
+export const sortHotels = (hotels, sortOption) => {
+  let sortedHotels = [...hotels];
   switch (sortOption) {
     case 'price-asc':
-      return hotels.sort((a, b) => a.price - b.price);
+      sortedHotels.sort((a, b) => a.rooms[0].room_cost_per_night.$numberDecimal - b.rooms[0].room_cost_per_night.$numberDecimal);
+      break;
     case 'price-desc':
-      return hotels.sort((a, b) => b.price - a.price);
+      sortedHotels.sort((a, b) => b.rooms[0].room_cost_per_night.$numberDecimal - a.rooms[0].room_cost_per_night.$numberDecimal);
+      break;
     case 'reviews-desc':
-      return hotels.sort((a, b) => b.reviews - a.reviews);
+      sortedHotels.sort((a, b) => b.rating - a.rating);
+      break;
     case 'reviews-asc':
-      return hotels.sort((a, b) => a.reviews - b.reviews);
+      sortedHotels.sort((a, b) => a.rating - b.rating);
+      break;
+    case 'name-asc':
+      sortedHotels.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case 'name-desc':
+      sortedHotels.sort((a, b) => b.name.localeCompare(a.name));
     default:
-      return hotels;
+      break;
   }
+  return sortedHotels;
 };
+
 
 // ============================
 // Detail Page

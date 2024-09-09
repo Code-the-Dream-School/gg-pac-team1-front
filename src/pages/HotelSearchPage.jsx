@@ -102,6 +102,8 @@ function HotelSearchPage() {
             <option value="price-desc">Price (high to low)</option>
             <option value="reviews-desc">Reviews (best to worst)</option>
             <option value="reviews-asc">Reviews (worst to best)</option>
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
           </select>
         </div>
 
