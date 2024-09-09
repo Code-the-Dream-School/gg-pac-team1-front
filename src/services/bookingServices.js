@@ -80,27 +80,19 @@ export async function searchHotelsByCityOrState(city, state) {
 // Function to filter hotels based on filters
 export const filterHotels = (hotels, filters) => {
   return hotels.filter(hotel => {
-    let matches = true;
+    const meetsPriceMin = filters.priceMin ? hotel.price >= filters.priceMin : true;
+    const meetsPriceMax = filters.priceMax ? hotel.price <= filters.priceMax : true;
+    const meetsReviews = filters.reviews ? hotel.reviews >= filters.reviews : true;
+    const meetsRoomType = filters.roomType ? hotel.roomType === filters.roomType : true;
 
-    if (filters.priceMin && hotel.price < filters.priceMin) {
-      matches = false;
-    }
-
-    if (filters.priceMax && hotel.price > filters.priceMax) {
-      matches = false;
-    }
-
-    if (filters.reviews && hotel.reviews < filters.reviews) {
-      matches = false;
-    }
-
-    if (filters.roomType && hotel.roomType !== filters.roomType) {
-      matches = false;
-    }
-
-    return matches;
+    return meetsPriceMin && meetsPriceMax && meetsReviews && meetsRoomType;
   });
 };
+export const filterHotelsByRating = (hotels, rating) => {
+  return hotels.filter(hotel => hotel.rating >= rating);
+};
+
+
 
 // Function to sort hotels based on sort option
 export const sortHotels = async (hotels, sortOption) => {
