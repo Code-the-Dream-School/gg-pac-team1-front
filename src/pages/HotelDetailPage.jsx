@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getHotelById, getRoomsByHotelId } from '../services/bookingServices'; // Asegúrate de tener estas funciones en tu servicio
 import Gallery from '../gallery/Gallery'; // Importa el componente Gallery
+import HotelInfo from '../components/HotelInfo'; // Importa el componente HotelInfo
 
 function HotelDetailPage() {
   const { id } = useParams();
@@ -50,23 +51,12 @@ function HotelDetailPage() {
     <div className="hotel-detail-container">
       {console.log('Rendering hotel data:', hotel)}
       <h1 className="hotel-title">{hotel.name}</h1>
-      <p><strong>Address:</strong> {hotel.street}, {hotel.city}, {hotel.state}, {hotel.zipCode}</p>
-      <p><strong>Brand:</strong> {hotel.brand}</p>
-      <p><strong>Chain:</strong> {hotel.chain}</p>
-      <p><strong>Stars:</strong> {hotel.stars}</p>
       
-      <h2>Services and Facilities</h2>
-      <p><strong>WiFi:</strong> {hotel.wifi ? 'Yes' : 'No'}</p>
-      <p><strong>Ocean View:</strong> {hotel.okeanView ? 'Yes' : 'No'}</p>
-      <p><strong>Pool:</strong> {hotel.pool ? 'Yes' : 'No'}</p>
-      <p><strong>Gym:</strong> {hotel.gym ? 'Yes' : 'No'}</p>
-      <p><strong>Spa:</strong> {hotel.spa ? 'Yes' : 'No'}</p>
-      <p><strong>Restaurant:</strong> {hotel.restaurant ? 'Yes' : 'No'}</p>
-      <p><strong>Parking Availability:</strong> {hotel.parking.aviability ? 'Yes' : 'No'}</p>
-      <p><strong>Parking Cost per Day:</strong> ${hotel.parking.cost_per_day}</p>
-      
+      {/* Integrar el componente HotelInfo */}
+      <HotelInfo hotel={hotel} />
+
       <h2>Policies and Rating</h2>
-      <p><strong>Cancellation Policy:</strong> {hotel.cancelation_policy}</p>
+      <p><strong>Cancellation Policy:</strong> {hotel.cancellation_policy}</p>
       <p><strong>Rating:</strong> {hotel.rating}</p>
       <p><strong>Languages Spoken:</strong> {hotel.languages_spoken.join(', ')}</p>
       
