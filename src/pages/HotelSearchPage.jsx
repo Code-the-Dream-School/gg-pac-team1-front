@@ -1,36 +1,34 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import ResultList from "../components/HotelSearchResultList";
+import ResultList from "../components/ResultList";
 import Pagination from "../components/Pagination";
 import HotelSearchFilter from "../components/HotelSearchFilter";
-import {
-  searchHotels,
-  filterHotels,
-  sortHotels,
-} from "../services/bookingServices";
+import { searchHotels, sortHotels, filterHotelsByRating } from "../services/bookingServices";
 
 function HotelSearchPage() {
-  const { city, state } = useParams(); // Get URL parameters
+  const { city, state } = useParams();
   const [results, setResults] = useState([]);
-  const [filteredResults, setFilteredResults] = useState([]); // Filtered results state
+  const [filteredResults, setFilteredResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({
     priceMin: "",
     priceMax: "",
-    reviews: 0,
+    reviews: 0, // Default value is 0 for reviews
     roomType: "",
   });
-  const [sortOption, setSortOption] = useState("price-asc"); // State for sorting option
-  const resultsPerPage = 2; // Number of results per page
+  const [sortOption, setSortOption] = useState("price-asc");
+  const resultsPerPage = 2;
 
-  // Effect to search hotels by city and state
+  // Fetch hotels when city and state are available
   useEffect(() => {
     if (city && state) {
-      // Call the searchHotels function to fetch hotels
       searchHotels(city, state).then((hotels) => {
         setResults(hotels);
         setFilteredResults(hotels); // Initialize filtered results with all hotels
-      });
+      })
+      .catch((error) => {
+        console.error('Error fetching hotels:', error);
+       });
     }
   }, [city, state]);
 
@@ -38,40 +36,36 @@ function HotelSearchPage() {
   const handleFilterChange = (name, value) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
-      [name]: value,
+      [name]: name === 'reviews' ? Number(value) : value,
     }));
-  };
-
-  // Apply filters using filterHotels from bookingServices.js
-  const applyFilters = () => {
-    filterHotels(results, filters).then((filteredHotels) => {
-      setFilteredResults(filteredHotels);
-      setCurrentPage(1); // Reset to the first page after applying filters
+    // Apply filters after updating
+    applyFilters({
+      ...filters,
+      [name]: name === 'reviews' ? Number(value) : value,
     });
   };
 
-  // Handle sorting using sortHotels from bookingServices.js
+  // Apply filters
+  const applyFilters = (updatedFilters) => {
+    const { reviews } = updatedFilters;
+    const filteredHotels = filterHotelsByRating(results, reviews);
+    setFilteredResults(filteredHotels);
+    setCurrentPage(1);
+  };
+
+  // Handle sorting
   const handleSortChange = async (e) => {
     const sortValue = e.target.value;
     setSortOption(sortValue);
-
-    // Sort the filtered results and update the state
     const sortedHotels = await sortHotels(filteredResults, sortValue);
-    setFilteredResults(sortedHotels); // Ensure state is updated with sorted results
-    setCurrentPage(1); // Reset to the first page after sorting
+    setFilteredResults(sortedHotels);
+    setCurrentPage(1);
   };
 
-  // Get the index of the last and first hotel on the current page
+  // Pagination
   const indexOfLastResult = currentPage * resultsPerPage;
   const indexOfFirstResult = indexOfLastResult - resultsPerPage;
-
-  // Get the hotels for the current page
-  const currentResults = filteredResults.slice(
-    indexOfFirstResult,
-    indexOfLastResult
-  );
-
-  // Change page
+  const currentResults = filteredResults.slice(indexOfFirstResult, indexOfLastResult);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
@@ -80,7 +74,7 @@ function HotelSearchPage() {
         <HotelSearchFilter
           filters={filters}
           onFilterChange={handleFilterChange}
-          onApplyFilters={applyFilters}
+          onApplyFilters={() => applyFilters(filters)}
         />
       </div>
 
@@ -97,13 +91,11 @@ function HotelSearchPage() {
             <option value="price-desc">Price (high to low)</option>
             <option value="reviews-desc">Reviews (best to worst)</option>
             <option value="reviews-asc">Reviews (worst to best)</option>
-            {/* Add more options here */}
           </select>
         </div>
 
         <div className="results-container">
           <ResultList results={currentResults} hasSearched={true} />
-
           <Pagination
             resultsPerPage={resultsPerPage}
             totalResults={filteredResults.length}

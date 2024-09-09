@@ -11,16 +11,23 @@ function ResultList({ results, hasSearched }) {
   }
 
   return (
-    <div className="result-list-container">
-      {results.map(hotel => (
-        <HotelSearchResultCard 
-          key={hotel._id} 
-          hotel={hotel} 
-          imageUrl={hotel.image && hotel.image.length > 0 ? hotel.image[0].url : 'default-image-url'} 
-          roomCostPerNight={hotel.room_cost_per_night || 0} //while raul fix this problem en mongo
-        />
-      ))}
-    </div>
+<div className="result-list-container">
+  {results.map(hotel => {
+    console.log(hotel);
+    const roomCost = hotel.rooms && hotel.rooms.length > 0 && hotel.rooms[0].room_cost_per_night 
+      ? hotel.rooms[0].room_cost_per_night.$numberDecimal : 185; // Default value if there is no data
+      
+    return (
+      <HotelSearchResultCard 
+        key={hotel._id} 
+        hotel={hotel} 
+        imageUrl={hotel.image && hotel.image.length > 0 ? hotel.image[0].url : 'default-image-url'} 
+        roomCostPerNight={roomCost} 
+      />
+    );
+  })}
+</div>
+
   );
 }
 
