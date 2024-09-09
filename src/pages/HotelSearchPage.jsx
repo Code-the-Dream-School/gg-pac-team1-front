@@ -47,8 +47,12 @@ function HotelSearchPage() {
 
   // Apply filters
   const applyFilters = (updatedFilters) => {
-    const { reviews } = updatedFilters;
-    const filteredHotels = filterHotelsByRating(results, reviews);
+    const { reviews, roomType } = updatedFilters;
+    const filteredHotels = results.filter(hotel => {
+      const matchesRating = reviews ? hotel.rating >= reviews : true;
+      const matchesRoomType = roomType ? hotel.rooms.some(room => room.room_types === roomType) : true;
+      return matchesRating && matchesRoomType;
+    });
     setFilteredResults(filteredHotels);
     setCurrentPage(1);
   };
