@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';  
 import { useParams, useNavigate } from 'react-router-dom';
 import { getHotelById, getRoomsByHotelId } from '../services/bookingServices'; // Asegúrate de tener estas funciones en tu servicio
+import Gallery from '../gallery/Gallery'; // Importa el componente Gallery
 
 function HotelDetailPage() {
   const { id } = useParams();
@@ -101,6 +102,9 @@ function HotelDetailPage() {
       ) : (
         <p>No rooms available</p>
       )}
+
+      <h2>Gallery</h2>
+      <Gallery images={hotel.galeryImage || []} /> {/* Pasar las imágenes del hotel al componente Gallery */}
     </div>
   );
 }
