@@ -6,6 +6,7 @@ import HotelInfo from "../components/HotelInfo";
 import PoliciesAndRating from "../components/PoliciesAndRating";
 import RoomTypesList from "../components/RoomTypesList";
 import ChildrenSelector from '../components/ChildrenSelector'; 
+import ReservationButton from '../components/ReservationButton'; // Import the ReservationButton component
 
 function HotelDetailPage() {
   const { id } = useParams();
@@ -92,6 +93,9 @@ function HotelDetailPage() {
         handleHasChildrenChange={handleHasChildrenChange}
         handleChildrenChange={handleChildrenChange}
       />
+      <div className="reservation-button-container">
+        <ReservationButton />
+      </div>
     </div>
   );
 }
