@@ -7,7 +7,6 @@ function ResultList({ results, hasSearched }) {
   const navigate = useNavigate();
 
   const handleHotelClick = (hotelId) => {
-    localStorage.setItem('hotel_Id', hotelId);
     navigate(`/hotel/${hotelId}`);
   };
 
@@ -24,7 +23,7 @@ function ResultList({ results, hasSearched }) {
       {results.map(hotel => {
         console.log(hotel);
         const roomCost = hotel.rooms && hotel.rooms.length > 0 && hotel.rooms[0].room_cost_per_night 
-          ? hotel.rooms[0].room_cost_per_night.$numberDecimal : 185; // Default value if there is no data
+          ? parseFloat(hotel.rooms[0].room_cost_per_night.$numberDecimal) : 185; // Default value if there is no data
           
         return (
           <div key={hotel._id} onClick={() => handleHotelClick(hotel._id)}>
@@ -45,7 +44,7 @@ ResultList.propTypes = {
     PropTypes.shape({
       _id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      room_cost_per_night: PropTypes.number.isRequired,
+      room_cost_per_night: PropTypes.number,
       image: PropTypes.arrayOf(
         PropTypes.shape({
           url: PropTypes.string

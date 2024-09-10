@@ -99,5 +99,3 @@ HotelSearchResultCard.propTypes = {
 };
 
 export default HotelSearchResultCard;
-
-

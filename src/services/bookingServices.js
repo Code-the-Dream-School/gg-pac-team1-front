@@ -147,10 +147,10 @@ export async function getHotelById(id) {
   }
 }
 
-export async function getRoomsByHotelId(hotelId) {
+export async function getRoomsByHotelId(hotel_Id) {
   const token = localStorage.getItem('token');
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/rooms/${hotelId}`, {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/rooms/${hotel_Id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
@@ -200,8 +200,8 @@ export const getItemFromLocalStorage = (key) => {
 // Specific LocalStorage Functions
 // ============================
 
-export const saveHotelIdToLocalStorage = (hotelId) => {
-  setItemInLocalStorage('hotelId', hotelId);
+export const saveHotelIdToLocalStorage = (hotel_Id) => {
+  setItemInLocalStorage('hotel_Id', hotel_Id);
 };
 
 export const loadHotelDataFromLocalStorage = (setHasChildren, setChildren) => {
@@ -225,10 +225,10 @@ export const saveChildrenToLocalStorage = (children) => {
 // ============================
 
 // Function to load hotel data based on hotelId
-export const loadHotelData = async (hotelId) => {
+export const loadHotelData = async (hotel_Id) => {
   const token = localStorage.getItem('token');
   try {
-    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/hotels/${hotelId}`, {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/hotels/${hotel_Id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

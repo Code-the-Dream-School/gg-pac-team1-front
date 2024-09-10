@@ -28,8 +28,7 @@ function HotelDetailPage() {
           return;
         }
         setHotelData(data);
-        saveHotelIdToLocalStorage(data.id); // Save hotel ID to localStorage
-        loadHotelDataFromLocalStorage(setHasChildren, setChildren); // Load related data from localStorage
+// Load related data from localStorage
         setIsLoading(false);
       })
       .catch((error) => {
