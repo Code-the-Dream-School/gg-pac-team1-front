@@ -19,7 +19,7 @@ const Header = () => {
     const storedUser = JSON.parse(sessionStorage.getItem('user'));
 
     if (token && storedUser) {
-      setWelcomeMessage(storedUser.name);
+      setWelcomeMessage(formatName(storedUser.name));
       setUserEmail(storedUser.email);
       setIsLoggedIn(true);
     }
@@ -64,6 +64,14 @@ const Header = () => {
 
   // Exponer la función globalmente para poder ser llamada desde cualquier parte de la aplicación
   window.openLoginModal = openLoginModal;
+
+  // Función para formatear el nombre del usuario
+  const formatName = (name) => {
+    if (name.length > 15) {
+      return name.split(' ')[0]; // Solo retorna el primer nombre si el nombre es muy largo
+    }
+    return name;
+  };
 
   return (
     <>
@@ -114,7 +122,7 @@ const Header = () => {
       {showLogin && (
         <Login
           onLogin={(user) => {
-            setWelcomeMessage(user.name);
+            setWelcomeMessage(formatName(user.name));
             setUserEmail(user.email);
             setIsLoggedIn(true);
             setShowLogin(false);
@@ -130,6 +138,8 @@ const Header = () => {
 };
 
 export default Header;
+
+
 
 
 
