@@ -1,39 +1,48 @@
-// src/components/HotelPages/VirginiaHotels.js
 import React from 'react';
-import HotelCard from './HotelCard'; // Import the new HotelCard component
-import './HotelCardStyles.css'; // Ensure this CSS file exists and is styled appropriately
+import HotelCard from './HotelCard';
+import jefferson from '../../../images/HotelsCards/Virginia/jefferson.jpg';
+import Ritz_Carlton from '../../../images/HotelsCards/Virginia/Ritz_Carlton.jpg';
+import omniResort from '../../../images/HotelsCards/Virginia/omniResort.jpg';
+import Hilton from '../../../images/HotelsCards/Virginia/Hilton.jpg';
+import Monaco from '../../../images/HotelsCards/Virginia/Monaco.jpg';
+import './HotelCardStyles.css'; 
 
 const VirginiaHotels = () => {
   const hotels = [
     {
       name: "The Jefferson Hotel",
       description: "Located in Richmond, this historic hotel offers luxurious accommodations and fine dining. Known for its elegant decor and top-notch service.",
-      image: "https://example.com/the-jefferson-hotel.jpg",
-      price: "$400 per night"
+      image: jefferson,
+      price: "$400 per night",
+      websiteUrl: "https://www.thejeffersonhotel.com" 
     },
     {
       name: "Omni Homestead Resort",
       description: "Situated in Hot Springs, this resort features a full-service spa, golf course, and stunning mountain views. Perfect for a relaxing getaway.",
-      image: "https://example.com/omni-homestead-resort.jpg",
-      price: "$350 per night"
+      image: omniResort,
+      price: "$350 per night",
+      websiteUrl: "https://www.omnihotels.com/hotels/homestead" // Real URL
     },
     {
       name: "The Ritz-Carlton, Tysons Corner",
       description: "This luxury hotel offers sophisticated accommodations and world-class amenities in Tysons Corner. Enjoy their renowned spa and fine dining options.",
-      image: "https://example.com/ritz-carlton-tysons-corner.jpg",
-      price: "$450 per night"
+      image:  Ritz_Carlton,
+      price: "$450 per night",
+      websiteUrl: "https://www.ritzcarlton.com/en/hotels/virginia/tysons-corner" // Real URL
     },
     {
       name: "Hilton Norfolk The Main",
       description: "Located in downtown Norfolk, this modern hotel features stylish rooms and is close to the waterfront and local attractions.",
-      image: "https://example.com/hilton-norfolk-main.jpg",
-      price: "$280 per night"
+      image: Hilton ,
+      price: "$280 per night",
+      websiteUrl: "https://www.hilton.com/en/hotels/orfthhf-hilton-norfolk-the-main" // Real URL
     },
     {
       name: "Kimpton Hotel Monaco Alexandria",
       description: "Situated in Alexandria, this boutique hotel combines historic charm with modern amenities. Enjoy its central location and unique style.",
-      image: "https://example.com/kimpton-hotel-monaco-alexandria.jpg",
-      price: "$320 per night"
+      image: Monaco,
+      price: "$320 per night",
+      websiteUrl: "https://www.ihg.com/kimptonhotels/hotels/us/en/alexandria/alxkz/hoteldetail" // Real URL
     }
   ];
 
@@ -49,6 +58,7 @@ const VirginiaHotels = () => {
             description={hotel.description}
             image={hotel.image}
             price={hotel.price}
+            websiteUrl={hotel.websiteUrl} // Pass the websiteUrl prop
           />
         ))}
       </div>

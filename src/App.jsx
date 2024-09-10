@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Account from './components/Account';
 import Addresses from './components/Addresses';
 import BudgetTravel from './components/BudgetTravel';
-import ChangePassword from './components/ChangePassword'; // Importar nuevo componente
+import ChangePassword from './components/ChangePassword';
 import CreditCardInfo from './components/CreditCardInfo';
 import FamilyFriendly from './components/FamilyFriendly';
 import FoodieDestination from './components/FoodieDestination';
@@ -43,6 +43,7 @@ const AUTH_URL = 'http://localhost:8000/api/v1/auth';
 function App() {
   const [message, setMessage] = useState(''); 
   const [reviews, setReviews] = useState([]);
+
   useEffect(() => {
     (async () => {
       const myData = await getAllData(AUTH_URL);
@@ -84,7 +85,7 @@ function App() {
             { path: 'profile', element: <ProfileInfo /> },
             { path: 'addresses', element: <Addresses /> },
             { path: 'payments', element: <CreditCardInfo /> },
-            { path: 'changepassword', element: <ChangePassword /> }, // Nueva ruta para Change Password
+            { path: 'changepassword', element: <ChangePassword /> },
             { path: 'history', element: <TravelHistory /> },
           ],
         },
@@ -145,7 +146,7 @@ function App() {
           element: <TripDescriptionChicago />,
         },
         {
-          path: 'trip-description-sf',
+          path: 'trip-description-san-francisco',
           element: <TripDescriptionSf />,
         },
         {
@@ -153,16 +154,12 @@ function App() {
           element: <TripDescriptionMiami />,
         },
         {
-          path: 'search',
-          element: <Search />,
-        },
-        { 
           path: 'virginia-hotels',
           element: <VirginiaHotels /> 
         }, 
         { 
           path: 'lake-tahoe-hotels',
-           element: <LakeTahoeHotels /> 
+          element: <LakeTahoeHotels /> 
         },
         { 
           path: 'north-carolina-hotels',

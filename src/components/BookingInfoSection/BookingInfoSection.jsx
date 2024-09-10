@@ -8,7 +8,7 @@ const BookingInfoSection = () => {
       <div className="section our-team">
         <h2>About Us</h2>
         <p>
-          Welcome to [Your Travel Agency's Name], where we specialize in making your travel experiences
+          Welcome to Travel Amigo, where we specialize in making your travel experiences
           unforgettable. With years of expertise in the travel industry, our mission is to provide
           personalized and hassle-free hotel booking services. Our team of professionals is dedicated
           to offering you the best deals and ensuring a smooth booking process from start to finish.

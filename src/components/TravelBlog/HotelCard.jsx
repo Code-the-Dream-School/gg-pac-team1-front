@@ -1,8 +1,13 @@
-// src/components/HotelPages/HotelCard.js
 import React from 'react';
 import './HotelCardStyles.css'; // Ensure this path is correct
 
-const HotelCard = ({ name, description, image, price }) => {
+const HotelCard = ({ name, description, image, price, websiteUrl }) => {
+  const handlePriceClick = () => {
+    if (websiteUrl) {
+      window.open(websiteUrl, '_blank'); // Open the hotel's website in a new tab
+    }
+  };
+
   return (
     <div className="hotel-card">
       <div className="hotel-card-content">
@@ -11,7 +16,13 @@ const HotelCard = ({ name, description, image, price }) => {
           <hr className="divider-line" />
           <p>{description}</p>
           <div className="hotel-card-footer">
-            <span className="hotel-price">{price}</span>
+            <span 
+              className="hotel-price"
+              onClick={handlePriceClick} // Add click handler
+              style={{ cursor: 'pointer' }} // Indicate it's clickable
+            >
+              {price}
+            </span>
           </div>
         </div>
         <div className="hotel-card-image">
