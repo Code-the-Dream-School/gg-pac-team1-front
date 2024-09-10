@@ -1,13 +1,15 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import HotelSearchResultCard from './HotelSearchResultCard';
 import PropTypes from 'prop-types';
 
 function ResultList({ results, hasSearched }) {
   const navigate = useNavigate();
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
 
   const handleHotelClick = (hotelId) => {
-    navigate(`/hotel/${hotelId}`);
+    navigate(`/hotel/${hotelId}?${queryParams.toString()}`);
   };
 
   if (!hasSearched) {
