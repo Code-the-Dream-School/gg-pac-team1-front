@@ -224,9 +224,11 @@ export const saveChildrenToLocalStorage = (children) => {
 // Booking Page
 // ============================
 
-// Function to load hotel data based on hotelId
 export const loadHotelData = async (hotel_Id) => {
   const token = localStorage.getItem('token');
+  console.log("Token:", token); // Log para verificar el token
+  console.log("Fetching data for hotelId:", hotel_Id); // Log para verificar el hotelId
+
   try {
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/v1/hotels/${hotel_Id}`, {
       headers: {
@@ -234,47 +236,56 @@ export const loadHotelData = async (hotel_Id) => {
       }
     });
 
+    console.log("API Response Status:", response.status); // Log para verificar el estado de la respuesta
+
     if (!response.ok) {
       throw new Error('Error fetching hotel data.');
     }
 
     const currentHotel = await response.json();
-    if (!currentHotel) {
+    console.log("API Response Data:", currentHotel); // Log para verificar los datos de la respuesta
+
+    if (!currentHotel.hotel) {
       throw new Error('Hotel not found');
     }
+
+    const hotelData = currentHotel.hotel; // Acceder a la propiedad hotel
+
     return {
-      name: currentHotel.name,
-      state: currentHotel.state || '',
-      city: currentHotel.city || '',
-      street: currentHotel.street || '',
-      zipCode: currentHotel.zipCode || '',
-      brand: currentHotel.brand || '',
-      stars: currentHotel.stars || 0,
-      latitude: currentHotel.latitude || '',
-      longitude: currentHotel.longitude || '',
-      chain: currentHotel.chain || '',
-      createdBy: currentHotel.createdBy || '',
-      wifi: currentHotel.wifi || false,
-      okeanView: currentHotel.okeanView || false,
-      pool: currentHotel.pool || false,
-      gym: currentHotel.gym || false,
-      spa: currentHotel.spa || false,
+      name: hotelData.name || "Hotel Name",
+      state: hotelData.state || "State not available",
+      city: hotelData.city || "City not available",
+      street: hotelData.street || "Street not available",
+      zipCode: hotelData.zipCode || "Zip Code not available",
+      brand: hotelData.brand || '',
+      stars: hotelData.stars || 0,
+      latitude: hotelData.latitude || '',
+      longitude: hotelData.longitude || '',
+      chain: hotelData.chain || '',
+      createdBy: hotelData.createdBy || '',
+      wifi: hotelData.wifi || false,
+      okeanView: hotelData.okeanView || false,
+      pool: hotelData.pool || false,
+      gym: hotelData.gym || false,
+      spa: hotelData.spa || false,
       parking: {
-        aviability: currentHotel.parking?.aviability || false,
-        cost_per_day: currentHotel.parking?.cost_per_day || 0
+        aviability: hotelData.parking?.aviability || false,
+        cost_per_day: hotelData.parking?.cost_per_day || 0
       },
-      restaurant: currentHotel.restaurant || false,
-      image: currentHotel.image || [{ url: '', description: '' }],
-      galeryImage: currentHotel.galeryImage || [{ url: '', description: '' }],
-      languages_spoken: currentHotel.languages_spoken || [''],
-      cancelation_policy: currentHotel.cancelation_policy || '',
-      rating: currentHotel.rating || 0,
-      rooms: currentHotel.rooms || []
+      restaurant: hotelData.restaurant || false,
+      image: hotelData.image || [{ url: '', description: '' }],
+      galeryImage: hotelData.galeryImage || [{ url: '', description: '' }],
+      languages_spoken: hotelData.languages_spoken || [''],
+      cancelation_policy: hotelData.cancelation_policy || '',
+      rating: hotelData.rating || 0,
+      rooms: hotelData.rooms || []
     };
   } catch (error) {
+    console.error("Error in loadHotelData:", error.message); // Log para errores
     throw new Error(error.message);
   }
 };
+
 
 // Function to calculate costs based on the reservation
 export const calculateCosts = (checkInDate, checkOutDate, hotel) => {
