@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import ResultList from "../components/ResultList";
 import Pagination from "../components/Pagination";
 import HotelSearchFilter from "../components/HotelSearchFilter";
-import PriceFilter from "../components/PriceFilter"; // Importa el nuevo componente
 import { searchHotels, sortHotels, filterHotelsByRating } from "../services/bookingServices";
 
 function HotelSearchPage() {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { getHotelById, getRoomsByHotelId, saveHotelIdToLocalStorage, loadHotelDataFromLocalStorage, saveHasChildrenToLocalStorage, saveChildrenToLocalStorage } from "../services/bookingServices";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { getHotelById, getRoomsByHotelId } from "../services/bookingServices";
 import Gallery from "../gallery/Gallery";
 import HotelInfo from "../components/HotelInfo";
 import PoliciesAndRating from "../components/PoliciesAndRating";
@@ -11,6 +11,7 @@ import ReservationButton from '../components/ReservationButton'; // Import the R
 function HotelDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate(); // Hook to handle navigation
+  const location = useLocation(); // Hook to access the location object
   const [hotelData, setHotelData] = useState(null);
   const [rooms, setRooms] = useState([]);
   const [hasChildren, setHasChildren] = useState(false);
@@ -28,7 +29,6 @@ function HotelDetailPage() {
           return;
         }
         setHotelData(data);
-// Load related data from localStorage
         setIsLoading(false);
       })
       .catch((error) => {
@@ -49,7 +49,15 @@ function HotelDetailPage() {
       .catch((error) => {
         console.error("Error fetching rooms data:", error);
       });
-  }, [id, navigate]);
+
+    // Capture query parameters
+    const queryParams = new URLSearchParams(location.search);
+    const hasChildrenQuery = queryParams.get('hasChildren') === 'true';
+    const childrenQuery = queryParams.get('children') || 0;
+
+    setHasChildren(hasChildrenQuery);
+    setChildren(Number(childrenQuery));
+  }, [id, navigate, location.search]);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -65,18 +73,15 @@ function HotelDetailPage() {
   const handleHasChildrenChange = (event) => {
     const value = event.target.value === 'yes';
     setHasChildren(value);
-    saveHasChildrenToLocalStorage(value); // Save hasChildren to localStorage
 
     if (!value) {
       setChildren(0); // Reset the number of children if "no" is selected
-      saveChildrenToLocalStorage(0); // Save children to localStorage
     }
   };
 
   const handleChildrenChange = (event) => {
     const value = event.target.value;
     setChildren(value);
-    saveChildrenToLocalStorage(value); // Save children to localStorage
   };
 
   return (
