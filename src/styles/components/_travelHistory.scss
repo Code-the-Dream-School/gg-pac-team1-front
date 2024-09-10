@@ -1,0 +1,72 @@
+.travel-history {
+  font-family: Arial, sans-serif;
+  padding: 5px;
+  overflow-y: auto; /* Evitar scroll innecesario */
+
+  h2 {
+    text-align: center;
+    font-size: 26px; /* Tamaño de fuente reducido */
+    margin-top: 5px; /* Margen superior ajustado */
+    margin-bottom: 5px; /* Margen inferior ajustado */
+  }
+
+  hr {
+    border: 1px solid #ccc;
+    margin: 15px 0; /* Margen reducido para el separador */
+  }
+
+  .active-bookings,
+  .travel-history-list {
+    list-style-type: none;
+    padding: 0;
+
+    .booking-item,
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f4f4f4;
+      margin: 8px 0; /* Márgen reducido entre los elementos */
+      padding: 8px; /* Padding reducido */
+      border-radius: 5px;
+
+      .description {
+        flex-grow: 1;
+        color: green;
+        margin-right: 20px;
+      }
+
+      .button-group {
+        display: flex;
+        align-items: center;
+
+        .icon-button {
+          background: none;
+          border: none;
+          cursor: pointer;
+          font-size: 18px;
+
+          &.view {
+            color: green;
+          }
+
+          &.delete {
+            color: red;
+          }
+
+          &:hover {
+            opacity: 0.7;
+          }
+
+          & + .icon-button {
+            margin-left: 10px;
+          }
+        }
+      }
+
+      &:hover {
+        background-color: #eaeaea;
+      }
+    }
+  }
+}

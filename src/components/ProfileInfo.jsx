@@ -19,11 +19,12 @@ const ProfileInfo = () => {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         });
-        const { name, phone, address } = response.data;
+        const { name, phone, address, creditCards } = response.data;
         // Rellenar los campos del formulario con los datos obtenidos
         setValue('name', name);
         setValue('phone', phone);
         setValue('address', address);
+        setValue('creditCards', creditCards || []); // Asegúrate de que 'creditCards' esté en el formato correcto
       } catch (err) {
         setError('Failed to load user data');
       }
@@ -34,7 +35,12 @@ const ProfileInfo = () => {
 
   const handleUpdateProfile = async (data) => {
     try {
-      await axios.patch('http://localhost:8000/api/v1/auth/user', data, {
+      await axios.patch('http://localhost:8000/api/v1/auth/user', {
+        name: data.name,
+        phone: data.phone,
+        address: data.address,
+        creditCards: data.creditCards, // Incluye las tarjetas de crédito en los datos enviados
+      }, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -105,6 +111,16 @@ const ProfileInfo = () => {
             })}
           />
           {errors.address && <p className="error">{errors.address.message}</p>}
+        </div>
+
+        <div className="form-group credit-cards">
+          <label htmlFor="creditCards">Credit Cards:</label>
+          <textarea
+            id="creditCards"
+            placeholder="Credit Cards (JSON format)"
+            {...register('creditCards')}
+          />
+          {errors.creditCards && <p className="error">{errors.creditCards.message}</p>}
         </div>
 
         <button type="submit">Update Profile</button>
