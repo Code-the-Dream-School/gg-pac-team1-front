@@ -1,9 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSwimmingPool, faUtensils, faWifi, faDumbbell, faSpa, faParking, faStar } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function HotelSearchResultCard({ hotel, imageUrl, roomCostPerNight }) {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+
   const getReviewColor = (reviews) => {
     if (reviews > 4) {
       return 'review-success';
@@ -62,7 +65,7 @@ function HotelSearchResultCard({ hotel, imageUrl, roomCostPerNight }) {
           </p>
         </div>
 
-        <Link to={`/hotel/${hotel._id}`} className="details-link">See details</Link>
+        <Link to={`/hotel/${hotel._id}?${queryParams.toString()}`} className="details-link">See details</Link>
       </div>
     </div>
   );

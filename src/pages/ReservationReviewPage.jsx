@@ -1,27 +1,30 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 const ReservationReviewPage = () => {
-  // Obtener todas las claves y valores de localStorage
-  const localStorageData = {};
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    localStorageData[key] = localStorage.getItem(key);
-  }
+  // Obtener los parámetros de la URL
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const urlParams = {};
+  queryParams.forEach((value, key) => {
+    urlParams[key] = value;
+  });
 
   return (
     <div className="reservation-review-page">
       <h1 className="title">Review Your Reservation</h1>
-      <div className="local-storage-data">
-        {Object.keys(localStorageData).length > 0 ? (
+      <div className="url-params-data">
+        <h2>URL Parameters</h2>
+        {Object.keys(urlParams).length > 0 ? (
           <ul>
-            {Object.entries(localStorageData).map(([key, value]) => (
+            {Object.entries(urlParams).map(([key, value]) => (
               <li key={key}>
                 <strong>{key}:</strong> {value}
               </li>
             ))}
           </ul>
         ) : (
-          <p>No data found in localStorage</p>
+          <p>No URL parameters found</p>
         )}
       </div>
     </div>

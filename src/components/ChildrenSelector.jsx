@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function ChildrenSelector({ hasChildren, children, handleHasChildrenChange, handleChildrenChange }) {
-  const [includeChildren, setIncludeChildren] = useState(false);
+  const [includeChildren, setIncludeChildren] = useState(hasChildren);
+
+  useEffect(() => {
+    setIncludeChildren(hasChildren);
+  }, [hasChildren]);
 
   const handleIncludeChildrenChange = (e) => {
-    setIncludeChildren(e.target.checked);
-    if (!e.target.checked) {
-      handleHasChildrenChange({ target: { value: 'no' } });
-    }
+    const isChecked = e.target.checked;
+    setIncludeChildren(isChecked);
+    handleHasChildrenChange({ target: { value: isChecked ? 'yes' : 'no' } });
+  };
+
+  const handleChildrenSelectChange = (e) => {
+    handleChildrenChange({ target: { value: Number(e.target.value) } });
   };
 
   return (
@@ -28,8 +35,9 @@ function ChildrenSelector({ hasChildren, children, handleHasChildrenChange, hand
           <label>Number of children:</label>
           <select
             value={children}
-            onChange={handleChildrenChange}
+            onChange={handleChildrenSelectChange}
           >
+            <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>

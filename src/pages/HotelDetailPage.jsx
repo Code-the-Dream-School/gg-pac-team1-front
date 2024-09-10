@@ -98,7 +98,7 @@ function HotelDetailPage() {
         handleChildrenChange={handleChildrenChange}
       />
       <div className="reservation-button-container">
-        <ReservationButton />
+        <ReservationButton hotelId={id} hasChildren={hasChildren} children={children} />
       </div>
     </div>
   );
