@@ -5,12 +5,11 @@ import DestinationInput from './DestinationInput';
 import DateInput from './DateInput';
 import AdultsInput from './AdultsInput';
 import LoadingIndicator from './LoadingIndicator';
-import ErrorMessage from './ErrorMessage'; // Importa el nuevo componente ErrorMessage
+import ErrorMessage from './ErrorMessage'; // Import the new ErrorMessage component
 import { 
   searchHotelsByCityOrState, 
   validateCheckInDate, 
-  validateCheckOutDate, 
-  setItemInLocalStorage 
+  validateCheckOutDate 
 } from '../services/bookingServices';  // API calls and utilities
 
 const SearchForm = ({ destinationPlaceholder, searchButtonLabel }) => {
@@ -35,10 +34,11 @@ const SearchForm = ({ destinationPlaceholder, searchButtonLabel }) => {
       try {
         const response = await searchHotelsByCityOrState(value, "");
         const filteredSuggestions = response.filter(suggestion =>
-          (suggestion.city && suggestion.city.toLowerCase().includes(value)) ||
-          (suggestion.state && suggestion.state.toLowerCase().includes(value))
+          (suggestion.city && suggestion.city.toLowerCase().startsWith(value)) ||
+          (suggestion.state && suggestion.state.toLowerCase().startsWith(value))
         );
-        setSuggestions(filteredSuggestions);
+        // Show only the first 5 suggestions
+        setSuggestions(filteredSuggestions.slice(0, 5));
       } catch (error) {
         if (error.message === 'User not authenticated. You must log in.') {
           navigate('/login');
@@ -69,7 +69,6 @@ const SearchForm = ({ destinationPlaceholder, searchButtonLabel }) => {
       setCheckInDate(date);
       setShowCheckOut(true);
       setErrors(prev => ({ ...prev, checkInDate: '' }));
-      setItemInLocalStorage('checkInDate', date);  // Save date to localStorage
     } else {
       setErrors(prev => ({ ...prev, checkInDate: errorMessage }));
     }
@@ -83,7 +82,6 @@ const SearchForm = ({ destinationPlaceholder, searchButtonLabel }) => {
     if (!errorMessage) {
       setCheckOutDate(date);
       setErrors(prev => ({ ...prev, checkOutDate: '' }));
-      setItemInLocalStorage('checkOutDate', date);  // Save date to localStorage
     } else {
       setErrors(prev => ({ ...prev, checkOutDate: errorMessage }));
     }
@@ -95,7 +93,12 @@ const SearchForm = ({ destinationPlaceholder, searchButtonLabel }) => {
 
     if (destination && checkInDate && checkOutDate && adults > 0) {
       const [city, state] = destination.split(', ');
-      navigate(`/${state}/${city}`, { state: { checkInDate, checkOutDate, adults } });
+      const queryParams = new URLSearchParams({
+        checkInDate,
+        checkOutDate,
+        adults,
+      }).toString();
+      navigate(`/${state}/${city}?${queryParams}`);
     } else {
       setErrors({ form: 'Please complete all fields correctly.' });
     }
@@ -103,6 +106,7 @@ const SearchForm = ({ destinationPlaceholder, searchButtonLabel }) => {
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* Destination input field with suggestions */}
       <DestinationInput 
         value={destination}
         onChange={handleDestinationChange}
@@ -111,6 +115,7 @@ const SearchForm = ({ destinationPlaceholder, searchButtonLabel }) => {
         loading={loading}
         placeholder={destinationPlaceholder}
       />
+      {/* Date input fields for check-in and check-out dates */}
       <DateInput 
         checkInDate={checkInDate}
         checkOutDate={checkOutDate}
@@ -119,12 +124,10 @@ const SearchForm = ({ destinationPlaceholder, searchButtonLabel }) => {
         showCheckOut={showCheckOut}
         error={errors.checkInDate || errors.checkOutDate}
       />
+      {/* Input field for number of adults */}
       <AdultsInput 
         value={adults}
-        onChange={(e) => {
-          setAdults(Number(e.target.value));  // Convert to number
-          setItemInLocalStorage('adults', Number(e.target.value));  // Save number of adults to localStorage
-        }}
+        onChange={(e) => setAdults(Number(e.target.value))}  // Convert to number
         error={errors.adults}
       />
       <button type="submit" className="search-button">{searchButtonLabel}</button>
