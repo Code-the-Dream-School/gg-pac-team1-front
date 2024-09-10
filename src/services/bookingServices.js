@@ -278,13 +278,15 @@ export const loadHotelData = async (hotel_Id) => {
       languages_spoken: hotelData.languages_spoken || [''],
       cancelation_policy: hotelData.cancelation_policy || '',
       rating: hotelData.rating || 0,
-      rooms: hotelData.rooms || []
+      rooms: hotelData.rooms || [] // Incluir las habitaciones
     };
   } catch (error) {
     console.error("Error in loadHotelData:", error.message); // Log para errores
     throw new Error(error.message);
   }
 };
+
+
 
 
 // Function to calculate costs based on the reservation
