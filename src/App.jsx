@@ -8,7 +8,7 @@ import ChangePassword from './components/ChangePassword';
 import CreditCardInfo from './components/CreditCardInfo';
 import FamilyFriendly from './components/FamilyFriendly';
 import FoodieDestination from './components/FoodieDestination';
-import ForgotPassword from './components/ForgotPassword'; // Importar ForgotPassword
+import ForgotPassword from './components/ForgotPassword';
 import Layout from './components/Layout';
 import Login from './components/Login';
 import ProfileInfo from './components/ProfileInfo';
@@ -28,21 +28,23 @@ import TripDescriptionNY from './components/TripSection/TripDescriptionNY';
 import TripDescriptionSf from './components/TripSection/TripDescriptionSf';
 import Wellness from './components/Wellness';
 import Home from './pages/Home';
-import VirginiaHotels from './components/TravelBlog/VirginiaHotels'; 
-import LakeTahoeHotels from './components/TravelBlog/LakeTahoeHotels'; 
-import NorthCarolinaHotels from './components/TravelBlog/NorthCarolinaHotels'; 
-import OhioHotels from './components/TravelBlog/OhioHotels'; 
+import VirginiaHotels from './components/TravelBlog/VirginiaHotels';
+import LakeTahoeHotels from './components/TravelBlog/LakeTahoeHotels';
+import NorthCarolinaHotels from './components/TravelBlog/NorthCarolinaHotels';
+import OhioHotels from './components/TravelBlog/OhioHotels';
 import HotelSearchPage from './pages/HotelSearchPage';
 import HotelDetailPage from './pages/HotelDetailPage';
 import ReservationReviewPage from './pages/ReservationReviewPage';
 import Search from './pages/Search';
 import { getAllData } from './util/index';
 import TravelBlog from './components/TravelBlog/TravelBlog';
+import PaymentTest from './components/PaymentTest';
+//import PaymentTest from './components/; // Importar PaymentTest
 
 const AUTH_URL = 'http://localhost:8000/api/v1/auth';
 
 function App() {
-  const [message, setMessage] = useState(''); 
+  const [message, setMessage] = useState('');
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     (async () => {
@@ -70,16 +72,12 @@ function App() {
           path: 'login',
           element: <Login authURL={AUTH_URL} />,
         },
-       
-
         {
           path: 'reset-password/:token',
           element: <ResetPassword authURL={AUTH_URL} />,
         },
-
-
         {
-          path: 'forgot-password', // Nueva ruta para ForgotPassword
+          path: 'forgot-password',
           element: <ForgotPassword />,
         },
         {
@@ -143,11 +141,11 @@ function App() {
         },
         {
           path: 'hotel/:id',
-          element: <HotelDetailPage />
+          element: <HotelDetailPage />,
         },
         {
           path: 'reservation-review',
-          element: <ReservationReviewPage />
+          element: <ReservationReviewPage />,
         },
         {
           path: 'trip-description-chicago',
@@ -165,26 +163,30 @@ function App() {
           path: 'search',
           element: <Search />,
         },
-        { 
+        {
           path: 'virginia-hotels',
-          element: <VirginiaHotels /> 
-        }, 
-        { 
+          element: <VirginiaHotels />,
+        },
+        {
           path: 'lake-tahoe-hotels',
-           element: <LakeTahoeHotels /> 
+          element: <LakeTahoeHotels />,
         },
-        { 
+        {
           path: 'north-carolina-hotels',
-          element: <NorthCarolinaHotels /> 
+          element: <NorthCarolinaHotels />,
         },
-        { 
-          path: 'ohio-hotels', 
-          element: <OhioHotels /> 
+        {
+          path: 'ohio-hotels',
+          element: <OhioHotels />,
         },
         {
           path: '/:state/:city',
           element: <HotelSearchPage />,
-        }
+        },
+        {
+          path: 'payment-test', // Nueva ruta para PaymentTest
+          element: <PaymentTest />,
+        },
       ],
     },
   ]);
