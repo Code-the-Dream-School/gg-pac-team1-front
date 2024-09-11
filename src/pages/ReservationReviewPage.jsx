@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect, useCallback, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { calculateCosts } from '../services/bookingServices';
 import ReservationSummary from '../components/ReservationSummary';
 import ReservationNumber from '../components/ReservationNumber';
@@ -50,6 +50,7 @@ const reducer = (state, action) => {
 
 const ReservationReviewPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const hotelId = queryParams.get("hotelId");
   const initialCheckInDate = queryParams.get("checkInDate") || "";
@@ -107,6 +108,22 @@ const ReservationReviewPage = () => {
 
     dispatch({ type: 'UPDATE_FIELD', field: name, value: parsedValue });
   }, [state.checkInDate, state.checkOutDate, validate]);
+
+  // Handle reservation confirmation
+  const handleConfirmReservation = () => {
+    const reservationDetails = {
+      checkInDate: state.checkInDate,
+      checkOutDate: state.checkOutDate,
+      adults: state.adults,
+      children: state.children,
+      totalNights: state.totalNights,
+      totalRoomCost: state.totalRoomCost,
+      finalTotalCost: state.finalTotalCost,
+      hotel,
+      reservationNumber,
+    };
+    navigate('/confirmation', { state: reservationDetails });
+  };
 
   return (
     <div className="reservation-review-page">
@@ -170,7 +187,7 @@ const ReservationReviewPage = () => {
       )}
       <ReservationNumber reservationNumber={reservationNumber} />
       <div className="confirm-button-container">
-        <button className="confirm-reservation-btn">Confirm Reservation</button>
+        <button className="confirm-reservation-btn" onClick={handleConfirmReservation}>Confirm Reservation</button>
       </div>
     </div>
   );

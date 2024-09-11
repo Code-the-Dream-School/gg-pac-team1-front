@@ -187,6 +187,10 @@ function App() {
           path: 'payment-test', // Nueva ruta para PaymentTest
           element: <PaymentTest />,
         },
+        {
+          path: '/confirmation', //confirmation page
+          element: <ReservationReviewPage />,
+        }
       ],
     },
   ]);
