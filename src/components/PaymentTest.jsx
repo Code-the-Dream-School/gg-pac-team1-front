@@ -25,7 +25,7 @@ const PaymentTest = () => {
 
   // Ejemplo de array de items
   const items = [
-    { id: 1, name: 'Item 1', amount: 1250 },
+    { id: 1, name: 'Item 1', amount: 3250 },
     { id: 2, name: 'Item 2', amount: 100 },
     { id: 3, name: 'Item 1', amount: 150 },
     { id: 4, name: 'Item 2', amount: 100 },
