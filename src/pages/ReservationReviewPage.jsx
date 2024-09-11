@@ -1,5 +1,5 @@
-import React, { useReducer, useEffect, useCallback, useMemo } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useReducer, useEffect, useCallback, useMemo, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { calculateCosts } from '../services/bookingServices';
 import ReservationSummary from '../components/ReservationSummary';
 import ReservationNumber from '../components/ReservationNumber';
@@ -12,6 +12,7 @@ import useLoadHotelData from '../hooks/useLoadHotelData';
 import DateInput from '../components/DateInput';
 import NumberInput from '../components/NumberInput';
 import useDateValidation from '../hooks/useDateValidation';
+import Modal from '../components/Modal';
 
 const initialState = {
   checkInDate: "",
@@ -22,6 +23,8 @@ const initialState = {
   totalRoomCost: 0,
   finalTotalCost: 0,
   globalError: null,
+  guestName: "",
+  guestEmail: ""
 };
 
 const reducer = (state, action) => {
@@ -43,6 +46,12 @@ const reducer = (state, action) => {
         ...state,
         globalError: action.payload,
       };
+    case 'SET_USER_DETAILS':
+      return {
+        ...state,
+        guestName: action.payload.guestName,
+        guestEmail: action.payload.guestEmail,
+      };
     default:
       return state;
   }
@@ -50,7 +59,6 @@ const reducer = (state, action) => {
 
 const ReservationReviewPage = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const queryParams = new URLSearchParams(location.search);
   const hotelId = queryParams.get("hotelId");
   const initialCheckInDate = queryParams.get("checkInDate") || "";
@@ -69,6 +77,21 @@ const ReservationReviewPage = () => {
   const { hotel, error: hotelError } = useLoadHotelData(hotelId);
   const reservationNumber = useReservation(15 * 1000); // 15 seconds for testing
   const { errors, validate } = useDateValidation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    // Simular la obtención de datos del usuario desde la sesión
+    const userDetails = {
+      guestName: "John Doe",
+      guestEmail: "john.doe@example.com"
+    };
+
+    // Guardar los datos del usuario en localStorage
+    localStorage.setItem('userDetails', JSON.stringify(userDetails));
+
+    // Actualizar el estado con los datos del usuario
+    dispatch({ type: 'SET_USER_DETAILS', payload: userDetails });
+  }, []);
 
   // Calculate costs using useMemo
   const calculatedCosts = useMemo(() => {
@@ -111,18 +134,11 @@ const ReservationReviewPage = () => {
 
   // Handle reservation confirmation
   const handleConfirmReservation = () => {
-    const reservationDetails = {
-      checkInDate: state.checkInDate,
-      checkOutDate: state.checkOutDate,
-      adults: state.adults,
-      children: state.children,
-      totalNights: state.totalNights,
-      totalRoomCost: state.totalRoomCost,
-      finalTotalCost: state.finalTotalCost,
-      hotel,
-      reservationNumber,
-    };
-    navigate('/confirmation', { state: reservationDetails });
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -178,8 +194,6 @@ const ReservationReviewPage = () => {
             roomCostPerNight={hotel.room_cost_per_night}
             totalRoomCost={state.totalRoomCost}
             finalTotalCost={state.finalTotalCost}
-            adults={state.adults}
-            children={state.children}
           />
         </>
       ) : (
@@ -189,6 +203,23 @@ const ReservationReviewPage = () => {
       <div className="confirm-button-container">
         <button className="confirm-reservation-btn" onClick={handleConfirmReservation}>Confirm Reservation</button>
       </div>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        reservationDetails={{
+          checkInDate: state.checkInDate,
+          checkOutDate: state.checkOutDate,
+          adults: state.adults,
+          children: state.children,
+          totalNights: state.totalNights,
+          totalRoomCost: state.totalRoomCost,
+          finalTotalCost: state.finalTotalCost,
+          hotel,
+          reservationNumber,
+          guestName: state.guestName,
+          guestEmail: state.guestEmail,
+        }}
+      />
     </div>
   );
 };
