@@ -1,124 +1,116 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import ResultList from '../components/HotelSearchResultList';
-import Pagination from '../components/Pagination';
-import HotelSearchFilter from '../components/HotelSearchFilter';
-import tripsData from '../tripsData';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import ResultList from "../components/ResultList";
+import Pagination from "../components/Pagination";
+import HotelSearchFilter from "../components/HotelSearchFilter";
+import { searchHotels, sortHotels, filterHotelsByRating } from "../services/bookingServices";
 
 function HotelSearchPage() {
-  const { city, state } = useParams();  // Get URL parameters
+  const { city, state } = useParams();
   const [results, setResults] = useState([]);
+  const [filteredResults, setFilteredResults] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [filters, setFilters] = useState({
-    priceMin: '',
-    priceMax: '',
-    reviews: 0,
-    roomType: '',
+    priceMin: "",
+    priceMax: "",
+    reviews: 0, // Default value is 0 for reviews
+    roomType: "",
   });
-  const [sortOption, setSortOption] = useState('price-asc'); // State for sorting option
-  const resultsPerPage = 2; // Number of results per page
+  const [sortOption, setSortOption] = useState("price-asc");
+  const resultsPerPage = 2;
 
+  // Fetch hotels when city and state are available
   useEffect(() => {
     if (city && state) {
-      const destination = `${city}, ${state}`.toLowerCase();
-      
-      // Filter hotels that match the destination
-      const filteredTrips = tripsData.filter(trip => 
-        trip.destination.toLowerCase().includes(destination)
-      );
-
-      const hotels = filteredTrips.flatMap(trip => trip.hotels);
-      setResults(hotels);
+      searchHotels(city, state).then((hotels) => {
+        setResults(hotels);
+        setFilteredResults(hotels); // Initialize filtered results with all hotels
+      })
+      .catch((error) => {
+        console.error('Error fetching hotels:', error);
+       });
     }
   }, [city, state]);
 
+  // Handle filter changes
   const handleFilterChange = (name, value) => {
-    setFilters(prevFilters => ({
+    setFilters((prevFilters) => ({
       ...prevFilters,
-      [name]: value,
+      [name]: name === 'reviews' ? Number(value) : value,
     }));
+    // Apply filters after updating
+    applyFilters({
+      ...filters,
+      [name]: name === 'reviews' ? Number(value) : value,
+    });
   };
 
-  const applyFilters = () => {
-    let filtered = [...results];
-
-    const priceMin = filters.priceMin ? parseInt(filters.priceMin) : 0;
-    const priceMax = filters.priceMax ? parseInt(filters.priceMax) : Infinity;
-
-    if (priceMin) {
-      filtered = filtered.filter(hotel => hotel.room_cost_per_night >= priceMin);
-    }
-
-    if (priceMax !== Infinity) {
-      filtered = filtered.filter(hotel => hotel.room_cost_per_night <= priceMax);
-    }
-
-    if (filters.reviews > 0) {
-      filtered = filtered.filter(hotel => hotel.reviews >= filters.reviews);
-    }
-
-    if (filters.roomType) {
-      filtered = filtered.filter(hotel => hotel.room_type === filters.roomType);
-    }
-
-    setResults(filtered);
-    setCurrentPage(1); // Reset to the first page after applying filters
+  // Apply filters
+  const applyFilters = (updatedFilters) => {
+    const { reviews, roomType, priceMin, priceMax } = updatedFilters;
+    const filteredHotels = results.filter(hotel => {
+      const matchesRating = reviews ? hotel.rating >= reviews : true;
+      const matchesRoomType = roomType ? hotel.rooms.some(room => room.room_types === roomType) : true;
+      const matchesPrice = hotel.rooms.some(room => {
+        const roomCost = room.room_cost_per_night.$numberDecimal || room.room_cost_per_night;
+        const minPrice = priceMin ? roomCost >= priceMin : true;
+        const maxPrice = priceMax ? roomCost <= priceMax : true;
+        return minPrice && maxPrice;
+      });
+      return matchesRating && matchesRoomType && matchesPrice;
+    });
+    setFilteredResults(filteredHotels);
+    setCurrentPage(1);
   };
 
-  const handleSortChange = (e) => {
+  // Handle sorting
+  const handleSortChange = async (e) => {
     const sortValue = e.target.value;
     setSortOption(sortValue);
-
-    let sortedResults = [...results];
-
-    if (sortValue === 'price-asc') {
-      sortedResults.sort((a, b) => a.room_cost_per_night - b.room_cost_per_night);
-    } else if (sortValue === 'price-desc') {
-      sortedResults.sort((a, b) => b.room_cost_per_night - a.room_cost_per_night);
-    } else if (sortValue === 'reviews-desc') {
-      sortedResults.sort((a, b) => b.reviews - a.reviews);
-    }
-
-    setResults(sortedResults);
-    setCurrentPage(1); // Reset to the first page after sorting
+    const sortedHotels = await sortHotels(filteredResults, sortValue);
+    setFilteredResults(sortedHotels);
+    setCurrentPage(1);
   };
 
-  // Get the index of the last and first hotel on the current page
+  // Pagination
   const indexOfLastResult = currentPage * resultsPerPage;
   const indexOfFirstResult = indexOfLastResult - resultsPerPage;
-  
-  // Get the hotels for the current page
-  const currentResults = results.slice(indexOfFirstResult, indexOfLastResult);
-
-  // Change page
+  const currentResults = filteredResults.slice(indexOfFirstResult, indexOfLastResult);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="hotel-search-page-container">
       <div className="sidebar">
-        <HotelSearchFilter 
-          filters={filters} 
-          onFilterChange={handleFilterChange} 
-          onApplyFilters={applyFilters} 
+        <HotelSearchFilter
+          filters={filters}
+          onFilterChange={handleFilterChange}
+          onApplyFilters={() => applyFilters(filters)}
         />
       </div>
 
       <div className="main-content">
         <div className="sort-options-container">
           <label htmlFor="sort-select">Sort by:</label>
-          <select id="sort-select" value={sortOption} onChange={handleSortChange} className="sort-select">
+          <select
+            id="sort-select"
+            value={sortOption}
+            onChange={handleSortChange}
+            className="sort-select"
+          >
             <option value="price-asc">Price (low to high)</option>
             <option value="price-desc">Price (high to low)</option>
             <option value="reviews-desc">Reviews (best to worst)</option>
+            <option value="reviews-asc">Reviews (worst to best)</option>
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
           </select>
         </div>
 
         <div className="results-container">
           <ResultList results={currentResults} hasSearched={true} />
-          
           <Pagination
             resultsPerPage={resultsPerPage}
-            totalResults={results.length}
+            totalResults={filteredResults.length}
             paginate={paginate}
             currentPage={currentPage}
           />

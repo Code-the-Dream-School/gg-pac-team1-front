@@ -1,8 +1,9 @@
 import RoomFilter from './RoomFilter';
 import StarFilter from './StarFilter';
 import PriceFilter from './PriceFilter'; 
+import PropTypes from 'prop-types';
 
-function HotelSearchFilter({ filters, onFilterChange, onApplyFilters }) {
+function HotelSearchFilter({ filters, onFilterChange}) {
   return (
     <div className="filters-container">
       <h3>Filter by</h3>
@@ -26,10 +27,19 @@ function HotelSearchFilter({ filters, onFilterChange, onApplyFilters }) {
         onFilterChange={onFilterChange} 
       />
 
-      {/* Button to Apply Filters */}
-      <button onClick={onApplyFilters} className="apply-filters-btn">Apply Filters</button>
     </div>
   );
 }
+
+HotelSearchFilter.propTypes = {
+  filters: PropTypes.shape({
+    priceMin: PropTypes.string,
+    priceMax: PropTypes.string,
+    reviews: PropTypes.number,
+    roomType: PropTypes.string,
+  }).isRequired,
+  onFilterChange: PropTypes.func.isRequired,
+  onApplyFilters: PropTypes.func.isRequired,
+};
 
 export default HotelSearchFilter;

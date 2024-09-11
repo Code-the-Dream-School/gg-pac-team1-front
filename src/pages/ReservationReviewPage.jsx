@@ -1,177 +1,141 @@
-import React, { useState, useEffect, useMemo } from "react";
-import tripsData from "../tripsData";
-import HotelInfo from "../components/HotelInfo";
-import ReservationSummary from "../components/ReservationSummary";
-import ReservationNumber from "../components/ReservationNumber";
-import DateInput from "../components/DateInput"; // Importar el componente DateInput
-import useReservation from "../hooks/useReservation";
-import { FaUser, FaChild } from "react-icons/fa";
+import React, { useState, useEffect, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
+import { loadHotelData, calculateCosts, getRoomsByHotelId } from '../services/bookingServices'; // Import async functions
+import ReservationSummary from '../components/ReservationSummary';
+import ReservationNumber from '../components/ReservationNumber';
+import useReservation from '../hooks/useReservation';
+import { FaUser, FaChild } from 'react-icons/fa';
 
-// Componente para mostrar mensajes de error
+// Component to display error messages
 const ErrorMessage = ({ error }) => <p style={{ color: "red" }}>{error}</p>;
 
 const ReservationReviewPage = () => {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const hotelId = queryParams.get("hotelId");
+  const initialCheckInDate = queryParams.get("checkInDate") || "";
+  const initialCheckOutDate = queryParams.get("checkOutDate") || "";
+  const initialAdults = parseInt(queryParams.get("adults") || "2");
+  const initialChildren = parseInt(queryParams.get("children") || "0");
+
   const [hotel, setHotel] = useState(null);
+  const [rooms, setRooms] = useState([]);
+  const [checkInDate, setCheckInDate] = useState(initialCheckInDate);
+  const [checkOutDate, setCheckOutDate] = useState(initialCheckOutDate);
+  const [adults, setAdults] = useState(initialAdults);
+  const [children, setChildren] = useState(initialChildren);
   const [roomCostPerNight, setRoomCostPerNight] = useState(0);
   const [totalNights, setTotalNights] = useState(0);
   const [totalRoomCost, setTotalRoomCost] = useState(0);
-  const [totalExtrasCost, setTotalExtrasCost] = useState(0);
   const [finalTotalCost, setFinalTotalCost] = useState(0);
-  const [selectedExtras, setSelectedExtras] = useState([]);
-  const [allExtras, setAllExtras] = useState([]); // Estado para todos los extras disponibles
-  const [checkInDate, setCheckInDate] = useState(
-    localStorage.getItem("checkInDate") || ""
-  );
-  const [checkOutDate, setCheckOutDate] = useState(
-    localStorage.getItem("checkOutDate") || ""
-  );
-  const [adults, setAdults] = useState(
-    parseInt(localStorage.getItem("adults")) || 2
-  ); // Estado para el número de adultos
-  const [children, setChildren] = useState(
-    parseInt(localStorage.getItem("children")) || 0
-  ); // Estado para el número de niños
-  const [checkInError, setCheckInError] = useState(null); // Estado para manejar errores de check-in
-  const [checkOutError, setCheckOutError] = useState(null); // Estado para manejar errores de check-out
-  const [error, setError] = useState(null); // Estado para manejar errores generales
+  const [checkInError, setCheckInError] = useState(null);
+  const [checkOutError, setCheckOutError] = useState(null);
+  const [error, setError] = useState(null);
 
-  const reservationNumber = useReservation(15 * 1000); // 15 segundos para pruebas
+  const reservationNumber = useReservation(15 * 1000); // 15 seconds for testing
 
-  // Función para cargar los datos del hotel
-  const loadHotelData = (hotelId) => {
-    try {
-      const currentHotel = tripsData
-        .flatMap((trip) => trip.hotels)
-        .find((h) => h.id === parseInt(hotelId));
-      if (!currentHotel) {
-        throw new Error("Hotel not found");
-      }
-      setHotel({
-        name: currentHotel.name,
-        address: currentHotel.address || "Address not available",
-        category: currentHotel.category || "Category not available",
-        description: currentHotel.description || "Description not available",
-        room_cost_per_night: currentHotel.room_cost_per_night,
-        check_in_time: currentHotel.check_in_time,
-        check_out_time: currentHotel.check_out_time,
-      });
-      setRoomCostPerNight(currentHotel.room_cost_per_night || 0);
-      setAllExtras(currentHotel.extras || []); // Cargar todos los extras disponibles
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  // Función para calcular los costos totales
-  const calculateCosts = (checkInDate, checkOutDate, hotel, extras) => {
-    try {
-      if (!checkInDate || !checkOutDate) {
-        throw new Error("Invalid check-in or check-out date");
-      }
-      const date1 = new Date(checkInDate);
-      const date2 = new Date(checkOutDate);
-      if (date1 >= date2) {
-        setCheckOutError("Check-out date must be later than check-in date");
-        return;
-      }
-      setCheckOutError(null); // Limpiar el error si las fechas son válidas
-
-      const differenceInTime = date2.getTime() - date1.getTime();
-      const differenceInDays = differenceInTime / (1000 * 3600 * 24);
-      setTotalNights(differenceInDays);
-
-      const roomCost = differenceInDays * (hotel.room_cost_per_night || 0);
-      setTotalRoomCost(roomCost);
-
-      let extrasCost = 0;
-      extras.forEach((extra) => {
-        extrasCost += extra.price * differenceInDays;
-      });
-      setTotalExtrasCost(extrasCost);
-
-      setFinalTotalCost(roomCost + extrasCost); // Asegurarse de sumar los costos de los extras al costo total
-      setSelectedExtras(extras);
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
-  // Manejo de la lógica de carga
+  // Load hotel data from API or handle error
   useEffect(() => {
-    const hotelId = localStorage.getItem("hotelId");
-    const storedExtras = JSON.parse(
-      localStorage.getItem("selectedExtras") || "[]"
-    );
+    const fetchHotelData = async () => {
+      if (hotelId) {
+        try {
+          const loadedHotel = await loadHotelData(hotelId);  // Await async function
+          setHotel(loadedHotel);
+          setRoomCostPerNight(loadedHotel.room_cost_per_night);
+        } catch (err) {
+          setError(err.message);
+        }
+      } else {
+        setError("Hotel ID not found in URL parameters");
+      }
+    };
 
-    if (hotelId) {
-      loadHotelData(hotelId);
-    } else {
-      setError("Hotel ID not found in localStorage");
-    }
-  }, []);
+    fetchHotelData();  // Execute the async function to load the hotel data
+  }, [hotelId]);
 
+  // Load rooms data from API or handle error
+  useEffect(() => {
+    const fetchRoomsData = async () => {
+      if (hotelId) {
+        try {
+          const loadedRooms = await getRoomsByHotelId(hotelId);  // Await async function
+          setRooms(loadedRooms.rooms);
+          if (loadedRooms.rooms.length > 0) {
+            const firstRoom = loadedRooms.rooms[0];
+            const costPerNight = firstRoom.room_cost_per_night?.$numberDecimal || firstRoom.room_cost_per_night;
+            setRoomCostPerNight(Number(costPerNight));
+          }
+        } catch (err) {
+          setError(err.message);
+        }
+      }
+    };
+
+    fetchRoomsData();  // Execute the async function to load the rooms data
+  }, [hotelId]);
+
+  // Calculate costs when dates or hotel change
   useEffect(() => {
     if (hotel) {
-      calculateCosts(checkInDate, checkOutDate, hotel, selectedExtras);
+      try {
+        const { totalNights, totalRoomCost, finalTotalCost } = calculateCosts(
+          checkInDate,
+          checkOutDate,
+          hotel
+        );
+        setTotalNights(totalNights);
+        setTotalRoomCost(totalRoomCost);
+        setFinalTotalCost(finalTotalCost);
+      } catch (err) {
+        setError(err.message);
+      }
     }
-  }, [hotel, checkInDate, checkOutDate, selectedExtras]); // Este `useEffect` depende de `hotel`, `checkInDate`, `checkOutDate` y `selectedExtras`
+  }, [hotel, checkInDate, checkOutDate]);
 
-  // Función para activar/desactivar extras
-  const toggleExtra = (extra) => {
-    const updatedExtras = selectedExtras.includes(extra)
-      ? selectedExtras.filter((e) => e !== extra)
-      : [...selectedExtras, extra];
-    setSelectedExtras(updatedExtras);
-  };
-
-  // Función para manejar el cambio de fecha de check-in
+  // Handle check-in date change
   const handleCheckInChange = (e) => {
     const newCheckInDate = e.target.value;
     setCheckInDate(newCheckInDate);
-    localStorage.setItem("checkInDate", newCheckInDate);
   };
 
-  // Función para manejar el cambio de fecha de check-out
+  // Handle check-out date change
   const handleCheckOutChange = (e) => {
     const newCheckOutDate = e.target.value;
     setCheckOutDate(newCheckOutDate);
-    localStorage.setItem("checkOutDate", newCheckOutDate);
   };
 
-  // Función para manejar el cambio del número de adultos
+  // Handle adults change
   const handleAdultsChange = (e) => {
     const newAdults = parseInt(e.target.value);
     setAdults(newAdults);
-    localStorage.setItem("adults", newAdults);
   };
 
-  // Función para manejar el cambio del número de niños
+  // Handle children change
   const handleChildrenChange = (e) => {
     const newChildren = parseInt(e.target.value);
     setChildren(newChildren);
-    localStorage.setItem("children", newChildren);
   };
 
-  // Memorizar el resumen de costos
+  // Memorize the cost summary to avoid recalculation on every render
   const memoizedCostSummary = useMemo(
     () => (
       <ReservationSummary
+        checkInDate={checkInDate}
+        checkOutDate={checkOutDate}
         totalNights={totalNights}
         roomCostPerNight={roomCostPerNight}
         totalRoomCost={totalRoomCost}
-        selectedExtras={selectedExtras}
-        totalExtrasCost={totalExtrasCost}
         finalTotalCost={finalTotalCost}
         adults={adults}
         children={children}
       />
     ),
     [
+      checkInDate,
+      checkOutDate,
       totalNights,
       roomCostPerNight,
       totalRoomCost,
-      selectedExtras,
-      totalExtrasCost,
       finalTotalCost,
       adults,
       children,
@@ -179,24 +143,40 @@ const ReservationReviewPage = () => {
   );
 
   return (
-    <div className="reservation-review-page">
-      <h1 className="tittle">Review Your Reservation</h1>
+    <div className="reservation-review-page" style={styles.page}>
+      <h1 className="title" style={styles.title}>Review Your Reservation</h1>
       {error && <ErrorMessage error={error} />}
       {hotel ? (
         <>
-          <div className="hotel-info2">
-            <p className="hotel-name">Name: {hotel.name || "Hotel Name"}</p>
-            <p className="hotel-address">
-              Address: {hotel.address || "Address not available"}
-            </p>
-            <p className="hotel-price">
-              Price per night: ${hotel.room_cost_per_night}
-            </p>
-            <p className="hotel-description">
-              Description: {hotel.description}
-            </p>
+          <div className="hotel-info2" style={styles.section}>
+            <h2 style={styles.sectionTitle}>Hotel Information</h2>
+            <p><strong>Name:</strong> {hotel.name || "Hotel Name"}</p>
+            <p><strong>Address:</strong> {hotel.address || "Address not available"}</p>
+            <p><strong>Price per night:</strong> ${hotel.room_cost_per_night}</p>
+            <p><strong>Description:</strong> {hotel.description}</p>
           </div>
-          <div className="reservation-details">
+          <div className="rooms-info" style={styles.section}>
+            <h2 style={styles.sectionTitle}>Rooms</h2>
+            {rooms && rooms.length > 0 ? (
+              <ul style={styles.list}>
+                {rooms.map((room, index) => (
+                  <li key={index} style={styles.listItem}>
+                    <p><strong>Room Number:</strong> {room.roomNumber}</p>
+                    <p><strong>Bedrooms:</strong> {room.bedrooms}</p>
+                    <p><strong>Floor:</strong> {room.floor}</p>
+                    <p><strong>Room Type:</strong> {room.room_types}</p>
+                    <p><strong>Bed Type:</strong> {room.bed_type}</p>
+                    <p><strong>View:</strong> {room.view}</p>
+                    <p><strong>Cost per Night:</strong> {room.room_cost_per_night?.$numberDecimal || room.room_cost_per_night}</p>
+                    <p><strong>Currency:</strong> {room.currency}</p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No rooms available</p>
+            )}
+          </div>
+          <div className="reservation-details" style={styles.section}>
             <div className="block">
               <div className="date-container">
                 <div className="date-input">
@@ -224,7 +204,7 @@ const ReservationReviewPage = () => {
             <div className="block">
               <div className="input-group vertical">
                 <label htmlFor="adults">
-                  <FaUser /> {/* Icono de adulto a la izquierda */}
+                  <FaUser /> {/* Adult icon */}
                   <input
                     id="adults"
                     type="number"
@@ -237,7 +217,7 @@ const ReservationReviewPage = () => {
 
               <div className="input-group vertical">
                 <label htmlFor="children">
-                  <FaChild /> {/* Icono de niño a la izquierda */}
+                  <FaChild /> {/* Child icon */}
                   <input
                     id="children"
                     type="number"
@@ -248,36 +228,6 @@ const ReservationReviewPage = () => {
                 </label>
               </div>
             </div>
-
-            <div className="block">
-              <h6>Extras</h6>
-              <div className="block">
-                <p>Selected Extras:</p>
-                <ul className="selected-extras">
-                  {selectedExtras.map((extra) => (
-                    <li key={extra.id} onClick={() => toggleExtra(extra)}>
-                      {extra.name}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="block">
-                <h3>Deactivated Extras:</h3>
-                <ul className="deactivated-extras">
-                  {allExtras
-                    .filter((extra) => !selectedExtras.includes(extra))
-                    .map((extra) => (
-                      <li
-                        key={extra.id}
-                        onClick={() => toggleExtra(extra)}
-                        style={{ textDecoration: "line-through" }}
-                      >
-                        {extra.name}
-                      </li>
-                    ))}
-                </ul>
-              </div>
-            </div>
           </div>
 
           {memoizedCostSummary}
@@ -286,11 +236,61 @@ const ReservationReviewPage = () => {
         <p>Loading reservation summary...</p>
       )}
       <ReservationNumber reservationNumber={reservationNumber} />
-      <div className="confirm-button-container">
-        <button className="confirm-reservation-btn">Confirm Reservation</button>
+      <div className="confirm-button-container" style={styles.confirmButtonContainer}>
+        <button className="confirm-reservation-btn" style={styles.confirmButton}>Confirm Reservation</button>
       </div>
     </div>
   );
+};
+
+const styles = {
+  page: {
+    fontFamily: 'Arial, sans-serif',
+    padding: '10px',
+    maxWidth: '800px',
+    margin: '0 auto',
+    backgroundColor: '#f9f9f9',
+    borderRadius: '8px',
+    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
+  },
+  title: {
+    textAlign: 'center',
+    color: '#333',
+    margin: '10px 0',
+    fontSize: '16px',
+  },
+  section: {
+    marginBottom: '10px',
+  },
+  sectionTitle: {
+    borderBottom: '1px solid #ddd',
+    paddingBottom: '5px',
+    marginBottom: '5px',
+    color: '#555',
+    fontSize: '16px',
+  },
+  list: {
+    listStyleType: 'none',
+    padding: '0',
+  },
+  listItem: {
+    padding: '5px 0',
+    borderBottom: '1px solid #ddd',
+    fontSize: '14px',
+  },
+  confirmButtonContainer: {
+    textAlign: 'center',
+    marginTop: '20px',
+  },
+  confirmButton: {
+    padding: '10px 20px',
+    fontSize: '16px',
+    backgroundColor: '#4CAF50',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+  },
 };
 
 export default ReservationReviewPage;

@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function Pagination({ resultsPerPage, totalResults, paginate, currentPage }) {
     const pageNumbers = [];
   
@@ -20,5 +22,12 @@ function Pagination({ resultsPerPage, totalResults, paginate, currentPage }) {
     );
   }
   
+  Pagination.propTypes = {
+    resultsPerPage: PropTypes.number.isRequired,
+    totalResults: PropTypes.number.isRequired,
+    paginate: PropTypes.func.isRequired,
+    currentPage: PropTypes.number.isRequired,
+  };
+
   export default Pagination;
   
