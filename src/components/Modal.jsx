@@ -8,6 +8,8 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 const Modal = ({ isOpen, onClose, reservationDetails }) => {
   const [userEmail, setUserEmail] = useState('');
+  const [userId, setUserId] = useState('');
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
     // Obtener el correo del usuario desde localStorage
@@ -16,6 +18,22 @@ const Modal = ({ isOpen, onClose, reservationDetails }) => {
       setUserEmail(email);
     } else {
       console.error('No user email found in localStorage');
+    }
+
+    // Obtener el userId desde localStorage
+    const id = localStorage.getItem('userId');
+    if (id) {
+      setUserId(id);
+    } else {
+      console.error('No user ID found in localStorage');
+    }
+
+    // Obtener el userName desde localStorage
+    const name = localStorage.getItem('userName');
+    if (name) {
+      setUserName(name);
+    } else {
+      console.error('No user name found in localStorage');
     }
   }, []);
 
@@ -29,6 +47,7 @@ const Modal = ({ isOpen, onClose, reservationDetails }) => {
     User Details
     ----------------------------------------------------------------------------
     Guest Email: ${userEmail}
+    Guest Name: ${userName}
     
     Hotel Details
     ----------------------------------------------------------------------------
@@ -46,6 +65,12 @@ const Modal = ({ isOpen, onClose, reservationDetails }) => {
     Total Room Cost: $${reservationDetails.totalRoomCost}
     --------------------------------------
     Final Total Cost: $${reservationDetails.finalTotalCost}
+    
+    IDs
+    ----------------------------------------------------------------------------
+    Hotel ID: ${reservationDetails.hotelId}
+    Room ID: ${reservationDetails.roomId}
+    User ID: ${userId}
   `;
 
   return (
@@ -55,7 +80,9 @@ const Modal = ({ isOpen, onClose, reservationDetails }) => {
         
         <div className="modal-section">
           <h3>User Details</h3>
+          <p>Name: <strong>{userName}</strong></p>
           <p>Email: <strong>{userEmail}</strong></p>
+          <p>User ID: <strong>{userId}</strong></p>
         </div>
         
         <div className="modal-section">
@@ -76,11 +103,18 @@ const Modal = ({ isOpen, onClose, reservationDetails }) => {
           <p>Final Total Cost: <strong>${reservationDetails.finalTotalCost}</strong></p>
         </div>
         
+        <div className="modal-section">
+          <h3>IDs</h3>
+          <p>Hotel ID: <strong>{reservationDetails.hotelId}</strong></p>
+          <p>Room ID: <strong>{reservationDetails.roomId}</strong></p>
+          <p>User ID: <strong>{userId}</strong></p>
+        </div>
+        
         <Elements stripe={stripePromise}>
           <CheckoutForm 
             description={reservationSummary} 
             amount={reservationDetails.finalTotalCost}             
-            />
+          />
         </Elements>
         
         <button className="close-button" onClick={onClose}>X</button>
