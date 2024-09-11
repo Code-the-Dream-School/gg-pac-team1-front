@@ -21,6 +21,9 @@ const Login = ({ onLogin, onClose }) => {
       // Guardar el token y el email en localStorage
       localStorage.setItem('token', response.data.token); 
       localStorage.setItem('userEmail', email); // Guardar el email en localStorage
+      //email to data base confirmations payment
+      localStorage.setItem('userId', response.data.user.id); 
+      localStorage.setItem('userName', response.data.user.name); 
 
       onLogin(response.data.user); // Pasar la información del usuario logueado al componente padre
       onClose(); // Cerrar el popup de login
