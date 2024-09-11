@@ -6,6 +6,7 @@ import CarouselComponent from '../components/TripSection/Carousel';
 import SearchForm from "../components/SearchForm";
 import TravelBlog from '../components/TravelBlog/TravelBlog'; 
 import BookingInfoSection from '../components/BookingInfoSection/BookingInfoSection'; // Import the new component
+
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
@@ -47,11 +48,15 @@ function Home() {
     
 
         {/* Trips Section with Carousel */}
+
         <section className="auto-generated-section">
           <div className="container">
             <h2>Trips</h2>
             <p>Plan your next adventure with our tailored trip packages.</p>
             <CarouselComponent />
+            
+            {/* Add TravelBlog component here */}
+            <TravelBlog />
           </div>
         </section>
 

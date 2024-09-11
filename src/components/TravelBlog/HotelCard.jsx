@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './HotelCardStyles.css'; // Ensure this path is correct
 
@@ -8,6 +9,7 @@ const HotelCard = ({ name, description, image, price, websiteUrl }) => {
     }
   };
 
+
   return (
     <div className="hotel-card">
       <div className="hotel-card-content">
@@ -16,6 +18,7 @@ const HotelCard = ({ name, description, image, price, websiteUrl }) => {
           <hr className="divider-line" />
           <p>{description}</p>
           <div className="hotel-card-footer">
+
             <span 
               className="hotel-price"
               onClick={handlePriceClick} // Add click handler
@@ -23,6 +26,9 @@ const HotelCard = ({ name, description, image, price, websiteUrl }) => {
             >
               {price}
             </span>
+
+            <span className="hotel-price">{price}</span>
+
           </div>
         </div>
         <div className="hotel-card-image">
@@ -33,4 +39,6 @@ const HotelCard = ({ name, description, image, price, websiteUrl }) => {
   );
 };
 
+
 export default HotelCard;
+

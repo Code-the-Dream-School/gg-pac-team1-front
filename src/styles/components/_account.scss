@@ -48,6 +48,16 @@
       color: red;
       font-weight: bold;
     }
+
+    .delete-account {
+      margin-top: 20px;
+      color: #d9534f; /* Color para Delete Account */
+      font-weight: bold;
+
+      &:hover {
+        color: #c9302c; /* Color más oscuro al pasar el cursor */
+      }
+    }
   }
 }
 
@@ -57,5 +67,51 @@
   background-color: #fff;
   width: calc(100% - 250px); /* Ocupa el ancho restante */
   overflow-y: auto; /* Permitir scroll si es necesario */
+}
+
+/* Estilos para el modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+}
+
+.modal-content p {
+  margin-bottom: 20px;
+}
+
+.btn-close {
+  background-color: white;
+  width: 50px;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-close:hover {
+  background-color: blue;
+  color: white;
 }
 

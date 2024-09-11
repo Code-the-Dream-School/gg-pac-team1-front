@@ -8,6 +8,7 @@ import ChangePassword from './components/ChangePassword';
 import CreditCardInfo from './components/CreditCardInfo';
 import FamilyFriendly from './components/FamilyFriendly';
 import FoodieDestination from './components/FoodieDestination';
+import ForgotPassword from './components/ForgotPassword'; // Importar ForgotPassword
 import Layout from './components/Layout';
 import Login from './components/Login';
 import ProfileInfo from './components/ProfileInfo';
@@ -33,6 +34,7 @@ import NorthCarolinaHotels from './components/TravelBlog/NorthCarolinaHotels';
 import OhioHotels from './components/TravelBlog/OhioHotels'; 
 import HotelSearchPage from './pages/HotelSearchPage';
 import HotelDetailPage from './pages/HotelDetailPage';
+import HotelSearchPage from './pages/HotelSearchPage';
 import ReservationReviewPage from './pages/ReservationReviewPage';
 import Search from './pages/Search';
 import { getAllData } from './util/index';
@@ -70,9 +72,17 @@ function App() {
           path: 'login',
           element: <Login authURL={AUTH_URL} />,
         },
+       
+
         {
-          path: 'reset-password',
-          element: <ResetPassword />,
+          path: 'reset-password/:token',
+          element: <ResetPassword authURL={AUTH_URL} />,
+        },
+
+
+        {
+          path: 'forgot-password', // Nueva ruta para ForgotPassword
+          element: <ForgotPassword />,
         },
         {
           path: 'register',
@@ -160,6 +170,22 @@ function App() {
         { 
           path: 'lake-tahoe-hotels',
           element: <LakeTahoeHotels /> 
+        },
+        { 
+          path: 'north-carolina-hotels',
+          element: <NorthCarolinaHotels /> 
+        },
+        { 
+          path: 'ohio-hotels', 
+          element: <OhioHotels /> 
+        },
+        { 
+          path: 'virginia-hotels',
+          element: <VirginiaHotels /> 
+        }, 
+        { 
+          path: 'lake-tahoe-hotels',
+           element: <LakeTahoeHotels /> 
         },
         { 
           path: 'north-carolina-hotels',

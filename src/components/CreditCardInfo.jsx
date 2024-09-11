@@ -1,48 +1,83 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { FaEdit, FaTrash } from 'react-icons/fa'; // Importar iconos
+import { FaEdit, FaTrash } from 'react-icons/fa';
 import '../styles/components/_creditcardinfo.scss';
+
+const getAuthToken = () => {
+  return localStorage.getItem('token'); // Ajustar según tu implementación de autenticación
+};
 
 const CreditCardInfo = () => {
   const { register, handleSubmit, formState: { errors }, reset, setValue } = useForm();
-  const [cardList, setCardList] = useState([]);
-  const [cardId, setCardId] = useState(null); // Guardar el ID de la tarjeta si ya está registrada
+  const [cardList, setCardList] = useState([]); // Inicializa como un array vacío
+  const [cardId, setCardId] = useState(null);
   const [showCvv, setShowCvv] = useState(false);
 
-  const onSubmit = (data) => {
-    const cardData = { 
-      id: cardId || Date.now(), // Usar un timestamp para simular un ID único
-      name: data.cardHolderName,
-      number: data.cardNumber.replace(/-/g, ''), // Remover los guiones del número
-      expiryDate: data.expiryDate, 
-      cvv: data.cvv 
-    };
+  const token = getAuthToken(); // Obtener token para autenticación
 
-    if (cardId) {
-      // Si existe, actualizar la tarjeta
-      const updatedList = cardList.map(card => 
-        card.id === cardId ? cardData : card
-      );
-      setCardList(updatedList);
-    } else {
-      // Si no existe, agregar una nueva tarjeta
-      setCardList([...cardList, cardData]);
+  // Función para obtener tarjetas de crédito del backend
+  const fetchCreditCards = async () => {
+    try {
+      const response = await axios.get('/api/credit-cards', {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      // Asegúrate de que `response.data.cards` es un array antes de usarlo
+      setCardList(Array.isArray(response.data.cards) ? response.data.cards : []);
+    } catch (error) {
+      console.error('Error fetching credit cards:', error.response?.data?.error || error.message);
+      setCardList([]); // Asegúrate de que siempre sea un array en caso de error
     }
-    clearForm();
   };
 
-  const handleDelete = (id) => {
-    const updatedList = cardList.filter(card => card.id !== id);
-    setCardList(updatedList);
+  useEffect(() => {
+    fetchCreditCards();
+  }, []);
+
+  // Función para guardar o actualizar una tarjeta
+  const onSubmit = async (data) => {
+    const cardData = {
+      stripePaymentMethodId: data.cardNumber.replace(/-/g, ''), // Simulación del ID de método de pago
+    };
+
+    try {
+      if (cardId) {
+        // Si estamos editando una tarjeta, se puede agregar lógica para actualizarla
+      } else {
+        const response = await axios.post('/api/credit-cards', cardData, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setCardList([...cardList, response.data.card]); // Actualiza la lista de tarjetas
+      }
+      clearForm();
+    } catch (error) {
+      console.error('Error saving credit card:', error.response?.data?.error || error.message);
+    }
+  };
+
+  // Función para eliminar una tarjeta
+  const handleDelete = async (id) => {
+    try {
+      await axios.delete(`/api/credit-cards/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      setCardList(cardList.filter(card => card._id !== id)); // Filtrar las tarjetas eliminadas
+    } catch (error) {
+      console.error('Error deleting credit card:', error.response?.data?.error || error.message);
+    }
   };
 
   const handleEdit = (card) => {
-    setCardId(card.id);
+    setCardId(card._id);
     reset({
       cardHolderName: card.name,
-      cardNumber: card.number.replace(/(\d{4})(?=\d)/g, '$1-'),
-      expiryDate: card.expiryDate,
-      cvv: card.cvv
+      cardNumber: card.stripePaymentMethodId.replace(/(\d{4})(?=\d)/g, '$1-'),
     });
   };
 
@@ -56,13 +91,6 @@ const CreditCardInfo = () => {
     if (value.length > 16) value = value.slice(0, 16);
     value = value.replace(/(\d{4})(?=\d)/g, '$1-'); // Insertar guiones cada 4 dígitos
     setValue('cardNumber', value);
-  };
-
-  const handleExpiryDateChange = (e) => {
-    let value = e.target.value.replace(/\D/g, ''); // Remover caracteres no numéricos
-    if (value.length > 4) value = value.slice(0, 4);
-    if (value.length > 2) value = `${value.slice(0, 2)}/${value.slice(2)}`;
-    setValue('expiryDate', value);
   };
 
   return (
@@ -91,44 +119,9 @@ const CreditCardInfo = () => {
               required: true, 
               pattern: /^\d{4}-\d{4}-\d{4}-\d{4}$/
             })}
-            onChange={handleCardNumberChange} // Formatear número de tarjeta en cada cambio
+            onChange={handleCardNumberChange}
           />
           {errors.cardNumber && <span className="error">Invalid card number</span>}
-        </div>
-        <div className="form-group">
-          <label htmlFor="expiryDate">Expiry Date (MM/YY)</label>
-          <input
-            type="text"
-            id="expiryDate"
-            placeholder="MM/YY"
-            {...register("expiryDate", { 
-              required: true, 
-              pattern: /^(0[1-9]|1[0-2])\/\d{2}$/
-            })}
-            onChange={handleExpiryDateChange} // Formatear fecha en cada cambio
-          />
-          {errors.expiryDate && <span className="error">Invalid expiry date</span>}
-        </div>
-        <div className="form-group">
-          <label htmlFor="cvv">CVV</label>
-          <div className="cvv-input-container">
-            <input
-              type={showCvv ? "text" : "password"}
-              id="cvv"
-              {...register("cvv", { 
-                required: true, 
-                pattern: /^\d{3}$/
-              })}
-            />
-            <button 
-              type="button" 
-              onClick={() => setShowCvv(!showCvv)} 
-              className="show-cvv-btn"
-            >
-              {showCvv ? "Hide" : "Show"}
-            </button>
-          </div>
-          {errors.cvv && <span className="error">Invalid CVV</span>}
         </div>
         <div className="form-buttons">
           <button type="submit" className="btn-credit">
@@ -144,26 +137,30 @@ const CreditCardInfo = () => {
       <div className="card-list">
         <h4>Saved Cards</h4>
         <ul>
-          {cardList.map(card => (
-            <li key={card.id}>
-              <span>{card.name}</span>
-              <span>**** **** **** {card.number.slice(-4)}</span>
-              <button 
-                type="button" 
-                onClick={() => handleEdit(card)} 
-                className="icon-button"
-              >
-                <FaEdit />
-              </button>
-              <button 
-                type="button" 
-                onClick={() => handleDelete(card.id)} 
-                className="icon-button"
-              >
-                <FaTrash />
-              </button>
-            </li>
-          ))}
+          {/* Asegúrate de que `cardList` es un array antes de mapear */}
+          {cardList.length > 0 ? (
+            cardList.map(card => (
+              <li key={card._id}>
+                <span>**** **** **** {card.stripePaymentMethodId.slice(-4)}</span>
+                <button 
+                  type="button" 
+                  onClick={() => handleEdit(card)} 
+                  className="icon-button"
+                >
+                  <FaEdit />
+                </button>
+                <button 
+                  type="button" 
+                  onClick={() => handleDelete(card._id)} 
+                  className="icon-button"
+                >
+                  <FaTrash />
+                </button>
+              </li>
+            ))
+          ) : (
+            <li>No saved cards found.</li>
+          )}
         </ul>
       </div>
     </div>
@@ -171,6 +168,11 @@ const CreditCardInfo = () => {
 };
 
 export default CreditCardInfo;
+
+
+
+
+
 
 
 
