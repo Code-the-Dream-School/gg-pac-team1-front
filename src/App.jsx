@@ -1,14 +1,17 @@
+
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Account from './components/Account';
-import Addresses from './components/Addresses';
 import BudgetTravel from './components/BudgetTravel';
 import ChangePassword from './components/ChangePassword';
 import CreditCardInfo from './components/CreditCardInfo';
 import FamilyFriendly from './components/FamilyFriendly';
 import FoodieDestination from './components/FoodieDestination';
-import ForgotPassword from './components/ForgotPassword'; // Importar ForgotPassword
+import ForgotPassword from './components/ForgotPassword';
 import Layout from './components/Layout';
 import Login from './components/Login';
 import ProfileInfo from './components/ProfileInfo';
@@ -34,6 +37,7 @@ import ReservationReviewPage from './pages/ReservationReviewPage';
 import Search from './pages/Search';
 import { getAllData } from './util/index';
 
+const stripePromise = loadStripe('pk_test_51Puz5H01R3YOln0lbdcwMrIqjhFuVLo3gHemPOIJpzHVgpWLEblrwnMMJp9Vl98OQeADhnDljbWXdRWThnuKFFnI00D3YQEZjX'); // Reemplaza esto con tu clave pública de Stripe
 const AUTH_URL = 'http://localhost:8000/api/v1/auth';
 
 function App() {
@@ -63,16 +67,12 @@ function App() {
           path: 'login',
           element: <Login authURL={AUTH_URL} />,
         },
-       
-
         {
           path: 'reset-password/:token',
           element: <ResetPassword authURL={AUTH_URL} />,
         },
-
-
         {
-          path: 'forgot-password', // Nueva ruta para ForgotPassword
+          path: 'forgot-password',
           element: <ForgotPassword />,
         },
         {
@@ -84,7 +84,6 @@ function App() {
           element: <Account />,
           children: [
             { path: 'profile', element: <ProfileInfo /> },
-            { path: 'addresses', element: <Addresses /> },
             { path: 'payments', element: <CreditCardInfo /> },
             { path: 'changepassword', element: <ChangePassword /> },
             { path: 'history', element: <TravelHistory /> },
@@ -167,9 +166,11 @@ function App() {
   ]);
 
   return (
-    <Session authURL={AUTH_URL}>
-      <RouterProvider router={router} />
-    </Session>
+    <Elements stripe={stripePromise}>
+      <Session authURL={AUTH_URL}>
+        <RouterProvider router={router} />
+      </Session>
+    </Elements>
   );
 }
 

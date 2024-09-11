@@ -1,8 +1,7 @@
-// stripePayment.js
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
 
-// Cargar Stripe con tu clave pública
+// Cargar Stripe con tu clave pública desde las variables de entorno
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 // Función para manejar el envío del formulario
@@ -53,3 +52,4 @@ export const handlePaymentSubmit = async (data, setError, setSuccess, reset, set
     setError(err.response ? err.response.data.error : 'An error occurred while processing the request');
   }
 };
+
