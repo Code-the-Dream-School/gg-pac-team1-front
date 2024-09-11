@@ -864,17 +864,15 @@ button:hover {
   background-color: #fff;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  /* Media query para pantallas pequeñas */
 }
-
 .reservation-review-page .hotel-address {
   border: 1px solid red;
 }
-
 .reservation-review-page .hotel-info2 {
   border: 1px solid red;
   margin-bottom: 1em;
 }
-
 .reservation-review-page .tittle {
   text-align: center;
   margin-bottom: 20px;
@@ -882,61 +880,60 @@ button:hover {
   color: #333;
   border: 1px solid red;
 }
-
-.reservation-summary {
+.reservation-review-page .reservation-summary {
   border: 1px solid #ddd;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 8px;
 }
-.reservation-summary .hotel-name {
+.reservation-review-page .reservation-summary .hotel-name {
   font-size: 20px;
   margin-bottom: 10px;
   color: #333;
 }
-.reservation-summary .hotel-info {
+.reservation-review-page .reservation-summary .hotel-info {
   font-size: 16px;
   margin-bottom: 15px;
   line-height: 1.5;
   color: #666666;
   border: 1px solid red;
 }
-.reservation-summary .stay-dates,
-.reservation-summary .total-nights,
-.reservation-summary .cost-details,
-.reservation-summary .total-price {
+.reservation-review-page .reservation-summary .stay-dates,
+.reservation-review-page .reservation-summary .total-nights,
+.reservation-review-page .reservation-summary .cost-details,
+.reservation-review-page .reservation-summary .total-price {
   font-size: 16px;
   margin: 10px 0;
   color: #333;
   font-weight: bold;
 }
-.reservation-summary .stay-dates span,
-.reservation-summary .total-nights span,
-.reservation-summary .cost-details span,
-.reservation-summary .total-price span {
+.reservation-review-page .reservation-summary .stay-dates span,
+.reservation-review-page .reservation-summary .total-nights span,
+.reservation-review-page .reservation-summary .cost-details span,
+.reservation-review-page .reservation-summary .total-price span {
   font-weight: normal;
   float: right;
 }
-.reservation-summary .extras-section {
+.reservation-review-page .reservation-summary .extras-section {
   margin-top: 20px;
   border-top: 1px solid #ddd;
   padding-top: 10px;
 }
-.reservation-summary .extras-section .extras-list {
+.reservation-review-page .reservation-summary .extras-section .extras-list {
   list-style-type: none;
   padding-left: 0;
   margin: 0;
 }
-.reservation-summary .extras-section .extras-list li {
+.reservation-review-page .reservation-summary .extras-section .extras-list li {
   font-size: 14px;
   margin-bottom: 5px;
   color: #666666;
 }
-.reservation-summary .extras-section .extras-list li span {
+.reservation-review-page .reservation-summary .extras-section .extras-list li span {
   float: right;
   color: #333;
 }
-.reservation-summary .summary-line {
+.reservation-review-page .reservation-summary .summary-line {
   border-top: 1px solid #ddd;
   padding-top: 10px;
   margin-top: 10px;
@@ -944,19 +941,17 @@ button:hover {
   font-size: 18px;
   color: black;
 }
-
-.reservation-number {
+.reservation-review-page .reservation-number {
   font-size: 14px;
   text-align: center;
   margin-top: 20px;
   color: #999999;
 }
-
-.confirm-button-container {
+.reservation-review-page .confirm-button-container {
   text-align: center;
   margin-top: 20px;
 }
-.confirm-button-container .confirm-reservation-btn {
+.reservation-review-page .confirm-button-container .confirm-reservation-btn {
   background-color: #28a745;
   color: #fff;
   border: none;
@@ -967,11 +962,10 @@ button:hover {
   transition: background-color 0.3s ease;
   width: 100%;
 }
-.confirm-button-container .confirm-reservation-btn:hover {
+.reservation-review-page .confirm-button-container .confirm-reservation-btn:hover {
   background-color: #1e7e34;
 }
-
-.reservation-details {
+.reservation-review-page .reservation-details {
   display: flex;
   flex-wrap: wrap; /* Permite que los bloques se ajusten a la siguiente línea si es necesario */
   justify-content: space-between; /* Espacio uniforme entre bloques */
@@ -980,8 +974,7 @@ button:hover {
   padding: 10px; /* Ajusta el padding según sea necesario */
   box-sizing: border-box;
 }
-
-.block {
+.reservation-review-page .block {
   flex: 1 1 calc(20% - 10px); /* Cada bloque ocupa el 25% del contenedor menos el espacio del gap */
   padding: 20px;
   border: 1px solid #ccc;
@@ -991,85 +984,75 @@ button:hover {
   border-radius: 5px;
   box-sizing: border-box;
 }
-
 @media (max-width: 768px) {
-  .block {
+  .reservation-review-page .block {
     flex: 1 1 100%; /* En pantallas pequeñas, los bloques ocupan el 100% del ancho y se apilan */
   }
 }
-.input-group {
+.reservation-review-page .input-group {
   margin-bottom: 15px;
 }
-
-.selected-extras li, .deactivated-extras li {
+.reservation-review-page .selected-extras li, .reservation-review-page .deactivated-extras li {
   margin-left: 20px;
   cursor: pointer;
 }
-
-.deactivated-extras li {
+.reservation-review-page .deactivated-extras li {
   text-decoration: line-through;
   color: #999;
 }
-
-/* Media query para pantallas pequeñas */
 @media (max-width: 800px) {
-  .block {
+  .reservation-review-page .block {
     flex: 1 1 100%; /* Cada bloque ocupará el 100% del ancho disponible en pantallas pequeñas */
   }
 }
-.date-container {
+.reservation-review-page .date-container {
   display: flex;
   flex-direction: column;
   gap: 15px; /* Ajustar el espacio entre los bloques */
   width: 100%;
 }
-
-.date-input {
+.reservation-review-page .date-input {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-bottom: 10px;
 }
-
-.date-input label {
+.reservation-review-page .date-input label {
   margin-bottom: 5px;
 }
-
-.date-input input[type=date] {
+.reservation-review-page .date-input input[type=date] {
   font-size: 16px;
   padding: 8px;
   width: 100%;
   box-sizing: border-box;
 }
-
-.error-message {
+.reservation-review-page .error-message {
   color: red;
   font-size: 14px;
   margin-top: 5px; /* Espacio entre el input y el mensaje de error */
 }
-
 @media (max-width: 768px) {
-  .date-input input[type=date] {
+  .reservation-review-page .date-input input[type=date] {
     font-size: 14px;
   }
 }
-.input-group.vertical {
+.reservation-review-page .input-group.vertical {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
 }
-.input-group.vertical label {
+.reservation-review-page .input-group.vertical label {
   display: flex;
   align-items: center; /* Alinea el ícono y el input en el mismo nivel */
   gap: 10px; /* Espacio entre el ícono y el input */
   font-size: 18px;
   color: #007bff;
 }
-.input-group.vertical label .icon {
+.reservation-review-page .input-group.vertical label .icon {
   font-size: 50px !important; /* Aumentar el tamaño del ícono a 1.5 veces (18px * 1.5 = 27px) */
   background-color: #28a745;
 }
-.input-group.vertical input {
+.reservation-review-page .input-group.vertical input {
   flex: 1; /* Permite que el input ocupe el espacio disponible */
   padding: 6px;
   border: 2px solid #007bff;
@@ -1082,11 +1065,39 @@ button:hover {
   transition: all 0.3s ease;
   box-sizing: border-box;
 }
-.input-group.vertical input:focus {
+.reservation-review-page .input-group.vertical input:focus {
   border-color: #0056b3;
   box-shadow: 0px 0px 6px rgba(0, 123, 255, 0.4);
   background-color: #e6f0ff;
   outline: none;
+}
+.reservation-review-page .dropdown-panel {
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.reservation-review-page .dropdown-panel .dropdown-header {
+  background-color: #f7f7f7;
+  padding: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.reservation-review-page .dropdown-panel .dropdown-header h3 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+.reservation-review-page .dropdown-panel .dropdown-header:hover {
+  background-color: #e7e7e7;
+}
+.reservation-review-page .dropdown-panel .dropdown-content {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
 }
 
 .container { /*Helps to locate and center everything in the main*/

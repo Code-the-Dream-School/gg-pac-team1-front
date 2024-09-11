@@ -286,7 +286,23 @@ export const loadHotelData = async (hotel_Id) => {
   }
 };
 
+//validate dates function
+export const validateDate = (dateString, rules = {}) => {
+  const date = new Date(dateString);
+  if (isNaN(date)) {
+    throw new Error('Invalid date format');
+  }
 
+  if (rules.minDate && date < new Date(rules.minDate)) {
+    throw new Error(`Date must be after ${rules.minDate}`);
+  }
+
+  if (rules.maxDate && date > new Date(rules.maxDate)) {
+    throw new Error(`Date must be before ${rules.maxDate}`);
+  }
+
+  return date;
+};
 
 
 // Function to calculate costs based on the reservation

@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { loadHotelData, getRoomsByHotelId } from '../services/bookingServices';
 
-const useLoadHotelData = (hotelId) => {
+const useHotelData = (hotelId) => {
   const [hotel, setHotel] = useState(null);
   const [error, setError] = useState(null);
 
@@ -46,4 +46,4 @@ const useLoadHotelData = (hotelId) => {
   return { hotel, error };
 };
 
-export default useLoadHotelData;
+export default useHotelData;

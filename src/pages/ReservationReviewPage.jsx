@@ -1,13 +1,52 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useReducer, useEffect, useCallback, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { loadHotelData, calculateCosts, getRoomsByHotelId } from '../services/bookingServices'; // Import async functions
+import { calculateCosts } from '../services/bookingServices';
 import ReservationSummary from '../components/ReservationSummary';
 import ReservationNumber from '../components/ReservationNumber';
 import useReservation from '../hooks/useReservation';
 import { FaUser, FaChild } from 'react-icons/fa';
+import ErrorMessage from '../components/ErrorMessage';
+import HotelInfo from '../components/HotelInfo';
+import RoomsInfo from '../components/RoomsInfo';
+import useLoadHotelData from '../hooks/useLoadHotelData';
+import DateInput from '../components/DateInput';
+import NumberInput from '../components/NumberInput';
+import useDateValidation from '../hooks/useDateValidation';
 
-// Component to display error messages
-const ErrorMessage = ({ error }) => <p style={{ color: "red" }}>{error}</p>;
+const initialState = {
+  checkInDate: "",
+  checkOutDate: "",
+  adults: 2,
+  children: 0,
+  totalNights: 0,
+  totalRoomCost: 0,
+  finalTotalCost: 0,
+  globalError: null,
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'SET_COSTS':
+      return {
+        ...state,
+        totalNights: action.payload.totalNights,
+        totalRoomCost: action.payload.totalRoomCost,
+        finalTotalCost: action.payload.finalTotalCost,
+      };
+    case 'UPDATE_FIELD':
+      return {
+        ...state,
+        [action.field]: action.value,
+      };
+    case 'SET_GLOBAL_ERROR':
+      return {
+        ...state,
+        globalError: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
 const ReservationReviewPage = () => {
   const location = useLocation();
@@ -18,279 +57,123 @@ const ReservationReviewPage = () => {
   const initialAdults = parseInt(queryParams.get("adults") || "2");
   const initialChildren = parseInt(queryParams.get("children") || "0");
 
-  const [hotel, setHotel] = useState(null);
-  const [rooms, setRooms] = useState([]);
-  const [checkInDate, setCheckInDate] = useState(initialCheckInDate);
-  const [checkOutDate, setCheckOutDate] = useState(initialCheckOutDate);
-  const [adults, setAdults] = useState(initialAdults);
-  const [children, setChildren] = useState(initialChildren);
-  const [roomCostPerNight, setRoomCostPerNight] = useState(0);
-  const [totalNights, setTotalNights] = useState(0);
-  const [totalRoomCost, setTotalRoomCost] = useState(0);
-  const [finalTotalCost, setFinalTotalCost] = useState(0);
-  const [checkInError, setCheckInError] = useState(null);
-  const [checkOutError, setCheckOutError] = useState(null);
-  const [error, setError] = useState(null);
+  const [state, dispatch] = useReducer(reducer, {
+    ...initialState,
+    checkInDate: initialCheckInDate,
+    checkOutDate: initialCheckOutDate,
+    adults: initialAdults,
+    children: initialChildren,
+  });
 
+  const { hotel, error: hotelError } = useLoadHotelData(hotelId);
   const reservationNumber = useReservation(15 * 1000); // 15 seconds for testing
+  const { errors, validate } = useDateValidation();
 
-  // Load hotel data from API or handle error
-  useEffect(() => {
-    const fetchHotelData = async () => {
-      if (hotelId) {
-        try {
-          const loadedHotel = await loadHotelData(hotelId);  // Await async function
-          setHotel(loadedHotel);
-          setRoomCostPerNight(loadedHotel.room_cost_per_night);
-        } catch (err) {
-          setError(err.message);
-        }
-      } else {
-        setError("Hotel ID not found in URL parameters");
-      }
-    };
-
-    fetchHotelData();  // Execute the async function to load the hotel data
-  }, [hotelId]);
-
-  // Load rooms data from API or handle error
-  useEffect(() => {
-    const fetchRoomsData = async () => {
-      if (hotelId) {
-        try {
-          const loadedRooms = await getRoomsByHotelId(hotelId);  // Await async function
-          setRooms(loadedRooms.rooms);
-          if (loadedRooms.rooms.length > 0) {
-            const firstRoom = loadedRooms.rooms[0];
-            const costPerNight = firstRoom.room_cost_per_night?.$numberDecimal || firstRoom.room_cost_per_night;
-            setRoomCostPerNight(Number(costPerNight));
-          }
-        } catch (err) {
-          setError(err.message);
-        }
-      }
-    };
-
-    fetchRoomsData();  // Execute the async function to load the rooms data
-  }, [hotelId]);
-
-  // Calculate costs when dates or hotel change
-  useEffect(() => {
-    if (hotel) {
+  // Calculate costs using useMemo
+  const calculatedCosts = useMemo(() => {
+    if (hotel && !errors.checkInDate && !errors.checkOutDate) {
       try {
-        const { totalNights, totalRoomCost, finalTotalCost } = calculateCosts(
-          checkInDate,
-          checkOutDate,
-          hotel
-        );
-        setTotalNights(totalNights);
-        setTotalRoomCost(totalRoomCost);
-        setFinalTotalCost(finalTotalCost);
+        return calculateCosts(state.checkInDate, state.checkOutDate, hotel);
       } catch (err) {
-        setError(err.message);
+        dispatch({ type: 'SET_GLOBAL_ERROR', payload: err.message });
+        return { totalNights: 0, totalRoomCost: 0, finalTotalCost: 0 };
       }
     }
-  }, [hotel, checkInDate, checkOutDate]);
+    return { totalNights: 0, totalRoomCost: 0, finalTotalCost: 0 };
+  }, [state.checkInDate, state.checkOutDate, hotel, errors.checkInDate, errors.checkOutDate]);
 
-  // Handle check-in date change
-  const handleCheckInChange = (e) => {
-    const newCheckInDate = e.target.value;
-    setCheckInDate(newCheckInDate);
-  };
+  useEffect(() => {
+    dispatch({
+      type: 'SET_COSTS',
+      payload: calculatedCosts,
+    });
+  }, [calculatedCosts]);
 
-  // Handle check-out date change
-  const handleCheckOutChange = (e) => {
-    const newCheckOutDate = e.target.value;
-    setCheckOutDate(newCheckOutDate);
-  };
+  // Handle input changes
+  const handleInputChange = useCallback((e) => {
+    const { name, value } = e.target;
+    let parsedValue = name === 'adults' || name === 'children' ? parseInt(value) || 0 : value;
 
-  // Handle adults change
-  const handleAdultsChange = (e) => {
-    const newAdults = parseInt(e.target.value);
-    setAdults(newAdults);
-  };
+    if (name === 'checkInDate' || name === 'checkOutDate') {
+      const rules = {};
+      if (name === 'checkOutDate') {
+        rules.minDate = state.checkInDate;
+      }
+      if (name === 'checkInDate') {
+        rules.maxDate = state.checkOutDate;
+      }
+      validate(name, parsedValue, rules);
+    }
 
-  // Handle children change
-  const handleChildrenChange = (e) => {
-    const newChildren = parseInt(e.target.value);
-    setChildren(newChildren);
-  };
-
-  // Memorize the cost summary to avoid recalculation on every render
-  const memoizedCostSummary = useMemo(
-    () => (
-      <ReservationSummary
-        checkInDate={checkInDate}
-        checkOutDate={checkOutDate}
-        totalNights={totalNights}
-        roomCostPerNight={roomCostPerNight}
-        totalRoomCost={totalRoomCost}
-        finalTotalCost={finalTotalCost}
-        adults={adults}
-        children={children}
-      />
-    ),
-    [
-      checkInDate,
-      checkOutDate,
-      totalNights,
-      roomCostPerNight,
-      totalRoomCost,
-      finalTotalCost,
-      adults,
-      children,
-    ]
-  );
+    dispatch({ type: 'UPDATE_FIELD', field: name, value: parsedValue });
+  }, [state.checkInDate, state.checkOutDate, validate]);
 
   return (
-    <div className="reservation-review-page" style={styles.page}>
-      <h1 className="title" style={styles.title}>Review Your Reservation</h1>
-      {error && <ErrorMessage error={error} />}
+    <div className="reservation-review-page">
+      <h1 className="title">Review Your Reservation</h1>
+      {hotelError && <ErrorMessage error={hotelError} />}
+      {state.globalError && <ErrorMessage error={state.globalError} />}
       {hotel ? (
         <>
-          <div className="hotel-info2" style={styles.section}>
-            <h2 style={styles.sectionTitle}>Hotel Information</h2>
-            <p><strong>Name:</strong> {hotel.name || "Hotel Name"}</p>
-            <p><strong>Address:</strong> {hotel.address || "Address not available"}</p>
-            <p><strong>Price per night:</strong> ${hotel.room_cost_per_night}</p>
-            <p><strong>Description:</strong> {hotel.description}</p>
-          </div>
-          <div className="rooms-info" style={styles.section}>
-            <h2 style={styles.sectionTitle}>Rooms</h2>
-            {rooms && rooms.length > 0 ? (
-              <ul style={styles.list}>
-                {rooms.map((room, index) => (
-                  <li key={index} style={styles.listItem}>
-                    <p><strong>Room Number:</strong> {room.roomNumber}</p>
-                    <p><strong>Bedrooms:</strong> {room.bedrooms}</p>
-                    <p><strong>Floor:</strong> {room.floor}</p>
-                    <p><strong>Room Type:</strong> {room.room_types}</p>
-                    <p><strong>Bed Type:</strong> {room.bed_type}</p>
-                    <p><strong>View:</strong> {room.view}</p>
-                    <p><strong>Cost per Night:</strong> {room.room_cost_per_night?.$numberDecimal || room.room_cost_per_night}</p>
-                    <p><strong>Currency:</strong> {room.currency}</p>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No rooms available</p>
-            )}
-          </div>
-          <div className="reservation-details" style={styles.section}>
+          <HotelInfo hotel={hotel} />
+          {hotel.rooms.length > 0 && !hotelError ? (
+            <RoomsInfo rooms={hotel.rooms} />
+          ) : (
+            !hotelError && <p>No rooms available for this hotel</p>
+          )}
+          <div className="reservation-details">
             <div className="block">
-              <div className="date-container">
-                <div className="date-input">
-                  <label>Check-In Date</label>
-                  <input
-                    type="date"
-                    value={checkInDate}
-                    onChange={handleCheckInChange}
-                  />
-                  {checkInError && <ErrorMessage error={checkInError} />}
-                </div>
-
-                <div className="date-input">
-                  <label>Check-Out Date</label>
-                  <input
-                    type="date"
-                    value={checkOutDate}
-                    onChange={handleCheckOutChange}
-                  />
-                  {checkOutError && <ErrorMessage error={checkOutError} />}
-                </div>
-              </div>
+              <DateInput
+                checkInDate={state.checkInDate}
+                checkOutDate={state.checkOutDate}
+                handleCheckInChange={(e) => handleInputChange({ target: { name: 'checkInDate', value: e.target.value } })}
+                handleCheckOutChange={(e) => handleInputChange({ target: { name: 'checkOutDate', value: e.target.value } })}
+                showCheckOut={true}
+              />
+              {errors.checkInDate && <ErrorMessage error={errors.checkInDate} />}
+              {errors.checkOutDate && <ErrorMessage error={errors.checkOutDate} />}
             </div>
 
             <div className="block">
-              <div className="input-group vertical">
-                <label htmlFor="adults">
-                  <FaUser /> {/* Adult icon */}
-                  <input
-                    id="adults"
-                    type="number"
-                    value={adults}
-                    onChange={handleAdultsChange}
-                    min="1"
-                  />
-                </label>
-              </div>
-
-              <div className="input-group vertical">
-                <label htmlFor="children">
-                  <FaChild /> {/* Child icon */}
-                  <input
-                    id="children"
-                    type="number"
-                    value={children}
-                    onChange={handleChildrenChange}
-                    min="0"
-                  />
-                </label>
-              </div>
+              <NumberInput
+                label="Adults"
+                name="adults"
+                value={state.adults}
+                onChange={handleInputChange}
+                min="1"
+                icon={FaUser}
+              />
+              <NumberInput
+                label="Children"
+                name="children"
+                value={state.children}
+                onChange={handleInputChange}
+                min="0"
+                icon={FaChild}
+              />
             </div>
           </div>
 
-          {memoizedCostSummary}
+          <ReservationSummary
+            checkInDate={state.checkInDate}
+            checkOutDate={state.checkOutDate}
+            totalNights={state.totalNights}
+            roomCostPerNight={hotel.room_cost_per_night}
+            totalRoomCost={state.totalRoomCost}
+            finalTotalCost={state.finalTotalCost}
+            adults={state.adults}
+            children={state.children}
+          />
         </>
       ) : (
         <p>Loading reservation summary...</p>
       )}
       <ReservationNumber reservationNumber={reservationNumber} />
-      <div className="confirm-button-container" style={styles.confirmButtonContainer}>
-        <button className="confirm-reservation-btn" style={styles.confirmButton}>Confirm Reservation</button>
+      <div className="confirm-button-container">
+        <button className="confirm-reservation-btn">Confirm Reservation</button>
       </div>
     </div>
   );
-};
-
-const styles = {
-  page: {
-    fontFamily: 'Arial, sans-serif',
-    padding: '10px',
-    maxWidth: '800px',
-    margin: '0 auto',
-    backgroundColor: '#f9f9f9',
-    borderRadius: '8px',
-    boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
-  },
-  title: {
-    textAlign: 'center',
-    color: '#333',
-    margin: '10px 0',
-    fontSize: '16px',
-  },
-  section: {
-    marginBottom: '10px',
-  },
-  sectionTitle: {
-    borderBottom: '1px solid #ddd',
-    paddingBottom: '5px',
-    marginBottom: '5px',
-    color: '#555',
-    fontSize: '16px',
-  },
-  list: {
-    listStyleType: 'none',
-    padding: '0',
-  },
-  listItem: {
-    padding: '5px 0',
-    borderBottom: '1px solid #ddd',
-    fontSize: '14px',
-  },
-  confirmButtonContainer: {
-    textAlign: 'center',
-    marginTop: '20px',
-  },
-  confirmButton: {
-    padding: '10px 20px',
-    fontSize: '16px',
-    backgroundColor: '#4CAF50',
-    color: 'white',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-  },
 };
 
 export default ReservationReviewPage;
