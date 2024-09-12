@@ -39,7 +39,10 @@ const RoomSelector = ({ rooms, onRoomSelect }) => {
     'room_cost_per_night',
     'room_types',
     'bed_type',
-    'view'
+    'view',
+    //'hotelId', // Mostrar el ID del hotel para referencia usar en la ultima parte importante
+    //'roomNumber',
+    //'_id'  // Identificador único de la habitación importante leonard recuerda
   ];
 
   return (

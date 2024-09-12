@@ -87,7 +87,7 @@ function HotelDetailPage() {
   };
 
   const handleRoomSelect = (room) => {
-    setSelectedRoom(room);
+    setSelectedRoom(room); // Update the selected room state
   };
 
   return (
@@ -118,6 +118,7 @@ function HotelDetailPage() {
           hotelId={id}
           hasChildren={hasChildren}
           children={children}
+          selectedRoom={selectedRoom} // Pass selectedRoom as a prop
         />
       </div>
     </div>
