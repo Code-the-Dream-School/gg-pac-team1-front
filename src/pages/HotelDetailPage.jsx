@@ -5,8 +5,9 @@ import Gallery from "../gallery/Gallery";
 import HotelInfo from "../components/HotelInfo";
 import PoliciesAndRating from "../components/PoliciesAndRating";
 import RoomTypesList from "../components/RoomTypesList";
-import ChildrenSelector from '../components/ChildrenSelector'; 
-import ReservationButton from '../components/ReservationButton'; // Import the ReservationButton component
+import ChildrenSelector from "../components/ChildrenSelector";
+import ReservationButton from "../components/ReservationButton"; // Import the ReservationButton component
+import RoomSelector from "../components/RoomSelector"; // Import the RoomSelector component
 
 function HotelDetailPage() {
   const { id } = useParams();
@@ -17,6 +18,7 @@ function HotelDetailPage() {
   const [hasChildren, setHasChildren] = useState(false);
   const [children, setChildren] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedRoom, setSelectedRoom] = useState(null); // State for selected room
 
   useEffect(() => {
     console.log("Fetching hotel data for ID:", id); // Log the ID being fetched
@@ -43,7 +45,7 @@ function HotelDetailPage() {
         if (!data || data.length === 0) {
           console.log("No rooms data available");
         } else {
-          setRooms(data.rooms); 
+          setRooms(data.rooms);
         }
       })
       .catch((error) => {
@@ -52,8 +54,8 @@ function HotelDetailPage() {
 
     // Capture query parameters
     const queryParams = new URLSearchParams(location.search);
-    const hasChildrenQuery = queryParams.get('hasChildren') === 'true';
-    const childrenQuery = queryParams.get('children') || 0;
+    const hasChildrenQuery = queryParams.get("hasChildren") === "true";
+    const childrenQuery = queryParams.get("children") || 0;
 
     setHasChildren(hasChildrenQuery);
     setChildren(Number(childrenQuery));
@@ -69,9 +71,9 @@ function HotelDetailPage() {
   }
 
   const hotel = hotelData.hotel; // Access the nested hotel object
-  
+
   const handleHasChildrenChange = (event) => {
-    const value = event.target.value === 'yes';
+    const value = event.target.value === "yes";
     setHasChildren(value);
 
     if (!value) {
@@ -84,21 +86,39 @@ function HotelDetailPage() {
     setChildren(value);
   };
 
+  const handleRoomSelect = (room) => {
+    setSelectedRoom(room);
+  };
+
   return (
-    <div className="hotel-detail-container">
-      <h2 className="hotel-name">{hotel.name || 'Hotel Name'}</h2>
+    <div className="hotel-detail-container ">
+      <h2 className="hotel-title">
+        {hotel.name || "Hotel Name"}
+      </h2>
       <Gallery images={hotel.galeryImage || []} />
-      <HotelInfo hotel={hotel} />
-      <PoliciesAndRating hotel={hotel} />
-      <RoomTypesList rooms={rooms} />
+      <h3 className="details-title">Information general</h3>
+      <div className="hotel-info">
+        <HotelInfo hotel={hotel} className="details-title" />
+      </div>
+      <div className="hotel-info">
+        <PoliciesAndRating className="details-title" hotel={hotel} />
+      </div>
+      <h3 className="details-title">Rooms</h3>
+      <RoomSelector rooms={rooms} onRoomSelect={handleRoomSelect} />{" "}
+      {/* Use RoomSelector */}
       <ChildrenSelector
+        className="details-title"
         hasChildren={hasChildren}
         children={children}
         handleHasChildrenChange={handleHasChildrenChange}
         handleChildrenChange={handleChildrenChange}
       />
-      <div className="reservation-button-container">
-        <ReservationButton hotelId={id} hasChildren={hasChildren} children={children} />
+      <div style={{ textAlign: "center" }}>
+        <ReservationButton
+          hotelId={id}
+          hasChildren={hasChildren}
+          children={children}
+        />
       </div>
     </div>
   );

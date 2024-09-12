@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function ChildrenSelector({ hasChildren, children, handleHasChildrenChange, handleChildrenChange }) {
+function ChildrenSelector({ hasChildren, children, handleHasChildrenChange, handleChildrenChange, className }) {
   const [includeChildren, setIncludeChildren] = useState(hasChildren);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function ChildrenSelector({ hasChildren, children, handleHasChildrenChange, hand
 
   return (
     <div className="children-selector">
-      <h3>Children and Extra Beds</h3>
+      <h3 className={className}>Children and Extra Beds</h3>
       <label>
         <input
           type="checkbox"

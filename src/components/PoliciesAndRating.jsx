@@ -1,14 +1,18 @@
 import React from 'react';
 
-function PoliciesAndRating({ hotel }) {
+function PoliciesAndRating({ hotel, className }) {
   return (
     <>
-      <h3 className="hotel-policies-title">Hotel Policies and Rating</h3>
-      <ul>
-        <li className="hotel-languages">Languages spoken: {hotel.languages_spoken.join(', ')}</li>
-        <li className="hotel-cancellation">Cancellation policy: {hotel.cancellation_policy}</li>
-        <li className="hotel-rating">Rating: {hotel.rating}</li>
-      </ul>
+      <h3 className={className}>Hotel Policies and Rating</h3>
+      <p className="hotel-languages">
+        <strong>Languages spoken:</strong> {hotel.languages_spoken.join(", ")}
+      </p>
+      <p className="hotel-cancellation">
+        <strong>Cancellation policy:</strong> {hotel.cancellation_policy}
+      </p>
+      <p className="hotel-rating">
+        <strong>Rating:</strong> {hotel.rating}
+      </p>
     </>
   );
 }
