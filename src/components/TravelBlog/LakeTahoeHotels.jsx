@@ -14,62 +14,37 @@ const LakeTahoeHotels = () => {
     {
       name: "Edgewood Tahoe",
       description: "Luxury lakeside resort with a private golf course, elegant rooms, and a full-service spa.",
-
       image: Edge,
       price: "$499 per night",
       websiteUrl: "https://www.edgewoodtahoe.com"
-
-      image: "https://example.com/edgewood-tahoe.jpg",
-      price: "$499 per night"
-
     },
     {
       name: "Lake Tahoe Resort Hotel",
       description: "Located in South Lake Tahoe, this hotel offers spacious suites, a convenient location, and a great base for exploring the area.",
-
       image: Autumn,
       price: "$299 per night",
       websiteUrl: "https://www.laketahoeresorthotel.com" // Added website URL
-
-      image: "https://example.com/lake-tahoe-resort.jpg",
-      price: "$299 per night"
-
     },
     {
       name: "Squaw Valley Lodge",
       description: "Situated in Olympic Valley, this lodge offers ski-in/ski-out access, cozy accommodations, and beautiful mountain views.",
-
       image: Spring,
       price: "$399 per night",
       websiteUrl: "https://www.squawvalleylodge.com" // Added website URL
-
-      image: "https://example.com/squaw-valley-lodge.jpg",
-      price: "$399 per night"
-
     },
     {
       name: "The Ritz-Carlton, Lake Tahoe",
       description: "Luxury resort with ski-in/ski-out access, upscale accommodations, and a world-class spa.",
-
       image: carlton,
       price: "$799 per night",
       websiteUrl: "https://www.ritzcarlton.com/en/hotels/california/lake-tahoe" // Added website URL
-
-      image: "https://example.com/ritz-carlton-lake-tahoe.jpg",
-      price: "$799 per night"
-
     },
     {
       name: "Resort at Squaw Creek",
       description: "Spacious resort with a variety of outdoor activities, including skiing, hiking, and a golf course.",
-
       image:Hotel,
       price: "$349 per night",
       websiteUrl: "https://www.destinationhotels.com/resort-at-squaw-creek" // Added website URL
-
-      image: "https://example.com/resort-at-squaw-creek.jpg",
-      price: "$349 per night"
-
     }
   ];
 
@@ -89,21 +64,21 @@ const LakeTahoeHotels = () => {
             websiteUrl={hotel.websiteUrl} // Pass the website URL
           />
 
-          <div key={index} className="hotel-card">
-            <div className="hotel-card-content">
-              <div className="hotel-card-text">
-                <h2>{hotel.name}</h2>
-                <hr className="divider-line" />
-                <p>{hotel.description}</p>
-                <div className="hotel-card-footer">
-                  <span className="hotel-price">{hotel.price}</span>
-                </div>
-              </div>
-              <div className="hotel-card-image">
-                <img src={hotel.image} alt={hotel.name} />
-              </div>
-            </div>
-          </div>
+          // <div key={index} className="hotel-card">
+          //   <div className="hotel-card-content">
+          //     <div className="hotel-card-text">
+          //       <h2>{hotel.name}</h2>
+          //       <hr className="divider-line" />
+          //       <p>{hotel.description}</p>
+          //       <div className="hotel-card-footer">
+          //         <span className="hotel-price">{hotel.price}</span>
+          //       </div>
+          //     </div>
+          //     <div className="hotel-card-image">
+          //       <img src={hotel.image} alt={hotel.name} />
+          //     </div>
+          //   </div>
+          // </div>
 
         ))}
       </div>
