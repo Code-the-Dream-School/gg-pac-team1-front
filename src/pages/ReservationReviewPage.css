@@ -3,7 +3,6 @@
     flex-wrap: wrap; /* Permite que los elementos se envuelvan */
     justify-content: center;
     align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
-    background-color: #16dcb5;
     padding: 0;
     width: 100%;
     max-width: 1200px;
@@ -18,21 +17,9 @@
     box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho total */
 }
 
-.container-left {
-    background-color: bisque;
-}
 
 .container-right {
     background-color: #f5f5f5;
-}
-
-/* Estilos existentes */
-.hotel-detail-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .hotel-title {
@@ -174,6 +161,29 @@
     font-size: 0.9em; /* Tamaño de fuente más pequeño para los mensajes de error */
     margin-top: 5px; /* Añade margen superior para separar los mensajes de error del DateInput */
 }
+
+.confirm-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Ajusta el margen según sea necesario */
+  }
+  
+/***    * Estilos para el formulario de reserva*/
+
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'); /* Importar Font Awesome */
+
+   
+    .review-reservation-title i {
+        margin-left: 5px; /* Espacio entre el texto y el icono */
+        font-size: 2rem; /* Tamaño del icono */
+        color: #fff; /* Icono blanco */
+        transform: rotate(-45deg); /* Girar el icono */
+        transition: transform 0.3s ease; /* Transición suave para la rotación */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Sombra para el icono */
+    }
+       
+
 /* Estilos existentes *//*************************************************************************/
 .hotel-detail-container {
     max-width: 1200px;

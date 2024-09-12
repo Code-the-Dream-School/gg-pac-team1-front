@@ -157,7 +157,7 @@ const ReservationReviewPage = () => {
 
   return (
     <div className="hotel-detail-container">
-      <h3>Review Your Reservation</h3>
+      <h3 className="review-reservation-title ">Review Your Reservation <i class="fas fa-plane"></i></h3>
 
       {hotelError && <ErrorMessage error={hotelError} />}
       {state.globalError && <ErrorMessage error={state.globalError} />}
@@ -218,7 +218,7 @@ const ReservationReviewPage = () => {
                 />
               </div>
 
-              <ReservationSummary
+              <ReservationSummary className="reservation-summary"
                 checkInDate={state.checkInDate}
                 checkOutDate={state.checkOutDate}
                 totalNights={state.totalNights}
@@ -232,7 +232,7 @@ const ReservationReviewPage = () => {
               <ReservationNumber reservationNumber={reservationNumber} />
               <div className="confirm-button-container">
                 <button
-                  className="confirm-reservation-btn"
+                  className="confirm-reservation-btn centered-content"
                   onClick={handleConfirmReservation}
                 >
                   Confirm Reservation
