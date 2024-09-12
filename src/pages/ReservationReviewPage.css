@@ -1,4 +1,180 @@
+.container-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+    justify-content: center;
+    align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
+    background-color: #16dcb5;
+    padding: 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.container-left, .container-right {
+    flex: 1 1 50%; /* Permite que los contenedores se ajusten y se envuelvan */
+    padding: 10px;
+    margin: 0;
+    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho total */
+}
+
+.container-left {
+    background-color: bisque;
+}
+
+.container-right {
+    background-color: #f5f5f5;
+}
+
 /* Estilos existentes */
+.hotel-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+.reservation-summary {
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    padding: 10px; /* Reduce el padding para un mejor espaciado */
+    border: 1px solid #ddd; /* Añade un borde alrededor del contenedor */
+    border-radius: 8px; /* Añade bordes redondeados */
+    background-color: #fff; /* Fondo blanco para parecerse a una factura */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra para darle profundidad */
+}
+
+.reservation-summary p {
+    margin: 5px 0; /* Reduce el espaciado entre los párrafos */
+    display: flex;
+    justify-content: space-between; /* Espacia el contenido dentro de los párrafos */
+}
+
+.reservation-summary p span {
+    font-weight: bold; /* Hace que el texto dentro de los spans sea más prominente */
+}
+
+.reservation-summary .stay-dates-checkin,
+.reservation-summary .stay-dates-checkout {
+    text-align: left; /* Alinea el texto a la izquierda */
+    border-bottom: 1px solid #ddd; /* Añade una línea inferior para separar las secciones */
+    padding-bottom: 5px; /* Reduce el padding inferior para espaciado */
+    margin-bottom: 5px; /* Reduce el margen inferior para espaciado */
+    font-size: 0.8em; /* Reduce el tamaño de la fuente en un 20% */
+}
+
+.reservation-summary .total-nights,
+.reservation-summary .cost-details,
+.reservation-summary .summary-line {
+    border-bottom: 1px solid #ddd; /* Añade una línea inferior para separar las secciones */
+    padding-bottom: 5px; /* Reduce el padding inferior para espaciado */
+    margin-bottom: 5px; /* Reduce el margen inferior para espaciado */
+}
+
+.reservation-summary .summary-line {
+    font-size: 1.2em; /* Aumenta el tamaño de la fuente para el total */
+    color: #333; /* Color del texto */
+}
+
+.block-2 {
+    display: flex;
+    flex-direction: row; /* Alinea los elementos en una fila */
+    justify-content: space-between; /* Espacia los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    padding: 5px 10px; /* Añade padding alrededor del bloque */
+    margin: 10px 0; /* Añade margen vertical */
+    border: 1px solid #ddd; /* Añade un borde alrededor del bloque */
+    border-radius: 8px; /* Añade bordes redondeados */
+    background-color: #f9f9f9; /* Fondo claro para diferenciar el bloque */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añade una sombra para darle profundidad */
+}
+
+.block-2 .number-input {
+    display: flex; /* Alinea los elementos dentro del input */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: space-between; /* Espacia los elementos horizontalmente */
+    width: 48%; /* Ajusta el ancho de cada input al 48% para dejar espacio para el margen */
+}
+
+.block-2 .number-input:last-child {
+    margin-bottom: 0; /* Elimina el margen inferior del último input */
+}
+
+.block-2 .custom-icon {
+    margin: 0 5px; /* Añade margen horizontal entre el icono y el texto */
+    font-size: 1.5em; /* Ajusta el tamaño de los íconos */
+}
+
+.block-1 {
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    margin: 10px 0; /* Añade margen vertical */
+    border: 1px solid #ddd; /* Añade un borde alrededor del contenedor */
+    border-radius: 8px; /* Añade bordes redondeados */
+    background-color: #f9f9f9; /* Fondo claro para diferenciar el contenedor */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añade una sombra para darle profundidad */
+    max-width: 100%; /* Asegura que el contenedor no exceda el ancho del padre */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del contenedor */
+}
+
+.block-1 .form-group {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+    width: 100%; /* Asegura que el grupo de formulario ocupe el 100% del ancho del contenedor */
+}
+
+.block-1 .icon-label {
+    display: flex;
+    align-items: center; /* Centra verticalmente el icono */
+    font-size: 2em; /* Tamaño del icono */
+    color: #007bff; /* Color del icono */
+    margin-left: 20px;
+    padding: 0 !important;
+    transform: rotate(-15deg); /* Gira el icono 90 grados hacia la izquierda */
+}
+
+.block-1 .date-group {
+    display: flex;
+    margin:  10px 0; /* Añade margen vertical */
+    flex-direction: row; /* Alinea los grupos de inputs en una fila */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una fila */
+    gap: 10px; /* Espacio entre los grupos de inputs */
+    width: 100%; /* Asegura que el grupo de fechas ocupe el 100% del ancho del contenedor */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del contenedor */
+}
+
+.block-1 .date-input-group {
+    display: flex;
+    align-items: center; /* Centra verticalmente el label y el input */
+    width: 45%; /* Ajusta el ancho del grupo de inputs */
+    flex: 1; /* Permite que los grupos de inputs se ajusten al tamaño disponible */
+}
+
+.block-1 .date-input-group label {
+    min-width: 90px; /* Ancho mínimo para el label */
+}
+
+.block-1 .date-input-group input {
+    flex: 1; /* El input toma el espacio restante */
+    width: 100px; /* Ancho específico para el input */
+    padding: 5px; /* Añade padding para un mejor aspecto */
+    border: 1px solid #ccc; /* Añade un borde */
+    border-radius: 4px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del input */
+}
+
+.block-1 .error-message {
+    color: red; /* Color rojo para los mensajes de error */
+    font-size: 0.9em; /* Tamaño de fuente más pequeño para los mensajes de error */
+    margin-top: 5px; /* Añade margen superior para separar los mensajes de error del DateInput */
+}
+/* Estilos existentes *//*************************************************************************/
 .hotel-detail-container {
     max-width: 1200px;
     margin: 0 auto;

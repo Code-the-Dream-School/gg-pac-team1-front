@@ -1,16 +1,16 @@
-// DateInput.jsx
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 
-const DateInput = ({ checkInDate, checkOutDate, handleCheckInChange, handleCheckOutChange, showCheckOut }) => (
-  <div className="form-group">
-    <label>
+
+const DateInput = ({ checkInDate, checkOutDate, handleCheckInChange, handleCheckOutChange, showCheckOut, className }) => (
+  <div className={`form-group ${className}`}>
+    <label className="icon-label">
       <FontAwesomeIcon icon={faCalendarAlt} />
     </label>
     <div className="date-group">
-      <div>
+      <div className="date-input-group">
         <label htmlFor="checkInDate">Check-in:</label>
         <input 
           id="checkInDate"
@@ -21,7 +21,7 @@ const DateInput = ({ checkInDate, checkOutDate, handleCheckInChange, handleCheck
         />
       </div>
       {showCheckOut && (
-        <div>
+        <div className="date-input-group">
           <label htmlFor="checkOutDate">Check-out:</label>
           <input 
             id="checkOutDate"
@@ -42,6 +42,7 @@ DateInput.propTypes = {
   handleCheckInChange: PropTypes.func.isRequired,
   handleCheckOutChange: PropTypes.func,
   showCheckOut: PropTypes.bool.isRequired,
+  className: PropTypes.string,
 };
 
 export default DateInput;

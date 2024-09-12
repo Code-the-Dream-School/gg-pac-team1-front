@@ -1,11 +1,11 @@
-// NumberInput.jsx
 import React from 'react';
-import ErrorMessage from './ErrorMessage';
+import PropTypes from 'prop-types';
 
-const NumberInput = ({ label, name, value, onChange, min, icon: Icon }) => (
-  <div className="input-group vertical">
+const NumberInput = ({ label, name, value, onChange, min, icon: Icon, className }) => (
+  <div className={`input-group vertical ${className}`}>
     <label htmlFor={name}>
-      {Icon && <Icon />} 
+      {Icon && <Icon className="fa-icon" />}
+      {label}
       <input
         id={name}
         type="number"
@@ -17,5 +17,15 @@ const NumberInput = ({ label, name, value, onChange, min, icon: Icon }) => (
     </label>
   </div>
 );
+
+NumberInput.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  onChange: PropTypes.func.isRequired,
+  min: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  icon: PropTypes.elementType, 
+  className: PropTypes.string,
+};
 
 export default NumberInput;
