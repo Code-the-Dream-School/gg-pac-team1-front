@@ -1,3 +1,4 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'); /* Importar Font Awesome */
 .container-wrapper {
     display: flex;
     flex-wrap: wrap; /* Permite que los elementos se envuelvan */
@@ -171,8 +172,7 @@
   
 /***    * Estilos para el formulario de reserva*/
 
-    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'); /* Importar Font Awesome */
-
+    
    
     .review-reservation-title i {
         margin-left: 5px; /* Espacio entre el texto y el icono */
