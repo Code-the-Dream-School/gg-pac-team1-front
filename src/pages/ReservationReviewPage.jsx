@@ -66,6 +66,7 @@ const ReservationReviewPage = () => {
   const initialCheckOutDate = queryParams.get("checkOutDate") || "";
   const initialAdults = parseInt(queryParams.get("adults") || "2");
   const initialChildren = parseInt(queryParams.get("children") || "0");
+  const roomId = queryParams.get("roomId"); 
 
   const [state, dispatch] = useReducer(reducer, {
     ...initialState,
@@ -80,19 +81,13 @@ const ReservationReviewPage = () => {
   const { errors, validate } = useDateValidation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    // Simular la obtención de datos del usuario desde la sesión
-    const userDetails = {
-      guestName: "John Doe",
-      guestEmail: "john.doe@example.com"
-    };
-
-    // Guardar los datos del usuario en localStorage
-    localStorage.setItem('userDetails', JSON.stringify(userDetails));
-
-    // Actualizar el estado con los datos del usuario
-    dispatch({ type: 'SET_USER_DETAILS', payload: userDetails });
-  }, []);
+  // Filtrar las habitaciones usando el roomId
+  const filteredRooms = useMemo(() => {
+    if (hotel && hotel.rooms) {
+      return hotel.rooms.filter(room => room._id === roomId);
+    }
+    return [];
+  }, [hotel, roomId]);
 
   // Calculate costs using useMemo
   const calculatedCosts = useMemo(() => {
@@ -150,10 +145,10 @@ const ReservationReviewPage = () => {
       {hotel ? (
         <>
           <HotelInfo hotel={hotel} className="details-title" />
-          {hotel.rooms.length > 0 && !hotelError ? (
-            <RoomsInfo rooms={hotel.rooms} />
-          ) : (
-            !hotelError && <p>No rooms available for this hotel</p>
+          {filteredRooms.length > 0 && !hotelError ? (
+            <RoomsInfo rooms={filteredRooms} />
+            ) : (
+              !hotelError && <p>No rooms available for this hotel</p>
           )}
           <div className="reservation-details">
             <div className="block">
