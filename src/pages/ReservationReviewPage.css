@@ -25,6 +25,13 @@
     padding: 0; /* Eliminar padding de los párrafos */
 }
 
+.hotel-info h3{
+    margin: 5px 0; /* Agregar márgenes superior e inferior de 5px a los párrafos */
+    padding: 0; /* Eliminar padding de los párrafos */
+    color: #484848; /* Cambiar el color del texto a gris oscuro */
+    border-bottom: 1px solid #ddd; /* Línea fina en la parte inferior */
+}
+
 .hotel-detail-container .hotel-info p,
 .hotel-detail-container .hotel-info .hotel-address,
 .hotel-detail-container .hotel-info .hotel-brand,

@@ -146,7 +146,7 @@ const ReservationReviewPage = () => {
         <>
           <HotelInfo hotel={hotel} className="details-title" />
           {filteredRooms.length > 0 && !hotelError ? (
-            <RoomsInfo rooms={filteredRooms} />
+            <RoomsInfo rooms={filteredRooms} className="hotel-info " />
             ) : (
               !hotelError && <p>No rooms available for this hotel</p>
           )}
@@ -214,6 +214,8 @@ const ReservationReviewPage = () => {
           reservationNumber,
           guestName: state.guestName,
           guestEmail: state.guestEmail,
+          roomId, 
+          hotelId, 
         }}
       />
     </div>
