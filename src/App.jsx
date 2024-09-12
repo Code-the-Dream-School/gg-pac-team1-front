@@ -39,7 +39,7 @@ import Search from './pages/Search';
 import { getAllData } from './util/index';
 import TravelBlog from './components/TravelBlog/TravelBlog';
 import PaymentTest from './components/PaymentTest';
-//import PaymentTest from './components/; // Importar PaymentTest
+import TestSaveReservation from './components/TestSaveReservation'; // Importar TestSaveReservation
 
 const AUTH_URL = 'http://localhost:8000/api/v1/auth';
 
@@ -186,6 +186,10 @@ function App() {
         {
           path: 'payment-test', // Nueva ruta para PaymentTest
           element: <PaymentTest />,
+        },
+        {
+          path: 'test-save-reservation', // Nueva ruta para TestSaveReservation
+          element: <TestSaveReservation />,
         },
         {
           path: '/confirmation', //confirmation page
