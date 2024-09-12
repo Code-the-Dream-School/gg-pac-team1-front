@@ -1,0 +1,27 @@
+/* src/components/Discover.css */
+.discover-container {
+    background-color: #ffffff; /* White background */
+    padding: 2rem; /* Add padding around the container */
+    border-radius: 8px; /* Optional: Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Shadow effect */
+    position: relative; /* Position context for the triangle */
+  }
+  
+  .discover-container::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent; /* Adjust size */
+    border-bottom: 100px solid #004a8f; /* Blue color */
+    z-index: 1; /* Ensure triangle is below content */
+  }
+  
+  .destination-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem; /* Space between cards */
+  }
+  

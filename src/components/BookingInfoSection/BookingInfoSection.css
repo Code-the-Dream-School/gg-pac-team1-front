@@ -1,0 +1,65 @@
+/* src/pages/Home.css */
+
+/* Importing Google Fonts for demonstration, adjust based on your chosen font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+/* Applying the imported font */
+body {
+    font-family: 'Roboto', Arial, sans-serif; /* Ensure fallback fonts */
+    background-color: #f4f0f0; /* Overall background color for the page */
+}
+
+/* General Styles for Sections */
+#discover,
+#reviews,
+#trips {
+    background-color: #d3b9a6; /* Cacao-like background color */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Elegant shadow */
+    padding: 2rem; /* Padding around the content */
+    margin-bottom: 2rem; /* Space below each section */
+}
+
+/* General Styles for Text */
+h2 {
+    font-size: 1.8rem; /* Larger font size for headings */
+    margin-bottom: 1rem; /* Space below the heading */
+    color: #004a8f; /* Deep blue color for headings */
+    text-align: center; /* Center-align headings */
+    font-weight: 100; /* Thin weight */
+    font-style: italic; /* Italic style */
+}
+
+.booking-info-section p,
+.travel-blog p {
+    font-size: 1rem; /* Adjust font size for readability */
+    color: #333; /* Dark text color */
+    line-height: 1.6; /* Better line spacing */
+    font-weight: 100; /* Thin weight */
+    font-style: italic; /* Italic style */
+}
+
+/* Adjust links */
+.booking-info-section a,
+.travel-blog a {
+    color: #007bff; /* Primary color for links */
+    text-decoration: none; /* Remove underline from links */
+    font-weight: 100; /* Thin weight */
+    font-style: italic; /* Italic style */
+}
+
+.booking-info-section a:hover,
+.travel-blog a:hover {
+    text-decoration: underline; /* Underline on hover for better UX */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .info-and-blog-section {
+        flex-direction: column; /* Stack sections vertically on smaller screens */
+    }
+
+    .info-and-blog-section > div {
+        margin-bottom: 2rem; /* Space between stacked sections */
+    }
+}

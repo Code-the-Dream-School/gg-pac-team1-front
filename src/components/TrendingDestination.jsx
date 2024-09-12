@@ -1,6 +1,6 @@
 import React from 'react';
 import DestinationList from './DestinationList';
-import BackButton from './BackButton';
+import Button from 'react-bootstrap/Button'
 import TrendingDestinationsImg from '../../images/TrendingDestinationsImg.jpg';
 
 // Function to group hotels by city and calculate average price
@@ -51,7 +51,8 @@ const TrendingDestination = () => {
         marginBottom: '10px', 
         fontFamily: "'Montserrat', sans-serif" 
       }}>
-        Trending Destinations
+        <Button variant="primary" href={link}>Back</Button>
+        
       </h1>
 
       <DestinationList destinations={trendingPlaces} title="Top Trending Destinations" />

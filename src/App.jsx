@@ -44,6 +44,7 @@ const AUTH_URL = 'http://localhost:8000/api/v1/auth';
 function App() {
   const [message, setMessage] = useState(''); 
   const [reviews, setReviews] = useState([]);
+
   useEffect(() => {
     (async () => {
       const myData = await getAllData(AUTH_URL);
@@ -154,7 +155,7 @@ function App() {
           element: <TripDescriptionChicago />,
         },
         {
-          path: 'trip-description-sf',
+          path: 'trip-description-san-francisco',
           element: <TripDescriptionSf />,
         },
         {
@@ -162,8 +163,20 @@ function App() {
           element: <TripDescriptionMiami />,
         },
         {
-          path: 'search',
-          element: <Search />,
+          path: 'virginia-hotels',
+          element: <VirginiaHotels /> 
+        }, 
+        { 
+          path: 'lake-tahoe-hotels',
+          element: <LakeTahoeHotels /> 
+        },
+        { 
+          path: 'north-carolina-hotels',
+          element: <NorthCarolinaHotels /> 
+        },
+        { 
+          path: 'ohio-hotels', 
+          element: <OhioHotels /> 
         },
         { 
           path: 'virginia-hotels',

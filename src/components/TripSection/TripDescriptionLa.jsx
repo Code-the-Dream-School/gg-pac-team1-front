@@ -53,7 +53,7 @@ const TripDescriptionLA = () => {
       <div className="form-section">
         <SearchForm />
       </div>
-      <HotelList hotels={hotels} averagePrice={averagePrice} />
+     
     </div>
   );
 };

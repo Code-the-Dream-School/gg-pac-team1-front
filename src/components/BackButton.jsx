@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 
 const BackButton = () => (
-  <div className="back-button" style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
+  <div className="d-flex justify-content-center mt-5">
     <Link to="/">
-      <button className="btn btn-primary mt-3" style={{ backgroundColor: '#007bff', border: 'none', padding: '10px 30px', fontSize: '1rem', borderRadius: '5px', transition: 'background-color 0.3s ease' }}>
+      <Button variant="primary" className="w-auto" style={{ minWidth: '150px' }}>
         Back to Discover
-      </button>
+      </Button>
     </Link>
   </div>
 );

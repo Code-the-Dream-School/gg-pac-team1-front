@@ -44,16 +44,20 @@ const TripDestinationSf = () => {
 
   return (
     <div className="trip-description">
-      <BackgroundCardContainer
-        imageSrc={SanFrCar}
-        title={city.name}
-        description={city.description}
-        cityDescription={cityDescription}
-      />
+      <div className="background-card-container">
+        <BackgroundCardContainer
+          imageSrc={SanFrCar}
+          title={city.name}
+          description={city.description}
+        />
+        <div className="city-description">
+          {cityDescription}
+        </div>
+      </div>
       <div className="form-section">
         <SearchForm />
       </div>
-      <HotelList hotels={hotels} averagePrice={averagePrice} />
+     
     </div>
   );
 };
