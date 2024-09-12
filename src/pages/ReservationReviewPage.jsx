@@ -156,14 +156,13 @@ const ReservationReviewPage = () => {
   };
 
   return (
-    <div className="hotel-detail-container ">
+    <div className="hotel-detail-container">
       <h3>Review Your Reservation</h3>
 
       {hotelError && <ErrorMessage error={hotelError} />}
       {state.globalError && <ErrorMessage error={state.globalError} />}
       {hotel ? (
         <>
-          {" "}
           <div className="container-wrapper">
             <div className="container-left">
               <HotelInfo hotel={hotel} className="details-title" />
@@ -175,7 +174,7 @@ const ReservationReviewPage = () => {
             </div>
             <div className="container-right">
               <div className="block-1">
-                <DateInput className= "date-input"
+                <DateInput
                   checkInDate={state.checkInDate}
                   checkOutDate={state.checkOutDate}
                   handleCheckInChange={(e) =>
@@ -205,7 +204,7 @@ const ReservationReviewPage = () => {
                   value={state.adults}
                   onChange={handleInputChange}
                   min="1"
-                  icon={() => <FontAwesomeIcon icon={faUser} className="custom-icon"  />}
+                  icon={() => <FontAwesomeIcon icon={faUser} className="custom-icon" />}
                   className="number-input"
                 />
                 <NumberInput
@@ -214,18 +213,20 @@ const ReservationReviewPage = () => {
                   value={state.children}
                   onChange={handleInputChange}
                   min="0"
-                  icon={() => <FontAwesomeIcon icon={faBaby} className="custom-icon"  />}
+                  icon={() => <FontAwesomeIcon icon={faBaby} className="custom-icon" />}
                   className="number-input"
                 />
               </div>
 
-              <ReservationSummary className="reservation-summary" 
+              <ReservationSummary
                 checkInDate={state.checkInDate}
                 checkOutDate={state.checkOutDate}
                 totalNights={state.totalNights}
                 roomCostPerNight={hotel.room_cost_per_night}
                 totalRoomCost={state.totalRoomCost}
                 finalTotalCost={state.finalTotalCost}
+                adults={state.adults}  // Asegúrate de pasar los valores de adultos y niños
+                children={state.children}  // Asegúrate de pasar los valores de adultos y niños
               />
 
               <ReservationNumber reservationNumber={reservationNumber} />
@@ -272,4 +273,5 @@ ReservationReviewPage.propTypes = {
   handleInputChange: PropTypes.func.isRequired,
   hotel: PropTypes.object.isRequired,
 };
+
 export default ReservationReviewPage;
