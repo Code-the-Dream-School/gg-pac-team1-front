@@ -1,0 +1,158 @@
+/* Estilos existentes */
+.hotel-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.hotel-detail-container .hotel-info {
+    margin: 0; /* Eliminar márgenes */
+    padding: 0; /* Eliminar padding */
+}
+
+.hotel-info p {
+    margin: 5px 0; /* Agregar márgenes superior e inferior de 5px a los párrafos */
+    padding: 0; /* Eliminar padding de los párrafos */
+}
+
+.hotel-detail-container .hotel-info p,
+.hotel-detail-container .hotel-info .hotel-address,
+.hotel-detail-container .hotel-info .hotel-brand,
+.hotel-detail-container .hotel-info .hotel-chain,
+.hotel-detail-container .hotel-info .hotel-stars,
+.hotel-detail-container .hotel-info .hotel-wifi,
+.hotel-detail-container .hotel-info .hotel-ocean-view,
+.hotel-detail-container .hotel-info .hotel-pool,
+.hotel-detail-container .hotel-info .hotel-gym,
+.hotel-detail-container .hotel-info .hotel-spa,
+.hotel-detail-container .hotel-info .hotel-restaurant,
+.hotel-detail-container .hotel-info .hotel-parking-availability,
+.hotel-detail-container .hotel-info .hotel-parking-cost,
+.hotel-languages,
+.hotel-cancellation,
+.hotel-rating {
+    line-height: 1 !important;
+    color: #ea0202 !important; /* Cambiar el color del texto a gris oscuro */
+    font-size: 1rem; /* Tamaño de letra añadido */
+    margin: 0 !important;
+    padding: 5px !important;
+}
+
+.hotel-policies-title {
+    font-size: 1.5rem; /* Tamaño de letra añadido */
+    line-height: 1.2 !important; /* Asegura la misma altura de línea */
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Room Selector */
+.room-selector-container {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.room-list {
+    width: 20%;
+    border-right: 1px solid #ddd;
+    margin: 0;
+    padding: 0;
+}
+
+.room-details {
+    width: 40%;
+    margin: 0;
+    padding: 0;
+}
+
+.light-gray-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar verticalmente */
+    height: 100%; /* Asegurar que ocupe todo el espacio vertical */
+    padding-left: 10px;
+}
+
+.room-image {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.room-image img {
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.room-details p {
+    line-height: 1 !important;
+    color: #ec0000 !important; /* Cambiar el color del texto a gris oscuro */
+    font-size: 1rem; /* Tamaño de letra añadido */
+    margin: 5px 0; /* Agregar márgenes superior e inferior de 5px */
+    padding: 0;
+}
+
+.section-title {
+    border-bottom: 1px solid #ddd;
+
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list-item {
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    cursor: pointer; /* Añadir el cursor como puntero para indicar que es seleccionable */
+    opacity: 0.5; /* Hacer el elemento más opaco cuando no está seleccionado */
+    margin: 0;
+    padding: 0;
+    color: #333; /* Cambiar el color del texto a gris oscuro */
+}
+
+.list-item.selected {
+    opacity: 1; /* Hacer el elemento menos opaco cuando está seleccionado */
+    margin: 0;
+    padding: 0;
+    color: #333; /* Cambiar el color del texto a gris oscuro */
+}
+
+.selected-room {
+    border: 2px solid #4CAF50; /* Cambiar el color del borde para resaltar */
+    border-radius: 10px; /* Aumentar el radio del borde para esquinas más redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra para darle profundidad */
+    font-size: 16px; /* Aumentar el tamaño de la fuente */
+    color: #333; /* Cambiar el color del texto a gris oscuro */
+    margin: 0;
+    padding: 0;
+}
+
+.details-title {
+    font-size: 1.5rem; /* Tamaño de letra */
+    color: #484848; /* Cambiar el color del texto a gris oscuro */
+    margin: 5px 0; /* Margen superior e inferior de 5px */
+    padding: 0;
+    border-bottom: 1px solid #ddd; /* Línea fina en la parte inferior */
+}

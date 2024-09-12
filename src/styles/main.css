@@ -591,7 +591,7 @@ button:hover {
   text-align: center;
   margin: 0;
   padding: 5px;
-  color: #222;
+  color: #333;
 }
 
 /* Hotel Info */
@@ -702,7 +702,7 @@ button:hover {
   font-size: 16px;
   margin: 0;
   padding: 0;
-  color: #222;
+  color: #333;
 }
 
 /* List */
@@ -720,14 +720,14 @@ button:hover {
   opacity: 0.5;
   margin: 0;
   padding: 0;
-  color: #222;
+  color: #333;
 }
 
 .list-item.selected {
   opacity: 1;
   margin: 0;
   padding: 0;
-  color: #222;
+  color: #333;
 }
 
 /* Selected Room */
@@ -735,7 +735,7 @@ button:hover {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-size: 16px;
-  color: #222;
+  color: #333;
   margin: 0;
   padding: 0;
 }
@@ -749,6 +749,25 @@ button:hover {
   border-bottom: 1px solid #ddd;
 }
 
+/* ### Explicación
+
+- **Variables**: Define los colores y estilos reutilizables.
+- **Hotel Detail Container**: Estilos para el contenedor principal de los detalles del hotel.
+- **Hotel Title**: Estilos para el título del hotel.
+- **Hotel Info**: Estilos para la información del hotel.
+- **Hotel Policies Title**: Estilos para el título de las políticas del hotel.
+- **Room Selector Container**: Estilos para el contenedor del selector de habitaciones.
+- **Room List**: Estilos para la lista de habitaciones.
+- **Room Details**: Estilos para los detalles de la habitación.
+- **Light Gray Background**: Estilos para el fondo gris claro.
+- **Room Image**: Estilos para la imagen de la habitación.
+- **Room Details Paragraph**: Estilos para los párrafos de los detalles de la habitación.
+- **Section Title**: Estilos para los títulos de las secciones.
+- **List**: Estilos para la lista.
+- **List Item**: Estilos para los elementos de la lista.
+- **Selected Room**: Estilos para la habitación seleccionada.
+- **Details Title**: Estilos para el título de los detalles.
+*/
 /* lightbox.scss */
 .lightbox {
   position: fixed !important;
@@ -898,248 +917,6 @@ button:hover {
     width: 100%;
   }
 }
-.reservation-review-page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  /* Media query para pantallas pequeñas */
-}
-.reservation-review-page .hotel-address {
-  border: 1px solid red;
-}
-.reservation-review-page .hotel-info2 {
-  border: 1px solid red;
-  margin-bottom: 1em;
-}
-.reservation-review-page .tittle {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #333;
-  border: 1px solid red;
-}
-.reservation-review-page .reservation-summary {
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-}
-.reservation-review-page .reservation-summary .hotel-name {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #333;
-}
-.reservation-review-page .reservation-summary .hotel-info {
-  font-size: 16px;
-  margin-bottom: 15px;
-  line-height: 1.5;
-  color: #666666;
-  border: 1px solid red;
-}
-.reservation-review-page .reservation-summary .stay-dates,
-.reservation-review-page .reservation-summary .total-nights,
-.reservation-review-page .reservation-summary .cost-details,
-.reservation-review-page .reservation-summary .total-price {
-  font-size: 16px;
-  margin: 10px 0;
-  color: #333;
-  font-weight: bold;
-}
-.reservation-review-page .reservation-summary .stay-dates span,
-.reservation-review-page .reservation-summary .total-nights span,
-.reservation-review-page .reservation-summary .cost-details span,
-.reservation-review-page .reservation-summary .total-price span {
-  font-weight: normal;
-  float: right;
-}
-.reservation-review-page .reservation-summary .extras-section {
-  margin-top: 20px;
-  border-top: 1px solid #ddd;
-  padding-top: 10px;
-}
-.reservation-review-page .reservation-summary .extras-section .extras-list {
-  list-style-type: none;
-  padding-left: 0;
-  margin: 0;
-}
-.reservation-review-page .reservation-summary .extras-section .extras-list li {
-  font-size: 14px;
-  margin-bottom: 5px;
-  color: #666666;
-}
-.reservation-review-page .reservation-summary .extras-section .extras-list li span {
-  float: right;
-  color: #333;
-}
-.reservation-review-page .reservation-summary .summary-line {
-  border-top: 1px solid #ddd;
-  padding-top: 10px;
-  margin-top: 10px;
-  font-weight: bold;
-  font-size: 18px;
-  color: black;
-}
-.reservation-review-page .reservation-number {
-  font-size: 14px;
-  text-align: center;
-  margin-top: 20px;
-  color: #999999;
-}
-.reservation-review-page .confirm-button-container {
-  text-align: center;
-  margin-top: 20px;
-}
-.reservation-review-page .confirm-button-container .confirm-reservation-btn {
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  padding: 12px 30px;
-  font-size: 18px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 100%;
-}
-.reservation-review-page .confirm-button-container .confirm-reservation-btn:hover {
-  background-color: #1e7e34;
-}
-.reservation-review-page .reservation-details {
-  display: flex;
-  flex-wrap: wrap; /* Permite que los bloques se ajusten a la siguiente línea si es necesario */
-  justify-content: space-between; /* Espacio uniforme entre bloques */
-  gap: 10px; /* Espacio entre los bloques */
-  width: 100%;
-  padding: 10px; /* Ajusta el padding según sea necesario */
-  box-sizing: border-box;
-}
-.reservation-review-page .block {
-  flex: 1 1 calc(20% - 10px); /* Cada bloque ocupa el 25% del contenedor menos el espacio del gap */
-  padding: 20px;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  text-align: center;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-@media (max-width: 768px) {
-  .reservation-review-page .block {
-    flex: 1 1 100%; /* En pantallas pequeñas, los bloques ocupan el 100% del ancho y se apilan */
-  }
-}
-.reservation-review-page .input-group {
-  margin-bottom: 15px;
-}
-.reservation-review-page .selected-extras li, .reservation-review-page .deactivated-extras li {
-  margin-left: 20px;
-  cursor: pointer;
-}
-.reservation-review-page .deactivated-extras li {
-  text-decoration: line-through;
-  color: #999;
-}
-@media (max-width: 800px) {
-  .reservation-review-page .block {
-    flex: 1 1 100%; /* Cada bloque ocupará el 100% del ancho disponible en pantallas pequeñas */
-  }
-}
-.reservation-review-page .date-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* Ajustar el espacio entre los bloques */
-  width: 100%;
-}
-.reservation-review-page .date-input {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 10px;
-}
-.reservation-review-page .date-input label {
-  margin-bottom: 5px;
-}
-.reservation-review-page .date-input input[type=date] {
-  font-size: 16px;
-  padding: 8px;
-  width: 100%;
-  box-sizing: border-box;
-}
-.reservation-review-page .error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: 5px; /* Espacio entre el input y el mensaje de error */
-}
-@media (max-width: 768px) {
-  .reservation-review-page .date-input input[type=date] {
-    font-size: 14px;
-  }
-}
-.reservation-review-page .input-group.vertical {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-.reservation-review-page .input-group.vertical label {
-  display: flex;
-  align-items: center; /* Alinea el ícono y el input en el mismo nivel */
-  gap: 10px; /* Espacio entre el ícono y el input */
-  font-size: 18px;
-  color: #007bff;
-}
-.reservation-review-page .input-group.vertical label .icon {
-  font-size: 50px !important; /* Aumentar el tamaño del ícono a 1.5 veces (18px * 1.5 = 27px) */
-  background-color: #28a745;
-}
-.reservation-review-page .input-group.vertical input {
-  flex: 1; /* Permite que el input ocupe el espacio disponible */
-  padding: 6px;
-  border: 2px solid #007bff;
-  border-radius: 4px;
-  font-size: 16px;
-  text-align: center;
-  color: #333;
-  background-color: #f0f8ff;
-  box-shadow: 0px 2px 4px rgba(0, 123, 255, 0.2);
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-}
-.reservation-review-page .input-group.vertical input:focus {
-  border-color: #0056b3;
-  box-shadow: 0px 0px 6px rgba(0, 123, 255, 0.4);
-  background-color: #e6f0ff;
-  outline: none;
-}
-.reservation-review-page .dropdown-panel {
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-}
-.reservation-review-page .dropdown-panel .dropdown-header {
-  background-color: #f7f7f7;
-  padding: 10px;
-  cursor: pointer;
-  user-select: none;
-}
-.reservation-review-page .dropdown-panel .dropdown-header h3 {
-  margin: 0;
-  font-size: 16px;
-  color: #333;
-}
-.reservation-review-page .dropdown-panel .dropdown-header:hover {
-  background-color: #e7e7e7;
-}
-.reservation-review-page .dropdown-panel .dropdown-content {
-  padding: 10px;
-  border-top: 1px solid #ddd;
-  background-color: #fff;
-}
-
 .container { /*Helps to locate and center everything in the main*/
   width: 100%;
   max-width: 1140px;

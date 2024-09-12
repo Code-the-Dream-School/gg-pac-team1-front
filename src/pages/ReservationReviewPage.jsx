@@ -13,6 +13,7 @@ import DateInput from '../components/DateInput';
 import NumberInput from '../components/NumberInput';
 import useDateValidation from '../hooks/useDateValidation';
 import Modal from '../components/Modal';
+import './ReservationReviewPage.css';
 
 const initialState = {
   checkInDate: "",
@@ -142,13 +143,13 @@ const ReservationReviewPage = () => {
   };
 
   return (
-    <div className="reservation-review-page">
-      <h1 className="title">Review Your Reservation</h1>
+    <div className="hotel-detail-container ">
+      <h3>Review Your Reservation</h3>
       {hotelError && <ErrorMessage error={hotelError} />}
       {state.globalError && <ErrorMessage error={state.globalError} />}
       {hotel ? (
         <>
-          <HotelInfo hotel={hotel} />
+          <HotelInfo hotel={hotel} className="details-title" />
           {hotel.rooms.length > 0 && !hotelError ? (
             <RoomsInfo rooms={hotel.rooms} />
           ) : (
