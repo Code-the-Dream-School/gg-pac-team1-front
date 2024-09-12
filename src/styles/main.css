@@ -139,9 +139,7 @@ p {
   font-weight: 400;
   color: #fff;
   text-align: center;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   background-color: #007bff;
   border: 1px solid #007bff;
   padding: 0.5rem 1rem;
@@ -160,9 +158,7 @@ p {
   font-weight: 400;
   color: #fff;
   text-align: center;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   background-color: #6c757d;
   border: 1px solid #6c757d;
   padding: 0.5rem 1rem;
@@ -199,9 +195,6 @@ p {
   color: #333;
   font-family: inherit;
   margin-left: 10px;
-}
-.travel-form .form-group input::-moz-placeholder, .login-form .form-group input::-moz-placeholder, .register-form .form-group input::-moz-placeholder {
-  color: #aaa;
 }
 .travel-form .form-group input::placeholder, .login-form .form-group input::placeholder, .register-form .form-group input::placeholder {
   color: #aaa;
@@ -468,8 +461,7 @@ button:hover {
 .hotel-search-result-card .img-container img {
   width: 100%;
   height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .hotel-search-result-card .card-body {
   padding-left: 1rem;
@@ -574,136 +566,208 @@ button:hover {
   background-color: #0056b3;
 }
 
+/* Variables */
+/* Changed to a darker color */
+/* Hotel Detail Container */
 .hotel-detail-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2em;
-  background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+.hotel-detail-container .details-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 5px 0;
+  padding: 0;
+  border-bottom: 1px solid #ddd;
+}
 
+/* Hotel Title */
 .hotel-title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #343a40;
-  margin-bottom: 20px;
   text-align: center;
-}
-
-.hotel-info {
-  margin-bottom: 20px;
-}
-.hotel-info .hotel-address {
-  font-size: 1.25rem;
-  color: #6c757d;
-  margin-bottom: 10px;
-}
-.hotel-info .hotel-price {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #007bff;
-  margin-bottom: 10px;
-}
-.hotel-info .hotel-description {
-  font-size: 1rem;
-  color: #343a40;
-  margin-bottom: 20px;
-}
-.hotel-info .hotel-check-in-out {
-  font-size: 1rem;
-  color: #6c757d;
-  margin-bottom: 20px;
-}
-
-.hotel-facilities,
-.hotel-room-types,
-.hotel-pet-policy {
-  margin-bottom: 20px;
-}
-.hotel-facilities h3,
-.hotel-room-types h3,
-.hotel-pet-policy h3 {
-  font-size: 1.5rem;
-  color: #343a40;
-  margin-bottom: 10px;
-}
-.hotel-facilities ul,
-.hotel-room-types ul,
-.hotel-pet-policy ul {
-  list-style: none;
-  padding: 0;
-}
-.hotel-facilities ul li,
-.hotel-room-types ul li,
-.hotel-pet-policy ul li {
-  margin-bottom: 10px;
-}
-
-.children-selection {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.children-selection p {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #343a40;
-}
-.children-selection label {
-  margin-right: 20px;
-  font-size: 1rem;
-  color: #343a40;
-}
-.children-selection .children-count {
-  margin-top: 10px;
-}
-.children-selection .children-count label {
-  font-size: 1rem;
-  color: #343a40;
-}
-.children-selection .children-count input[type=number] {
-  margin-left: 10px;
-  width: 60px;
+  margin: 0;
   padding: 5px;
+  color: #333;
 }
 
-.extra-options {
-  margin-bottom: 20px;
+/* Hotel Info */
+.hotel-detail-container .hotel-info {
+  margin: 0;
+  padding: 0;
+  color: #666;
 }
-.extra-options h3 {
+
+.hotel-info p {
+  margin: 5px 0;
+  padding: 0;
+  color: #666;
+}
+
+.hotel-detail-container .hotel-info p,
+.hotel-detail-container .hotel-info .hotel-address,
+.hotel-detail-container .hotel-info .hotel-brand,
+.hotel-detail-container .hotel-info .hotel-chain,
+.hotel-detail-container .hotel-info .hotel-stars,
+.hotel-detail-container .hotel-info .hotel-wifi,
+.hotel-detail-container .hotel-info .hotel-ocean-view,
+.hotel-detail-container .hotel-info .hotel-pool,
+.hotel-detail-container .hotel-info .hotel-gym,
+.hotel-detail-container .hotel-info .hotel-spa,
+.hotel-detail-container .hotel-info .hotel-restaurant,
+.hotel-detail-container .hotel-info .hotel-parking-availability,
+.hotel-detail-container .hotel-info .hotel-parking-cost,
+.hotel-languages,
+.hotel-cancellation,
+.hotel-rating {
+  line-height: 1 !important;
+  color: #666 !important;
+  font-size: 1rem;
+  margin: 0 !important;
+  padding: 5px !important;
+}
+
+/* Hotel Policies Title */
+.hotel-policies-title {
   font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: #343a40;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
-.extra-options ul {
-  list-style: none;
+
+/* Room Selector Container */
+.room-selector-container {
+  display: flex;
+  width: 100%;
+  margin: 0;
   padding: 0;
 }
-.extra-options ul li {
-  margin-bottom: 10px;
-}
-.extra-options ul li input[type=checkbox] {
-  margin-right: 10px;
+
+/* Room List */
+.room-list {
+  width: 20%;
+  border-right: 1px solid #ddd;
+  margin: 0;
+  padding: 0;
 }
 
-.reservation-button-container {
-  text-align: center;
+/* Room Details */
+.room-details {
+  width: 40%;
+  margin: 0;
+  padding: 0;
 }
-.reservation-button-container .btn-primary {
-  display: inline-block;
-  padding: 10px 20px;
+
+/* Light Gray Background */
+.light-gray-background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding-left: 10px;
+}
+
+/* Room Image */
+.room-image {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.room-image img {
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
+/* Room Details Paragraph */
+.room-details p {
+  line-height: 1 !important;
+  color: #484848 !important;
   font-size: 1rem;
-  color: #ffffff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
-}
-.reservation-button-container .btn-primary:hover {
-  background-color: #0056b3;
+  margin: 5px 0;
+  padding: 0;
 }
 
+/* Section Title */
+.section-title {
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* List */
+.list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* List Item */
+.list-item {
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.5;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.list-item.selected {
+  opacity: 1;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Selected Room */
+.selected-room {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Details Title */
+.details-title {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 5px 0;
+  padding: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+/* ### Explicación
+
+- **Variables**: Define los colores y estilos reutilizables.
+- **Hotel Detail Container**: Estilos para el contenedor principal de los detalles del hotel.
+- **Hotel Title**: Estilos para el título del hotel.
+- **Hotel Info**: Estilos para la información del hotel.
+- **Hotel Policies Title**: Estilos para el título de las políticas del hotel.
+- **Room Selector Container**: Estilos para el contenedor del selector de habitaciones.
+- **Room List**: Estilos para la lista de habitaciones.
+- **Room Details**: Estilos para los detalles de la habitación.
+- **Light Gray Background**: Estilos para el fondo gris claro.
+- **Room Image**: Estilos para la imagen de la habitación.
+- **Room Details Paragraph**: Estilos para los párrafos de los detalles de la habitación.
+- **Section Title**: Estilos para los títulos de las secciones.
+- **List**: Estilos para la lista.
+- **List Item**: Estilos para los elementos de la lista.
+- **Selected Room**: Estilos para la habitación seleccionada.
+- **Details Title**: Estilos para el título de los detalles.
+*/
 /* lightbox.scss */
 .lightbox {
   position: fixed !important;
@@ -735,9 +799,7 @@ button:hover {
   background-color: transparent !important;
   border: none !important;
   font-size: 40px !important;
-  -webkit-user-select: none !important;
-     -moz-user-select: none !important;
-          user-select: none !important;
+  user-select: none !important;
   transition: color 0.3s ease !important;
 }
 
@@ -805,8 +867,7 @@ button:hover {
 .bottom-row .bottom-image {
   width: 100%;
   height: auto;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   aspect-ratio: 16/9;
   cursor: pointer;
 }
@@ -856,239 +917,6 @@ button:hover {
     width: 100%;
   }
 }
-.reservation-review-page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-.reservation-review-page .hotel-address {
-  border: 1px solid red;
-}
-
-.reservation-review-page .hotel-info2 {
-  border: 1px solid red;
-  margin-bottom: 1em;
-}
-
-.reservation-review-page .tittle {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: #333;
-  border: 1px solid red;
-}
-
-.reservation-summary {
-  border: 1px solid #ddd;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-}
-.reservation-summary .hotel-name {
-  font-size: 20px;
-  margin-bottom: 10px;
-  color: #333;
-}
-.reservation-summary .hotel-info {
-  font-size: 16px;
-  margin-bottom: 15px;
-  line-height: 1.5;
-  color: #666666;
-  border: 1px solid red;
-}
-.reservation-summary .stay-dates,
-.reservation-summary .total-nights,
-.reservation-summary .cost-details,
-.reservation-summary .total-price {
-  font-size: 16px;
-  margin: 10px 0;
-  color: #333;
-  font-weight: bold;
-}
-.reservation-summary .stay-dates span,
-.reservation-summary .total-nights span,
-.reservation-summary .cost-details span,
-.reservation-summary .total-price span {
-  font-weight: normal;
-  float: right;
-}
-.reservation-summary .extras-section {
-  margin-top: 20px;
-  border-top: 1px solid #ddd;
-  padding-top: 10px;
-}
-.reservation-summary .extras-section .extras-list {
-  list-style-type: none;
-  padding-left: 0;
-  margin: 0;
-}
-.reservation-summary .extras-section .extras-list li {
-  font-size: 14px;
-  margin-bottom: 5px;
-  color: #666666;
-}
-.reservation-summary .extras-section .extras-list li span {
-  float: right;
-  color: #333;
-}
-.reservation-summary .summary-line {
-  border-top: 1px solid #ddd;
-  padding-top: 10px;
-  margin-top: 10px;
-  font-weight: bold;
-  font-size: 18px;
-  color: black;
-}
-
-.reservation-number {
-  font-size: 14px;
-  text-align: center;
-  margin-top: 20px;
-  color: #999999;
-}
-
-.confirm-button-container {
-  text-align: center;
-  margin-top: 20px;
-}
-.confirm-button-container .confirm-reservation-btn {
-  background-color: #28a745;
-  color: #fff;
-  border: none;
-  padding: 12px 30px;
-  font-size: 18px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  width: 100%;
-}
-.confirm-button-container .confirm-reservation-btn:hover {
-  background-color: #1e7e34;
-}
-
-.reservation-details {
-  display: flex;
-  flex-wrap: wrap; /* Permite que los bloques se ajusten a la siguiente línea si es necesario */
-  justify-content: space-between; /* Espacio uniforme entre bloques */
-  gap: 10px; /* Espacio entre los bloques */
-  width: 100%;
-  padding: 10px; /* Ajusta el padding según sea necesario */
-  box-sizing: border-box;
-}
-
-.block {
-  flex: 1 1 calc(20% - 10px); /* Cada bloque ocupa el 25% del contenedor menos el espacio del gap */
-  padding: 20px;
-  border: 1px solid #ccc;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-  text-align: center;
-  border-radius: 5px;
-  box-sizing: border-box;
-}
-
-@media (max-width: 768px) {
-  .block {
-    flex: 1 1 100%; /* En pantallas pequeñas, los bloques ocupan el 100% del ancho y se apilan */
-  }
-}
-.input-group {
-  margin-bottom: 15px;
-}
-
-.selected-extras li, .deactivated-extras li {
-  margin-left: 20px;
-  cursor: pointer;
-}
-
-.deactivated-extras li {
-  text-decoration: line-through;
-  color: #999;
-}
-
-/* Media query para pantallas pequeñas */
-@media (max-width: 800px) {
-  .block {
-    flex: 1 1 100%; /* Cada bloque ocupará el 100% del ancho disponible en pantallas pequeñas */
-  }
-}
-.date-container {
-  display: flex;
-  flex-direction: column;
-  gap: 15px; /* Ajustar el espacio entre los bloques */
-  width: 100%;
-}
-
-.date-input {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.date-input label {
-  margin-bottom: 5px;
-}
-
-.date-input input[type=date] {
-  font-size: 16px;
-  padding: 8px;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: 5px; /* Espacio entre el input y el mensaje de error */
-}
-
-@media (max-width: 768px) {
-  .date-input input[type=date] {
-    font-size: 14px;
-  }
-}
-.input-group.vertical {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
-}
-.input-group.vertical label {
-  display: flex;
-  align-items: center; /* Alinea el ícono y el input en el mismo nivel */
-  gap: 10px; /* Espacio entre el ícono y el input */
-  font-size: 18px;
-  color: #007bff;
-}
-.input-group.vertical label .icon {
-  font-size: 50px !important; /* Aumentar el tamaño del ícono a 1.5 veces (18px * 1.5 = 27px) */
-  background-color: #28a745;
-}
-.input-group.vertical input {
-  flex: 1; /* Permite que el input ocupe el espacio disponible */
-  padding: 6px;
-  border: 2px solid #007bff;
-  border-radius: 4px;
-  font-size: 16px;
-  text-align: center;
-  color: #333;
-  background-color: #f0f8ff;
-  box-shadow: 0px 2px 4px rgba(0, 123, 255, 0.2);
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-}
-.input-group.vertical input:focus {
-  border-color: #0056b3;
-  box-shadow: 0px 0px 6px rgba(0, 123, 255, 0.4);
-  background-color: #e6f0ff;
-  outline: none;
-}
-
 .container { /*Helps to locate and center everything in the main*/
   width: 100%;
   max-width: 1140px;
@@ -1314,4 +1142,6 @@ h2 {
 .auto-generated-section p {
   font-size: 18px;
   line-height: 1.6;
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*# sourceMappingURL=main.css.map */
