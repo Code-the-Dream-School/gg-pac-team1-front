@@ -82,7 +82,6 @@ const Modal = ({ isOpen, onClose, reservationDetails }) => {
           <h3>User Details</h3>
           <p>Name: <strong>{userName}</strong></p>
           <p>Email: <strong>{userEmail}</strong></p>
-          <p>User ID: <strong>{userId}</strong></p>
         </div>
         
         <div className="modal-section">
@@ -103,12 +102,12 @@ const Modal = ({ isOpen, onClose, reservationDetails }) => {
           <p>Final Total Cost: <strong>${reservationDetails.finalTotalCost}</strong></p>
         </div>
         
-        <div className="modal-section">
-          <h3>IDs</h3>
-          <p>Hotel ID: <strong>{reservationDetails.hotelId}</strong></p>
-          <p>Room ID: <strong>{reservationDetails.roomId}</strong></p>
-          <p>User ID: <strong>{userId}</strong></p>
-        </div>
+        <div className="modal-section" style={{ fontSize: '0.5rem' }}>
+          <h3 style={{ fontSize: '8px', margin: '1px 0' }}>IDs</h3>
+          <p style={{ margin: '1px 0', fontSize: '8px' }}>Hotel ID: <strong>{reservationDetails.hotelId}</strong></p>
+          <p style={{ margin: '1px 0', fontSize: '8px' }}>Room ID: <strong>{reservationDetails.roomId}</strong></p>
+          <p style={{ margin: '1px 0', fontSize: '8px' }}>User ID: <strong>{userId}</strong></p>
+      </div>  
         
         <Elements stripe={stripePromise}>
           <CheckoutForm 
