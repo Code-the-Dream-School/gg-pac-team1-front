@@ -66,12 +66,13 @@ const Modal = ({ isOpen, onClose, reservationDetails }) => {
     --------------------------------------
     Final Total Cost: $${reservationDetails.finalTotalCost}
     
-    IDs
-    ----------------------------------------------------------------------------
-    Hotel ID: ${reservationDetails.hotelId}
-    Room ID: ${reservationDetails.roomId}
-    User ID: ${userId}
+
   `;
+  // IDs
+  // ----------------------------------------------------------------------------
+  // Hotel ID: ${reservationDetails.hotelId}
+  // Room ID: ${reservationDetails.roomId}
+  // User ID: ${userId} esto estaba arriba y el no se envia el correo
 
   return (
     <div className="modal-overlay">
@@ -82,6 +83,7 @@ const Modal = ({ isOpen, onClose, reservationDetails }) => {
           <h3>User Details</h3>
           <p>Name: <strong>{userName}</strong></p>
           <p>Email: <strong>{userEmail}</strong></p>
+          <p>User ID: <strong>{userId}</strong></p>
         </div>
         
         <div className="modal-section">
