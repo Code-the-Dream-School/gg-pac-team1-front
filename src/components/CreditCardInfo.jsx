@@ -1,7 +1,7 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { FaEdit, FaTrash } from 'react-icons/fa'; // Asegúrate de instalar react-icons
+import { FaTrash } from 'react-icons/fa';
 import '../styles/components/_creditcardinfo.scss';
 
 const CreditCardInfo = () => {
@@ -10,25 +10,22 @@ const CreditCardInfo = () => {
   const [error, setError] = useState(null);
   const [isProcessing, setIsProcessing] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
-  const [cards, setCards] = useState([]); // Estado para almacenar las tarjetas
-  const [editCard, setEditCard] = useState(null); // Estado para la tarjeta en edición
+  const [cards, setCards] = useState([]);
 
-  // Función para obtener las tarjetas guardadas
   const fetchCreditCards = async () => {
     try {
       const response = await axios.get('http://localhost:8000/api/v1/credit-cards', {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`, // Ajusta según el sistema de autenticación
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      setCards(response.data.cards); // Actualiza el estado con las tarjetas recibidas
+      setCards(response.data.cards);
     } catch (err) {
       console.error(err);
       setError('Error fetching credit cards. Please try again.');
     }
   };
 
-  // Llama a fetchCreditCards cuando el componente se monte para listar las tarjetas
   useEffect(() => {
     fetchCreditCards();
   }, []);
@@ -46,7 +43,6 @@ const CreditCardInfo = () => {
     setSuccessMessage('');
 
     try {
-      // Crear el método de pago en Stripe
       const { error: stripeError, paymentMethod } = await stripe.createPaymentMethod({
         type: 'card',
         card: elements.getElement(CardElement),
@@ -58,7 +54,6 @@ const CreditCardInfo = () => {
         return;
       }
 
-      // Enviar el PaymentMethod ID al backend
       const response = await axios.post(
         'http://localhost:8000/api/v1/credit-cards',
         {
@@ -66,7 +61,7 @@ const CreditCardInfo = () => {
         },
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`, // Ajusta según el sistema de autenticación
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         }
       );
@@ -74,7 +69,7 @@ const CreditCardInfo = () => {
       if (response.status === 201) {
         setSuccessMessage('Card added successfully.');
         setError(null);
-        fetchCreditCards(); // Vuelve a cargar las tarjetas después de agregar una nueva
+        fetchCreditCards();
       } else {
         setError('Error saving card. Please try again.');
       }
@@ -86,30 +81,20 @@ const CreditCardInfo = () => {
     }
   };
 
-  const handleUpdate = async (cardId) => {
-    try {
-      // Obtener la información de la tarjeta para actualizar
-      const response = await axios.get(`http://localhost:8000/api/v1/credit-cards/${cardId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`,
-        },
-      });
-      setEditCard(response.data.card); // Configura la tarjeta para edición
-    } catch (err) {
-      console.error(err);
-      setError('Error fetching card details. Please try again.');
-    }
-  };
-
   const handleDelete = async (cardId) => {
     try {
-      await axios.delete(`http://localhost:8000/api/v1/credit-cards/${cardId}`, {
+      const response = await axios.delete(`http://localhost:8000/api/v1/credit-cards/${cardId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
       });
-      setSuccessMessage('Card deleted successfully.');
-      fetchCreditCards(); // Vuelve a cargar las tarjetas después de eliminar una
+
+      if (response.status === 200) {
+        setSuccessMessage('Card deleted successfully.');
+        fetchCreditCards();
+      } else {
+        setError('Error deleting card. Please try again.');
+      }
     } catch (err) {
       console.error(err);
       setError('Error deleting card. Please try again.');
@@ -124,7 +109,11 @@ const CreditCardInfo = () => {
           <CardElement id="card-element" />
         </div>
         {error && <div className="error">{error}</div>}
-        {successMessage && <div className="success">{successMessage}</div>}
+        {successMessage && (
+          <div className={`success-message ${successMessage ? 'show-success-message' : ''}`}>
+            {successMessage}
+          </div>
+        )}
         <button type="submit" disabled={isProcessing}>
           {isProcessing ? 'Processing...' : 'Add Card'}
         </button>
@@ -134,18 +123,14 @@ const CreditCardInfo = () => {
       {cards.length > 0 ? (
         <ul className="card-list">
           {cards.map((card) => (
-            <li key={card.id} className="card-item">
+            <li key={card._id} className="card-item">
               <div className="card-info">
-                <span className="card-number">
-                  **** **** **** {card.last4} {/* Mostrar solo los últimos 4 dígitos */}
-                </span>
-                <span className="card-expiry">
-                  Exp: {card.exp_month}/{card.exp_year} {/* Mostrar la fecha de expiración */}
+                <span className="card-number green-text">
+                  **** **** **** {card.last4}
                 </span>
               </div>
               <div className="card-actions">
-                <FaEdit onClick={() => handleUpdate(card.id)} className="action-icon" title="Update" />
-                <FaTrash onClick={() => handleDelete(card.id)} className="action-icon" title="Delete" />
+                <FaTrash onClick={() => handleDelete(card._id)} className="action-icon delete-icon" title="Delete" />
               </div>
             </li>
           ))}
@@ -153,24 +138,10 @@ const CreditCardInfo = () => {
       ) : (
         <p>No credit cards saved.</p>
       )}
-
-      {editCard && (
-        <div className="edit-card-form">
-          <h4>Update Card</h4>
-          <form onSubmit={handleSubmit}>
-            <div className="form-field">
-              <label htmlFor="card-element-edit">Credit Card</label>
-              <CardElement id="card-element-edit" />
-            </div>
-            <button type="submit" disabled={isProcessing}>
-              {isProcessing ? 'Processing...' : 'Update Card'}
-            </button>
-          </form>
-        </div>
-      )}
     </div>
   );
 };
 
 export default CreditCardInfo;
+
 

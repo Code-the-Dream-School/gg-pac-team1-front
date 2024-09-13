@@ -63,21 +63,25 @@ const ChangePassword = () => {
       <form className="change-password-form" onSubmit={handleSubmit}>
         <div className="change-password-form-group">
           <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            disabled
-          />
+          <div className="password-input-wrapper">
+            <input
+              type="email"
+              id="email"
+              value={email}
+              disabled
+            />
+          </div>
         </div>
         <div className="change-password-form-group">
           <label htmlFor="oldPassword">Current Password</label>
-          <input
-            type="password"
-            id="oldPassword"
-            value={oldPassword}
-            onChange={(e) => setOldPassword(e.target.value)}
-          />
+          <div className="password-input-wrapper">
+            <input
+              type="password"
+              id="oldPassword"
+              value={oldPassword}
+              onChange={(e) => setOldPassword(e.target.value)}
+            />
+          </div>
         </div>
         <div className="change-password-form-group">
           <label htmlFor="newPassword">New Password</label>
@@ -120,3 +124,4 @@ const ChangePassword = () => {
 };
 
 export default ChangePassword;
+
