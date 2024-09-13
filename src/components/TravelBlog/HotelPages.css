@@ -1,0 +1,31 @@
+/* src/components/HotelPages/HotelPages.css */
+.hotel-page {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .hotel-page h1 {
+    color: #003366;
+    margin-bottom: 1rem;
+  }
+  
+  .hotel-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .hotel-item {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .hotel-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  

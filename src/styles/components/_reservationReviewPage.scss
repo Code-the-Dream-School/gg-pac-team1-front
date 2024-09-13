@@ -14,106 +14,273 @@ $font-family: Arial, sans-serif;
   background-color: $background-color;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
 
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 24px;
-  color: $text-color;
-}
-
-.reservation-summary {
-  border: 1px solid $border-color;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 8px;
-
-  .hotel-name {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: $text-color;
+  .hotel-address {
+    border: 1px solid red;
   }
 
-  .hotel-info {
-    font-size: 16px;
-    margin-bottom: 15px;
-    line-height: 1.5;
-    color: lighten($text-color, 20%);
+  .hotel-info2 {
+    border: 1px solid red;
+    margin-bottom: 1em;
   }
 
-  .stay-dates,
-  .total-nights,
-  .cost-details,
-  .total-price {
-    font-size: 16px;
-    margin: 10px 0;
+  .tittle {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
     color: $text-color;
-    font-weight: bold;
+    border: 1px solid red;
+  }
 
-    span {
-      font-weight: normal;
-      float: right;
+  .reservation-summary {
+    border: 1px solid $border-color;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+
+    .hotel-name {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: $text-color;
+    }
+
+    .hotel-info {
+      font-size: 16px;
+      margin-bottom: 15px;
+      line-height: 1.5;
+      color: lighten($text-color, 20%);
+      border: 1px solid red;
+    }
+
+    .stay-dates,
+    .total-nights,
+    .cost-details,
+    .total-price {
+      font-size: 16px;
+      margin: 10px 0;
+      color: $text-color;
+      font-weight: bold;
+
+      span {
+        font-weight: normal;
+        float: right;
+      }
+    }
+
+    .extras-section {
+      margin-top: 20px;
+      border-top: 1px solid $border-color;
+      padding-top: 10px;
+
+      .extras-list {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 0;
+
+        li {
+          font-size: 14px;
+          margin-bottom: 5px;
+          color: lighten($text-color, 20%);
+
+          span {
+            float: right;
+            color: $text-color;
+          }
+        }
+      }
+    }
+
+    .summary-line {
+      border-top: 1px solid $border-color;
+      padding-top: 10px;
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      color: darken($text-color, 20%);
     }
   }
 
-  .extras-section {
+  .reservation-number {
+    font-size: 14px;
+    text-align: center;
     margin-top: 20px;
-    border-top: 1px solid $border-color;
-    padding-top: 10px;
+    color: lighten($text-color, 40%);
+  }
 
-    .extras-list {
-      list-style-type: none;
-      padding-left: 0;
-      margin: 0;
+  .confirm-button-container {
+    text-align: center;
+    margin-top: 20px;
 
-      li {
-        font-size: 14px;
-        margin-bottom: 5px;
-        color: lighten($text-color, 20%);
+    .confirm-reservation-btn {
+      background-color: $primary-color;
+      color: $background-color;
+      border: none;
+      padding: 12px 30px;
+      font-size: 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
 
-        span {
-          float: right;
-          color: $text-color;
-        }
+      &:hover {
+        background-color: $primary-hover-color;
       }
     }
   }
 
-  .summary-line {
-    border-top: 1px solid $border-color;
-    padding-top: 10px;
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 18px;
-    color: darken($text-color, 20%);
-  }
-}
-
-.reservation-number {
-  font-size: 14px;
-  text-align: center;
-  margin-top: 20px;
-  color: lighten($text-color, 40%);
-}
-
-.confirm-button-container {
-  text-align: center;
-  margin-top: 20px;
-
-  .confirm-reservation-btn {
-    background-color: $primary-color;
-    color: $background-color;
-    border: none;
-    padding: 12px 30px;
-    font-size: 18px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  .reservation-details {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los bloques se ajusten a la siguiente línea si es necesario */
+    justify-content: space-between; /* Espacio uniforme entre bloques */
+    gap: 10px; /* Espacio entre los bloques */
     width: 100%;
+    padding: 10px; /* Ajusta el padding según sea necesario */
+    box-sizing: border-box;
+  }
 
-    &:hover {
-      background-color: $primary-hover-color;
+  .block {
+    flex: 1 1 calc(20% - 10px); /* Cada bloque ocupa el 25% del contenedor menos el espacio del gap */
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 768px) {
+    .block {
+      flex: 1 1 100%; /* En pantallas pequeñas, los bloques ocupan el 100% del ancho y se apilan */
+    }
+  }
+
+  .input-group {
+    margin-bottom: 15px;
+  }
+
+  .selected-extras li, .deactivated-extras li {
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .deactivated-extras li {
+    text-decoration: line-through;
+    color: #999;
+  }
+
+  /* Media query para pantallas pequeñas */
+  @media (max-width: 800px) {
+    .block {
+      flex: 1 1 100%; /* Cada bloque ocupará el 100% del ancho disponible en pantallas pequeñas */
+    }
+  }
+
+  .date-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Ajustar el espacio entre los bloques */
+    width: 100%;
+  }
+
+  .date-input {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 10px;
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    input[type="date"] {
+      font-size: 16px;
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px; /* Espacio entre el input y el mensaje de error */
+  }
+
+  @media (max-width: 768px) {
+    .date-input input[type="date"] {
+      font-size: 14px;
+    }
+  }
+
+  .input-group.vertical {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    label {
+      display: flex;
+      align-items: center; /* Alinea el ícono y el input en el mismo nivel */
+      gap: 10px; /* Espacio entre el ícono y el input */
+      font-size: 18px;
+      color: #007bff;
+
+      .icon {
+        font-size: 50px !important; /* Aumentar el tamaño del ícono a 1.5 veces (18px * 1.5 = 27px) */
+        background-color: #28a745;
+      }
+    }
+
+    input {
+      flex: 1; /* Permite que el input ocupe el espacio disponible */
+      padding: 6px;
+      border: 2px solid #007bff;
+      border-radius: 4px;
+      font-size: 16px;
+      text-align: center;
+      color: #333;
+      background-color: #f0f8ff;
+      box-shadow: 0px 2px 4px rgba(0, 123, 255, 0.2);
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+
+      &:focus {
+        border-color: #0056b3;
+        box-shadow: 0px 0px 6px rgba(0, 123, 255, 0.4);
+        background-color: #e6f0ff;
+        outline: none;
+      }
+    }
+  }
+
+  .dropdown-panel {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+    .dropdown-header {
+      background-color: #f7f7f7;
+      padding: 10px;
+      cursor: pointer;
+      user-select: none;
+
+      h3 {
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+      }
+
+      &:hover {
+        background-color: #e7e7e7;
+      }
+    }
+
+    .dropdown-content {
+      padding: 10px;
+      border-top: 1px solid #ddd;
+      background-color: #fff;
     }
   }
 }

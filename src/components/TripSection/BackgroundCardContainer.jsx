@@ -9,7 +9,7 @@ const BackgroundCardContainer = ({ imageSrc, title, description, cityDescription
       <BackgroundCard
         imageSrc={imageSrc}
         title={title}
-        description={description}
+      
       />
       <CityDescription description={cityDescription} />
     </div>

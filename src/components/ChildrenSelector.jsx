@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function ChildrenSelector({ hasChildren, children, handleHasChildrenChange, handleChildrenChange }) {
-  const [includeChildren, setIncludeChildren] = useState(false);
+function ChildrenSelector({ hasChildren, children, handleHasChildrenChange, handleChildrenChange, className }) {
+  const [includeChildren, setIncludeChildren] = useState(hasChildren);
+
+  useEffect(() => {
+    setIncludeChildren(hasChildren);
+  }, [hasChildren]);
 
   const handleIncludeChildrenChange = (e) => {
-    setIncludeChildren(e.target.checked);
-    if (!e.target.checked) {
-      handleHasChildrenChange({ target: { value: 'no' } });
-    }
+    const isChecked = e.target.checked;
+    setIncludeChildren(isChecked);
+    handleHasChildrenChange({ target: { value: isChecked ? 'yes' : 'no' } });
+  };
+
+  const handleChildrenSelectChange = (e) => {
+    handleChildrenChange({ target: { value: Number(e.target.value) } });
   };
 
   return (
     <div className="children-selector">
-      <h3>Children and Extra Beds</h3>
+      <h3 className={className}>Children and Extra Beds</h3>
       <label>
         <input
           type="checkbox"
@@ -24,44 +31,20 @@ function ChildrenSelector({ hasChildren, children, handleHasChildrenChange, hand
       </label>
 
       {includeChildren && (
-        <>
-          <div className="children-selector__form-group">
-            <label>Are there children?</label>
-            <div className="children-selector__radio-group">
-              <div>
-                <input
-                  type="radio"
-                  name="hasChildren"
-                  value="yes"
-                  onChange={handleHasChildrenChange}
-                />
-                <label>Yes</label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  name="hasChildren"
-                  value="no"
-                  onChange={handleHasChildrenChange}
-                />
-                <label>No</label>
-              </div>
-            </div>
-          </div>
-
-          {hasChildren && (
-            <div className="children-selector__count">
-              <label>Number of children:</label>
-              <input
-                type="number"
-                value={children}
-                onChange={handleChildrenChange}
-                min="0"
-                max="8"
-              />
-            </div>
-          )}
-        </>
+        <div className="children-selector__form-group">
+          <label>Number of children:</label>
+          <select
+            value={children}
+            onChange={handleChildrenSelectChange}
+          >
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
       )}
     </div>
   );

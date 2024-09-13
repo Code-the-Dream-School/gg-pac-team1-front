@@ -1,135 +1,125 @@
-import { useState, useEffect } from 'react';  
-import { useParams, useNavigate } from 'react-router-dom';
-import tripsData from '../tripsData';
-import Gallery from '../gallery/Gallery';
-import HotelInfo from '../components/HotelInfo';
-import HoteFacilities from '../components/HotelFacilities';
-import RoomTypesList from '../components/RoomTypesList';
-import HotelPolicies from '../components/HotelPolicies';
-import PetPolicy from '../components/PetPolicy';
-import HotelRating from '../components/HotelRating';
-import ChildrenSelector from '../components/ChildrenSelector';
-import HotelExtraOptions from '../components/HotelExtraOptions';
-import ReservationButton from '../components/ReservationButton';
+import { useState, useEffect } from "react";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
+import { getHotelById, getRoomsByHotelId } from "../services/bookingServices";
+import Gallery from "../gallery/Gallery";
+import HotelInfo from "../components/HotelInfo";
+import PoliciesAndRating from "../components/PoliciesAndRating";
+import RoomTypesList from "../components/RoomTypesList";
+import ChildrenSelector from "../components/ChildrenSelector";
+import ReservationButton from "../components/ReservationButton"; // Import the ReservationButton component
+import RoomSelector from "../components/RoomSelector"; // Import the RoomSelector component
 
 function HotelDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate(); // Hook to handle navigation
-  const hotel = tripsData.flatMap(trip => trip.hotels).find(h => h.id === parseInt(id));
-
-  const [hasChildren, setHasChildren] = useState(false); 
+  const location = useLocation(); // Hook to access the location object
+  const [hotelData, setHotelData] = useState(null);
+  const [rooms, setRooms] = useState([]);
+  const [hasChildren, setHasChildren] = useState(false);
   const [children, setChildren] = useState(0);
-  const [checkInDate, setCheckInDate] = useState('');  
-  const [checkOutDate, setCheckOutDate] = useState('');  
+  const [isLoading, setIsLoading] = useState(true);
+  const [selectedRoom, setSelectedRoom] = useState(null); // State for selected room
 
   useEffect(() => {
-    // Redirect to 404 if hotel is not found
-    if (!hotel) {
-      navigate('/404');
-      return;
-    }
+    console.log("Fetching hotel data for ID:", id); // Log the ID being fetched
+    // Fetch hotel data from API
+    getHotelById(id)
+      .then((data) => {
+        console.log("Hotel data received:", data); // Log the data received
+        if (!data) {
+          navigate("/404");
+          return;
+        }
+        setHotelData(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching hotel data:", error);
+        navigate("/404");
+      });
 
-    // Save hotel id to localStorage if it has changed
-    const savedHotelId = localStorage.getItem('hotelId');
-    if (savedHotelId !== String(hotel.id)) {
-      localStorage.setItem('hotelId', hotel.id);
-    }
+    // Fetch rooms data from API
+    getRoomsByHotelId(id)
+      .then((data) => {
+        console.log("Rooms data received:", data); // Log the data received
+        if (!data || data.length === 0) {
+          console.log("No rooms data available");
+        } else {
+          setRooms(data.rooms);
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching rooms data:", error);
+      });
 
-    // Retrieve other saved data from localStorage
-    const savedHasChildren = localStorage.getItem('hasChildren');
-    const savedChildren = localStorage.getItem('children');
-    const savedCheckInDate = localStorage.getItem('checkInDate');
-    const savedCheckOutDate = localStorage.getItem('checkOutDate');
+    // Capture query parameters
+    const queryParams = new URLSearchParams(location.search);
+    const hasChildrenQuery = queryParams.get("hasChildren") === "true";
+    const childrenQuery = queryParams.get("children") || 0;
 
-    if (savedHasChildren) setHasChildren(JSON.parse(savedHasChildren));
-    if (savedChildren) setChildren(Number(savedChildren));
-    if (savedCheckInDate) setCheckInDate(savedCheckInDate);
-    if (savedCheckOutDate) setCheckOutDate(savedCheckOutDate);
-  }, [hotel, navigate]);
+    setHasChildren(hasChildrenQuery);
+    setChildren(Number(childrenQuery));
+  }, [id, navigate, location.search]);
 
-  // Function to handle changes in children selection
-  const handleHasChildrenChange = (e) => {
-    const value = e.target.value === 'yes';
-    setHasChildren(value);
-    localStorage.setItem('hasChildren', JSON.stringify(value));  
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
-    if (!value) {
-      setChildren(0);
-      localStorage.setItem('children', '0');  
-    }
-  };
-
-  // Function to handle number of children
-  const handleChildrenChange = (e) => {
-    const value = e.target.value;
-    setChildren(value);
-    localStorage.setItem('children', value);  
-  };
-
-  if (!hotel) {
+  if (!hotelData) {
+    console.log("No hotel data available"); // Log if no hotel data is available
     return null; // Render nothing while redirecting
   }
-  
+
+  const hotel = hotelData.hotel; // Access the nested hotel object
+
+  const handleHasChildrenChange = (event) => {
+    const value = event.target.value === "yes";
+    setHasChildren(value);
+
+    if (!value) {
+      setChildren(0); // Reset the number of children if "no" is selected
+    }
+  };
+
+  const handleChildrenChange = (event) => {
+    const value = event.target.value;
+    setChildren(value);
+  };
+
+  const handleRoomSelect = (room) => {
+    setSelectedRoom(room); // Update the selected room state
+  };
+
   return (
-    <div className="hotel-detail-container">
-      {/* Hotel Title */}
-      <h1 className="hotel-title">{hotel.name}</h1>
-
-      {/* Hotel Featured Image */}
-      <div className="gallery-container">
-        <Gallery />
-      </div>
-
-      {/* Hotel Information */}
+    <div className="hotel-detail-container ">
+      <h2 className="hotel-title">
+        {hotel.name || "Hotel Name"}
+      </h2>
+      <Gallery images={hotel.galeryImage || []} />
+      <h3 className="details-title">Information general</h3>
       <div className="hotel-info">
-        <HotelInfo hotel={hotel}/>
+        <HotelInfo hotel={hotel} className="details-title" />
       </div>
-
-      {/* Hotel Facilities */}
-      <div className="hotel-facilities">
-        <HoteFacilities hotel={hotel} />
+      <div className="hotel-info">
+        <PoliciesAndRating className="details-title" hotel={hotel} />
       </div>
-
-      {/* Room Types */}
-      <div className="hotel-room-types">
-        <RoomTypesList roomTypes={hotel.room_types}/>
-      </div>
-
-      {/* Hotel Policy */}
-      <div className="hotel-policies">
-        <HotelPolicies hotel={hotel}/>
-      </div>
-
-      {/* Pet Policy */}
-      <div className="hotel-pet-policy">
-        <PetPolicy hotel={hotel}/>
-      </div>
-
-      {/* Hotel Rating */}     
-      <div className="hotel-rating">
-        <HotelRating rating={hotel.rating} />
-      </div>
-
-      {/* Children Selection */}
+      <h3 className="details-title">Rooms</h3>
+      <RoomSelector rooms={rooms} onRoomSelect={handleRoomSelect} />{" "}
+      {/* Use RoomSelector */}
       <ChildrenSelector
-       hasChildren={hasChildren}
-       children={children}
-       handleHasChildrenChange={handleHasChildrenChange}
-       handleChildrenChange={handleChildrenChange}
+        className="details-title"
+        hasChildren={hasChildren}
+        children={children}
+        handleHasChildrenChange={handleHasChildrenChange}
+        handleChildrenChange={handleChildrenChange}
       />
-
-      {/* Check-in and Check-out Dates */}
-      <div className="date-selection">
-        <p><strong>Check-in Date:</strong> {checkInDate}</p>
-        <p><strong>Check-out Date:</strong> {checkOutDate}</p>
-      </div>
-
-      {/* Extra Options */}
-      <HotelExtraOptions extras={hotel.extras}/>
-
-      {/* Reservation Button */}
-      <div className="reservation-button-container">
-        <ReservationButton />
+      <div style={{ textAlign: "center" }}>
+        <ReservationButton
+          hotelId={id}
+          hasChildren={hasChildren}
+          children={children}
+          selectedRoom={selectedRoom} // Pass selectedRoom as a prop
+        />
       </div>
     </div>
   );

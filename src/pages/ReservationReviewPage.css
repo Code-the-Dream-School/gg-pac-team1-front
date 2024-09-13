@@ -1,0 +1,351 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'); /* Importar Font Awesome */
+.container-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+    justify-content: center;
+    align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
+    padding: 0;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.container-left, .container-right {
+    flex: 1 1 50%; /* Permite que los contenedores se ajusten y se envuelvan */
+    padding: 10px;
+    margin: 0;
+    box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho total */
+}
+
+
+.container-right {
+    background-color: #f5f5f5;
+}
+
+.hotel-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+.reservation-summary {
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    padding: 10px; /* Reduce el padding para un mejor espaciado */
+    border: 1px solid #ddd; /* Añade un borde alrededor del contenedor */
+    border-radius: 8px; /* Añade bordes redondeados */
+    background-color: #fff; /* Fondo blanco para parecerse a una factura */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añade una sombra para darle profundidad */
+}
+
+.reservation-summary p {
+    margin: 5px 0; /* Reduce el espaciado entre los párrafos */
+    display: flex;
+    justify-content: space-between; /* Espacia el contenido dentro de los párrafos */
+}
+
+.reservation-summary p span {
+    font-weight: bold; /* Hace que el texto dentro de los spans sea más prominente */
+}
+
+.reservation-summary .stay-dates-checkin,
+.reservation-summary .stay-dates-checkout {
+    text-align: left; /* Alinea el texto a la izquierda */
+    border-bottom: 1px solid #ddd; /* Añade una línea inferior para separar las secciones */
+    padding-bottom: 5px; /* Reduce el padding inferior para espaciado */
+    margin-bottom: 5px; /* Reduce el margen inferior para espaciado */
+    font-size: 0.8em; /* Reduce el tamaño de la fuente en un 20% */
+}
+
+.reservation-summary .total-nights,
+.reservation-summary .cost-details,
+.reservation-summary .summary-line {
+    border-bottom: 1px solid #ddd; /* Añade una línea inferior para separar las secciones */
+    padding-bottom: 5px; /* Reduce el padding inferior para espaciado */
+    margin-bottom: 5px; /* Reduce el margen inferior para espaciado */
+}
+
+.reservation-summary .summary-line {
+    font-size: 1.2em; /* Aumenta el tamaño de la fuente para el total */
+    color: #333; /* Color del texto */
+}
+
+.block-2 {
+    display: flex;
+    flex-direction: row; /* Alinea los elementos en una fila */
+    justify-content: space-between; /* Espacia los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    padding: 5px 10px; /* Añade padding alrededor del bloque */
+    margin: 10px 0; /* Añade margen vertical */
+    border: 1px solid #ddd; /* Añade un borde alrededor del bloque */
+    border-radius: 8px; /* Añade bordes redondeados */
+    background-color: #f9f9f9; /* Fondo claro para diferenciar el bloque */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añade una sombra para darle profundidad */
+}
+
+.block-2 .number-input {
+    display: flex; /* Alinea los elementos dentro del input */
+    align-items: center; /* Centra los elementos verticalmente */
+    justify-content: space-between; /* Espacia los elementos horizontalmente */
+    width: 48%; /* Ajusta el ancho de cada input al 48% para dejar espacio para el margen */
+}
+
+.block-2 .number-input:last-child {
+    margin-bottom: 0; /* Elimina el margen inferior del último input */
+}
+
+.block-2 .custom-icon {
+    margin: 0 5px; /* Añade margen horizontal entre el icono y el texto */
+    font-size: 1.5em; /* Ajusta el tamaño de los íconos */
+}
+
+.block-1 {
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    margin: 10px 0; /* Añade margen vertical */
+    border: 1px solid #ddd; /* Añade un borde alrededor del contenedor */
+    border-radius: 8px; /* Añade bordes redondeados */
+    background-color: #f9f9f9; /* Fondo claro para diferenciar el contenedor */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añade una sombra para darle profundidad */
+    max-width: 100%; /* Asegura que el contenedor no exceda el ancho del padre */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del contenedor */
+}
+
+.block-1 .form-group {
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+    width: 100%; /* Asegura que el grupo de formulario ocupe el 100% del ancho del contenedor */
+}
+
+.block-1 .icon-label {
+    display: flex;
+    align-items: center; /* Centra verticalmente el icono */
+    font-size: 2em; /* Tamaño del icono */
+    color: #007bff; /* Color del icono */
+    margin-left: 20px;
+    padding: 0 !important;
+    transform: rotate(-15deg); /* Gira el icono 90 grados hacia la izquierda */
+}
+
+.block-1 .date-group {
+    display: flex;
+    margin:  10px 0; /* Añade margen vertical */
+    flex-direction: row; /* Alinea los grupos de inputs en una fila */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan si no caben en una fila */
+    gap: 10px; /* Espacio entre los grupos de inputs */
+    width: 100%; /* Asegura que el grupo de fechas ocupe el 100% del ancho del contenedor */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del contenedor */
+}
+
+.block-1 .date-input-group {
+    display: flex;
+    align-items: center; /* Centra verticalmente el label y el input */
+    width: 45%; /* Ajusta el ancho del grupo de inputs */
+    flex: 1; /* Permite que los grupos de inputs se ajusten al tamaño disponible */
+}
+
+.block-1 .date-input-group label {
+    min-width: 90px; /* Ancho mínimo para el label */
+}
+
+.block-1 .date-input-group input {
+    flex: 1; /* El input toma el espacio restante */
+    width: 100px; /* Ancho específico para el input */
+    padding: 5px; /* Añade padding para un mejor aspecto */
+    border: 1px solid #ccc; /* Añade un borde */
+    border-radius: 4px; /* Bordes redondeados */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del input */
+}
+
+.block-1 .error-message {
+    color: red; /* Color rojo para los mensajes de error */
+    font-size: 0.9em; /* Tamaño de fuente más pequeño para los mensajes de error */
+    margin-top: 5px; /* Añade margen superior para separar los mensajes de error del DateInput */
+}
+
+.confirm-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* Ajusta el margen según sea necesario */
+  }
+  
+/***    * Estilos para el formulario de reserva*/
+
+    
+   
+    .review-reservation-title i {
+        margin-left: 5px; /* Espacio entre el texto y el icono */
+        font-size: 2rem; /* Tamaño del icono */
+        color: #fff; /* Icono blanco */
+        transform: rotate(-45deg); /* Girar el icono */
+        transition: transform 0.3s ease; /* Transición suave para la rotación */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Sombra para el icono */
+    }
+       
+
+/* Estilos existentes *//*************************************************************************/
+.hotel-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hotel-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.hotel-detail-container .hotel-info {
+    margin: 0; /* Eliminar márgenes */
+    padding: 0; /* Eliminar padding */
+}
+
+.hotel-info p {
+    margin: 5px 0; /* Agregar márgenes superior e inferior de 5px a los párrafos */
+    padding: 0; /* Eliminar padding de los párrafos */
+}
+
+.hotel-info h3{
+    margin: 5px 0; /* Agregar márgenes superior e inferior de 5px a los párrafos */
+    padding: 0; /* Eliminar padding de los párrafos */
+    color: #484848; /* Cambiar el color del texto a gris oscuro */
+    border-bottom: 1px solid #ddd; /* Línea fina en la parte inferior */
+}
+
+.hotel-detail-container .hotel-info p,
+.hotel-detail-container .hotel-info .hotel-address,
+.hotel-detail-container .hotel-info .hotel-brand,
+.hotel-detail-container .hotel-info .hotel-chain,
+.hotel-detail-container .hotel-info .hotel-stars,
+.hotel-detail-container .hotel-info .hotel-wifi,
+.hotel-detail-container .hotel-info .hotel-ocean-view,
+.hotel-detail-container .hotel-info .hotel-pool,
+.hotel-detail-container .hotel-info .hotel-gym,
+.hotel-detail-container .hotel-info .hotel-spa,
+.hotel-detail-container .hotel-info .hotel-restaurant,
+.hotel-detail-container .hotel-info .hotel-parking-availability,
+.hotel-detail-container .hotel-info .hotel-parking-cost,
+.hotel-languages,
+.hotel-cancellation,
+.hotel-rating {
+    line-height: 1 !important;
+    color: #ea0202 !important; /* Cambiar el color del texto a gris oscuro */
+    font-size: 1rem; /* Tamaño de letra añadido */
+    margin: 0 !important;
+    padding: 5px !important;
+}
+
+.hotel-policies-title {
+    font-size: 1.5rem; /* Tamaño de letra añadido */
+    line-height: 1.2 !important; /* Asegura la misma altura de línea */
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Room Selector */
+.room-selector-container {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.room-list {
+    width: 20%;
+    border-right: 1px solid #ddd;
+    margin: 0;
+    padding: 0;
+}
+
+.room-details {
+    width: 40%;
+    margin: 0;
+    padding: 0;
+}
+
+.light-gray-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar verticalmente */
+    height: 100%; /* Asegurar que ocupe todo el espacio vertical */
+    padding-left: 10px;
+}
+
+.room-image {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.room-image img {
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.room-details p {
+    line-height: 1 !important;
+    color: #ec0000 !important; /* Cambiar el color del texto a gris oscuro */
+    font-size: 1rem; /* Tamaño de letra añadido */
+    margin: 5px 0; /* Agregar márgenes superior e inferior de 5px */
+    padding: 0;
+}
+
+.section-title {
+    border-bottom: 1px solid #ddd;
+
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list-item {
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    cursor: pointer; /* Añadir el cursor como puntero para indicar que es seleccionable */
+    opacity: 0.5; /* Hacer el elemento más opaco cuando no está seleccionado */
+    margin: 0;
+    padding: 0;
+    color: #333; /* Cambiar el color del texto a gris oscuro */
+}
+
+.list-item.selected {
+    opacity: 1; /* Hacer el elemento menos opaco cuando está seleccionado */
+    margin: 0;
+    padding: 0;
+    color: #333; /* Cambiar el color del texto a gris oscuro */
+}
+
+.selected-room {
+    border: 2px solid #4CAF50; /* Cambiar el color del borde para resaltar */
+    border-radius: 10px; /* Aumentar el radio del borde para esquinas más redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra para darle profundidad */
+    font-size: 16px; /* Aumentar el tamaño de la fuente */
+    color: #333; /* Cambiar el color del texto a gris oscuro */
+    margin: 0;
+    padding: 0;
+}
+
+.details-title {
+    font-size: 1.5rem; /* Tamaño de letra */
+    color: #484848; /* Cambiar el color del texto a gris oscuro */
+    margin: 5px 0; /* Margen superior e inferior de 5px */
+    padding: 0;
+    border-bottom: 1px solid #ddd; /* Línea fina en la parte inferior */
+}

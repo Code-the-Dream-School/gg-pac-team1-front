@@ -1,142 +1,209 @@
+/* Variables */
+$primary-text-color: #333;
+$secondary-text-color: #333; /* Changed to a darker color */
+$highlight-text-color: #666;
+$room-details-text-color: #484848;
+$border-color: #ddd;
+$box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+/* Hotel Detail Container */
 .hotel-detail-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2em;
-    background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .hotel-title {
+    box-shadow: $box-shadow;
+
+    .details-title {
+        font-size: 1.5rem;
+        color: $secondary-text-color;
+        margin: 5px 0;
+        padding: 0;
+        border-bottom: 1px solid $border-color;
+    }
+}
+
+/* Hotel Title */
+.hotel-title {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #343a40;
-    margin-bottom: 20px;
     text-align: center;
-  }
-  
-  .hotel-info {
-    margin-bottom: 20px;
-  
-    .hotel-address {
-      font-size: 1.25rem;
-      color: #6c757d;
-      margin-bottom: 10px;
-    }
-  
-    .hotel-price {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #007bff;
-      margin-bottom: 10px;
-    }
-  
-    .hotel-description {
-      font-size: 1rem;
-      color: #343a40;
-      margin-bottom: 20px;
-    }
-  
-    .hotel-check-in-out {
-      font-size: 1rem;
-      color: #6c757d;
-      margin-bottom: 20px;
-    }
-  }
-  
-  .hotel-facilities,
-  .hotel-room-types,
-  .hotel-pet-policy {
-    margin-bottom: 20px;
-  
-    h3 {
-      font-size: 1.5rem;
-      color: #343a40;
-      margin-bottom: 10px;
-    }
-  
-    ul {
-      list-style: none;
-      padding: 0;
-  
-      li {
-        margin-bottom: 10px;
-      }
-    }
-  }
-  
-  .children-selection {
-    margin-top: 20px;
-    margin-bottom: 20px;
-  
-    p {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #343a40;
-    }
-  
-    label {
-      margin-right: 20px;
-      font-size: 1rem;
-      color: #343a40;
-    }
-  
-    .children-count {
-      margin-top: 10px;
-  
-      label {
-        font-size: 1rem;
-        color: #343a40;
-      }
-  
-      input[type="number"] {
-        margin-left: 10px;
-        width: 60px;
-        padding: 5px;
-      }
-    }
-  }
-  
-  .extra-options {
-    margin-bottom: 20px;
-  
-    h3 {
-      font-size: 1.5rem;
-      margin-bottom: 10px;
-      color: #343a40;
-    }
-  
-    ul {
-      list-style: none;
-      padding: 0;
-  
-      li {
-        margin-bottom: 10px;
-  
-        input[type="checkbox"] {
-          margin-right: 10px;
-        }
-      }
-    }
-  }
-  
-  .reservation-button-container {
-    text-align: center;
-  
-    .btn-primary {
-      display: inline-block;
-      padding: 10px 20px;
-      font-size: 1rem;
-      color: #ffffff;
-      background-color: #007bff;
-      border: none;
-      border-radius: 5px;
-      text-align: center;
-      cursor: pointer;
-  
-      &:hover {
-        background-color: #0056b3;
-      }
-    }
-  }
-  
+    margin: 0;
+    padding: 5px;
+    color: $primary-text-color;
+}
+
+/* Hotel Info */
+.hotel-detail-container .hotel-info {
+    margin: 0;
+    padding: 0;
+    color: $highlight-text-color;
+}
+
+.hotel-info p {
+    margin: 5px 0;
+    padding: 0;
+    color: $highlight-text-color;
+}
+
+.hotel-detail-container .hotel-info p,
+.hotel-detail-container .hotel-info .hotel-address,
+.hotel-detail-container .hotel-info .hotel-brand,
+.hotel-detail-container .hotel-info .hotel-chain,
+.hotel-detail-container .hotel-info .hotel-stars,
+.hotel-detail-container .hotel-info .hotel-wifi,
+.hotel-detail-container .hotel-info .hotel-ocean-view,
+.hotel-detail-container .hotel-info .hotel-pool,
+.hotel-detail-container .hotel-info .hotel-gym,
+.hotel-detail-container .hotel-info .hotel-spa,
+.hotel-detail-container .hotel-info .hotel-restaurant,
+.hotel-detail-container .hotel-info .hotel-parking-availability,
+.hotel-detail-container .hotel-info .hotel-parking-cost,
+.hotel-languages,
+.hotel-cancellation,
+.hotel-rating {
+    line-height: 1 !important;
+    color: $highlight-text-color !important;
+    font-size: 1rem;
+    margin: 0 !important;
+    padding: 5px !important;
+}
+
+/* Hotel Policies Title */
+.hotel-policies-title {
+    font-size: 1.5rem;
+    line-height: 1.2 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Room Selector Container */
+.room-selector-container {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Room List */
+.room-list {
+    width: 20%;
+    border-right: 1px solid $border-color;
+    margin: 0;
+    padding: 0;
+}
+
+/* Room Details */
+.room-details {
+    width: 40%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Light Gray Background */
+.light-gray-background {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding-left: 10px;
+}
+
+/* Room Image */
+.room-image {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.room-image img {
+    max-width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+/* Room Details Paragraph */
+.room-details p {
+    line-height: 1 !important;
+    color: $room-details-text-color !important;
+    font-size: 1rem;
+    margin: 5px 0;
+    padding: 0;
+}
+
+/* Section Title */
+.section-title {
+    border-bottom: 1px solid $border-color;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    color: $primary-text-color;
+}
+
+/* List */
+.list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* List Item */
+.list-item {
+    border-bottom: 1px solid $border-color;
+    font-size: 14px;
+    cursor: pointer;
+    opacity: 0.5;
+    margin: 0;
+    padding: 0;
+    color: $primary-text-color;
+}
+
+.list-item.selected {
+    opacity: 1;
+    margin: 0;
+    padding: 0;
+    color: $primary-text-color;
+}
+
+/* Selected Room */
+.selected-room {
+    border-radius: 10px;
+    box-shadow: $box-shadow;
+    font-size: 16px;
+    color: $primary-text-color;
+    margin: 0;
+    padding: 0;
+}
+
+/* Details Title */
+.details-title {
+    font-size: 1.5rem;
+    color: $secondary-text-color;
+    margin: 5px 0;
+    padding: 0;
+    border-bottom: 1px solid $border-color;
+}
+
+/* ### Explicación
+
+- **Variables**: Define los colores y estilos reutilizables.
+- **Hotel Detail Container**: Estilos para el contenedor principal de los detalles del hotel.
+- **Hotel Title**: Estilos para el título del hotel.
+- **Hotel Info**: Estilos para la información del hotel.
+- **Hotel Policies Title**: Estilos para el título de las políticas del hotel.
+- **Room Selector Container**: Estilos para el contenedor del selector de habitaciones.
+- **Room List**: Estilos para la lista de habitaciones.
+- **Room Details**: Estilos para los detalles de la habitación.
+- **Light Gray Background**: Estilos para el fondo gris claro.
+- **Room Image**: Estilos para la imagen de la habitación.
+- **Room Details Paragraph**: Estilos para los párrafos de los detalles de la habitación.
+- **Section Title**: Estilos para los títulos de las secciones.
+- **List**: Estilos para la lista.
+- **List Item**: Estilos para los elementos de la lista.
+- **Selected Room**: Estilos para la habitación seleccionada.
+- **Details Title**: Estilos para el título de los detalles.
+*/

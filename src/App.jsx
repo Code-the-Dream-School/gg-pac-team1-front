@@ -31,24 +31,34 @@ import TripDescriptionNY from './components/TripSection/TripDescriptionNY';
 import TripDescriptionSf from './components/TripSection/TripDescriptionSf';
 import Wellness from './components/Wellness';
 import Home from './pages/Home';
-import HotelDetailPage from './pages/HotelDetailPage';
+import VirginiaHotels from './components/TravelBlog/VirginiaHotels';
+import LakeTahoeHotels from './components/TravelBlog/LakeTahoeHotels';
+import NorthCarolinaHotels from './components/TravelBlog/NorthCarolinaHotels';
+import OhioHotels from './components/TravelBlog/OhioHotels';
 import HotelSearchPage from './pages/HotelSearchPage';
+import HotelDetailPage from './pages/HotelDetailPage';
 import ReservationReviewPage from './pages/ReservationReviewPage';
 import Search from './pages/Search';
 import { getAllData } from './util/index';
+import TravelBlog from './components/TravelBlog/TravelBlog';
+import PaymentTest from './components/PaymentTest';
+import TestSaveReservation from './components/TestSaveReservation'; // Importar TestSaveReservation
 
 const stripePromise = loadStripe('pk_test_51Puz5H01R3YOln0lbdcwMrIqjhFuVLo3gHemPOIJpzHVgpWLEblrwnMMJp9Vl98OQeADhnDljbWXdRWThnuKFFnI00D3YQEZjX'); // Reemplaza esto con tu clave pública de Stripe
 const AUTH_URL = 'http://localhost:8000/api/v1/auth';
 
 function App() {
   const [message, setMessage] = useState('');
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
     (async () => {
       const myData = await getAllData(AUTH_URL);
       setMessage(myData.data);
-    })();
 
+      const reviewsData = myData.data.reviews || [];
+      setReviews(Array.isArray(reviewsData) ? reviewsData : []);
+    })();
     return () => {
       console.log('unmounting');
     };
@@ -135,18 +145,18 @@ function App() {
         },
         {
           path: 'hotel/:id',
-          element: <HotelDetailPage />
+          element: <HotelDetailPage />,
         },
         {
           path: 'reservation-review',
-          element: <ReservationReviewPage />
+          element: <ReservationReviewPage />,
         },
         {
           path: 'trip-description-chicago',
           element: <TripDescriptionChicago />,
         },
         {
-          path: 'trip-description-sf',
+          path: 'trip-description-san-francisco',
           element: <TripDescriptionSf />,
         },
         {
@@ -154,13 +164,53 @@ function App() {
           element: <TripDescriptionMiami />,
         },
         {
-          path: 'search',
-          element: <Search />,
+          path: 'virginia-hotels',
+          element: <VirginiaHotels /> 
+        }, 
+        { 
+          path: 'lake-tahoe-hotels',
+          element: <LakeTahoeHotels /> 
+        },
+        { 
+          path: 'north-carolina-hotels',
+          element: <NorthCarolinaHotels /> 
+        },
+        { 
+          path: 'ohio-hotels', 
+          element: <OhioHotels /> 
+        },
+        {
+          path: 'virginia-hotels',
+          element: <VirginiaHotels />,
+        },
+        {
+          path: 'lake-tahoe-hotels',
+          element: <LakeTahoeHotels />,
+        },
+        {
+          path: 'north-carolina-hotels',
+          element: <NorthCarolinaHotels />,
+        },
+        {
+          path: 'ohio-hotels',
+          element: <OhioHotels />,
         },
         {
           path: '/:state/:city',
           element: <HotelSearchPage />,
         },
+        {
+          path: 'payment-test', // Nueva ruta para PaymentTest
+          element: <PaymentTest />,
+        },
+        {
+          path: 'test-save-reservation', // Nueva ruta para TestSaveReservation
+          element: <TestSaveReservation />,
+        },
+        {
+          path: '/confirmation', //confirmation page
+          element: <ReservationReviewPage />,
+        }
       ],
     },
   ]);

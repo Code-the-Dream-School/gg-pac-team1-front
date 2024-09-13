@@ -1,145 +1,277 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import HotelInfo from '../components/HotelInfo';
-import ReservationSummary from '../components/ReservationSummary';
-import ReservationNumber from '../components/ReservationNumber';
-import DateInput from '../components/DateInput';
-import AdultsInput from '../components/AdultsInput';
-import ChildrenInput from '../components/ChildrenInput';
-import ErrorMessage from '../components/ErrorMessage';
-import useReservation from '../hooks/useReservation';
-import useLoadHotelData from '../hooks/useLoadHotelData';
-import useCalculateCosts from '../hooks/useCalculateCosts';
+import React, {
+  useReducer,
+  useEffect,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
+import { useLocation } from "react-router-dom";
+import { calculateCosts } from "../services/bookingServices";
+import ReservationSummary from "../components/ReservationSummary";
+import ReservationNumber from "../components/ReservationNumber";
+import useReservation from "../hooks/useReservation";
+import ErrorMessage from "../components/ErrorMessage";
+import HotelInfo from "../components/HotelInfo";
+import RoomsInfo from "../components/RoomsInfo";
+import useLoadHotelData from "../hooks/useLoadHotelData";
+import DateInput from "../components/DateInput";
+import NumberInput from "../components/NumberInput";
+import useDateValidation from "../hooks/useDateValidation";
+import Modal from "../components/Modal";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faBaby } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from "prop-types";
+import "./ReservationReviewPage.css";
+
+const initialState = {
+  checkInDate: "",
+  checkOutDate: "",
+  adults: 2,
+  children: 0,
+  totalNights: 0,
+  totalRoomCost: 0,
+  finalTotalCost: 0,
+  globalError: null,
+  guestName: "",
+  guestEmail: "",
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "SET_COSTS":
+      return {
+        ...state,
+        totalNights: action.payload.totalNights,
+        totalRoomCost: action.payload.totalRoomCost,
+        finalTotalCost: action.payload.finalTotalCost,
+      };
+    case "UPDATE_FIELD":
+      return {
+        ...state,
+        [action.field]: action.value,
+      };
+    case "SET_GLOBAL_ERROR":
+      return {
+        ...state,
+        globalError: action.payload,
+      };
+    case "SET_USER_DETAILS":
+      return {
+        ...state,
+        guestName: action.payload.guestName,
+        guestEmail: action.payload.guestEmail,
+      };
+    default:
+      return state;
+  }
+};
 
 const ReservationReviewPage = () => {
-  const [checkInDate, setCheckInDate] = useState(localStorage.getItem('checkInDate') || '');
-  const [checkOutDate, setCheckOutDate] = useState(localStorage.getItem('checkOutDate') || '');
-  const [adults, setAdults] = useState(parseInt(localStorage.getItem('adults')) || 2);
-  const [children, setChildren] = useState(parseInt(localStorage.getItem('children')) || 0);
-  const [selectedExtras, setSelectedExtras] = useState(JSON.parse(localStorage.getItem('selectedExtras')) || []);
-  const [allExtras, setAllExtras] = useState([]); // Estado para todos los extras disponibles
-  const [checkInError, setCheckInError] = useState(null);
-  const [checkOutError, setCheckOutError] = useState(null);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const hotelId = queryParams.get("hotelId");
+  const initialCheckInDate = queryParams.get("checkInDate") || "";
+  const initialCheckOutDate = queryParams.get("checkOutDate") || "";
+  const initialAdults = parseInt(queryParams.get("adults") || "2");
+  const initialChildren = parseInt(queryParams.get("children") || "0");
+  const roomId = queryParams.get("roomId");
 
-  const { hotel, error, loadHotelData } = useLoadHotelData();
-  const { totalNights, totalRoomCost, totalExtrasCost, finalTotalCost, calculateCosts } = useCalculateCosts(hotel, checkInDate, checkOutDate, selectedExtras);
+  const [state, dispatch] = useReducer(reducer, {
+    ...initialState,
+    checkInDate: initialCheckInDate,
+    checkOutDate: initialCheckOutDate,
+    adults: initialAdults,
+    children: initialChildren,
+  });
 
-  const reservationNumber = useReservation(15 * 1000); // 15 segundos para pruebas
+  const { hotel, error: hotelError } = useLoadHotelData(hotelId);
+  const reservationNumber = useReservation(15 * 1000); // 15 seconds for testing
+  const { errors, validate } = useDateValidation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Filtrar las habitaciones usando el roomId
+  const filteredRooms = useMemo(() => {
+    if (hotel && hotel.rooms) {
+      return hotel.rooms.filter((room) => room._id === roomId);
+    }
+    return [];
+  }, [hotel, roomId]);
+
+  // Calculate costs using useMemo
+  const calculatedCosts = useMemo(() => {
+    if (hotel && !errors.checkInDate && !errors.checkOutDate) {
+      try {
+        return calculateCosts(state.checkInDate, state.checkOutDate, hotel);
+      } catch (err) {
+        dispatch({ type: "SET_GLOBAL_ERROR", payload: err.message });
+        return { totalNights: 0, totalRoomCost: 0, finalTotalCost: 0 };
+      }
+    }
+    return { totalNights: 0, totalRoomCost: 0, finalTotalCost: 0 };
+  }, [
+    state.checkInDate,
+    state.checkOutDate,
+    hotel,
+    errors.checkInDate,
+    errors.checkOutDate,
+  ]);
 
   useEffect(() => {
-    const hotelId = localStorage.getItem('hotelId');
+    dispatch({
+      type: "SET_COSTS",
+      payload: calculatedCosts,
+    });
+  }, [calculatedCosts]);
 
-    if (hotelId) {
-      loadHotelData(hotelId);
-    } else {
-      setCheckInError('Hotel ID not found in localStorage');
-    }
-  }, []);
+  // Handle input changes
+  const handleInputChange = useCallback(
+    (e) => {
+      const { name, value } = e.target;
+      let parsedValue =
+        name === "adults" || name === "children" ? parseInt(value) || 0 : value;
 
-  useEffect(() => {
-    if (hotel) {
-      setAllExtras(hotel.extras || []); // Asignar los extras disponibles al estado allExtras
-      calculateCosts();
-    }
-  }, [hotel, checkInDate, checkOutDate, selectedExtras]);
+      if (name === "checkInDate" || name === "checkOutDate") {
+        const rules = {};
+        if (name === "checkOutDate") {
+          rules.minDate = state.checkInDate;
+        }
+        if (name === "checkInDate") {
+          rules.maxDate = state.checkOutDate;
+        }
+        validate(name, parsedValue, rules);
+      }
 
-  const handleCheckInChange = (e) => {
-    const newCheckInDate = e.target.value;
-    setCheckInDate(newCheckInDate);
-    localStorage.setItem('checkInDate', newCheckInDate);
+      dispatch({ type: "UPDATE_FIELD", field: name, value: parsedValue });
+    },
+    [state.checkInDate, state.checkOutDate, validate]
+  );
+
+  // Handle reservation confirmation
+  const handleConfirmReservation = () => {
+    setIsModalOpen(true);
   };
 
-  const handleCheckOutChange = (e) => {
-    const newCheckOutDate = e.target.value;
-    setCheckOutDate(newCheckOutDate);
-    localStorage.setItem('checkOutDate', newCheckOutDate);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
-
-  const handleAdultsChange = (e) => {
-    const newAdults = parseInt(e.target.value);
-    setAdults(newAdults);
-    localStorage.setItem('adults', newAdults);
-  };
-
-  const handleChildrenChange = (e) => {
-    const newChildren = parseInt(e.target.value);
-    setChildren(newChildren);
-    localStorage.setItem('children', newChildren);
-  };
-
-  const toggleExtra = (extra) => {
-    const updatedExtras = selectedExtras.includes(extra)
-      ? selectedExtras.filter(e => e !== extra)
-      : [...selectedExtras, extra];
-    setSelectedExtras(updatedExtras);
-    localStorage.setItem('selectedExtras', JSON.stringify(updatedExtras));
-  };
-
-  const memoizedCostSummary = useMemo(() => (
-    <ReservationSummary
-      totalNights={totalNights}
-      roomCostPerNight={hotel?.room_cost_per_night || 0}
-      totalRoomCost={totalRoomCost}
-      selectedExtras={selectedExtras}
-      totalExtrasCost={totalExtrasCost}
-      finalTotalCost={finalTotalCost}
-      adults={adults}
-      children={children}
-    />
-  ), [totalNights, hotel?.room_cost_per_night, totalRoomCost, selectedExtras, totalExtrasCost, finalTotalCost, adults, children]);
 
   return (
-    <div className="reservation-review-page">
-      <h1>Review Your Reservation</h1>
-      {error && <ErrorMessage error={error} />}
+    <div className="hotel-detail-container">
+      <h3 className="review-reservation-title ">Review Your Reservation <i class="fas fa-plane"></i></h3>
+
+      {hotelError && <ErrorMessage error={hotelError} />}
+      {state.globalError && <ErrorMessage error={state.globalError} />}
       {hotel ? (
         <>
-          <HotelInfo hotel={hotel} />
-          <div>
-            <DateInput 
-              checkInDate={checkInDate}
-              checkOutDate={checkOutDate}
-              handleCheckInChange={handleCheckInChange}
-              handleCheckOutChange={handleCheckOutChange}
-              showCheckOut={true}
-            />
-            {checkInError && <ErrorMessage error={checkInError} />}
-            {checkOutError && <ErrorMessage error={checkOutError} />}
-            <AdultsInput 
-              adults={adults}
-              handleAdultsChange={handleAdultsChange}
-            />
-            <ChildrenInput 
-              children={children}
-              handleChildrenChange={handleChildrenChange}
-            />
-            <h3>Selected Extras:</h3>
-            <ul>
-              {selectedExtras.map(extra => (
-                <li key={extra.id} onClick={() => toggleExtra(extra)}>
-                  {extra.name}
-                </li>
-              ))}
-            </ul>
-            <h3>Deactivated Extras:</h3>
-            <ul>
-              {allExtras.filter(extra => !selectedExtras.includes(extra)).map(extra => (
-                <li key={extra.id} onClick={() => toggleExtra(extra)} style={{ textDecoration: 'line-through' }}>
-                  {extra.name}
-                </li>
-              ))}
-            </ul>
+          <div className="container-wrapper">
+            <div className="container-left">
+              <HotelInfo hotel={hotel} className="details-title" />
+              {filteredRooms.length > 0 && !hotelError ? (
+                <RoomsInfo rooms={filteredRooms} className="hotel-info" />
+              ) : (
+                !hotelError && <p>No rooms available for this hotel</p>
+              )}
+            </div>
+            <div className="container-right">
+              <div className="block-1">
+                <DateInput
+                  checkInDate={state.checkInDate}
+                  checkOutDate={state.checkOutDate}
+                  handleCheckInChange={(e) =>
+                    handleInputChange({
+                      target: { name: "checkInDate", value: e.target.value },
+                    })
+                  }
+                  handleCheckOutChange={(e) =>
+                    handleInputChange({
+                      target: { name: "checkOutDate", value: e.target.value },
+                    })
+                  }
+                  showCheckOut={true}
+                />
+                {errors.checkInDate && (
+                  <ErrorMessage error={errors.checkInDate} />
+                )}
+                {errors.checkOutDate && (
+                  <ErrorMessage error={errors.checkOutDate} />
+                )}
+              </div>
+
+              <div className="block-2">
+                <NumberInput
+                  label="Adults"
+                  name="adults"
+                  value={state.adults}
+                  onChange={handleInputChange}
+                  min="1"
+                  icon={() => <FontAwesomeIcon icon={faUser} className="custom-icon" />}
+                  className="number-input"
+                />
+                <NumberInput
+                  label="Children"
+                  name="children"
+                  value={state.children}
+                  onChange={handleInputChange}
+                  min="0"
+                  icon={() => <FontAwesomeIcon icon={faBaby} className="custom-icon" />}
+                  className="number-input"
+                />
+              </div>
+
+              <ReservationSummary className="reservation-summary"
+                checkInDate={state.checkInDate}
+                checkOutDate={state.checkOutDate}
+                totalNights={state.totalNights}
+                roomCostPerNight={hotel.room_cost_per_night}
+                totalRoomCost={state.totalRoomCost}
+                finalTotalCost={state.finalTotalCost}
+                adults={state.adults}  // Asegúrate de pasar los valores de adultos y niños
+                children={state.children}  // Asegúrate de pasar los valores de adultos y niños
+              />
+
+              <ReservationNumber reservationNumber={reservationNumber} />
+              <div className="confirm-button-container">
+                <button
+                  className="confirm-reservation-btn centered-content"
+                  onClick={handleConfirmReservation}
+                >
+                  Confirm Reservation
+                </button>
+              </div>
+            </div>
           </div>
-          {memoizedCostSummary}
         </>
       ) : (
         <p>Loading reservation summary...</p>
       )}
-      <ReservationNumber reservationNumber={reservationNumber} />
-      <div className="confirm-button-container">
-        <button className="confirm-reservation-btn">Confirm Reservation</button>
-      </div>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        reservationDetails={{
+          checkInDate: state.checkInDate,
+          checkOutDate: state.checkOutDate,
+          adults: state.adults,
+          children: state.children,
+          totalNights: state.totalNights,
+          totalRoomCost: state.totalRoomCost,
+          finalTotalCost: state.finalTotalCost,
+          hotel,
+          reservationNumber,
+          guestName: state.guestName,
+          guestEmail: state.guestEmail,
+          roomId,
+          hotelId,
+        }}
+      />
     </div>
   );
+};
+
+ReservationReviewPage.propTypes = {
+  state: PropTypes.object.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  hotel: PropTypes.object.isRequired,
 };
 
 export default ReservationReviewPage;

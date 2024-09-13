@@ -1,32 +1,49 @@
-// useLoadHotelData.js
-import { useState } from 'react';
-import tripsData from '../tripsData';
+import { useState, useEffect, useCallback } from 'react';
+import { loadHotelData, getRoomsByHotelId } from '../services/bookingServices';
 
-const useLoadHotelData = () => {
+const useLoadHotelData = (hotelId) => {
   const [hotel, setHotel] = useState(null);
   const [error, setError] = useState(null);
 
-  const loadHotelData = (hotelId) => {
-    try {
-      const currentHotel = tripsData.flatMap(trip => trip.hotels).find(h => h.id === parseInt(hotelId));
-      if (!currentHotel) {
-        throw new Error('Hotel not found');
-      }
-      setHotel({
-        name: currentHotel.name,
-        address: currentHotel.address || 'Address not available',
-        category: currentHotel.category || 'Category not available',
-        description: currentHotel.description || 'Description not available',
-        room_cost_per_night: currentHotel.room_cost_per_night,
-        check_in_time: currentHotel.check_in_time,
-        check_out_time: currentHotel.check_out_time
-      });
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+  const handleError = useCallback((message) => {
+    setError(message);
+  }, []);
 
-  return { hotel, error, loadHotelData };
+  useEffect(() => {
+    if (!hotelId) {
+      handleError("Hotel ID not found in URL parameters");
+      return;
+    }
+
+    const fetchHotelAndRoomsData = async () => {
+      try {
+        const [loadedHotel, loadedRooms] = await Promise.all([
+          loadHotelData(hotelId),
+          getRoomsByHotelId(hotelId)
+        ]);
+
+        if (!loadedRooms.rooms.length) {
+          handleError("No rooms available for this hotel");
+          return;
+        }
+
+        const firstRoom = loadedRooms.rooms[0];
+        const costPerNight = firstRoom.room_cost_per_night?.$numberDecimal || firstRoom.room_cost_per_night;
+
+        setHotel({
+          ...loadedHotel,
+          rooms: loadedRooms.rooms,
+          room_cost_per_night: Number(costPerNight),
+        });
+      } catch (err) {
+        handleError(err.message);
+      }
+    };
+
+    fetchHotelAndRoomsData();
+  }, [hotelId, handleError]);
+
+  return { hotel, error };
 };
 
 export default useLoadHotelData;

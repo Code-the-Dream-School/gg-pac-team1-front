@@ -3,11 +3,13 @@ import { useLocation } from 'react-router-dom';
 import SearchForm from '../SearchForm.jsx';
 import HotelList from './HotelList.jsx';
 import { filterByProximity, calculateAveragePrice, filterByCoastalLocation } from '../../util/filterUtils.js';
-import NewYorkCar from '../../../images/CarouselImg/NewYorkCar.jpg'; 
+import NewYorkCar from '../../../images/CarouselImg/NewYorkCar.jpg'; // Update the image path as necessary
 import BackgroundCardContainer from '../TripSection/BackgroundCardContainer.jsx';
-import './TripDescription.css'; 
+import './TripDescription.css'; // Ensure styles apply correctly
 
-const TripDescriptionNY = () => {
+
+const TripDestinationNy = () => {
+
   const location = useLocation();
   const { city } = location.state || {};
 
@@ -16,7 +18,9 @@ const TripDescriptionNY = () => {
 
   useEffect(() => {
     if (city && city.hotels) {
-      const userLocation = { latitude: 40.7128, longitude: -74.0060 }; 
+
+      const userLocation = { latitude: 40.7128, longitude: -74.0060 }; // New York City coordinates
+
 
       const nearbyHotels = filterByProximity(city.hotels, userLocation, 500);
       const avgPrice = calculateAveragePrice(nearbyHotels);
@@ -32,25 +36,24 @@ const TripDescriptionNY = () => {
   }
 
   const cityDescription = `
-    New York City, often simply called New York, is the most populous city in the United States, 
-    known for its towering skyscrapers, bustling streets, and diverse neighborhoods. 
-    The city's five boroughs—Manhattan, Brooklyn, Queens, The Bronx, and Staten Island—each offer 
-    a unique experience. Manhattan is home to iconic landmarks such as the Statue of Liberty, Times Square, 
-    and Central Park. The city is a global hub for finance, arts, and culture, boasting world-renowned 
-    museums like the Metropolitan Museum of Art and the Museum of Modern Art. Broadway is the epicenter of 
-    American theater, offering an array of spectacular shows. With a culinary scene that spans every 
-    imaginable cuisine, New York is a food lover’s paradise. The city's vibrant nightlife, historic 
-    neighborhoods, and endless shopping opportunities make it a destination that truly has something 
-    for everyone. Whether you're exploring the architectural marvels of Midtown, enjoying a stroll 
-    through the high-line parks, or visiting the trendy neighborhoods of Brooklyn, New York City 
-    promises an unforgettable experience.
+
+    New York City, often referred to as NYC, is a bustling metropolis known for its iconic landmarks and vibrant culture. 
+    Located in the northeastern United States, NYC is famous for the Statue of Liberty, Times Square, Central Park, and 
+    the Empire State Building. The city offers a diverse cultural experience with its numerous museums, theaters, and 
+    restaurants. From Broadway shows to world-class shopping and dining, New York City provides endless opportunities for 
+    exploration and entertainment. The city’s neighborhoods, such as Manhattan, Brooklyn, and Queens, each offer unique 
+    experiences and attractions. NYC's skyline, historical landmarks, and dynamic energy make it a must-visit destination.
+
   `;
 
   return (
     <div className="trip-description">
       <div className="background-card-container">
         <BackgroundCardContainer
-          imageSrc={NewYorkCar}
+
+          imageSrc={NewYorkCar} // Use the correct image for New York City
+
+
           title={city.name}
           description={city.description}
         />
@@ -61,9 +64,11 @@ const TripDescriptionNY = () => {
       <div className="form-section">
         <SearchForm />
       </div>
-      <HotelList hotels={hotels} averagePrice={averagePrice} />
+
     </div>
   );
 };
 
-export default TripDescriptionNY;
+
+export default TripDestinationNy;
+

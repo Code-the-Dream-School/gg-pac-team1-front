@@ -1,47 +1,46 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSwimmingPool, faUtensils, faWifi, faDumbbell, faSpa, faParking, faStar } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-function HotelSearchResultCard({ hotel }) {
-  // Funtion color review
+function HotelSearchResultCard({ hotel, imageUrl, roomCostPerNight }) {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+
   const getReviewColor = (reviews) => {
     if (reviews > 4) {
-      return 'review-success'; // Green
+      return 'review-success';
     } else if (reviews >= 2.5) {
-      return 'review-warning'; // Yellow
+      return 'review-warning';
     } else {
-      return 'review-danger'; // Red
+      return 'review-danger';
     }
   };
 
   const amenities = [
     { condition: hotel.pool, icon: faSwimmingPool, title: "Piscina" },
     { condition: hotel.restaurant, icon: faUtensils, title: "Restaurante" },
-    { condition: hotel.wifi?.available, icon: faWifi, title: "Wi-Fi" },
+    { condition: hotel.wifi, icon: faWifi, title: "Wi-Fi" },
     { condition: hotel.gym, icon: faDumbbell, title: "Gimnasio" },
     { condition: hotel.spa, icon: faSpa, title: "Spa" },
-    { condition: hotel.parking?.available, icon: faParking, title: "Estacionamiento" },
+    { condition: hotel.parking?.availability, icon: faParking, title: "Estacionamiento" },
   ];
 
   return (
     <div className="hotel-search-result-card">
-      {/* Image on the left */}
       <div className="img-container">
         <img 
-          src={hotel.image} 
-          alt={hotel.name} 
+          src={imageUrl}
+          alt={hotel.name}
           className="card-img"
         />
       </div>
 
-      {/* Content on the right */}
       <div className="card-body">
-        {/* Título y Dirección */}
         <div>
           <h5 className="card-title">{hotel.name}</h5>
-          <p className="card-text">{hotel.address}</p>
+          <p className="card-text">{`${hotel.street}, ${hotel.city}, ${hotel.state} ${hotel.zipCode}`}</p>
           
-          {/* Single line convenience icons */}
           <div className="amenities">
             {amenities.map((amenity, index) =>
               amenity.condition ? (
@@ -56,22 +55,50 @@ function HotelSearchResultCard({ hotel }) {
           </div>
         </div>
 
-        {/* Reviews on the left and Cost on the right */}
         <div className="footer">
           <span className={`reviews ${getReviewColor(hotel.rating)}`}>
             <FontAwesomeIcon icon={faStar} className="star-icon" />
             {hotel.rating}
           </span>
           <p className="price">
-            ${hotel.room_cost_per_night} <span className="perNight">per night</span>
+            ${roomCostPerNight} <span className="perNight">per night</span>
           </p>
         </div>
 
-        {/* Enlace para ver detalles */}
-        <Link to={`/hotel/${hotel.id}`} className="details-link">See details</Link>
+        <Link to={`/hotel/${hotel._id}?${queryParams.toString()}`} className="details-link">See details</Link>
       </div>
     </div>
   );
 }
+
+HotelSearchResultCard.propTypes = {
+  hotel: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    street: PropTypes.string,
+    city: PropTypes.string,
+    state: PropTypes.string,
+    zipCode: PropTypes.string,
+    image: PropTypes.arrayOf(
+      PropTypes.shape({
+        url: PropTypes.string,
+        description: PropTypes.string,
+        _id: PropTypes.string,
+      })
+    ),
+    pool: PropTypes.bool,
+    restaurant: PropTypes.bool,
+    wifi: PropTypes.bool,
+    gym: PropTypes.bool,
+    spa: PropTypes.bool,
+    parking: PropTypes.shape({
+      availability: PropTypes.bool,
+      cost_per_day: PropTypes.number,
+    }),
+    rating: PropTypes.number.isRequired,
+  }).isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  roomCostPerNight: PropTypes.number.isRequired,
+};
 
 export default HotelSearchResultCard;
