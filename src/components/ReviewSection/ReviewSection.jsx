@@ -31,6 +31,7 @@ const ReviewSection = () => {
   const [showReviews, setShowReviews] = useState(true); // State to manage visibility
 
   useEffect(() => {
+<<<<<<< Updated upstream
     // Load data from local storage if available, otherwise fallback to initialHotels
     const storedHotels = JSON.parse(localStorage.getItem('hotels'));
     if (storedHotels) {
@@ -46,6 +47,68 @@ const ReviewSection = () => {
   const handleHotelChange = (event) => {
     const selectedId = parseInt(event.target.value, 10);
     const hotel = hotels.find(h => h.id === selectedId);
+=======
+    const fetchHotels = async () => {
+      const token = localStorage.getItem('token'); // Retrieve token from localStorage
+
+      if (!token) {
+        setError('No token found in localStorage.');
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:8000/api/v1/hotels', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`, // Include the Authorization Bearer token
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch hotels');
+        }
+
+        const data = await response.json();
+        setHotels(data.hotels); // Update the state with the fetched data
+      } catch (error) {
+        console.error('Error fetching hotels:', error);
+        setError(error.message);
+      }
+    };
+
+    fetchHotels();
+  }, []); // Empty dependency array ensures it runs once when the component mounts
+
+
+  // // Fetch reviews for the selected hotel
+  // const fetchReviews = async (hotelId) => {
+  //   const token = localStorage.getItem('token');
+  //   try {
+  //     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/reviews/${hotelId}`, {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`
+  //       }
+  //     });
+  //     if (!response.ok) {
+  //       throw new Error('Network response was not ok');
+  //     }
+  //     const reviews = await response.json();
+  //     const updatedHotels = hotels.map(hotel =>
+  //       hotel._id === hotelId ? { ...hotel, reviews } : hotel
+  //     );
+  //     setHotels(updatedHotels);
+  //   } catch (error) {
+  //     console.error('Error fetching reviews:', error);
+  //   }
+  // };
+
+  // Handle hotel selection change
+  const handleHotelChange = async (event) => {
+    const selectedId = event.target.value;
+    const hotel = hotels.find(h => h._id === selectedId);
+    console.log('Selected hotel:', hotel); // Log the selected hotel
+>>>>>>> Stashed changes
     setSelectedHotel(hotel);
   };
 
