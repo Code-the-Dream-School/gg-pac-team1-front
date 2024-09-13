@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/components/_configuser.scss';
 import Login from './Login';
+import CustomDropdown from './CustomDropdown'; // Importar el nuevo componente
 
 const Header = () => {
-  const [isSmall, setIsSmall] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [welcomeMessage, setWelcomeMessage] = useState('');
   const [userEmail, setUserEmail] = useState('');
@@ -22,20 +22,6 @@ const Header = () => {
       setUserEmail(storedUser.email);
       setIsLoggedIn(true);
     }
-
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsSmall(true);
-      } else {
-        setIsSmall(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, []);
 
   const handleLogout = () => {
@@ -46,10 +32,6 @@ const Header = () => {
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('user');
     navigate('/');
-  };
-
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
   };
 
   const goToAccount = () => {
@@ -72,7 +54,7 @@ const Header = () => {
 
   return (
     <>
-      <header className={`header ${isSmall ? 'small' : ''}`}>
+      <header className="header">
         <div className="header-left">
           <Link to="/" className="brand-link">
             <h1>TravelAmigos</h1>
@@ -84,30 +66,13 @@ const Header = () => {
               <li><a href="#support">Support</a></li>
               <li><a href="#notifications"><i className="fas fa-bell"></i></a></li>
               {isLoggedIn ? (
-                <li className={`dropdown ${showDropdown ? 'dropdown-active' : ''}`}>
-                  <button onClick={toggleDropdown} className="dropdown-user-button">
-                    {welcomeMessage}
-                  </button>
-                  {showDropdown && (
-                    <ul className="custom-dropdown-menu">
-                      <li className="dropdown-user-info">
-                        Hi, <strong>{welcomeMessage}</strong><br />
-                        <small>{userEmail}</small>
-                      </li>
-                      <hr className="dropdown-divider" />
-                      <li>
-                        <button onClick={goToAccount} className="dropdown-account-button">
-                          <i className="fas fa-cog"></i> Account
-                        </button>
-                      </li>
-                      <hr className="dropdown-divider" />
-                      <li>
-                        <button onClick={handleLogout} className="dropdown-logout-button">
-                          <i className="fas fa-sign-out-alt"></i> Sign Out
-                        </button>
-                      </li>
-                    </ul>
-                  )}
+                <li>
+                  <CustomDropdown
+                    userName={welcomeMessage}
+                    userEmail={userEmail}
+                    goToAccount={goToAccount}
+                    handleLogout={handleLogout}
+                  />
                 </li>
               ) : (
                 <li><button onClick={openLoginModal} className="login-button">Login</button></li>
@@ -135,5 +100,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
