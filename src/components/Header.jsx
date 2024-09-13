@@ -1,60 +1,56 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import '../styles/components/_configuser.scss';
-import Login from './Login';
-import CustomDropDown from './CustomDropDown'; // Importar el nuevo componente
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "../styles/components/_configuser.scss";
+import Login from "./Login";
+import CustomDropDown from "./CustomDropDown"; // new component
 
 const Header = () => {
   const [showLogin, setShowLogin] = useState(false);
-  const [welcomeMessage, setWelcomeMessage] = useState('');
-  const [userEmail, setUserEmail] = useState('');
+  const [welcomeMessage, setWelcomeMessage] = useState("");
+  const [userEmail, setUserEmail] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showDropDown, setShowDropDown] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = sessionStorage.getItem('token');
-    const storedUser = JSON.parse(sessionStorage.getItem('user'));
+    // Verifica si hay un token en sessionStorage
+    const token = sessionStorage.getItem("token");
+    const storedUser = JSON.parse(sessionStorage.getItem("user"));
 
     if (token && storedUser) {
-      setWelcomeMessage(formatName(storedUser.name));
+      setWelcomeMessage(storedUser.name);
       setUserEmail(storedUser.email);
       setIsLoggedIn(true);
     }
   }, []);
 
   const handleLogout = () => {
-    setWelcomeMessage('');
-    setUserEmail('');
+    setWelcomeMessage("");
+    setUserEmail("");
     setIsLoggedIn(false);
-    setShowDropDown(false);
-    sessionStorage.removeItem('token');
-    sessionStorage.removeItem('user');
-    navigate('/');
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("user");
+    navigate("/");
   };
 
-  const handleGoToAccount = () => {
-    setShowDropDown(false);
-    navigate('/account/profile'); // Redirige a /account/profile
+  const goToAccount = () => {
+    navigate("/account");
   };
 
-  const handleOpenLoginModal = () => {
-    setShowLogin(true);
-  };
+  // Exponer la función globalmente para poder ser llamada desde cualquier parte de la aplicación
+  window.openLoginModal = () => setShowLogin(true);
 
-  window.openLoginModal = handleOpenLoginModal;
-
+  // Función para formatear el nombre del usuario
   const formatName = (name) => {
     if (name.length > 15) {
-      return name.split(' ')[0];
+      return name.split(' ')[0]; // Solo retorna el primer nombre si el nombre es muy largo
     }
     return name;
   };
 
   return (
     <>
-      <header className="header">
+      <header>
         <div className="header-left">
           <Link to="/" className="brand-link">
             <h1>TravelAmigos</h1>
@@ -63,19 +59,32 @@ const Header = () => {
         <div className="header-right">
           <nav>
             <ul>
-              <li><a href="#support">Support</a></li>
-              <li><a href="#notifications"><i className="fas fa-bell"></i></a></li>
+              <li>
+                <a href="#support">Support</a>
+              </li>
+              <li>
+                <a href="#notifications">
+                  <i className="fas fa-bell"></i>
+                </a>
+              </li>
               {isLoggedIn ? (
-                <li>
+                <li className="dropdown">
                   <CustomDropDown
                     userName={welcomeMessage}
                     userEmail={userEmail}
-                    goToAccount={handleGoToAccount}
+                    goToAccount={goToAccount}
                     handleLogout={handleLogout}
                   />
                 </li>
               ) : (
-                <li><button onClick={handleOpenLoginModal} className="login-button">Login</button></li>
+                <li>
+                  <button
+                    onClick={() => setShowLogin(true)}
+                    className="login-button"
+                  >
+                    Login
+                  </button>
+                </li>
               )}
             </ul>
           </nav>
@@ -84,13 +93,12 @@ const Header = () => {
       {showLogin && (
         <Login
           onLogin={(user) => {
-            setWelcomeMessage(formatName(user.name));
+            setWelcomeMessage(user.name);
             setUserEmail(user.email);
             setIsLoggedIn(true);
             setShowLogin(false);
-            sessionStorage.setItem('user', JSON.stringify(user));
-            sessionStorage.setItem('token', user.token);
-            navigate('/');
+            sessionStorage.setItem("user", JSON.stringify(user)); // Guardar la información del usuario
+            sessionStorage.setItem("token", user.token); // Guardar el token del usuario
           }}
           onClose={() => setShowLogin(false)}
         />
