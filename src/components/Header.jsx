@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/components/_configuser.scss';
 import Login from './Login';
-import CustomDropdown from './CustomDropdown'; // Importar el nuevo componente
+import CustomDropDown from './CustomDropDown'; // Importar el nuevo componente
 
 const Header = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [welcomeMessage, setWelcomeMessage] = useState('');
   const [userEmail, setUserEmail] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [showDropDown, setShowDropDown] = useState(false);
 
   const navigate = useNavigate();
 
@@ -28,22 +28,22 @@ const Header = () => {
     setWelcomeMessage('');
     setUserEmail('');
     setIsLoggedIn(false);
-    setShowDropdown(false);
+    setShowDropDown(false);
     sessionStorage.removeItem('token');
     sessionStorage.removeItem('user');
     navigate('/');
   };
 
-  const goToAccount = () => {
-    setShowDropdown(false);
+  const handleGoToAccount = () => {
+    setShowDropDown(false);
     navigate('/account/profile'); // Redirige a /account/profile
   };
 
-  const openLoginModal = () => {
+  const handleOpenLoginModal = () => {
     setShowLogin(true);
   };
 
-  window.openLoginModal = openLoginModal;
+  window.openLoginModal = handleOpenLoginModal;
 
   const formatName = (name) => {
     if (name.length > 15) {
@@ -67,15 +67,15 @@ const Header = () => {
               <li><a href="#notifications"><i className="fas fa-bell"></i></a></li>
               {isLoggedIn ? (
                 <li>
-                  <CustomDropdown
+                  <CustomDropDown
                     userName={welcomeMessage}
                     userEmail={userEmail}
-                    goToAccount={goToAccount}
+                    goToAccount={handleGoToAccount}
                     handleLogout={handleLogout}
                   />
                 </li>
               ) : (
-                <li><button onClick={openLoginModal} className="login-button">Login</button></li>
+                <li><button onClick={handleOpenLoginModal} className="login-button">Login</button></li>
               )}
             </ul>
           </nav>
