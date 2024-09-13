@@ -31,23 +31,6 @@ const ReviewSection = () => {
   const [showReviews, setShowReviews] = useState(true); // State to manage visibility
 
   useEffect(() => {
-<<<<<<< Updated upstream
-    // Load data from local storage if available, otherwise fallback to initialHotels
-    const storedHotels = JSON.parse(localStorage.getItem('hotels'));
-    if (storedHotels) {
-      setHotels(storedHotels);
-    }
-  }, []);
-
-  useEffect(() => {
-    // Save data to local storage whenever hotels state changes
-    localStorage.setItem('hotels', JSON.stringify(hotels));
-  }, [hotels]);
-
-  const handleHotelChange = (event) => {
-    const selectedId = parseInt(event.target.value, 10);
-    const hotel = hotels.find(h => h.id === selectedId);
-=======
     const fetchHotels = async () => {
       const token = localStorage.getItem('token'); // Retrieve token from localStorage
 
@@ -108,7 +91,6 @@ const ReviewSection = () => {
     const selectedId = event.target.value;
     const hotel = hotels.find(h => h._id === selectedId);
     console.log('Selected hotel:', hotel); // Log the selected hotel
->>>>>>> Stashed changes
     setSelectedHotel(hotel);
   };
 
