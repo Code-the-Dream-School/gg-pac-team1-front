@@ -54,7 +54,7 @@ const Header = () => {
 
   const goToAccount = () => {
     setShowDropdown(false);
-    navigate('/account');
+    navigate('/account/profile'); // Redirige a /account/profile
   };
 
   const openLoginModal = () => {

@@ -27,18 +27,41 @@
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    
+
     &:disabled {
       background-color: #ccc;
       cursor: not-allowed;
     }
   }
 
-  .error,
-  .success {
+  .error {
     margin-top: 16px;
     font-weight: bold;
+    color: red;
   }
+}
+
+/* Estilos para el mensaje de éxito */
+.success-message {
+  margin-top: 16px;
+  font-weight: bold;
+  color: #28a745; /* Color verde para el mensaje */
+  font-size: 1.5rem; /* Tamaño de fuente más grande */
+  text-align: center; /* Centrar el texto */
+  background-color: rgba(40, 167, 69, 0.1); /* Fondo semitransparente verde */
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%; /* Ajusta el ancho según sea necesario */
+  margin: 20px auto; /* Centrar el contenedor */
+  opacity: 0;
+  transform: translateY(-20px); /* Empieza ligeramente hacia arriba */
+  transition: all 0.5s ease-in-out; /* Transición suave */
+}
+
+/* Cuando se muestra el mensaje de éxito */
+.show-success-message {
+  opacity: 1;
+  transform: translateY(0); /* Vuelve a su posición original */
 }
 
 .card-list {
@@ -55,10 +78,7 @@
     .card-info {
       .card-number {
         font-weight: bold;
-      }
-
-      .card-expiry {
-        color: #666;
+        color: #28a745; /* Color verde para los últimos 4 dígitos */
       }
     }
 
@@ -70,6 +90,14 @@
 
         &:hover {
           color: #0056b3;
+        }
+      }
+
+      .delete-icon {
+        color: #dc3545; /* Icono de eliminar en rojo */
+
+        &:hover {
+          color: #c82333;
         }
       }
     }
