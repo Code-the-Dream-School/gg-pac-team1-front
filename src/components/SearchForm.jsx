@@ -6,6 +6,7 @@ import DateInput from './DateInput';
 import AdultsInput from './AdultsInput';
 import LoadingIndicator from './LoadingIndicator';
 import ErrorMessage from './ErrorMessage'; // Import the new ErrorMessage component
+import './SearchForm.css';
 import { 
   searchHotelsByCityOrState, 
   validateCheckInDate, 

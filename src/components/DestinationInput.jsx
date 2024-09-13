@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import './SearchForm.css'
 
 const DestinationInput = ({ value, onChange, suggestions, onSuggestionClick, loading }) => (
   <div className="form-group" style={{ position: 'relative' }}>
     <label>
-      <FontAwesomeIcon icon={faMapMarkerAlt} />
+      <FontAwesomeIcon icon={faMapMarkerAlt}  className="icon"/>
     </label>
     <input 
       type="text" 
