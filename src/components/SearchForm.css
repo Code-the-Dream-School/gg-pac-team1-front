@@ -69,7 +69,7 @@ input[type="number"]:focus {
   margin: 0;
   border: 1px solid #ccc;
   border-radius: 5px;
-  max-height: 100px;
+  max-height: 200px;
   overflow-y: auto;
   background-color: white;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
