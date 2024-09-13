@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './MainContent.css'; 
-import WellnessImage from '../../../images/WellnessImage.jpg';
+
 import Tahoe from '../../../images/TravelBlog/Tahoe.jpg';
 import Ohio from '../../../images/TravelBlog/Ohio.jpg';
 import NorthCarolina from '../../../images/TravelBlog/NorthCarolina.jpg';

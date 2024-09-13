@@ -40,7 +40,6 @@ import HotelDetailPage from './pages/HotelDetailPage';
 import ReservationReviewPage from './pages/ReservationReviewPage';
 import Search from './pages/Search';
 import { getAllData } from './util/index';
-import TravelBlog from './components/TravelBlog/TravelBlog';
 import PaymentTest from './components/PaymentTest';
 import TestSaveReservation from './components/TestSaveReservation'; // Importar TestSaveReservation
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
