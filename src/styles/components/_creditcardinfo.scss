@@ -1,132 +1,77 @@
-.main-container {
-  display: flex;
-  align-items: flex-start; // Alinear al inicio
-  margin: 0; // Eliminar margen
-  padding: 0; // Eliminar padding
-}
-
-.aside {
-  width: 250px; // Ajusta según el tamaño de tu aside
-  background: #f1f1f1; // O el color que prefieras
-}
-
-.credit-card-info {
-  background: #f4f4f4;
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 600px;
-  margin: 0; // Eliminar margen para alinear con el aside
-  margin-left: 10px; // Espacio mínimo desde el aside
-  margin-top: 10px; // Espacio mínimo desde el top
-
-  h3 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  .form-group {
-    display: flex;
-    align-items: center; // Alinear verticalmente
-    margin-bottom: 15px;
+.credit-card-form,
+.edit-card-form {
+  .form-field {
+    margin-bottom: 16px;
 
     label {
-      flex: 1; // Ocupa el espacio disponible antes del input
-      margin-right: 10px; // Espacio entre el label y el input
+      display: block;
+      margin-bottom: 8px;
       font-weight: bold;
     }
 
-    input {
-      flex: 2; // Ocupa el doble del espacio del label
-      padding: 10px;
+    #card-element,
+    #card-element-edit {
+      width: 100%;
+      padding: 8px;
       border: 1px solid #ccc;
       border-radius: 4px;
-      font-size: 14px;
-      box-sizing: border-box; // Asegura que el padding se incluya en el ancho
-    }
-
-    .error {
-      color: red;
-      font-size: 12px;
-      margin-top: 5px;
     }
   }
 
-  .cvv-input-container {
-    display: flex;
-    align-items: center;
-
-    .show-cvv-btn {
-      margin-left: 10px;
-      background: none;
-      border: none;
-      color: #007bff;
-      cursor: pointer;
-      font-size: 14px;
-      padding: 5px;
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
     }
   }
 
-  .form-buttons {
+  .error,
+  .success {
+    margin-top: 16px;
+    font-weight: bold;
+  }
+}
+
+.card-list {
+  list-style: none;
+  padding: 0;
+
+  .card-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
 
-    .btn-credit {
-      padding: 5px 10px; // Corrige el padding
-      border: none;
-      border-radius: 4px;
-      background-color: #007bff !important;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: #0056b3;
+    .card-info {
+      .card-number {
+        font-weight: bold;
       }
 
-      &:last-child {
-        background-color: #77b6ed;
+      .card-expiry {
+        color: #666;
+      }
+    }
+
+    .card-actions {
+      .action-icon {
+        margin-left: 10px;
+        cursor: pointer;
+        color: #007bff;
 
         &:hover {
-          background-color: #5a6268;
+          color: #0056b3;
         }
       }
     }
   }
-
-  .card-list {
-    margin-top: 20px;
-
-    h4 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-
-      .icon-button {
-        background: none;
-        border: none;
-        font-size: 1.2rem; // Ajusta el tamaño del icono según sea necesario
-        color: #4cc43a; // Color de los iconos
-        cursor: pointer;
-        margin: 0; // Eliminar margen para que los iconos estén más juntos
-        padding: 0; // Eliminar padding para mayor control sobre el espacio
-        width: 10px !important;
-      }
-
-      li {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px;
-        background: white;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        margin-bottom: 10px;
-      }
-    }
-  }
 }
-

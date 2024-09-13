@@ -1,4 +1,4 @@
-.dropdown-menu {
+.custom-dropdown-menu {
   background-color: #333 !important;
   margin-right: -40px !important;
   border: 1px solid #444;
@@ -14,30 +14,30 @@
   top: 100%; 
   transform: translateY(10px); 
 
-  &.active {
-    display: block; // Display when active
+  &.dropdown-active {
+    display: block;
   }
 
-  .user-info {
-    padding: 4px 6px !important; /* Spacing for the user greeting */
-    font-size: 14px; /* Font size for the greeting */
+  .dropdown-user-info {
+    padding: 4px 6px !important;
+    font-size: 14px;
     color: #fff;
-    border-bottom: 1px solid #555; /* Divider line between the greeting and options */
-    margin-bottom: 8px; /* Space below the greeting */
+    border-bottom: 1px solid #555;
+    margin-bottom: 8px;
   }
 
   li {
-    padding: 4px 8px !important; /* Adjust padding to make the items more compact */
+    padding: 4px 8px !important;
     color: #fff;
-    font-size: 14px; /* Font size */
-    display: block; /* Ensure items are on separate lines */
+    font-size: 14px;
+    display: block;
     cursor: pointer;
 
     button {
       background: transparent;
       border: none;
       color: #fff;
-      font-size: 14px; /* Font size */
+      font-size: 14px;
       display: flex;
       align-items: center;
       cursor: pointer;
@@ -51,11 +51,11 @@
   .dropdown-divider {
     border: none;
     border-top: 1px solid #555;
-    margin: 8px 0; /* Vertical space for separation */
+    margin: 8px 0;
   }
 }
 
-.user-button {
+.dropdown-user-button {
   background: transparent;
   border: none;
   color: #fff;
@@ -66,10 +66,10 @@
   line-height: 1;
 }
 
-.user-button:hover {
+.dropdown-user-button:hover {
   background: transparent !important;
   color: rgb(27, 136, 219);
-  text-decoration:underline;
+  text-decoration: underline;
 }
 
 .login-button {
@@ -82,5 +82,18 @@
 
   &:hover {
     background: transparent;
+  }
+}
+
+.dropdown-account-button,
+.dropdown-logout-button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    color: blue !important;
   }
 }
