@@ -46,15 +46,6 @@ function Home() {
         </div>
       </section>
 
-<<<<<<< HEAD
-      <section className="info-and-blog-section">
-        <div className="container">
-          <BookingInfoSection />
-          <TravelBlog />
-        </div>
-      </section>
-    </div>
-=======
         <section className="auto-generated-section">
           <div className="container">
             <h2>Trips</h2>
@@ -71,8 +62,6 @@ function Home() {
           </div>
         </section>
       </div>
-    </>
->>>>>>> 1878372 (fixed home)
   );
 }
 
