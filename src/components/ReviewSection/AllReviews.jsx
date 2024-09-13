@@ -20,14 +20,5 @@ const AllReviews = ({ reviews }) => {
   );
 };
 
-AllReviews.propTypes = {
-  reviews: PropTypes.arrayOf(
-    PropTypes.shape({
-      author: PropTypes.string.isRequired,
-      text: PropTypes.string.isRequired,
-      rating: PropTypes.number.isRequired,
-    })
-  ).isRequired,
-};
 
 export default AllReviews;

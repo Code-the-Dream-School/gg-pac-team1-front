@@ -46,13 +46,22 @@ function Home() {
         </div>
       </section>
 
-      <section className="info-and-blog-section">
-        <div className="container">
-          <BookingInfoSection />
-          <TravelBlog />
-        </div>
-      </section>
-    </div>
+        <section className="auto-generated-section">
+          <div className="container">
+            <h2>Trips</h2>
+            <p>Plan your next adventure with our tailored trip packages.</p>
+            <CarouselComponent />
+          </div>
+        </section>
+
+            {/* Booking Info and Travel Blog Section */}
+            <section className="info-and-blog-section">
+          <div className="container">
+            <BookingInfoSection />
+            <TravelBlog />
+          </div>
+        </section>
+      </div>
   );
 }
 
