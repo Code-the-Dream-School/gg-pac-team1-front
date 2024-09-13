@@ -43,8 +43,8 @@ import { getAllData } from './util/index';
 import TravelBlog from './components/TravelBlog/TravelBlog';
 import PaymentTest from './components/PaymentTest';
 import TestSaveReservation from './components/TestSaveReservation'; // Importar TestSaveReservation
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
-const stripePromise = loadStripe('pk_test_51Puz5H01R3YOln0lbdcwMrIqjhFuVLo3gHemPOIJpzHVgpWLEblrwnMMJp9Vl98OQeADhnDljbWXdRWThnuKFFnI00D3YQEZjX'); // Reemplaza esto con tu clave pública de Stripe
 const AUTH_URL = 'http://localhost:8000/api/v1/auth';
 
 function App() {
