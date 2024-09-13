@@ -55,11 +55,12 @@ const Account = () => {
               <i className="fas fa-user"></i> Profile
             </Link>
           </li>
-          <li className="menu-item">
+          {/* Eliminar el ítem de direcciones */}
+          {/* <li className="menu-item">
             <Link to="addresses">
               <i className="fas fa-map-marker-alt"></i> Addresses
             </Link>
-          </li>
+          </li> */}
           <li className="menu-item">
             <Link to="payments">
               <i className="fas fa-credit-card"></i> Payment Methods

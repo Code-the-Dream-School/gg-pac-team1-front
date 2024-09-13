@@ -60,67 +60,67 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
+    <div className="register-wrapper">
       {showConfetti && <Confetti />}
-      <div className="register-content">
-        <button className="close-button" onClick={() => navigate('/')}>
+      <div className="register-form-container">
+        <button className="register-close-button" onClick={() => navigate('/')}>
           &times;
         </button>
         <h2>Register</h2>
 
-        {successMessage && <p className="success-message">{successMessage}</p>}
+        {successMessage && <p className="register-success-message">{successMessage}</p>}
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="input-field">
+          <div className="register-input-field">
             <label htmlFor="name">Name</label>
-            <div className="input-wrapper">
+            <div className="register-input-wrapper">
               <input
                 id="name"
                 type="text"
                 {...register('name', validationRules.name)}
               />
-              {errors.name && <p className="error-message">{errors.name.message}</p>}
+              {errors.name && <p className="register-error-message">{errors.name.message}</p>}
             </div>
           </div>
-          <div className="input-field">
+          <div className="register-input-field">
             <label htmlFor="email">Email</label>
-            <div className="input-wrapper">
+            <div className="register-input-wrapper">
               <input
                 id="email"
                 type="email"
                 {...register('email', validationRules.email)}
               />
-              {errors.email && <p className="error-message">{errors.email.message}</p>}
+              {errors.email && <p className="register-error-message">{errors.email.message}</p>}
             </div>
           </div>
-          <div className="input-field">
+          <div className="register-input-field">
             <label htmlFor="password">Password</label>
-            <div className="input-wrapper">
+            <div className="register-input-wrapper">
               <input
                 id="password"
                 type="password"
                 {...register('password', validationRules.password)}
               />
-              {errors.password && <p className="error-message">{errors.password.message}</p>}
+              {errors.password && <p className="register-error-message">{errors.password.message}</p>}
             </div>
           </div>
-          <div className="input-field">
+          <div className="register-input-field">
             <label htmlFor="confirmPassword">Confirm Password</label>
-            <div className="input-wrapper">
+            <div className="register-input-wrapper">
               <input
                 id="confirmPassword"
                 type="password"
                 {...register('confirmPassword', validationRules.confirmPassword)}
               />
-              {errors.confirmPassword && <p className="error-message">{errors.confirmPassword.message}</p>}
+              {errors.confirmPassword && <p className="register-error-message">{errors.confirmPassword.message}</p>}
             </div>
           </div>
-          <button type="submit" className="submit-button">
+          <button type="submit" className="register-submit-button">
             Register
           </button>
         </form>
       </div>
-      <div className="congratulations">
+      <div className="register-congratulations">
         <h1>🎉 Congratulations! 🎉</h1>
         <p>You have successfully registered.</p>
       </div>
@@ -129,6 +129,7 @@ const Register = () => {
 };
 
 export default Register;
+
 
 
 

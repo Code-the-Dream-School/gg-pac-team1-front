@@ -1,8 +1,11 @@
+
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Account from './components/Account';
-import Addresses from './components/Addresses';
 import BudgetTravel from './components/BudgetTravel';
 import ChangePassword from './components/ChangePassword';
 import CreditCardInfo from './components/CreditCardInfo';
@@ -37,9 +40,9 @@ import HotelDetailPage from './pages/HotelDetailPage';
 import ReservationReviewPage from './pages/ReservationReviewPage';
 import Search from './pages/Search';
 import { getAllData } from './util/index';
-import TravelBlog from './components/TravelBlog/TravelBlog';
 import PaymentTest from './components/PaymentTest';
 import TestSaveReservation from './components/TestSaveReservation'; // Importar TestSaveReservation
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const AUTH_URL = 'http://localhost:8000/api/v1/auth';
 
@@ -90,7 +93,6 @@ function App() {
           element: <Account />,
           children: [
             { path: 'profile', element: <ProfileInfo /> },
-            { path: 'addresses', element: <Addresses /> },
             { path: 'payments', element: <CreditCardInfo /> },
             { path: 'changepassword', element: <ChangePassword /> },
             { path: 'history', element: <TravelHistory /> },
@@ -213,9 +215,11 @@ function App() {
   ]);
 
   return (
-    <Session authURL={AUTH_URL}>
-      <RouterProvider router={router} />
-    </Session>
+    <Elements stripe={stripePromise}>
+      <Session authURL={AUTH_URL}>
+        <RouterProvider router={router} />
+      </Session>
+    </Elements>
   );
 }
 

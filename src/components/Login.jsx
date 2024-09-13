@@ -21,7 +21,6 @@ const Login = ({ onLogin, onClose }) => {
       // Guardar el token y el email en localStorage
       localStorage.setItem('token', response.data.token); 
       localStorage.setItem('userEmail', email); // Guardar el email en localStorage
-      //email to data base confirmations payment
       localStorage.setItem('userId', response.data.user.id); 
       localStorage.setItem('userName', response.data.user.name); 
 
@@ -40,7 +39,7 @@ const Login = ({ onLogin, onClose }) => {
   return (
     <div className="login-popup">
       <div className="login-popup-content">
-        <button className="close-button" onClick={onClose}>
+        <button className="close-button-blue" onClick={onClose}>
           &times;
         </button>
         <div className="login-header">
@@ -71,7 +70,7 @@ const Login = ({ onLogin, onClose }) => {
               required
             />
           </div>
-          <button type="submit" className="button">Login</button>
+          <button type="submit" className="button-green">Login</button>
         </form>
         <p className="register-link">
           Don't have an account? <Link to="/register">Register here</Link>
@@ -87,5 +86,6 @@ const Login = ({ onLogin, onClose }) => {
 };
 
 export default Login;
+
 
 

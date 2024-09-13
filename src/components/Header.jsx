@@ -14,7 +14,6 @@ const Header = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Verifica si hay un token en sessionStorage
     const token = sessionStorage.getItem('token');
     const storedUser = JSON.parse(sessionStorage.getItem('user'));
 
@@ -55,20 +54,18 @@ const Header = () => {
 
   const goToAccount = () => {
     setShowDropdown(false);
-    navigate('/account');
+    navigate('/account/profile'); // Redirige a /account/profile
   };
 
   const openLoginModal = () => {
     setShowLogin(true);
   };
 
-  // Exponer la función globalmente para poder ser llamada desde cualquier parte de la aplicación
   window.openLoginModal = openLoginModal;
 
-  // Función para formatear el nombre del usuario
   const formatName = (name) => {
     if (name.length > 15) {
-      return name.split(' ')[0]; // Solo retorna el primer nombre si el nombre es muy largo
+      return name.split(' ')[0];
     }
     return name;
   };
@@ -87,25 +84,25 @@ const Header = () => {
               <li><a href="#support">Support</a></li>
               <li><a href="#notifications"><i className="fas fa-bell"></i></a></li>
               {isLoggedIn ? (
-                <li className={`dropdown ${showDropdown ? 'active' : ''}`}>
-                  <button onClick={toggleDropdown} className="user-button">
+                <li className={`dropdown ${showDropdown ? 'dropdown-active' : ''}`}>
+                  <button onClick={toggleDropdown} className="dropdown-user-button">
                     {welcomeMessage}
                   </button>
                   {showDropdown && (
-                    <ul className="dropdown-menu">
-                      <li className="user-info">
+                    <ul className="custom-dropdown-menu">
+                      <li className="dropdown-user-info">
                         Hi, <strong>{welcomeMessage}</strong><br />
                         <small>{userEmail}</small>
                       </li>
                       <hr className="dropdown-divider" />
                       <li>
-                        <button onClick={goToAccount}>
+                        <button onClick={goToAccount} className="dropdown-account-button">
                           <i className="fas fa-cog"></i> Account
                         </button>
                       </li>
                       <hr className="dropdown-divider" />
                       <li>
-                        <button onClick={handleLogout}>
+                        <button onClick={handleLogout} className="dropdown-logout-button">
                           <i className="fas fa-sign-out-alt"></i> Sign Out
                         </button>
                       </li>
@@ -126,9 +123,9 @@ const Header = () => {
             setUserEmail(user.email);
             setIsLoggedIn(true);
             setShowLogin(false);
-            sessionStorage.setItem('user', JSON.stringify(user)); // Guardar la información del usuario
-            sessionStorage.setItem('token', user.token); // Guardar el token del usuario
-            navigate('/'); // Redirigir a la página principal después del login
+            sessionStorage.setItem('user', JSON.stringify(user));
+            sessionStorage.setItem('token', user.token);
+            navigate('/');
           }}
           onClose={() => setShowLogin(false)}
         />
