@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faCog, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
-import './customDropdownHeader.css'; // Importar el CSS del CustomDropdown
+import './customDropdownHeader.css'; 
 
-function CustomDropdown({ userName, userEmail, goToAccount, handleLogout }) {
+function CustomDropDown({ userName, userEmail, goToAccount, handleLogout }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleDropdown = () => setIsOpen(!isOpen);
+  const handleToggleDropDown = () => setIsOpen(!isOpen);
 
   return (
     <div className="custom-dropdown-header">
-      <button onClick={toggleDropdown} className="dropdown-toggle">
+      <button onClick={handleToggleDropDown} className="dropdown-toggle">
         <FontAwesomeIcon icon={faUser} size="lg" />
         <span style={{ marginLeft: "8px" }}>
           Hi, <strong>{userName}</strong>
@@ -34,4 +34,4 @@ function CustomDropdown({ userName, userEmail, goToAccount, handleLogout }) {
   );
 }
 
-export default CustomDropdown;
+export default CustomDropDown;
