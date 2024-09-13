@@ -7,7 +7,7 @@ import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 const DateInput = ({ checkInDate, checkOutDate, handleCheckInChange, handleCheckOutChange, showCheckOut, className }) => (
   <div className={`form-group ${className}`}>
     <label className="icon-label">
-      <FontAwesomeIcon icon={faCalendarAlt} />
+      <FontAwesomeIcon icon={faCalendarAlt}  className="icon"/>
     </label>
     <div className="date-group">
       <div className="date-input-group">

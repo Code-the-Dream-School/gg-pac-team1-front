@@ -1,0 +1,71 @@
+header .header-right .custom-dropdown-header {
+    position: relative;
+  }
+  
+  header .header-right .custom-dropdown-header .dropdown-toggle {
+    color: #fff; /* Blanco */
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    width: 100%; /* Asegura que el botón ocupe todo el ancho del contenedor */
+  }
+  
+  header .header-right .custom-dropdown-header .dropdown-menu-header {
+    position: absolute;
+    top: 100%;
+    left: 0; /* Alinea el menú desplegable con el botón */
+    border: 1px solid #444; /* Gris oscuro */
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    list-style-type: none;
+    min-width: 100%; /* Asegura que el menú desplegable tenga el mismo ancho que el botón */
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    background-color: #333; /* Gris oscuro */
+  }
+  
+  header .header-right .custom-dropdown-header .dropdown-menu-header.show {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 5px;
+  }
+  
+  header .header-right .custom-dropdown-header li {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 8px; /* Separación entre elementos */
+  }
+  
+  header .header-right .custom-dropdown-header li:last-child {
+    margin-bottom: 0; /* Elimina la separación del último elemento */
+  }
+  
+  header .header-right .custom-dropdown-header .dropdown-item-header {
+    background: #333; /* Gris oscuro */
+    color: #fff; /* Blanco */
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 8px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 16px; /* Tamaño de fuente */
+    transition: color 0.3s ease, background-color 0.3s ease;
+  }
+  
+  header .header-right .custom-dropdown-header .dropdown-item-header:hover {
+    color: #4e94f6; /* Azul */
+  }
+  
+  header .header-right .custom-dropdown-header .dropdown-item-header span {
+    margin-left: 8px;
+  }
+  

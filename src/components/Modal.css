@@ -1,59 +1,76 @@
 /* components/Modal.css */
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    max-width: 500px;
-    width: 100%;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    line-height: 1.5;
-  }
-  
-  .modal-content h2 {
-    margin: 0 0 10px 0;
-  }
-  
-  .modal-section {
-    margin-bottom: 15px;
-    text-align: left;
-  }
-  
-  .modal-section h3 {
-    margin: 0 0 5px 0;
-  }
-  
-  .modal-section p {
-    margin: 5px 0;
-    font-size: small;
-  }
-  
-  .pay-button, .close-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .pay-button {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .close-button {
-    background-color: #f44336;
-    color: white;
-    margin-left: 10px;
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  position: relative; /* Necesario para posicionar el botón de cerrar */
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  line-height: 1.5;
+}
+
+.modal-content h2 {
+  margin: 0 0 10px 0;
+}
+
+.modal-section {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.modal-section h3 {
+  margin: 0 0 5px 0;
+}
+
+.modal-section p {
+  margin: 5px 0;
+  font-size: small;
+}
+
+.pay-button, .close-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.pay-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.close-button {
+  position: absolute; /* Posicionar el botón de cerrar en la esquina superior derecha */
+  top: 10px;
+  right: 10px;
+  background-color: #f44336;
+  color: white;
+  width: 20px;
+  height: 20px; /* Hacer el botón cuadrado */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 4px; /* Opcional: para bordes ligeramente redondeados */
+  cursor: pointer;
+  font-size: 1rem; /* Ajustar el tamaño de la "X" */
+  padding: 0; /* Eliminar el padding interno */
+}
+
+.close-button:hover {
+  background-color: #d32f2f; /* Cambiar el color al pasar el cursor */
+}
